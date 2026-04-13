@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<!-- saved from url=(0137)http://localhost:63342/erwin-Mart-MCL-NewUI/Multithreading_Concepts_Report.html?_ijt=so14v7rt0jblae4t1vfe1s9n90&_ij_reload=RELOAD_ON_SAVE -->
+<html lang="en"><plasmo-csui id="plasmo-inspector"><template shadowrootmode="open"><style>@import "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap";@import "https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap";@import "https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap";*,:before,:after,::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:#3b82f680;--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }*,:before,:after{box-sizing:border-box;border:0 solid #e5e7eb}:before,:after{--tw-content:""}html,:host{-webkit-text-size-adjust:100%;tab-size:4;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}body{line-height:inherit;margin:0}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,samp,pre{font-feature-settings:normal;font-variation-settings:normal;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-size:1em}small{font-size:80%}sub,sup{vertical-align:baseline;font-size:75%;line-height:0;position:relative}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-feature-settings:inherit;font-variation-settings:inherit;font-family:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:#0000;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button{height:auto}::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dl,dd,h1,h2,h3,h4,h5,h6,hr,figure,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}ol,ul,menu{margin:0;padding:0;list-style:none}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder{opacity:1;color:#9ca3af}textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}button,[role=button]{cursor:pointer}:disabled{cursor:default}img,svg,video,canvas,audio,iframe,embed,object{vertical-align:middle;display:block}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.\!container{width:100%!important}.container{width:100%}@media (width>=640px){.\!container{max-width:640px!important}.container{max-width:640px}}@media (width>=768px){.\!container{max-width:768px!important}.container{max-width:768px}}@media (width>=1024px){.\!container{max-width:1024px!important}.container{max-width:1024px}}@media (width>=1280px){.\!container{max-width:1280px!important}.container{max-width:1280px}}@media (width>=1536px){.\!container{max-width:1536px!important}.container{max-width:1536px}}.sr-only{clip:rect(0,0,0,0);white-space:nowrap;border-width:0;width:1px;height:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}.pointer-events-none{pointer-events:none}.visible{visibility:visible}.collapse{visibility:collapse}.static{position:static}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0}.-left-5{left:-1.25rem}.-right-3{right:-.75rem}.-top-16{top:-4rem}.-top-5{top:-1.25rem}.-top-6{top:-1.5rem}.-top-8{top:-2rem}.-top-9{top:-2.25rem}.bottom-0{bottom:0}.left-0{left:0}.left-1\/2{left:50%}.left-12{left:3rem}.left-\[32px\]{left:32px}.right-0{right:0}.right-4{right:1rem}.right-\[15px\]{right:15px}.right-\[21px\]{right:21px}.right-\[39px\]{right:39px}.top-0{top:0}.top-0\.5{top:.125rem}.top-4{top:1rem}.top-40{top:10rem}.top-8{top:2rem}.top-\[120px\]{top:120px}.top-\[127px\]{top:127px}.top-\[13px\]{top:13px}.top-\[23px\]{top:23px}.top-\[250px\]{top:250px}.top-\[47px\]{top:47px}.top-auto{top:auto}.z-0{z-index:0}.z-10{z-index:10}.z-20{z-index:20}.z-50{z-index:50}.z-\[1000\]{z-index:1000}.z-\[999999\]{z-index:999999}.col-span-2{grid-column:span 2/span 2}.m-0{margin:0}.m-1{margin:.25rem}.m-2{margin:.5rem}.m-3{margin:.75rem}.m-4{margin:1rem}.m-auto{margin:auto}.-mx-4{margin-left:-1rem;margin-right:-1rem}.mx-0{margin-left:0;margin-right:0}.mx-4{margin-left:1rem;margin-right:1rem}.mx-auto{margin-left:auto;margin-right:auto}.my-0{margin-top:0;margin-bottom:0}.my-1{margin-top:.25rem;margin-bottom:.25rem}.my-10{margin-top:2.5rem;margin-bottom:2.5rem}.my-12{margin-top:3rem;margin-bottom:3rem}.my-16{margin-top:4rem;margin-bottom:4rem}.my-2{margin-top:.5rem;margin-bottom:.5rem}.my-2\.5{margin-top:.625rem;margin-bottom:.625rem}.my-3{margin-top:.75rem;margin-bottom:.75rem}.my-4{margin-top:1rem;margin-bottom:1rem}.my-5{margin-top:1.25rem;margin-bottom:1.25rem}.my-6{margin-top:1.5rem;margin-bottom:1.5rem}.my-8{margin-top:2rem;margin-bottom:2rem}.-mb-2{margin-bottom:-.5rem}.mb-0{margin-bottom:0}.mb-1{margin-bottom:.25rem}.mb-10{margin-bottom:2.5rem}.mb-12{margin-bottom:3rem}.mb-16{margin-bottom:4rem}.mb-2{margin-bottom:.5rem}.mb-3{margin-bottom:.75rem}.mb-4{margin-bottom:1rem}.mb-5{margin-bottom:1.25rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.ml-1{margin-left:.25rem}.ml-2{margin-left:.5rem}.ml-3{margin-left:.75rem}.ml-4{margin-left:1rem}.ml-5{margin-left:1.25rem}.ml-\[-1rem\]{margin-left:-1rem}.ml-auto{margin-left:auto}.mr-0{margin-right:0}.mr-1{margin-right:.25rem}.mr-2{margin-right:.5rem}.mr-3{margin-right:.75rem}.mr-4{margin-right:1rem}.mr-\[-1rem\]{margin-right:-1rem}.ms-3{margin-inline-start:.75rem}.mt-0{margin-top:0}.mt-1{margin-top:.25rem}.mt-10{margin-top:2.5rem}.mt-12{margin-top:3rem}.mt-16{margin-top:4rem}.mt-2{margin-top:.5rem}.mt-3{margin-top:.75rem}.mt-4{margin-top:1rem}.mt-5{margin-top:1.25rem}.mt-6{margin-top:1.5rem}.mt-8{margin-top:2rem}.mt-\[-1rem\]{margin-top:-1rem}.block{display:block}.inline-block{display:inline-block}.inline{display:inline}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.contents{display:contents}.hidden{display:none}.aspect-square{aspect-ratio:1}.h-10{height:2.5rem}.h-14{height:3.5rem}.h-16{height:4rem}.h-2{height:.5rem}.h-3{height:.75rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-6{height:1.5rem}.h-8{height:2rem}.h-9{height:2.25rem}.h-\[140px\]{height:140px}.h-\[14px\]{height:14px}.h-\[152px\]{height:152px}.h-\[1px\]{height:1px}.h-\[24px\]{height:24px}.h-\[251px\]{height:251px}.h-\[252px\]{height:252px}.h-\[280px\]{height:280px}.h-\[32px\]{height:32px}.h-\[360px\]{height:360px}.h-\[36px\]{height:36px}.h-\[643px\]{height:643px}.h-\[650px\]{height:650px}.h-\[6px\]{height:6px}.h-\[80\%\]{height:80%}.h-\[88px\]{height:88px}.h-auto{height:auto}.h-full{height:100%}.h-screen{height:100vh}.max-h-\[400px\]{max-height:400px}.max-h-\[594px\]{max-height:594px}.max-h-\[643px\]{max-height:643px}.max-h-\[644px\]{max-height:644px}.max-h-\[648px\]{max-height:648px}.max-h-\[794px\]{max-height:794px}.max-h-\[80vh\]{max-height:80vh}.max-h-\[813px\]{max-height:813px}.max-h-fit{max-height:fit-content}.max-h-full{max-height:100%}.min-h-0{min-height:0}.min-h-\[50px\]{min-height:50px}.w-1\/2{width:50%}.w-10{width:2.5rem}.w-11\/12{width:91.6667%}.w-12{width:3rem}.w-14{width:3.5rem}.w-16{width:4rem}.w-3{width:.75rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-6{width:1.5rem}.w-8{width:2rem}.w-\[106px\]{width:106px}.w-\[108px\]{width:108px}.w-\[116px\]{width:116px}.w-\[120px\]{width:120px}.w-\[130px\]{width:130px}.w-\[140px\]{width:140px}.w-\[147px\]{width:147px}.w-\[167px\]{width:167px}.w-\[168px\]{width:168px}.w-\[177px\]{width:177px}.w-\[180px\]{width:180px}.w-\[195px\]{width:195px}.w-\[222px\]{width:222px}.w-\[296px\]{width:296px}.w-\[30px\]{width:30px}.w-\[328px\]{width:328px}.w-\[360px\]{width:360px}.w-\[48\%\]{width:48%}.w-\[50\%\]{width:50%}.w-\[60px\]{width:60px}.w-\[6px\]{width:6px}.w-\[78px\]{width:78px}.w-\[90\%\]{width:90%}.w-\[97px\]{width:97px}.w-\[98px\]{width:98px}.w-\[calc\(100\%-19px\)\]{width:calc(100% - 19px)}.w-auto{width:auto}.w-fit{width:fit-content}.w-full{width:100%}.w-min{width:min-content}.min-w-48{min-width:12rem}.min-w-5{min-width:1.25rem}.min-w-\[138px\]{min-width:138px}.min-w-\[160px\]{min-width:160px}.max-w-\[150px\]{max-width:150px}.max-w-\[220px\]{max-width:220px}.max-w-\[290px\]{max-width:290px}.max-w-\[450px\]{max-width:450px}.max-w-\[500px\]{max-width:500px}.max-w-lg{max-width:32rem}.max-w-md{max-width:28rem}.max-w-xl{max-width:36rem}.flex-1{flex:1}.flex-shrink-0,.shrink-0{flex-shrink:0}.flex-grow{flex-grow:1}.-translate-x-1\/2{--tw-translate-x:-50%;transform:translate(var(--tw-translate-x),var(--tw-translate-y))rotate(var(--tw-rotate))skewX(var(--tw-skew-x))skewY(var(--tw-skew-y))scaleX(var(--tw-scale-x))scaleY(var(--tw-scale-y))}.-translate-y-16{--tw-translate-y:-4rem;transform:translate(var(--tw-translate-x),var(--tw-translate-y))rotate(var(--tw-rotate))skewX(var(--tw-skew-x))skewY(var(--tw-skew-y))scaleX(var(--tw-scale-x))scaleY(var(--tw-scale-y))}.-translate-y-2{--tw-translate-y:-.5rem;transform:translate(var(--tw-translate-x),var(--tw-translate-y))rotate(var(--tw-rotate))skewX(var(--tw-skew-x))skewY(var(--tw-skew-y))scaleX(var(--tw-scale-x))scaleY(var(--tw-scale-y))}.-translate-y-6{--tw-translate-y:-1.5rem;transform:translate(var(--tw-translate-x),var(--tw-translate-y))rotate(var(--tw-rotate))skewX(var(--tw-skew-x))skewY(var(--tw-skew-y))scaleX(var(--tw-scale-x))scaleY(var(--tw-scale-y))}.translate-x-0{--tw-translate-x:0px;transform:translate(var(--tw-translate-x),var(--tw-translate-y))rotate(var(--tw-rotate))skewX(var(--tw-skew-x))skewY(var(--tw-skew-y))scaleX(var(--tw-scale-x))scaleY(var(--tw-scale-y))}.translate-x-0\.5{--tw-translate-x:.125rem;transform:translate(var(--tw-translate-x),var(--tw-translate-y))rotate(var(--tw-rotate))skewX(var(--tw-skew-x))skewY(var(--tw-skew-y))scaleX(var(--tw-scale-x))scaleY(var(--tw-scale-y))}.translate-x-3{--tw-translate-x:.75rem;transform:translate(var(--tw-translate-x),var(--tw-translate-y))rotate(var(--tw-rotate))skewX(var(--tw-skew-x))skewY(var(--tw-skew-y))scaleX(var(--tw-scale-x))scaleY(var(--tw-scale-y))}.translate-x-8{--tw-translate-x:2rem;transform:translate(var(--tw-translate-x),var(--tw-translate-y))rotate(var(--tw-rotate))skewX(var(--tw-skew-x))skewY(var(--tw-skew-y))scaleX(var(--tw-scale-x))scaleY(var(--tw-scale-y))}.translate-x-\[0\.6rem\]{--tw-translate-x:.6rem;transform:translate(var(--tw-translate-x),var(--tw-translate-y))rotate(var(--tw-rotate))skewX(var(--tw-skew-x))skewY(var(--tw-skew-y))scaleX(var(--tw-scale-x))scaleY(var(--tw-scale-y))}.translate-y-2{--tw-translate-y:.5rem;transform:translate(var(--tw-translate-x),var(--tw-translate-y))rotate(var(--tw-rotate))skewX(var(--tw-skew-x))skewY(var(--tw-skew-y))scaleX(var(--tw-scale-x))scaleY(var(--tw-scale-y))}.translate-y-\[23px\]{--tw-translate-y:23px;transform:translate(var(--tw-translate-x),var(--tw-translate-y))rotate(var(--tw-rotate))skewX(var(--tw-skew-x))skewY(var(--tw-skew-y))scaleX(var(--tw-scale-x))scaleY(var(--tw-scale-y))}.rotate-180{--tw-rotate:180deg;transform:translate(var(--tw-translate-x),var(--tw-translate-y))rotate(var(--tw-rotate))skewX(var(--tw-skew-x))skewY(var(--tw-skew-y))scaleX(var(--tw-scale-x))scaleY(var(--tw-scale-y))}.scale-100{--tw-scale-x:1;--tw-scale-y:1;transform:translate(var(--tw-translate-x),var(--tw-translate-y))rotate(var(--tw-rotate))skewX(var(--tw-skew-x))skewY(var(--tw-skew-y))scaleX(var(--tw-scale-x))scaleY(var(--tw-scale-y))}.scale-95{--tw-scale-x:.95;--tw-scale-y:.95;transform:translate(var(--tw-translate-x),var(--tw-translate-y))rotate(var(--tw-rotate))skewX(var(--tw-skew-x))skewY(var(--tw-skew-y))scaleX(var(--tw-scale-x))scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y))rotate(var(--tw-rotate))skewX(var(--tw-skew-x))skewY(var(--tw-skew-y))scaleX(var(--tw-scale-x))scaleY(var(--tw-scale-y))}@keyframes pulse{50%{opacity:.5}}.animate-pulse-slow{animation:3s cubic-bezier(.4,0,.6,1) infinite pulse}.cursor-default{cursor:default}.cursor-grab{cursor:grab}.cursor-grabbing{cursor:grabbing}.cursor-not-allowed{cursor:not-allowed}.cursor-pointer{cursor:pointer}.select-none{user-select:none}.resize{resize:both}.list-none{list-style-type:none}.grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.flex-row{flex-direction:row}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.flex-nowrap{flex-wrap:nowrap}.items-start{align-items:flex-start}.items-end{align-items:flex-end}.items-center{align-items:center}.items-baseline{align-items:baseline}.justify-start{justify-content:flex-start}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.justify-around{justify-content:space-around}.gap-0{gap:0}.gap-1{gap:.25rem}.gap-2{gap:.5rem}.gap-3{gap:.75rem}.gap-4{gap:1rem}.gap-\[10px\]{gap:10px}.gap-x-1{-moz-column-gap:.25rem;column-gap:.25rem}.gap-x-2{-moz-column-gap:.5rem;column-gap:.5rem}.gap-x-3{-moz-column-gap:.75rem;column-gap:.75rem}.gap-y-2{row-gap:.5rem}.gap-y-3{row-gap:.75rem}.gap-y-4{row-gap:1rem}.gap-y-5{row-gap:1.25rem}.space-x-1>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(.25rem*var(--tw-space-x-reverse));margin-left:calc(.25rem*calc(1 - var(--tw-space-x-reverse)))}.space-y-1>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.25rem*calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.25rem*var(--tw-space-y-reverse))}.space-y-2>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.5rem*calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.5rem*var(--tw-space-y-reverse))}.space-y-3>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.75rem*calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.75rem*var(--tw-space-y-reverse))}.space-y-4>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem*calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem*var(--tw-space-y-reverse))}.divide-y>:not([hidden])~:not([hidden]){--tw-divide-y-reverse:0;border-top-width:calc(1px*calc(1 - var(--tw-divide-y-reverse)));border-bottom-width:calc(1px*var(--tw-divide-y-reverse))}.divide-gray-100>:not([hidden])~:not([hidden]){--tw-divide-opacity:1;border-color:rgb(243 244 246/var(--tw-divide-opacity,1))}.overflow-auto{overflow:auto}.overflow-hidden{overflow:hidden}.overflow-visible{overflow:visible}.overflow-x-auto{overflow-x:auto}.overflow-y-auto{overflow-y:auto}.overflow-x-hidden{overflow-x:hidden}.overflow-x-scroll{overflow-x:scroll}.overflow-y-scroll{overflow-y:scroll}.truncate{text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.whitespace-normal{white-space:normal}.whitespace-nowrap{white-space:nowrap}.whitespace-pre-line{white-space:pre-line}.whitespace-pre-wrap{white-space:pre-wrap}.break-words{overflow-wrap:break-word}.rounded{border-radius:.25rem}.rounded-\[3px\]{border-radius:3px}.rounded-\[4px\]{border-radius:4px}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:.5rem}.rounded-md{border-radius:.375rem}.rounded-sm{border-radius:.125rem}.rounded-xl{border-radius:.75rem}.rounded-b-lg{border-bottom-right-radius:.5rem;border-bottom-left-radius:.5rem}.rounded-b-xl{border-bottom-right-radius:.75rem;border-bottom-left-radius:.75rem}.rounded-t-lg{border-top-left-radius:.5rem;border-top-right-radius:.5rem}.rounded-t-xl{border-top-left-radius:.75rem;border-top-right-radius:.75rem}.border{border-width:1px}.border-y{border-top-width:1px;border-bottom-width:1px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-dashed{border-style:dashed}.border-none{border-style:none}.border-black\/10{border-color:#0000001a}.border-black\/15{border-color:#00000026}.border-black\/20{border-color:#0003}.border-black\/25{border-color:#00000040}.border-black\/8{border-color:#00000014}.border-black\/\[0\.16\]{border-color:#00000029}.border-gray-200{--tw-border-opacity:1;border-color:rgb(229 231 235/var(--tw-border-opacity,1))}.border-gray-300{--tw-border-opacity:1;border-color:rgb(209 213 219/var(--tw-border-opacity,1))}.border-gray-700{--tw-border-opacity:1;border-color:rgb(55 65 81/var(--tw-border-opacity,1))}.border-peeper-purple{--tw-border-opacity:1;border-color:rgb(93 45 230/var(--tw-border-opacity,1))}.border-red-200{--tw-border-opacity:1;border-color:rgb(254 202 202/var(--tw-border-opacity,1))}.border-surface-gray{--tw-border-opacity:1;border-color:rgb(245 245 245/var(--tw-border-opacity,1))}.border-white{--tw-border-opacity:1;border-color:rgb(255 255 255/var(--tw-border-opacity,1))}.border-white\/10{border-color:#ffffff1a}.border-white\/15{border-color:#ffffff26}.border-white\/20{border-color:#fff3}.border-white\/25{border-color:#ffffff40}.border-white\/8{border-color:#ffffff14}.border-t-gray-200{--tw-border-opacity:1;border-top-color:rgb(229 231 235/var(--tw-border-opacity,1))}.border-t-white\/15{border-top-color:#ffffff26}.bg-\[\#05381A\]{--tw-bg-opacity:1;background-color:rgb(5 56 26/var(--tw-bg-opacity,1))}.bg-\[\#580808\]{--tw-bg-opacity:1;background-color:rgb(88 8 8/var(--tw-bg-opacity,1))}.bg-\[\#C5F1D8\]{--tw-bg-opacity:1;background-color:rgb(197 241 216/var(--tw-bg-opacity,1))}.bg-\[\#C7C7C7\]{--tw-bg-opacity:1;background-color:rgb(199 199 199/var(--tw-bg-opacity,1))}.bg-\[\#EBEBEB\]{--tw-bg-opacity:1;background-color:rgb(235 235 235/var(--tw-bg-opacity,1))}.bg-\[\#FCDEDE\]{--tw-bg-opacity:1;background-color:rgb(252 222 222/var(--tw-bg-opacity,1))}.bg-active-tab{background-color:#5d2de614}.bg-active-tab-hover{background-color:#5d2de629}.bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0/var(--tw-bg-opacity,1))}.bg-black\/10{background-color:#0000001a}.bg-black\/25{background-color:#00000040}.bg-black\/30{background-color:#0000004d}.bg-black\/40{background-color:#0006}.bg-black\/5{background-color:#0000000d}.bg-black\/60{background-color:#0009}.bg-black\/8{background-color:#00000014}.bg-blue-500{--tw-bg-opacity:1;background-color:rgb(59 130 246/var(--tw-bg-opacity,1))}.bg-gray-100{--tw-bg-opacity:1;background-color:rgb(243 244 246/var(--tw-bg-opacity,1))}.bg-gray-200{--tw-bg-opacity:1;background-color:rgb(229 231 235/var(--tw-bg-opacity,1))}.bg-gray-300{--tw-bg-opacity:1;background-color:rgb(209 213 219/var(--tw-bg-opacity,1))}.bg-peeper-dark-gray{--tw-bg-opacity:1;background-color:rgb(38 38 38/var(--tw-bg-opacity,1))}.bg-peeper-dark-pink\/15{background-color:#fb3aa226}.bg-peeper-dark-pink\/25{background-color:#fb3aa240}.bg-peeper-gray{--tw-bg-opacity:1;background-color:rgb(102 102 102/var(--tw-bg-opacity,1))}.bg-peeper-green{--tw-bg-opacity:1;background-color:rgb(5 56 26/var(--tw-bg-opacity,1))}.bg-peeper-light-green{--tw-bg-opacity:1;background-color:rgb(211 248 225/var(--tw-bg-opacity,1))}.bg-peeper-pink-accent{--tw-bg-opacity:1;background-color:rgb(255 235 246/var(--tw-bg-opacity,1))}.bg-peeper-purple{--tw-bg-opacity:1;background-color:rgb(93 45 230/var(--tw-bg-opacity,1))}.bg-peeper-purple\/15{background-color:#5d2de626}.bg-peeper-purple\/35{background-color:#5d2de659}.bg-peeper-purple\/50{background-color:#5d2de680}.bg-peeper-purple\/8{background-color:#5d2de614}.bg-peeper-white-hover{--tw-bg-opacity:1;background-color:rgb(245 245 245/var(--tw-bg-opacity,1))}.bg-primary{--tw-bg-opacity:1;background-color:rgb(14 14 14/var(--tw-bg-opacity,1))}.bg-red-50{--tw-bg-opacity:1;background-color:rgb(254 242 242/var(--tw-bg-opacity,1))}.bg-secondary{--tw-bg-opacity:1;background-color:rgb(38 38 38/var(--tw-bg-opacity,1))}.bg-surface-gray{--tw-bg-opacity:1;background-color:rgb(245 245 245/var(--tw-bg-opacity,1))}.bg-transparent{background-color:#0000}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}.bg-white\/10{background-color:#ffffff1a}.bg-white\/15{background-color:#ffffff26}.bg-white\/5{background-color:#ffffff0d}.bg-white\/8{background-color:#ffffff14}.bg-opacity-80{--tw-bg-opacity:.8}.bg-gradient-to-b{background-image:linear-gradient(to bottom,var(--tw-gradient-stops))}.bg-gradient-to-t{background-image:linear-gradient(to top,var(--tw-gradient-stops))}.from-black\/0{--tw-gradient-from:#0000 var(--tw-gradient-from-position);--tw-gradient-to:#0000 var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.from-white\/0{--tw-gradient-from:#fff0 var(--tw-gradient-from-position);--tw-gradient-to:#fff0 var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.from-white\/80{--tw-gradient-from:#fffc var(--tw-gradient-from-position);--tw-gradient-to:#fff0 var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.via-white\/50{--tw-gradient-to:#fff0 var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),#ffffff80 var(--tw-gradient-via-position),var(--tw-gradient-to)}.via-white\/70{--tw-gradient-to:#fff0 var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),#ffffffb3 var(--tw-gradient-via-position),var(--tw-gradient-to)}.to-black\/60{--tw-gradient-to:#0009 var(--tw-gradient-to-position)}.to-white\/0{--tw-gradient-to:#fff0 var(--tw-gradient-to-position)}.to-white\/100{--tw-gradient-to:#fff var(--tw-gradient-to-position)}.fill-\[\#5D2DE6\]{fill:#5d2de6}.fill-\[\#999\]{fill:#999}.fill-\[\#9E81F0\]{fill:#9e81f0}.fill-\[\#C7C7C7\]{fill:#c7c7c7}.fill-inspector-props{fill:#999}.fill-peeper-dark-gray{fill:#262626}.stroke-peeper-gray{stroke:#666}.stroke-peeper-light-pink{stroke:#9e81f0}.stroke-peeper-purple{stroke:#5d2de6}.stroke-peeper-white-secondary{stroke:#c7c7c7}.object-contain{-o-object-fit:contain;object-fit:contain}.object-cover{-o-object-fit:cover;object-fit:cover}.p-0{padding:0}.p-1{padding:.25rem}.p-1\.5{padding:.375rem}.p-2{padding:.5rem}.p-3{padding:.75rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.p-\[12px\]{padding:12px}.px-0{padding-left:0;padding-right:0}.px-1{padding-left:.25rem;padding-right:.25rem}.px-2{padding-left:.5rem;padding-right:.5rem}.px-3{padding-left:.75rem;padding-right:.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.px-\[10px\]{padding-left:10px;padding-right:10px}.py-0{padding-top:0;padding-bottom:0}.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-3{padding-top:.75rem;padding-bottom:.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-5{padding-top:1.25rem;padding-bottom:1.25rem}.py-8{padding-top:2rem;padding-bottom:2rem}.py-\[2px\]{padding-top:2px;padding-bottom:2px}.pb-1{padding-bottom:.25rem}.pb-4{padding-bottom:1rem}.pb-6{padding-bottom:1.5rem}.pl-1{padding-left:.25rem}.pl-3{padding-left:.75rem}.pr-2{padding-right:.5rem}.pt-1{padding-top:.25rem}.pt-2{padding-top:.5rem}.pt-4{padding-top:1rem}.text-left{text-align:left}.text-center{text-align:center}.font-mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace}.font-roboto{font-family:Roboto,sans-serif,Roboto Mono}.font-roboto-mono{font-family:Roboto Mono}.text-2xl{font-size:1.5rem;line-height:2rem}.text-\[10px\]{font-size:10px}.text-\[12px\]{font-size:12px}.text-\[14px\]{font-size:14px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:.75rem;line-height:1rem}.font-\[500\]{font-weight:500}.font-bold{font-weight:700}.font-light{font-weight:300}.font-medium{font-weight:500}.font-normal{font-weight:400}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.\!capitalize{text-transform:capitalize!important}.capitalize{text-transform:capitalize}.normal-case{text-transform:none}.leading-120{line-height:120%}.leading-130{line-height:130%}.leading-140{line-height:140%}.leading-6{line-height:1.5rem}.leading-none{line-height:1}.leading-paragraph{line-height:140%}.tracking-14{letter-spacing:-.14px}.tracking-16{letter-spacing:-.16px}.tracking-2{letter-spacing:-.2px}.tracking-24{letter-spacing:-.24px}.tracking-4{letter-spacing:-.4px}.tracking-wide{letter-spacing:.025em}.tracking-wider{letter-spacing:.05em}.text-\[\#0E0E0E\]{--tw-text-opacity:1;color:rgb(14 14 14/var(--tw-text-opacity,1))}.text-\[\#580808\]{--tw-text-opacity:1;color:rgb(88 8 8/var(--tw-text-opacity,1))}.text-\[\#C5F1D8\]{--tw-text-opacity:1;color:rgb(197 241 216/var(--tw-text-opacity,1))}.text-\[\#F7CECE\]{--tw-text-opacity:1;color:rgb(247 206 206/var(--tw-text-opacity,1))}.text-black{--tw-text-opacity:1;color:rgb(0 0 0/var(--tw-text-opacity,1))}.text-blue-500{--tw-text-opacity:1;color:rgb(59 130 246/var(--tw-text-opacity,1))}.text-blue-600{--tw-text-opacity:1;color:rgb(37 99 235/var(--tw-text-opacity,1))}.text-gray-200{--tw-text-opacity:1;color:rgb(229 231 235/var(--tw-text-opacity,1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175/var(--tw-text-opacity,1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128/var(--tw-text-opacity,1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99/var(--tw-text-opacity,1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81/var(--tw-text-opacity,1))}.text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55/var(--tw-text-opacity,1))}.text-gray-900{--tw-text-opacity:1;color:rgb(17 24 39/var(--tw-text-opacity,1))}.text-inspector-props{--tw-text-opacity:1;color:rgb(153 153 153/var(--tw-text-opacity,1))}.text-orange-600{--tw-text-opacity:1;color:rgb(234 88 12/var(--tw-text-opacity,1))}.text-peeper-dark-gray{--tw-text-opacity:1;color:rgb(38 38 38/var(--tw-text-opacity,1))}.text-peeper-gray{--tw-text-opacity:1;color:rgb(102 102 102/var(--tw-text-opacity,1))}.text-peeper-green{--tw-text-opacity:1;color:rgb(5 56 26/var(--tw-text-opacity,1))}.text-peeper-light-pink{--tw-text-opacity:1;color:rgb(158 129 240/var(--tw-text-opacity,1))}.text-peeper-pink{--tw-text-opacity:1;color:rgb(201 46 130/var(--tw-text-opacity,1))}.text-peeper-purple{--tw-text-opacity:1;color:rgb(93 45 230/var(--tw-text-opacity,1))}.text-peeper-white{--tw-text-opacity:1;color:rgb(222 222 222/var(--tw-text-opacity,1))}.text-peeper-white-secondary{--tw-text-opacity:1;color:rgb(199 199 199/var(--tw-text-opacity,1))}.text-primary{--tw-text-opacity:1;color:rgb(14 14 14/var(--tw-text-opacity,1))}.text-primary\/60{color:#0e0e0e99}.text-primary\/80{color:#0e0e0ecc}.text-red-600{--tw-text-opacity:1;color:rgb(220 38 38/var(--tw-text-opacity,1))}.text-red-800{--tw-text-opacity:1;color:rgb(153 27 27/var(--tw-text-opacity,1))}.text-secondary{--tw-text-opacity:1;color:rgb(38 38 38/var(--tw-text-opacity,1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.text-white\/60{color:#fff9}.text-white\/80{color:#fffc}.text-white\/90{color:#ffffffe6}.opacity-0{opacity:0}.opacity-100{opacity:1}.opacity-30{opacity:.3}.opacity-50{opacity:.5}.opacity-60{opacity:.6}.\!shadow{--tw-shadow:0 1px 3px 0 #0000001a,0 1px 2px -1px #0000001a!important;--tw-shadow-colored:0 1px 3px 0 var(--tw-shadow-color),0 1px 2px -1px var(--tw-shadow-color)!important;box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)!important}.shadow{--tw-shadow:0 1px 3px 0 #0000001a,0 1px 2px -1px #0000001a;--tw-shadow-colored:0 1px 3px 0 var(--tw-shadow-color),0 1px 2px -1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px #0000001a,0 4px 6px -4px #0000001a;--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color),0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px #0000001a,0 2px 4px -2px #0000001a;--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color),0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 #0000000d;--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px #0000001a,0 8px 10px -6px #0000001a;--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color),0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-white{--tw-shadow-color:#fff;--tw-shadow:var(--tw-shadow-colored)}.outline{outline-style:solid}.outline-2{outline-width:2px}.outline-offset-4{outline-offset:4px}.outline-blue-400{outline-color:#60a5fa}.ring{--tw-ring-offset-shadow:var(--tw-ring-inset)0 0 0 var(--tw-ring-offset-width)var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset)0 0 0 calc(3px + var(--tw-ring-offset-width))var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.ring-4{--tw-ring-offset-shadow:var(--tw-ring-inset)0 0 0 var(--tw-ring-offset-width)var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset)0 0 0 calc(4px + var(--tw-ring-offset-width))var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.ring-blue-400{--tw-ring-opacity:1;--tw-ring-color:rgb(96 165 250/var(--tw-ring-opacity,1))}.ring-offset-2{--tw-ring-offset-width:2px}.blur{--tw-blur:blur(8px);filter:var(--tw-blur)var(--tw-brightness)var(--tw-contrast)var(--tw-grayscale)var(--tw-hue-rotate)var(--tw-invert)var(--tw-saturate)var(--tw-sepia)var(--tw-drop-shadow)}.filter{filter:var(--tw-blur)var(--tw-brightness)var(--tw-contrast)var(--tw-grayscale)var(--tw-hue-rotate)var(--tw-invert)var(--tw-saturate)var(--tw-sepia)var(--tw-drop-shadow)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);backdrop-filter:var(--tw-backdrop-blur)var(--tw-backdrop-brightness)var(--tw-backdrop-contrast)var(--tw-backdrop-grayscale)var(--tw-backdrop-hue-rotate)var(--tw-backdrop-invert)var(--tw-backdrop-opacity)var(--tw-backdrop-saturate)var(--tw-backdrop-sepia)}.transition{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-duration:.15s;transition-timing-function:cubic-bezier(.4,0,.2,1)}.transition-all{transition-property:all;transition-duration:.15s;transition-timing-function:cubic-bezier(.4,0,.2,1)}.transition-colors{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-duration:.15s;transition-timing-function:cubic-bezier(.4,0,.2,1)}.transition-opacity{transition-property:opacity;transition-duration:.15s;transition-timing-function:cubic-bezier(.4,0,.2,1)}.transition-transform{transition-property:transform;transition-duration:.15s;transition-timing-function:cubic-bezier(.4,0,.2,1)}.duration-0{transition-duration:0s}.duration-100{transition-duration:.1s}.duration-150{transition-duration:.15s}.duration-200{transition-duration:.2s}.duration-300{transition-duration:.3s}.duration-500{transition-duration:.5s}.ease-in-out{transition-timing-function:cubic-bezier(.4,0,.2,1)}@custom-variant dark (&:where(.dark,.dark*));body{cursor:default;margin:0;padding:0;font-family:Inter,sans-serif;font-size:16px;line-height:1.5}#plasmo-shadow-container{position:fixed!important}.hide-scrollbar::-webkit-scrollbar{display:none}.hide-scrollbar{-ms-overflow-style:none;scrollbar-width:none}.fill-available{height:stretch}.transparency-grid{background-color:#fff;background-image:linear-gradient(45deg,#d4d4d40f 25%,#0000 25%),linear-gradient(-45deg,#d4d4d481 25%,#0000 25%),linear-gradient(45deg,#0000 75%,#d4d4d481 75%),linear-gradient(-45deg,#0000 75%,#d4d4d481 75%);background-position:0 0,0 10px,10px -10px,-10px 0;background-size:20px 20px}.transparency-grid-black{background-color:#000;background-image:repeating-conic-gradient(#1a1a1a 0% 25%,#333 0% 50%);background-size:20px 20px}.border-element{background:#f5f5f5;position:absolute}.border-element-dark{background:#262626;position:absolute}.top{width:85%;height:4px;top:-1px;left:50%;transform:translate(-50%)}.bottom{width:85%;height:4px;bottom:-1px;left:50%;transform:translate(-50%)}.left{width:4px;height:79%;top:50%;left:-1px;transform:translateY(-50%)}.right{width:4px;height:79%;top:50%;right:-1px;transform:translateY(-50%)}.shadow{box-shadow:0 1px 3px #0000001f}.button_shadow{box-shadow:0 3px 3px -3px #00000029}.soft-shadow{box-shadow:0 4px 4px -4px #00000029}.dropdown-shadow{box-shadow:0 4px 4px -4px #00000040}.blur-fade:after{content:"";pointer-events:none;background:linear-gradient(270deg,#fff,#0000);width:80px;position:absolute;top:0;bottom:0;right:0}.blur-fade-dark:after{content:"";pointer-events:none;background:linear-gradient(270deg,#0e0e0e,#0000);width:80px;position:absolute;top:0;bottom:0;right:0}.gradient-background{background:linear-gradient(241deg,#fef6eb -.17%,#fef0f8 100%);transition:transform .3s ease-in-out;position:absolute;inset:0}.hover\:border-gray-300:hover{--tw-border-opacity:1;border-color:rgb(209 213 219/var(--tw-border-opacity,1))}.hover\:bg-active-tab:hover{background-color:#5d2de614}.hover\:bg-active-tab-hover:hover{background-color:#5d2de629}.hover\:bg-black\/10:hover{background-color:#0000001a}.hover\:bg-black\/5:hover{background-color:#0000000d}.hover\:bg-black\/8:hover{background-color:#00000014}.hover\:bg-blue-600:hover{--tw-bg-opacity:1;background-color:rgb(37 99 235/var(--tw-bg-opacity,1))}.hover\:bg-gray-100:hover{--tw-bg-opacity:1;background-color:rgb(243 244 246/var(--tw-bg-opacity,1))}.hover\:bg-gray-50:hover{--tw-bg-opacity:1;background-color:rgb(249 250 251/var(--tw-bg-opacity,1))}.hover\:bg-peeper-dark-gray:hover{--tw-bg-opacity:1;background-color:rgb(38 38 38/var(--tw-bg-opacity,1))}.hover\:bg-peeper-pink-accent\/80:hover{background-color:#ffebf6cc}.hover\:bg-peeper-purple-hover:hover{--tw-bg-opacity:1;background-color:rgb(74 36 184/var(--tw-bg-opacity,1))}.hover\:bg-peeper-purple\/15:hover{background-color:#5d2de626}.hover\:bg-peeper-purple\/30:hover{background-color:#5d2de64d}.hover\:bg-peeper-purple\/50:hover{background-color:#5d2de680}.hover\:bg-peeper-purple\/90:hover{background-color:#5d2de6e6}.hover\:bg-peeper-white-hover:hover{--tw-bg-opacity:1;background-color:rgb(245 245 245/var(--tw-bg-opacity,1))}.hover\:bg-peeper-white-hover\/15:hover{background-color:#f5f5f526}.hover\:bg-peeper-white-hover\/5:hover{background-color:#f5f5f50d}.hover\:bg-primary\/80:hover{background-color:#0e0e0ecc}.hover\:bg-surface-gray:hover{--tw-bg-opacity:1;background-color:rgb(245 245 245/var(--tw-bg-opacity,1))}.hover\:bg-white\/10:hover{background-color:#ffffff1a}.hover\:bg-white\/15:hover{background-color:#ffffff26}.hover\:bg-white\/20:hover{background-color:#fff3}.hover\:bg-white\/25:hover{background-color:#ffffff40}.hover\:bg-white\/30:hover{background-color:#ffffff4d}.hover\:bg-white\/5:hover{background-color:#ffffff0d}.hover\:bg-white\/8:hover{background-color:#ffffff14}.hover\:bg-opacity-100:hover{--tw-bg-opacity:1}.hover\:text-gray-900:hover{--tw-text-opacity:1;color:rgb(17 24 39/var(--tw-text-opacity,1))}.hover\:text-primary:hover{--tw-text-opacity:1;color:rgb(14 14 14/var(--tw-text-opacity,1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.hover\:opacity-70:hover{opacity:.7}.focus\:outline-none:focus{outline-offset:2px;outline:2px solid #0000}.active\:cursor-grabbing:active{cursor:grabbing}.group:hover .group-hover\:border-\[\#7241FF\]{--tw-border-opacity:1;border-color:rgb(114 65 255/var(--tw-border-opacity,1))}.group:hover .group-hover\:stroke-\[\#7241FF\]{stroke:#7241ff}.group:hover .group-hover\:opacity-100{opacity:1}.peer:checked~.peer-checked\:bg-peeper-purple{--tw-bg-opacity:1;background-color:rgb(93 45 230/var(--tw-bg-opacity,1))}.peer:focus~.peer-focus\:ring-2{--tw-ring-offset-shadow:var(--tw-ring-inset)0 0 0 var(--tw-ring-offset-width)var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset)0 0 0 calc(2px + var(--tw-ring-offset-width))var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.after\:absolute:after{position:absolute}.after\:start-\[2px\]:after{inset-inline-start:2px}.after\:top-\[2px\]:after{top:2px}.after\:h-3:after{height:.75rem}.after\:w-3:after{width:.75rem}.after\:rounded-full:after{border-radius:9999px}.after\:border:after{border-width:1px}.after\:border-gray-300:after{--tw-border-opacity:1;border-color:rgb(209 213 219/var(--tw-border-opacity,1))}.after\:bg-white:after{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}.after\:transition-all:after{transition-property:all;transition-duration:.15s;transition-timing-function:cubic-bezier(.4,0,.2,1)}.after\:content-\[\'\'\]:after{--tw-content:"";content:var(--tw-content)}.peer:checked~.peer-checked\:after\:translate-x-2:after{--tw-translate-x:.5rem;transform:translate(var(--tw-translate-x),var(--tw-translate-y))rotate(var(--tw-rotate))skewX(var(--tw-skew-x))skewY(var(--tw-skew-y))scaleX(var(--tw-scale-x))scaleY(var(--tw-scale-y))}.peer:checked~.peer-checked\:after\:border-white:after{--tw-border-opacity:1;border-color:rgb(255 255 255/var(--tw-border-opacity,1))}.dark\:border-gray-600:is(.dark *){--tw-border-opacity:1;border-color:rgb(75 85 99/var(--tw-border-opacity,1))}.dark\:bg-gray-300:is(.dark *){--tw-bg-opacity:1;background-color:rgb(209 213 219/var(--tw-bg-opacity,1))}.dark\:bg-gray-700:is(.dark *){--tw-bg-opacity:1;background-color:rgb(55 65 81/var(--tw-bg-opacity,1))}.dark\:text-blue-500:is(.dark *){--tw-text-opacity:1;color:rgb(59 130 246/var(--tw-text-opacity,1))}.dark\:text-gray-400:is(.dark *){--tw-text-opacity:1;color:rgb(156 163 175/var(--tw-text-opacity,1))}.dark\:text-gray-600:is(.dark *){--tw-text-opacity:1;color:rgb(75 85 99/var(--tw-text-opacity,1))}.dark\:text-orange-400:is(.dark *){--tw-text-opacity:1;color:rgb(251 146 60/var(--tw-text-opacity,1))}.peer:checked~.rtl\:peer-checked\:after\:-translate-x-2:where([dir=rtl],[dir=rtl] *):after{--tw-translate-x:-.5rem;transform:translate(var(--tw-translate-x),var(--tw-translate-y))rotate(var(--tw-rotate))skewX(var(--tw-skew-x))skewY(var(--tw-skew-y))scaleX(var(--tw-scale-x))scaleY(var(--tw-scale-y))}</style><div id="plasmo-shadow-container" style="z-index: 2147483647; position: relative;"><div id="plasmo-overlay-0" class="plasmo-csui-container" style="display: flex; position: absolute; top: 0px; left: 0px;"></div></div></template></plasmo-csui><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Multithreading — Deep Dive with Code</title>
+<style>
+:root{
+  --bg:#0c1121;--panel:#161d35;--panel2:#1e2648;--text:#e4ecff;--muted:#8da0d0;
+  --primary:#6c8cff;--accent:#38d39f;--warn:#ffb347;--danger:#ff6b6b;--ok:#4cd964;
+  --border:rgba(108,140,255,.22);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.68}
+#prog{position:fixed;top:0;left:0;width:0;height:3px;background:linear-gradient(90deg,var(--primary),var(--accent));z-index:9999}
+nav{position:sticky;top:0;z-index:900;display:flex;gap:5px;flex-wrap:wrap;align-items:center;
+  padding:9px 14px;border-bottom:1px solid var(--border);background:rgba(12,17,33,.96);backdrop-filter:blur(10px)}
+nav .brand{font-weight:800;color:var(--primary);margin-right:10px;white-space:nowrap;font-size:.9rem}
+nav a{color:var(--muted);text-decoration:none;font-size:.75rem;padding:5px 9px;border-radius:999px;border:1px solid transparent;white-space:nowrap}
+nav a:hover,nav a.active{color:#fff;background:rgba(108,140,255,.18);border-color:var(--border)}
+.hero{max-width:1080px;margin:0 auto;padding:50px 20px 22px;text-align:center}
+.hero h1{font-size:clamp(1.8rem,4vw,3rem);line-height:1.13}
+.grad{background:linear-gradient(90deg,#8aa8ff,#3deab4);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{max-width:700px;margin:12px auto 0;color:var(--muted)}
+section{max-width:1080px;margin:0 auto;padding:26px 20px}
+.lbl{display:inline-block;margin-bottom:7px;padding:3px 10px;border-radius:999px;font-size:.69rem;letter-spacing:.09em;text-transform:uppercase;border:1px solid var(--border);color:#b8ceff;background:rgba(108,140,255,.1)}
+h2{font-size:clamp(1.35rem,2.8vw,2rem);margin-bottom:5px}
+.sub{color:var(--muted);margin-bottom:16px;max-width:720px;font-size:.95rem}
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:11px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:13px;padding:15px;transition:transform .2s,border-color .2s}
+.card:hover{transform:translateY(-3px);border-color:rgba(108,140,255,.45)}
+.card h3{font-size:.97rem;margin-bottom:5px}
+.card p,.card li{color:var(--muted);font-size:.89rem}
+.story{background:linear-gradient(140deg,rgba(108,140,255,.18),rgba(56,211,159,.1));border:1px solid var(--border);border-radius:15px;padding:17px;margin-bottom:13px}
+.story p{margin-bottom:9px}.story p:last-child{margin-bottom:0}
+.char{display:inline-flex;align-items:center;gap:3px;background:rgba(108,140,255,.2);padding:2px 7px;border-radius:7px;font-weight:600;font-size:.84rem}
+
+/* TABS */
+.ctabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:0;border-bottom:1px solid var(--border);padding-bottom:0}
+.ctab{border:none;border-bottom:2px solid transparent;border-radius:0;background:transparent;color:var(--muted);padding:7px 12px;font-size:.82rem;cursor:pointer;transition:all .2s;margin-bottom:-1px}
+.ctab.active{color:var(--primary);border-bottom-color:var(--primary)}
+.ctab:hover:not(.active){color:var(--text)}
+.cpane{display:none}.cpane.active{display:block}
+
+/* CODE */
+.code{background:#070d1c;border:1px solid rgba(108,140,255,.2);border-radius:0 0 11px 11px;padding:14px;overflow-x:auto;
+  font-family:Consolas,"Courier New",monospace;font-size:.81rem;line-height:1.78;color:#b5c8ff;margin:0}
+.code-wrap{border:1px solid rgba(108,140,255,.2);border-radius:11px;overflow:hidden;margin:10px 0}
+.kw{color:#c792ea}.fn{color:#82aaff}.cm{color:#4a6080;font-style:italic}.str{color:#c3e88d}.num{color:#f78c6c}.cls{color:#ffcb6b}.ann{color:#ff5572}
+
+/* HIGHLIGHT */
+.hl{border-left:4px solid var(--primary);background:rgba(108,140,255,.1);padding:10px 13px;border-radius:0 9px 9px 0;margin:10px 0;color:#c5d5ff;font-size:.9rem}
+.hl.warn{border-color:var(--warn);background:rgba(255,179,71,.08);color:#ffe8b0}
+.hl.ok{border-color:var(--ok);background:rgba(76,217,100,.07);color:#b8f5c8}
+.hl.danger{border-color:var(--danger);background:rgba(255,107,107,.07);color:#ffc0c0}
+
+/* SPLIT */
+.split{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:11px;margin:10px 0}
+.good{border-radius:11px;padding:12px;border:1px solid rgba(76,217,100,.35);background:rgba(76,217,100,.07)}
+.bad{border-radius:11px;padding:12px;border:1px solid rgba(255,107,107,.35);background:rgba(255,107,107,.07)}
+.good h4{color:var(--ok);margin-bottom:5px;font-size:.9rem}.bad h4{color:var(--danger);margin-bottom:5px;font-size:.9rem}
+.good p,.bad p{color:var(--muted);font-size:.87rem}
+
+/* FLOW / LIFECYCLE */
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
+.node{background:var(--panel2);border:1px solid var(--border);border-radius:10px;padding:8px 12px;font-size:.82rem;text-align:center;min-width:100px}
+.arr{color:var(--muted);font-size:1.1rem}
+
+/* TRACE TABLE */
+.trace{margin:10px 0;overflow-x:auto}
+.trace table{font-size:.82rem}
+.trace td{padding:7px 10px}
+.t-ok{background:rgba(76,217,100,.1);color:#a5ffbe;border:1px solid rgba(76,217,100,.25);border-radius:5px;padding:3px 6px;display:inline-block}
+.t-bad{background:rgba(255,107,107,.1);color:#ffb4b4;border:1px solid rgba(255,107,107,.25);border-radius:5px;padding:3px 6px;display:inline-block}
+
+/* TABLE */
+table{width:100%;border-collapse:collapse;border-radius:11px;overflow:hidden;border:1px solid var(--border);background:var(--panel);font-size:.87rem}
+th,td{text-align:left;padding:9px 11px;border-bottom:1px solid rgba(108,140,255,.12)}
+th{color:#c5d8ff;background:var(--panel2)}td{color:var(--muted)}
+
+/* ACCORDION */
+.acc{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:9px;background:var(--panel)}
+.acc-btn{width:100%;text-align:left;border:0;background:var(--panel2);color:#d4e2ff;padding:10px 13px;font-weight:700;cursor:pointer;font-size:.88rem;display:flex;justify-content:space-between}
+.acc-btn::after{content:"+"}
+.acc.open .acc-btn::after{content:"−"}
+.acc-body{display:none;padding:12px 13px;color:var(--muted);font-size:.88rem;line-height:1.7}
+.acc.open .acc-body{display:block}
+
+/* SIM */
+.sim{background:linear-gradient(180deg,var(--panel),#0e1428);border:1px solid var(--border);border-radius:13px;padding:14px}
+.ctrls{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:9px;margin-bottom:10px}
+.ctrl label{display:block;font-size:.72rem;margin-bottom:3px;color:#b8ceff;text-transform:uppercase;letter-spacing:.06em}
+.ctrl input,.ctrl select{width:100%;background:#090e1e;color:var(--text);border:1px solid var(--border);border-radius:7px;padding:6px 8px;font-size:.87rem}
+.btn{border:1px solid var(--border);border-radius:9px;padding:7px 12px;color:#fff;background:rgba(108,140,255,.22);cursor:pointer;font-weight:600;font-size:.87rem}
+.btn:hover{background:rgba(108,140,255,.35)}
+.tl{margin-top:10px;display:grid;gap:6px}
+.lane{background:#080d1e;border:1px solid rgba(108,140,255,.2);border-radius:8px;padding:7px}
+.lane-title{font-size:.77rem;color:#b8cbff;margin-bottom:5px}
+.bars{display:flex;gap:3px;flex-wrap:wrap}
+.bar{border-radius:5px;font-size:.68rem;color:#030a18;font-weight:700;padding:3px 5px;background:linear-gradient(90deg,#7a9dff,#4de3b6);min-width:28px;text-align:center}
+
+/* QUIZ */
+.qcard{border:1px solid var(--border);border-radius:12px;padding:13px;margin-bottom:9px;background:var(--panel)}
+.qopt{display:block;width:100%;text-align:left;border:1px solid rgba(108,140,255,.22);border-radius:8px;background:#0d1330;color:#cdd9ff;margin:5px 0;padding:7px 10px;cursor:pointer;font-size:.87rem}
+.qopt:hover{border-color:rgba(108,140,255,.55)}
+.qopt.correct{border-color:rgba(76,217,100,.7);background:rgba(76,217,100,.1)}
+.qopt.wrong{border-color:rgba(255,107,107,.7);background:rgba(255,107,107,.1)}
+.fb{display:none;margin-top:7px;font-size:.85rem;color:#c2d4ff;padding:7px 10px;border-radius:7px;background:rgba(108,140,255,.1)}
+.fb.show{display:block}
+
+/* VISUALISER */
+.vis{background:#080e1f;border:1px solid var(--border);border-radius:12px;padding:14px;margin:12px 0}
+.t-badge{min-width:80px;padding:4px 8px;border-radius:6px;font-size:.74rem;font-weight:700;text-align:center;flex-shrink:0}
+.t1c{background:rgba(108,140,255,.25);color:#b0c8ff}
+.t2c{background:rgba(255,179,71,.2);color:#ffd28a}
+.mem-disp{background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-family:Consolas,monospace;font-size:.8rem}
+.step-log{margin-top:8px;max-height:140px;overflow-y:auto;background:#050b18;border-radius:7px;padding:8px;font-family:Consolas,monospace;font-size:.75rem;color:#7a9dcc}
+.log-ok{color:#62e89a}.log-bad{color:#ff8585}
+
+/* PRODUCER-CONSUMER */
+.pq-wrap{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:12px 0}
+.pq-actor{background:var(--panel2);border:1px solid var(--border);border-radius:9px;padding:9px 12px;text-align:center;font-size:.82rem;min-width:85px}
+.pq-queue{background:#080e1f;border:2px solid rgba(108,140,255,.35);border-radius:9px;padding:8px 12px;text-align:center;font-size:.82rem;min-width:130px}
+.slots{display:flex;gap:4px;justify-content:center;margin-top:5px;flex-wrap:wrap}
+.slot{width:24px;height:24px;border-radius:4px;background:rgba(255,255,255,.05);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:700}
+.slot.filled{background:rgba(108,140,255,.3);color:#c5d8ff}
+
+footer{margin-top:22px;padding:18px 20px;border-top:1px solid var(--border);text-align:center;color:var(--muted);font-size:.84rem}
+#topBtn{position:fixed;right:14px;bottom:14px;border:0;border-radius:999px;background:var(--primary);color:#fff;width:37px;height:37px;cursor:pointer;font-weight:700;display:none;font-size:.82rem}
+@media(max-width:600px){nav .brand{width:100%}}
+</style>
+<style>@font-face {
+              font-family: 'Open Sans Regular';
+              font-style: normal;
+              font-weight: 400;
+              src: url('chrome-extension://gkkdmjjodidppndkbkhhknakbeflbomf/fonts/open_sans/open-sans-v18-latin-regular.woff');
+          }</style><style>@font-face {
+              font-family: 'Open Sans Bold';
+              font-style: normal;
+              font-weight: 800;
+              src: url('chrome-extension://gkkdmjjodidppndkbkhhknakbeflbomf/fonts/open_sans/OpenSans-Bold.woff');
+          }</style><style>@font-face {
+              font-family: 'Open Sans ExtraBold';
+              font-style: normal;
+              font-weight: 800;
+              src: url('chrome-extension://gkkdmjjodidppndkbkhhknakbeflbomf/fonts/open_sans/open-sans-v18-latin-800.woff');
+          }</style><style></style></head>
+<body>
+<div id="prog" style="width: 0%;"></div>
+
+<nav>
+  <span class="brand">🧵 Multithreading Deep Dive</span>
+  <a href="http://localhost:63342/erwin-Mart-MCL-NewUI/Multithreading_Concepts_Report.html?_ijt=so14v7rt0jblae4t1vfe1s9n90&amp;_ij_reload=RELOAD_ON_SAVE#story" class="active">Story</a>
+  <a href="http://localhost:63342/erwin-Mart-MCL-NewUI/Multithreading_Concepts_Report.html?_ijt=so14v7rt0jblae4t1vfe1s9n90&amp;_ij_reload=RELOAD_ON_SAVE#prereq" class="">Prereqs</a>
+  <a href="http://localhost:63342/erwin-Mart-MCL-NewUI/Multithreading_Concepts_Report.html?_ijt=so14v7rt0jblae4t1vfe1s9n90&amp;_ij_reload=RELOAD_ON_SAVE#lifecycle" class="">Lifecycle</a>
+  <a href="http://localhost:63342/erwin-Mart-MCL-NewUI/Multithreading_Concepts_Report.html?_ijt=so14v7rt0jblae4t1vfe1s9n90&amp;_ij_reload=RELOAD_ON_SAVE#race" class="">Race Condition</a>
+  <a href="http://localhost:63342/erwin-Mart-MCL-NewUI/Multithreading_Concepts_Report.html?_ijt=so14v7rt0jblae4t1vfe1s9n90&amp;_ij_reload=RELOAD_ON_SAVE#deadlock" class="">Deadlock</a>
+  <a href="http://localhost:63342/erwin-Mart-MCL-NewUI/Multithreading_Concepts_Report.html?_ijt=so14v7rt0jblae4t1vfe1s9n90&amp;_ij_reload=RELOAD_ON_SAVE#sync" class="">Sync Tools</a>
+  <a href="http://localhost:63342/erwin-Mart-MCL-NewUI/Multithreading_Concepts_Report.html?_ijt=so14v7rt0jblae4t1vfe1s9n90&amp;_ij_reload=RELOAD_ON_SAVE#patterns" class="">Patterns</a>
+  <a href="http://localhost:63342/erwin-Mart-MCL-NewUI/Multithreading_Concepts_Report.html?_ijt=so14v7rt0jblae4t1vfe1s9n90&amp;_ij_reload=RELOAD_ON_SAVE#memory" class="">Memory Model</a>
+  <a href="http://localhost:63342/erwin-Mart-MCL-NewUI/Multithreading_Concepts_Report.html?_ijt=so14v7rt0jblae4t1vfe1s9n90&amp;_ij_reload=RELOAD_ON_SAVE#when" class="">When &amp; Where</a>
+  <a href="http://localhost:63342/erwin-Mart-MCL-NewUI/Multithreading_Concepts_Report.html?_ijt=so14v7rt0jblae4t1vfe1s9n90&amp;_ij_reload=RELOAD_ON_SAVE#sim" class="">Simulator</a>
+  <a href="http://localhost:63342/erwin-Mart-MCL-NewUI/Multithreading_Concepts_Report.html?_ijt=so14v7rt0jblae4t1vfe1s9n90&amp;_ij_reload=RELOAD_ON_SAVE#quiz" class="">Quiz</a>
+</nav>
+
+<header class="hero">
+  <h1><span class="grad">Multithreading</span> — Code-First Deep Dive</h1>
+  <p>Every concept shown with real code (Java + Python + pseudocode), step-by-step bug traces, and interactive demos.</p>
+</header>
+
+<!-- ═══════════════════════════════════════
+     CHAPTER 1 — STORY
+════════════════════════════════════════ -->
+<section id="story">
+  <span class="lbl">Chapter 1</span>
+  <h2>The Burger Shop — One Analogy, Every Concept</h2>
+  <p class="sub">Every multithreading term maps to a real kitchen scenario.</p>
+
+  <div class="story">
+    <p>🏪 <strong>Day 1:</strong> <span class="char">👤 Owner</span> runs the shop alone. One order at a time. Customers wait 20 min. That is <strong>single-threaded</strong>.</p>
+    <p>👨‍🍳 <strong>Day 2:</strong> Hires <span class="char">Cook A</span>, <span class="char">Cook B</span>, <span class="char">Cook C</span>. Three orders handled at once. Wait drops to 7 min. That is <strong>multithreading</strong>.</p>
+    <p>🔪 <strong>The knife problem:</strong> Only one sharp knife. Two cooks grab it simultaneously — knuckle gets cut, burger gets wrong toppings. That is a <strong>race condition / data corruption</strong>.</p>
+    <p>🗒️ <strong>The sticky-note fix:</strong> Post a note on the knife: "In use — Cook A." Others wait. That is a <strong>mutex (lock)</strong>.</p>
+    <p>🚫 <strong>The Tuesday freeze:</strong> Cook A holds the knife, waiting for the cutting board. Cook B holds the cutting board, waiting for the knife. Nobody moves for 30 minutes. That is a <strong>deadlock</strong>.</p>
+    <p>📦 <strong>The ingredient shelf:</strong> <span class="char">🚚 Supplier</span> restocks a 5-box shelf. Cooks grab from it. Shelf full → supplier waits. Shelf empty → cooks wait. That is the <strong>Producer-Consumer pattern</strong>.</p>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <h3>🔑 Term → Kitchen mapping</h3>
+      <table style="margin-top:7px;font-size:.83rem">
+        <tbody><tr><th>Term</th><th>Kitchen</th></tr>
+        <tr><td>Thread</td><td>One cook</td></tr>
+        <tr><td>Process</td><td>The whole kitchen</td></tr>
+        <tr><td>Shared resource</td><td>The knife</td></tr>
+        <tr><td>Lock / Mutex</td><td>Sticky note on knife</td></tr>
+        <tr><td>Deadlock</td><td>Two cooks waiting on each other</td></tr>
+        <tr><td>Race condition</td><td>Two cooks grabbing knife at same instant</td></tr>
+        <tr><td>Thread pool</td><td>Shift schedule for cooks</td></tr>
+        <tr><td>Semaphore</td><td>Ticket booth — only N in the freezer</td></tr>
+        <tr><td>Condition variable</td><td>Bell rings when shelf is restocked</td></tr>
+      </tbody></table>
+    </div>
+    <div class="card">
+      <h3>⚡ Why it matters</h3>
+      <p style="margin-bottom:8px">Modern hardware has 4–128 CPU cores. A single-threaded app uses ONE. Multithreading lets you use all of them.</p>
+      <div class="hl ok">16 cores × 16 independent tasks = up to 16× throughput — when coordination cost is low.</div>
+      <div class="hl warn" style="margin-top:8px">16 cores with every task waiting on ONE lock = effectively single-threaded, sometimes slower due to overhead.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CHAPTER 2 — PREREQUISITES
+════════════════════════════════════════ -->
+<section id="prereq">
+  <span class="lbl">Chapter 2</span>
+  <h2>Prerequisites with Code</h2>
+  <p class="sub">Five building blocks. Each with an analogy and a code example.</p>
+
+  <div class="ctabs" id="preq-tabs">
+    <button class="ctab active" data-g="preq" data-t="pr1">Process vs Thread</button>
+    <button class="ctab" data-g="preq" data-t="pr2">Stack vs Heap</button>
+    <button class="ctab" data-g="preq" data-t="pr3">CPU Scheduler</button>
+    <button class="ctab" data-g="preq" data-t="pr4">Context Switch</button>
+    <button class="ctab" data-g="preq" data-t="pr5">Concurrency vs Parallelism</button>
+  </div>
+
+  <div id="pr1" class="cpane card active" style="border-radius:0 0 13px 13px">
+    <h3>Process vs Thread</h3>
+    <p style="margin-bottom:10px"><strong>Process</strong> = entire running app with its own private memory. <strong>Thread</strong> = lightweight worker <em>inside</em> a process, sharing its heap with other threads.</p>
+    <div class="code-wrap">
+      <div class="ctabs"><button class="ctab active" data-g="pr1" data-t="pr1j">Java</button><button class="ctab" data-g="pr1" data-t="pr1p">Python</button></div>
+      <div id="pr1j" class="cpane active code"><span class="cm">// One process, two threads sharing heap object "counter"</span>
+<span class="cls">Counter</span> counter = <span class="kw">new</span> <span class="cls">Counter</span>();  <span class="cm">// lives on HEAP — shared</span>
+
+<span class="cls">Thread</span> t1 = <span class="kw">new</span> <span class="cls">Thread</span>(() -&gt; counter.<span class="fn">increment</span>());
+<span class="cls">Thread</span> t2 = <span class="kw">new</span> <span class="cls">Thread</span>(() -&gt; counter.<span class="fn">increment</span>());
+
+t1.start();  <span class="cm">// both threads operate on the same counter object</span>
+t2.start();
+t1.join(); t2.join();
+System.out.println(counter.value); <span class="cm">// might NOT be 2 — race condition!</span></div>
+      <div id="pr1p" class="cpane code"><span class="cm"># Python: threads share heap, each has own stack</span>
+<span class="kw">import</span> threading
+
+shared_list = []  <span class="cm"># heap — shared between all threads</span>
+
+<span class="kw">def</span> <span class="fn">worker</span>(n):
+    local_var = n * <span class="num">2</span>  <span class="cm"># stack — private to this thread, always safe</span>
+    shared_list.append(local_var)  <span class="cm"># heap write — needs protection</span>
+
+threads = [threading.Thread(target=<span class="fn">worker</span>, args=(i,)) <span class="kw">for</span> i <span class="kw">in</span> range(<span class="num">5</span>)]
+<span class="kw">for</span> t <span class="kw">in</span> threads: t.start()
+<span class="kw">for</span> t <span class="kw">in</span> threads: t.join()</div>
+    </div>
+    <div class="hl">Analogy: Process = an apartment building with private units. Threads = tenants sharing the lobby and kitchen (heap) but having private rooms (stack).</div>
+  </div>
+
+  <div id="pr2" class="cpane card" style="border-radius:0 0 13px 13px">
+    <h3>Stack vs Heap — The Root of Most Race Conditions</h3>
+    <div class="split">
+      <div class="good">
+        <h4>📦 Stack — thread-local, always safe</h4>
+        <p>Local variables inside a method. No other thread can see them. Zero lock needed.</p>
+        <div class="code-wrap" style="margin-top:8px">
+          <div class="code"><span class="kw">void</span> <span class="fn">compute</span>() {
+  <span class="kw">int</span> result = <span class="num">0</span>;  <span class="cm">// stack — only this thread sees it</span>
+  result += <span class="num">42</span>;     <span class="cm">// perfectly safe, no lock needed</span>
+  <span class="kw">return</span> result;
+}</div>
+        </div>
+      </div>
+      <div class="bad">
+        <h4>🌐 Heap — shared, needs protection</h4>
+        <p>Object fields, class fields, globals. Multiple threads read/write simultaneously. This is where bugs live.</p>
+        <div class="code-wrap" style="margin-top:8px">
+          <div class="code"><span class="kw">class</span> <span class="cls">Counter</span> {
+  <span class="kw">int</span> count = <span class="num">0</span>;  <span class="cm">// heap — ALL threads share this</span>
+}
+<span class="cm">// Thread 1: count++   ← these three lines</span>
+<span class="cm">// Thread 2: count++   ← run simultaneously</span>
+<span class="cm">// Result: possibly 1 instead of 2 ← RACE!</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="hl warn">Rule: local variable = safe. Field on an object = protect it.</div>
+  </div>
+
+  <div id="pr3" class="cpane card" style="border-radius:0 0 13px 13px">
+    <h3>CPU Scheduler</h3>
+    <p style="margin-bottom:10px">The OS decides which thread runs on which core and for how long (a <em>time slice</em>, ~1–10 ms). You cannot predict or control this order.</p>
+    <div class="flow">
+      <div class="node" style="border-color:var(--warn)">Core 1<br><span style="font-size:.7rem;color:var(--muted)">Thread 7 running</span></div>
+      <div class="node" style="border-color:var(--warn)">Core 2<br><span style="font-size:.7rem;color:var(--muted)">Thread 3 running</span></div>
+      <div class="node" style="border-color:var(--warn)">Core 3<br><span style="font-size:.7rem;color:var(--muted)">Thread 15 running</span></div>
+      <div class="node" style="border-color:var(--muted)">Run queue<br><span style="font-size:.7rem;color:var(--muted)">96 threads waiting</span></div>
+    </div>
+    <div class="code-wrap" style="margin-top:10px">
+      <div class="code"><span class="cm">// The scheduler can pause a thread ANYWHERE — even mid-statement
+// This is why count++ can cause bugs: scheduler pauses after READ, before WRITE</span>
+
+count++;
+<span class="cm">// Compiles to:</span>
+<span class="cm">//  1. LOAD  reg = count       ← scheduler can pause HERE</span>
+<span class="cm">//  2. ADD   reg = reg + 1     ← or HERE</span>
+<span class="cm">//  3. STORE count = reg       ← or before this completes</span></div>
+    </div>
+    <div class="hl">CPU-bound rule: pool size ≈ number of cores. IO-bound rule: pool size ≈ cores / (1 − wait_ratio). With 90% IO wait: 8 cores → ~80 threads optimal.</div>
+  </div>
+
+  <div id="pr4" class="cpane card" style="border-radius:0 0 13px 13px">
+    <h3>Context Switch</h3>
+    <p style="margin-bottom:10px">Switching from Thread A to Thread B requires saving A's full CPU state and loading B's. Fast, but not free.</p>
+    <div class="code-wrap">
+      <div class="code"><span class="cm">// Approximate costs (nanoseconds)</span>
+Context switch cost:  ~1,000 – 10,000 ns   <span class="cm">// 1–10 µs</span>
+L1 cache miss:             ~4 ns
+L3 cache miss:            ~40 ns
+RAM access:              ~100 ns
+<span class="cm">// If each task = 50µs and a switch = 5µs → 10% overhead</span>
+<span class="cm">// If each task = 1µs  and a switch = 5µs → switch costs MORE than the work!</span></div>
+    </div>
+    <div class="hl warn">Too many tiny tasks = more time switching than working. Batch small work into larger chunks before parallelising.</div>
+  </div>
+
+  <div id="pr5" class="cpane card" style="border-radius:0 0 13px 13px">
+    <h3>Concurrency vs Parallelism</h3>
+    <div class="split">
+      <div class="good">
+        <h4>🔀 Concurrency — design</h4>
+        <p>Tasks <em>can</em> make progress — even on 1 core, by interleaving. About structure.</p>
+        <div class="code-wrap" style="margin-top:7px"><div class="code"><span class="cm"># Single-core phone: music + download "at the same time"
+# OS switches every few ms — feels simultaneous</span>
+Thread(<span class="fn">play_music</span>).start()
+Thread(<span class="fn">download_file</span>).start()</div></div>
+      </div>
+      <div class="good" style="border-color:rgba(108,140,255,.4);background:rgba(108,140,255,.07)">
+        <h4>⚡ Parallelism — hardware</h4>
+        <p>Tasks run at literally the same instant on different cores. Needs multiple cores.</p>
+        <div class="code-wrap" style="margin-top:7px"><div class="code"><span class="cm"># Python: use ProcessPoolExecutor to bypass GIL</span>
+<span class="kw">from</span> concurrent.futures <span class="kw">import</span> ProcessPoolExecutor
+<span class="kw">with</span> ProcessPoolExecutor(max_workers=<span class="num">8</span>) <span class="kw">as</span> ex:
+    results = list(ex.map(<span class="fn">cpu_heavy_fn</span>, chunks))</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CHAPTER 3 — LIFECYCLE
+════════════════════════════════════════ -->
+<section id="lifecycle">
+  <span class="lbl">Chapter 3</span>
+  <h2>Thread Lifecycle with Code</h2>
+  <p class="sub">Every state a thread passes through, with the API calls that trigger each transition.</p>
+
+  <div class="flow">
+    <div class="node" style="border-color:#9aa7ff">🆕 NEW</div><div class="arr">→</div>
+    <div class="node" style="border-color:var(--accent)">✅ RUNNABLE</div><div class="arr">→</div>
+    <div class="node" style="border-color:var(--ok)">▶️ RUNNING</div><div class="arr">→</div>
+    <div class="node" style="border-color:var(--warn)">⏳ BLOCKED<br><span style="font-size:.7rem">waiting for lock</span></div>
+    <br style="flex-basis:100%">
+    <div style="color:var(--muted);font-size:.82rem;margin:4px 0 4px 8px">RUNNING → WAITING (sleep/join/IO) → RUNNABLE (woken) → RUNNING again → TERMINATED</div>
+  </div>
+
+  <div class="code-wrap" style="margin-top:12px">
+    <div class="ctabs">
+      <button class="ctab active" data-g="lc" data-t="lcj">Java</button>
+      <button class="ctab" data-g="lc" data-t="lcp">Python</button>
+      <button class="ctab" data-g="lc" data-t="lcps">Pseudocode</button>
+    </div>
+    <div id="lcj" class="cpane active code"><span class="cm">// ── Raw Thread (low-level, rarely used directly) ──</span>
+<span class="cls">Thread</span> t = <span class="kw">new</span> <span class="cls">Thread</span>(() -&gt; {           <span class="cm">// NEW state</span>
+    System.out.println(<span class="str">"Running!"</span>);    <span class="cm">// RUNNING when scheduler picks it</span>
+    <span class="kw">try</span> { Thread.sleep(<span class="num">1000</span>); }         <span class="cm">// TIMED_WAITING (sleeping)</span>
+    <span class="kw">catch</span> (InterruptedException e) { Thread.currentThread().interrupt(); }
+});                                        <span class="cm">// still NEW</span>
+t.start();                                 <span class="cm">// → RUNNABLE → OS schedules it</span>
+t.join();                                  <span class="cm">// main thread WAITS for t to TERMINATE</span>
+
+<span class="cm">// ── Better: ExecutorService (preferred in production) ──</span>
+ExecutorService pool = Executors.newFixedThreadPool(<span class="num">4</span>);
+Future&lt;<span class="cls">Integer</span>&gt; future = pool.submit(() -&gt; {
+    <span class="kw">return</span> computeResult();              <span class="cm">// runs in thread pool</span>
+});
+<span class="kw">int</span> result = future.get();              <span class="cm">// blocks caller until done</span>
+pool.shutdown();                         <span class="cm">// no new tasks, finish existing ones</span>
+pool.awaitTermination(<span class="num">10</span>, TimeUnit.SECONDS);</div>
+    <div id="lcp" class="cpane code"><span class="cm"># Python threading module</span>
+<span class="kw">import</span> threading, time
+
+<span class="kw">def</span> <span class="fn">worker</span>(name):
+    print(f<span class="str">"{name} started"</span>)   <span class="cm"># RUNNING</span>
+    time.sleep(<span class="num">1</span>)              <span class="cm"># WAITING (sleeping)</span>
+    print(f<span class="str">"{name} done"</span>)      <span class="cm"># back to RUNNING → TERMINATED</span>
+
+t = threading.Thread(target=<span class="fn">worker</span>, args=(<span class="str">"T1"</span>,))   <span class="cm"># NEW</span>
+t.start()                                              <span class="cm"># RUNNABLE → RUNNING</span>
+t.join()                                               <span class="cm"># main waits for TERMINATED</span>
+
+<span class="cm"># Thread pool with futures</span>
+<span class="kw">from</span> concurrent.futures <span class="kw">import</span> ThreadPoolExecutor
+
+<span class="kw">with</span> ThreadPoolExecutor(max_workers=<span class="num">4</span>) <span class="kw">as</span> ex:
+    f = ex.submit(<span class="fn">compute</span>, data)
+    result = f.result()  <span class="cm"># blocks until done</span>
+
+    <span class="cm"># Fan-out multiple tasks</span>
+    futures = [ex.submit(<span class="fn">task</span>, item) <span class="kw">for</span> item <span class="kw">in</span> items]
+    results = [f.result() <span class="kw">for</span> f <span class="kw">in</span> futures]</div>
+    <div id="lcps" class="cpane code">pool = <span class="fn">ThreadPool</span>(size = CPU_CORES)
+<span class="kw">for</span> chunk <span class="kw">in</span> split(bigData):
+    pool.<span class="fn">submit</span>(() =&gt; <span class="fn">process</span>(chunk))  <span class="cm">// each chunk → own thread</span>
+results = pool.<span class="fn">gatherAll</span>()
+final   = <span class="fn">merge</span>(results)</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CHAPTER 4 — RACE CONDITION
+════════════════════════════════════════ -->
+<section id="race">
+  <span class="lbl">Chapter 4</span>
+  <h2>Race Condition — Exact CPU-Level Trace</h2>
+  <p class="sub">Not hand-wavy — every instruction that causes the bug, shown step by step.</p>
+
+  <div class="story">
+    <p><strong>Problem:</strong> Two threads each call <code>count++</code> 1000 times. Expected: <code>2000</code>. Actual: random value like <code>1743</code> or <code>1891</code>.</p>
+    <p><strong>Why?</strong> <code>count++</code> is NOT one instruction. It is three CPU operations that can be interrupted between any two.</p>
+  </div>
+
+  <div class="code-wrap">
+    <div class="code"><span class="cm">// count++ compiles to THREE operations:</span>
+<span class="cm">//  1. READ:   temp = count        (load from RAM into CPU register)</span>
+<span class="cm">//  2. ADD:    temp = temp + 1     (CPU arithmetic)</span>
+<span class="cm">//  3. WRITE:  count = temp        (store result back to RAM)</span>
+<span class="cm">//
+// The OS scheduler can PAUSE a thread between ANY two of these steps.</span></div>
+  </div>
+
+  <h3 style="margin:16px 0 8px;font-size:1rem">🔬 Step-by-step interleaving — count starts at 5, expected result: 7</h3>
+  <div class="trace">
+    <table>
+      <thead><tr><th>Time</th><th>Thread A</th><th>Thread B</th><th>count</th></tr></thead>
+      <tbody>
+        <tr><td>T=1</td><td><span class="t-ok">READ  temp_A = 5</span></td><td>idle</td><td>5</td></tr>
+        <tr><td>T=2</td><td><span class="t-ok">ADD   temp_A = 6</span></td><td>idle</td><td>5</td></tr>
+        <tr><td>T=3</td><td><span class="t-bad">⏸ Scheduler PAUSES Thread A</span></td><td><span class="t-bad">Scheduler STARTS Thread B</span></td><td>5</td></tr>
+        <tr><td>T=4</td><td>paused</td><td><span class="t-ok">READ  temp_B = 5 (stale!)</span></td><td>5</td></tr>
+        <tr><td>T=5</td><td>paused</td><td><span class="t-ok">ADD   temp_B = 6</span></td><td>5</td></tr>
+        <tr><td>T=6</td><td>paused</td><td><span class="t-bad">WRITE count = 6</span></td><td>6</td></tr>
+        <tr><td>T=7</td><td><span class="t-bad">WRITE count = 6 (stale temp_A!)</span></td><td>done</td><td>6 ❌</td></tr>
+        <tr><td>Result</td><td colspan="3"><strong style="color:var(--danger)">count = 6 — one increment lost! Expected 7.</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="hl danger">The bug is invisible to both threads. Each believed it incremented correctly. The corruption comes from interleaving, not from any single thread's logic.</div>
+
+  <h3 style="margin:16px 0 8px;font-size:1rem">✅ Three ways to fix it</h3>
+
+  <div class="code-wrap">
+    <div class="ctabs">
+      <button class="ctab active" data-g="rf" data-t="rf1">1. synchronized / Lock</button>
+      <button class="ctab" data-g="rf" data-t="rf2">2. Atomic</button>
+      <button class="ctab" data-g="rf" data-t="rf3">3. Immutability</button>
+      <button class="ctab" data-g="rf" data-t="rf4">Python fix</button>
+    </div>
+    <div id="rf1" class="cpane active code"><span class="cm">// Fix 1: synchronized — only ONE thread in the critical section at a time</span>
+<span class="kw">class</span> <span class="cls">SafeCounter</span> {
+    <span class="kw">private int</span> count = <span class="num">0</span>;
+
+    <span class="kw">synchronized void</span> <span class="fn">increment</span>() {  <span class="cm">// ONLY ONE THREAD AT A TIME</span>
+        count++;                       <span class="cm">// now the 3 steps are serialised</span>
+    }
+
+    <span class="kw">synchronized int</span> <span class="fn">get</span>() { <span class="kw">return</span> count; }
+}
+
+<span class="cm">// OR use ReentrantLock for more control</span>
+<span class="kw">private final</span> Lock lock = <span class="kw">new</span> <span class="cls">ReentrantLock</span>();
+
+<span class="kw">void</span> <span class="fn">increment</span>() {
+    lock.lock();
+    <span class="kw">try</span>     { count++; }
+    <span class="kw">finally</span> { lock.unlock(); }  <span class="cm">// ALWAYS in finally — or lock is never released!</span>
+}</div>
+    <div id="rf2" class="cpane code"><span class="cm">// Fix 2: AtomicInteger — hardware-level CAS (Compare-And-Swap)</span>
+<span class="cm">// Single uninterruptible CPU instruction — no lock needed</span>
+<span class="kw">import</span> java.util.concurrent.atomic.*;
+
+<span class="kw">class</span> <span class="cls">AtomicCounter</span> {
+    <span class="kw">private final</span> AtomicInteger count = <span class="kw">new</span> <span class="cls">AtomicInteger</span>(<span class="num">0</span>);
+
+    <span class="kw">void</span>    <span class="fn">increment</span>() { count.incrementAndGet(); }
+    <span class="kw">int</span>     <span class="fn">get</span>()       { <span class="kw">return</span> count.get(); }
+
+    <span class="cm">// CAS manually (optimistic locking pattern)</span>
+    <span class="kw">void</span> <span class="fn">safeMultiply</span>(<span class="kw">int</span> factor) {
+        <span class="kw">int</span> prev, next;
+        <span class="kw">do</span> {
+            prev = count.get();
+            next = prev * factor;
+        } <span class="kw">while</span> (!count.compareAndSet(prev, next)); <span class="cm">// retry if changed since read</span>
+    }
+}
+<span class="cm">// AtomicLong, AtomicBoolean, AtomicReference all exist too</span></div>
+    <div id="rf3" class="cpane code"><span class="cm">// Fix 3: eliminate shared mutable state — each thread works on private data
+// then combine at the end in ONE thread</span>
+<span class="kw">int</span>[] partials = <span class="kw">new int</span>[threadCount];
+
+<span class="cm">// Each thread writes ONLY to its own slot — no sharing, no lock needed</span>
+<span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">0</span>; i &lt; threadCount; i++) {
+    <span class="kw">final int</span> idx = i;
+    pool.submit(() -&gt; {
+        <span class="kw">for</span> (<span class="kw">int</span> j = <span class="num">0</span>; j &lt; <span class="num">1000</span>; j++) partials[idx]++;  <span class="cm">// safe!</span>
+    });
+}
+pool.shutdown(); pool.awaitTermination(<span class="num">1</span>, TimeUnit.MINUTES);
+
+<span class="cm">// Merge in one place (sequential, safe)</span>
+<span class="kw">int</span> total = Arrays.stream(partials).sum();  <span class="cm">// always 2000</span></div>
+    <div id="rf4" class="cpane code"><span class="cm"># Python: use threading.Lock()</span>
+<span class="kw">import</span> threading
+
+count = <span class="num">0</span>
+lock = threading.Lock()
+
+<span class="kw">def</span> <span class="fn">safe_increment</span>():
+    <span class="kw">global</span> count
+    <span class="kw">with</span> lock:      <span class="cm"># auto-acquires and auto-releases even on exception</span>
+        count += <span class="num">1</span>
+
+threads = [threading.Thread(target=<span class="fn">safe_increment</span>) <span class="kw">for</span> _ <span class="kw">in</span> range(<span class="num">1000</span>)]
+<span class="kw">for</span> t <span class="kw">in</span> threads: t.start()
+<span class="kw">for</span> t <span class="kw">in</span> threads: t.join()
+print(count)  <span class="cm"># always 1000</span>
+
+<span class="cm"># Or use concurrent.futures for map-reduce pattern (no lock needed)</span>
+<span class="kw">from</span> concurrent.futures <span class="kw">import</span> ThreadPoolExecutor
+<span class="kw">with</span> ThreadPoolExecutor(<span class="num">4</span>) <span class="kw">as</span> ex:
+    parts = list(ex.map(<span class="kw">lambda</span> _: <span class="num">1</span>, range(<span class="num">1000</span>)))
+total = sum(parts)  <span class="cm"># no shared mutable state at all</span></div>
+  </div>
+
+  <!-- LIVE VISUALISER -->
+  <h3 style="margin:16px 0 8px;font-size:1rem">🎮 Interactive: Watch the race vs safe execution</h3>
+  <div class="vis">
+    <div style="margin-bottom:8px;color:#8da8d8;font-size:.82rem">Shared variable: <code id="sharedVal" style="color:var(--accent)">count = 0</code></div>
+    <div style="display:flex;gap:8px;align-items:center;margin-bottom:5px">
+      <div class="t-badge t1c">Thread A</div>
+      <div class="mem-disp" id="tA-st">idle</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
+      <div class="t-badge t2c">Thread B</div>
+      <div class="mem-disp" id="tB-st">idle</div>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn" id="raceBtn">▶ Run UNSAFE</button>
+      <button class="btn" id="safeBtn" style="background:rgba(56,211,159,.18)">🔒 Run SAFE</button>
+      <button class="btn" id="resetBtn" style="background:rgba(255,107,107,.15)">↺ Reset</button>
+    </div>
+    <div class="step-log" id="raceLog">Click Run UNSAFE to see a race, or Run SAFE to see correct behavior.</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CHAPTER 5 — DEADLOCK
+════════════════════════════════════════ -->
+<section id="deadlock">
+  <span class="lbl">Chapter 5</span>
+  <h2>Deadlock — Step-by-Step with Code</h2>
+  <p class="sub">The most catastrophic bug. Apps freeze silently with no error or exception.</p>
+
+  <div class="story">
+    <p><strong>Scenario:</strong> A banking app transfers money. Transfer A→B: lock account A then B. Transfer B→A: lock account B then A. Start both simultaneously.</p>
+  </div>
+
+  <div class="trace">
+    <table>
+      <thead><tr><th>Time</th><th>Thread 1: Transfer A→B</th><th>Thread 2: Transfer B→A</th></tr></thead>
+      <tbody>
+        <tr><td>T=1</td><td><span class="t-ok">🔒 Locks Account A</span></td><td>idle</td></tr>
+        <tr><td>T=2</td><td>holds A</td><td><span class="t-ok">🔒 Locks Account B</span></td></tr>
+        <tr><td>T=3</td><td><span class="t-bad">⏳ Tries to lock B — BLOCKED (Thread 2 holds it)</span></td><td>holds B</td></tr>
+        <tr><td>T=4</td><td>waiting…</td><td><span class="t-bad">⏳ Tries to lock A — BLOCKED (Thread 1 holds it)</span></td></tr>
+        <tr><td>∞</td><td colspan="2"><strong style="color:var(--danger)">💀 Both wait forever. App frozen. No exception thrown.</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="code-wrap" style="margin-top:12px">
+    <div class="ctabs">
+      <button class="ctab active" data-g="dl" data-t="dl1">❌ Deadlock code</button>
+      <button class="ctab" data-g="dl" data-t="dl2">✅ Fix: Lock ordering</button>
+      <button class="ctab" data-g="dl" data-t="dl3">✅ Fix: tryLock timeout</button>
+      <button class="ctab" data-g="dl" data-t="dl4">Python example</button>
+    </div>
+    <div id="dl1" class="cpane active code"><span class="cm">// ❌ DEADLOCK — different lock acquisition order</span>
+<span class="kw">void</span> <span class="fn">transferAtoB</span>(Account a, Account b, <span class="kw">int</span> amount) {
+    <span class="kw">synchronized</span>(a) {              <span class="cm">// Thread 1 locks A first</span>
+        <span class="kw">synchronized</span>(b) {          <span class="cm">// Thread 1 waits for B ← BLOCKS if Thread 2 holds B</span>
+            a.debit(amount);
+            b.credit(amount);
+        }
+    }
+}
+
+<span class="kw">void</span> <span class="fn">transferBtoA</span>(Account b, Account a, <span class="kw">int</span> amount) {
+    <span class="kw">synchronized</span>(b) {              <span class="cm">// Thread 2 locks B first</span>
+        <span class="kw">synchronized</span>(a) {          <span class="cm">// Thread 2 waits for A ← BLOCKS if Thread 1 holds A</span>
+            b.debit(amount);
+            a.credit(amount);
+        }
+    }
+}
+<span class="cm">// Run both simultaneously → DEADLOCK</span></div>
+    <div id="dl2" class="cpane code"><span class="cm">// ✅ FIX: Always acquire locks in the same global order (by account ID)
+// This breaks the circular wait — the 4th Coffman condition</span>
+<span class="kw">void</span> <span class="fn">transfer</span>(Account from, Account to, <span class="kw">int</span> amount) {
+    Account first  = from.id &lt; to.id ? from : to;    <span class="cm">// lower ID always first</span>
+    Account second = from.id &lt; to.id ? to   : from;
+
+    <span class="kw">synchronized</span>(first) {
+        <span class="kw">synchronized</span>(second) {
+            from.debit(amount);
+            to.credit(amount);
+        }
+    }
+}
+<span class="cm">// Both Transfer A→B and Transfer B→A now lock in ID order.
+// No thread can ever wait for a lock held by a lower-priority thread.</span></div>
+    <div id="dl3" class="cpane code"><span class="cm">// ✅ FIX: tryLock with timeout — if can't acquire both, back off and retry</span>
+<span class="kw">boolean</span> <span class="fn">transfer</span>(Account from, Account to, <span class="kw">int</span> amount) <span class="kw">throws</span> InterruptedException {
+    <span class="kw">while</span> (<span class="kw">true</span>) {
+        <span class="kw">if</span> (from.lock.tryLock(<span class="num">50</span>, MILLISECONDS)) {
+            <span class="kw">try</span> {
+                <span class="kw">if</span> (to.lock.tryLock(<span class="num">50</span>, MILLISECONDS)) {
+                    <span class="kw">try</span> {
+                        from.debit(amount);
+                        to.credit(amount);
+                        <span class="kw">return true</span>;           <span class="cm">// success</span>
+                    } <span class="kw">finally</span> { to.lock.unlock(); }
+                }
+            } <span class="kw">finally</span> { from.lock.unlock(); }
+        }
+        Thread.sleep(<span class="num">10</span> + (long)(Math.random() * <span class="num">20</span>)); <span class="cm">// jitter before retry</span>
+    }
+}</div>
+    <div id="dl4" class="cpane code"><span class="cm"># Python: use consistent lock ordering to prevent deadlock</span>
+<span class="kw">import</span> threading
+
+<span class="kw">def</span> <span class="fn">transfer</span>(from_acc, to_acc, amount):
+    <span class="cm"># Always lock the lower-id account first</span>
+    first, second = sorted([from_acc, to_acc], key=<span class="kw">lambda</span> a: a.id)
+    <span class="kw">with</span> first.lock:      <span class="cm"># acquire in consistent order</span>
+        <span class="kw">with</span> second.lock:
+            from_acc.balance -= amount
+            to_acc.balance   += amount
+
+<span class="cm"># Both directions now use the same order → no circular wait → no deadlock</span></div>
+  </div>
+
+  <div class="acc"><button class="acc-btn">What are the 4 Coffman conditions for deadlock?</button>
+    <div class="acc-body">
+      All four must hold simultaneously. Break <em>any one</em> to prevent deadlock.<br><br>
+      <strong>1. Mutual exclusion</strong> — resource held by only one thread at a time.<br>
+      <strong>2. Hold and wait</strong> — thread holds a resource while waiting for another.<br>
+      <strong>3. No preemption</strong> — resources can't be forcibly taken away.<br>
+      <strong>4. Circular wait</strong> — a cycle in the wait-for graph.<br><br>
+      Lock ordering breaks <strong>#4</strong>. tryLock timeout breaks <strong>#2</strong> (back off = release what you hold).
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CHAPTER 6 — SYNC TOOLS
+════════════════════════════════════════ -->
+<section id="sync">
+  <span class="lbl">Chapter 6</span>
+  <h2>Synchronization Primitives — With Full Code</h2>
+  <p class="sub">Six tools, six problems. Pick the right one.</p>
+
+  <div class="code-wrap">
+    <div class="ctabs">
+      <button class="ctab active" data-g="sync" data-t="sy1">🔒 Mutex</button>
+      <button class="ctab" data-g="sync" data-t="sy2">📖 RW Lock</button>
+      <button class="ctab" data-g="sync" data-t="sy3">🎟 Semaphore</button>
+      <button class="ctab" data-g="sync" data-t="sy4">📢 Condition Var</button>
+      <button class="ctab" data-g="sync" data-t="sy5">⚛ Atomic</button>
+      <button class="ctab" data-g="sync" data-t="sy6">🚦 Latch/Barrier</button>
+    </div>
+
+    <div id="sy1" class="cpane active code"><span class="cm">// Mutex: ONE thread at a time in the critical section</span>
+<span class="cm">// Use when: multiple threads write to shared state</span>
+
+<span class="kw">private final</span> ReentrantLock lock = <span class="kw">new</span> <span class="cls">ReentrantLock</span>();
+<span class="kw">private int</span> balance = <span class="num">0</span>;
+
+<span class="kw">void</span> <span class="fn">deposit</span>(<span class="kw">int</span> amount) {
+    lock.lock();
+    <span class="kw">try</span>     { balance += amount; }
+    <span class="kw">finally</span> { lock.unlock(); }  <span class="cm">// must unlock even if exception thrown</span>
+}
+
+<span class="kw">int</span> <span class="fn">getBalance</span>() {
+    lock.lock();
+    <span class="kw">try</span>     { <span class="kw">return</span> balance; }
+    <span class="kw">finally</span> { lock.unlock(); }
+}
+
+<span class="cm">// Python equivalent</span>
+<span class="cm"># lock = threading.Lock()
+# with lock:
+#     balance += amount</span></div>
+
+    <div id="sy2" class="cpane code"><span class="cm">// Read-Write Lock: many readers OR one writer (never both)
+// Use when: reads &gt;&gt; writes (e.g. config, cache, lookup tables)</span>
+
+<span class="kw">private final</span> ReadWriteLock rwl = <span class="kw">new</span> <span class="cls">ReentrantReadWriteLock</span>();
+<span class="kw">private</span> Map&lt;<span class="cls">String</span>, <span class="cls">String</span>&gt; config = <span class="kw">new</span> HashMap&lt;&gt;();
+
+<span class="cm">// Multiple threads can read simultaneously</span>
+<span class="cls">String</span> <span class="fn">get</span>(<span class="cls">String</span> key) {
+    rwl.readLock().lock();
+    <span class="kw">try</span>     { <span class="kw">return</span> config.get(key); }
+    <span class="kw">finally</span> { rwl.readLock().unlock(); }
+}
+
+<span class="cm">// Only ONE thread can write (blocks all readers while writing)</span>
+<span class="kw">void</span> <span class="fn">set</span>(<span class="cls">String</span> key, <span class="cls">String</span> val) {
+    rwl.writeLock().lock();
+    <span class="kw">try</span>     { config.put(key, val); }
+    <span class="kw">finally</span> { rwl.writeLock().unlock(); }
+}
+
+<span class="cm">// Python: threading.RLock() for reentrant lock
+# Or use readers-writer lock from third-party libs</span></div>
+
+    <div id="sy3" class="cpane code"><span class="cm">// Semaphore: allow at most N threads at once
+// Use when: limiting access to a bounded pool of resources</span>
+
+<span class="cm">// Limit database connections to 10</span>
+<span class="kw">private final</span> Semaphore dbPool = <span class="kw">new</span> <span class="cls">Semaphore</span>(<span class="num">10</span>);  <span class="cm">// 10 permits</span>
+
+<span class="kw">void</span> <span class="fn">queryDB</span>(<span class="cls">String</span> sql) <span class="kw">throws</span> InterruptedException {
+    dbPool.acquire();      <span class="cm">// blocks if 10 connections already open</span>
+    <span class="kw">try</span>     { db.execute(sql); }
+    <span class="kw">finally</span> { dbPool.release(); }  <span class="cm">// always free the permit</span>
+}
+
+<span class="cm">// Python</span>
+<span class="cm"># import threading
+# sem = threading.Semaphore(10)
+# with sem:
+#     db.execute(sql)</span>
+
+<span class="cm">// Semaphore(1) = binary semaphore = equivalent to a mutex
+// Semaphore(0) = signalling: producer releases, consumer acquires</span></div>
+
+    <div id="sy4" class="cpane code"><span class="cm">// Condition Variable: wait for a condition to become true
+// Classic use: bounded producer-consumer buffer</span>
+
+<span class="kw">final</span> Object lock = <span class="kw">new</span> Object();
+Queue&lt;Item&gt; buf = <span class="kw">new</span> LinkedList&lt;&gt;();
+<span class="kw">final int</span> MAX = <span class="num">5</span>;
+
+<span class="cm">// Producer</span>
+<span class="kw">void</span> <span class="fn">produce</span>(Item item) <span class="kw">throws</span> InterruptedException {
+    <span class="kw">synchronized</span>(lock) {
+        <span class="kw">while</span> (buf.size() == MAX)   <span class="cm">// ← WHILE not IF (spurious wakeups!)</span>
+            lock.wait();            <span class="cm">// releases lock and sleeps</span>
+        buf.add(item);
+        lock.notifyAll();           <span class="cm">// wake sleeping consumers</span>
+    }
+}
+
+<span class="cm">// Consumer</span>
+Item <span class="fn">consume</span>() <span class="kw">throws</span> InterruptedException {
+    <span class="kw">synchronized</span>(lock) {
+        <span class="kw">while</span> (buf.isEmpty())       <span class="cm">// ← WHILE not IF</span>
+            lock.wait();
+        Item item = buf.poll();
+        lock.notifyAll();           <span class="cm">// wake sleeping producers</span>
+        <span class="kw">return</span> item;
+    }
+}</div>
+
+    <div id="sy5" class="cpane code"><span class="cm">// Atomic operations: hardware CAS — lock-free for single variables
+// Use when: counters, flags, single-reference swaps</span>
+
+AtomicInteger count   = <span class="kw">new</span> <span class="cls">AtomicInteger</span>(<span class="num">0</span>);
+AtomicBoolean running = <span class="kw">new</span> <span class="cls">AtomicBoolean</span>(<span class="kw">true</span>);
+AtomicLong    total   = <span class="kw">new</span> <span class="cls">AtomicLong</span>(<span class="num">0L</span>);
+
+count.incrementAndGet();               <span class="cm">// thread-safe ++</span>
+count.addAndGet(<span class="num">5</span>);                   <span class="cm">// thread-safe +=5</span>
+running.compareAndSet(<span class="kw">true</span>, <span class="kw">false</span>);   <span class="cm">// atomic if-equal-then-set</span>
+total.getAndAdd(<span class="num">100L</span>);               <span class="cm">// returns old value, adds 100</span>
+
+<span class="cm">// CAS loop for compound updates</span>
+<span class="kw">long</span> <span class="fn">multiplyBy</span>(<span class="kw">int</span> factor) {
+    <span class="kw">long</span> old, newVal;
+    <span class="kw">do</span> {
+        old    = total.get();
+        newVal = old * factor;
+    } <span class="kw">while</span> (!total.compareAndSet(old, newVal));  <span class="cm">// retry if changed</span>
+}</div>
+
+    <div id="sy6" class="cpane code"><span class="cm">// CountDownLatch: wait for N events to complete</span>
+CountDownLatch latch = <span class="kw">new</span> <span class="cls">CountDownLatch</span>(<span class="num">3</span>);
+
+<span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">0</span>; i &lt; <span class="num">3</span>; i++) {
+    pool.submit(() -&gt; {
+        <span class="fn">doWork</span>();
+        latch.countDown();  <span class="cm">// decrement counter when done</span>
+    });
+}
+latch.await();  <span class="cm">// main thread blocks until count reaches 0</span>
+System.out.println(<span class="str">"All 3 tasks finished!"</span>);
+
+<span class="cm">// CyclicBarrier: all threads meet at a checkpoint before continuing</span>
+CyclicBarrier barrier = <span class="kw">new</span> <span class="cls">CyclicBarrier</span>(<span class="num">4</span>, () -&gt; System.out.println(<span class="str">"Phase done"</span>));
+
+<span class="cm">// In each worker thread:</span>
+doPhaseWork();
+barrier.await();  <span class="cm">// waits until all 4 threads reach this line</span>
+doNextPhaseWork();</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CHAPTER 7 — PATTERNS
+════════════════════════════════════════ -->
+<section id="patterns">
+  <span class="lbl">Chapter 7</span>
+  <h2>Design Patterns with Full Code</h2>
+  <p class="sub">Battle-tested templates used in every major production system.</p>
+
+  <div class="code-wrap">
+    <div class="ctabs">
+      <button class="ctab active" data-g="pt" data-t="pt1">📦 Producer-Consumer</button>
+      <button class="ctab" data-g="pt" data-t="pt2">🍴 Fork-Join</button>
+      <button class="ctab" data-g="pt" data-t="pt3">🏊 Thread Pool Config</button>
+      <button class="ctab" data-g="pt" data-t="pt4">🔮 Future / Promise</button>
+    </div>
+
+    <div id="pt1" class="cpane active code"><span class="cm">// Producer-Consumer with Java BlockingQueue
+// BlockingQueue handles ALL locking internally — you don't write any locks</span>
+<span class="kw">import</span> java.util.concurrent.*;
+
+<span class="cls">BlockingQueue</span>&lt;<span class="cls">Task</span>&gt; queue = <span class="kw">new</span> <span class="cls">ArrayBlockingQueue</span>&lt;&gt;(<span class="num">5</span>);  <span class="cm">// bounded</span>
+
+<span class="cm">// Producer thread(s)</span>
+<span class="kw">void</span> <span class="fn">producer</span>() <span class="kw">throws</span> InterruptedException {
+    <span class="kw">while</span> (notDone) {
+        <span class="cls">Task</span> t = <span class="fn">generateTask</span>();
+        queue.put(t);    <span class="cm">// BLOCKS if queue full (capacity = 5)</span>
+    }
+}
+
+<span class="cm">// Consumer thread(s)</span>
+<span class="kw">void</span> <span class="fn">consumer</span>() <span class="kw">throws</span> InterruptedException {
+    <span class="kw">while</span> (notDone) {
+        <span class="cls">Task</span> t = queue.take();  <span class="cm">// BLOCKS if queue empty</span>
+        <span class="fn">processTask</span>(t);
+    }
+}
+
+<span class="cm">// Wire it all together</span>
+ExecutorService exec = Executors.newCachedThreadPool();
+exec.submit(this::producer);  exec.submit(this::producer);   <span class="cm">// 2 producers</span>
+exec.submit(this::consumer);  exec.submit(this::consumer);   <span class="cm">// 4 consumers</span>
+exec.submit(this::consumer);  exec.submit(this::consumer);</div>
+
+    <div id="pt2" class="cpane code"><span class="cm">// Fork-Join: divide data in half recursively, process each half in parallel</span>
+<span class="cm">// Java ForkJoinPool is used internally by parallel streams</span>
+
+<span class="kw">class</span> <span class="cls">SumTask</span> <span class="kw">extends</span> <span class="cls">RecursiveTask</span>&lt;<span class="cls">Long</span>&gt; {
+    <span class="kw">private static final int</span> THRESHOLD = <span class="num">1000</span>;
+    <span class="kw">private final int</span>[] arr;
+    <span class="kw">private final int</span>  lo, hi;
+
+    <span class="fn">SumTask</span>(<span class="kw">int</span>[] arr, <span class="kw">int</span> lo, <span class="kw">int</span> hi) { <span class="kw">this</span>.arr=arr; <span class="kw">this</span>.lo=lo; <span class="kw">this</span>.hi=hi; }
+
+    <span class="ann">@Override</span>
+    <span class="kw">protected</span> <span class="cls">Long</span> <span class="fn">compute</span>() {
+        <span class="kw">if</span> (hi - lo &lt; THRESHOLD)                 <span class="cm">// base case: small enough → do sequentially</span>
+            <span class="kw">return</span> <span class="fn">sumSequential</span>(lo, hi);
+        <span class="kw">int</span> mid = lo + (hi - lo) / <span class="num">2</span>;
+        <span class="cls">SumTask</span> left  = <span class="kw">new</span> <span class="cls">SumTask</span>(arr, lo, mid);
+        <span class="cls">SumTask</span> right = <span class="kw">new</span> <span class="cls">SumTask</span>(arr, mid, hi);
+        left.fork();                              <span class="cm">// start left in thread pool</span>
+        <span class="kw">return</span> right.compute() + left.join();    <span class="cm">// run right here, wait for left</span>
+    }
+}
+
+<span class="cls">ForkJoinPool</span> fjp = <span class="cls">ForkJoinPool</span>.commonPool();
+<span class="kw">long</span> total = fjp.invoke(<span class="kw">new</span> <span class="cls">SumTask</span>(arr, <span class="num">0</span>, arr.length));
+
+<span class="cm">// Shorthand: Java 8+ parallel streams use ForkJoinPool automatically</span>
+<span class="kw">long</span> total2 = IntStream.of(arr).parallel().sum();</div>
+
+    <div id="pt3" class="cpane code"><span class="cm">// ThreadPoolExecutor — full configuration for production use</span>
+ThreadPoolExecutor pool = <span class="kw">new</span> <span class="cls">ThreadPoolExecutor</span>(
+    <span class="num">4</span>,                                   <span class="cm">// corePoolSize: always keep 4 alive</span>
+    <span class="num">16</span>,                                  <span class="cm">// maximumPoolSize: burst to 16 under load</span>
+    <span class="num">60</span>, TimeUnit.SECONDS,                <span class="cm">// idle threads above core die after 60s</span>
+    <span class="kw">new</span> <span class="cls">ArrayBlockingQueue</span>&lt;&gt;(<span class="num">100</span>),      <span class="cm">// bounded work queue</span>
+    <span class="kw">new</span> <span class="cls">ThreadFactoryBuilder</span>().setNameFormat(<span class="str">"worker-%d"</span>).build(),
+    <span class="kw">new</span> ThreadPoolExecutor.CallerRunsPolicy()  <span class="cm">// if queue full: caller runs task</span>
+);
+
+<span class="cm">// Rejection policies:
+// AbortPolicy          → throw RejectedExecutionException (default)
+// CallerRunsPolicy     → slow down the producer naturally (best for most cases)
+// DiscardPolicy        → silently drop the task (dangerous)
+// DiscardOldestPolicy  → drop the oldest queued task
+
+// Rule of thumb for sizing:
+// CPU-bound:  pool size ≈ number of CPU cores
+// IO-bound:   pool size ≈ CPU_CORES / (1 - wait_ratio)
+//             e.g. 8 cores, 90% wait → 8 / 0.1 = 80 threads</span>
+
+<span class="cm">// Python</span>
+<span class="cm"># from concurrent.futures import ThreadPoolExecutor
+# executor = ThreadPoolExecutor(max_workers=8)
+# futures  = [executor.submit(task, arg) for arg in args]
+# results  = [f.result() for f in futures]</span></div>
+
+    <div id="pt4" class="cpane code"><span class="cm">// Future: submit work now, get result when ready</span>
+ExecutorService pool = Executors.newFixedThreadPool(<span class="num">4</span>);
+
+Future&lt;<span class="cls">String</span>&gt; future = pool.submit(() -&gt; {
+    Thread.sleep(<span class="num">2000</span>);             <span class="cm">// simulate slow API call</span>
+    <span class="kw">return</span> fetchUserProfile();
+});
+
+<span class="fn">doOtherWork</span>();                     <span class="cm">// main thread keeps going</span>
+<span class="cls">String</span> profile = future.get();     <span class="cm">// blocks only if result not ready yet</span>
+
+<span class="cm">// CompletableFuture — chain async operations without blocking threads</span>
+CompletableFuture
+    .supplyAsync(() -&gt; <span class="fn">fetchUser</span>(userId))          <span class="cm">// async step 1</span>
+    .thenApply(user -&gt; <span class="fn">enrichWithOrders</span>(user))    <span class="cm">// async step 2</span>
+    .thenCompose(u -&gt; <span class="fn">loadRecommendations</span>(u))     <span class="cm">// async step 3</span>
+    .thenAccept(result -&gt; <span class="fn">sendResponse</span>(result))   <span class="cm">// consume result</span>
+    .exceptionally(ex -&gt; { <span class="fn">handleError</span>(ex); <span class="kw">return null</span>; });
+
+<span class="cm">// Python asyncio (cooperative coroutines — different from threads but same idea)</span>
+<span class="cm"># async def pipeline():
+#     user    = await fetch_user(uid)
+#     orders  = await fetch_orders(user)
+#     return merge(user, orders)</span></div>
+  </div>
+
+  <!-- ANIMATED PRODUCER-CONSUMER QUEUE -->
+  <div class="pq-wrap" style="margin-top:16px">
+    <div class="pq-actor">🏭<br><strong>Producer</strong><br><span style="font-size:.74rem;color:var(--muted)">creates items</span></div>
+    <div class="arr">→</div>
+    <div class="pq-queue">
+      <div>📦 Bounded Queue</div>
+      <div style="font-size:.73rem;color:var(--muted)">(capacity: 5)</div>
+      <div class="slots" id="pqSlots"><div class="slot filled">A</div><div class="slot"></div><div class="slot"></div><div class="slot"></div><div class="slot"></div></div>
+    </div>
+    <div class="arr">→</div>
+    <div class="pq-actor">👷<br><strong>Consumer</strong><br><span style="font-size:.74rem;color:var(--muted)">processes items</span></div>
+  </div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px">
+    <button class="btn" id="pqProduce">+ Produce item</button>
+    <button class="btn" id="pqConsume" style="background:rgba(56,211,159,.18)">− Consume item</button>
+  </div>
+  <div id="pqStatus" class="hl ok" style="margin-top:8px">Queue: 1/5 items. </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CHAPTER 8 — MEMORY MODEL
+════════════════════════════════════════ -->
+<section id="memory">
+  <span class="lbl">Chapter 8</span>
+  <h2>Memory Model — Visibility and Ordering</h2>
+  <p class="sub">The hardest concept. Modern CPUs cache data per-core and reorder instructions. This breaks multithreaded code in unexpected, non-deterministic ways.</p>
+
+  <div class="story">
+    <p><strong>The invisible bug:</strong> Thread A sets <code>ready = true</code> after writing <code>data = 42</code>. Thread B loops until <code>ready == true</code> then reads <code>data</code>. Looks correct. But Thread B can spin forever — or read <code>data = 0</code> even after <code>ready</code> is true. No lock was violated. No exception thrown.</p>
+    <p><strong>Why?</strong> The CPU cached <code>ready</code> in Thread B's L1 cache. Or the compiler reordered Thread A's writes for performance. Thread B never sees the update.</p>
+  </div>
+
+  <div class="code-wrap">
+    <div class="ctabs">
+      <button class="ctab" data-g="mm" data-t="mm1">❌ The bug</button>
+      <button class="ctab" data-g="mm" data-t="mm2">✅ volatile fix</button>
+      <button class="ctab" data-g="mm" data-t="mm3">Happens-Before rules</button>
+      <button class="ctab active" data-g="mm" data-t="mm4">Double-checked locking</button>
+    </div>
+
+    <div id="mm1" class="cpane code"><span class="cm">// ❌ BUG: no visibility guarantee for ready or data</span>
+<span class="kw">boolean</span> ready = <span class="kw">false</span>;
+<span class="kw">int</span>     data  = <span class="num">0</span>;
+
+<span class="cm">// Thread A (writer)</span>
+data  = <span class="num">42</span>;          <span class="cm">// write 1 — may be reordered AFTER ready=true by CPU!</span>
+ready = <span class="kw">true</span>;       <span class="cm">// write 2</span>
+
+<span class="cm">// Thread B (reader)
+// Problem 1: ready may be cached as false in B's L1 cache → infinite loop
+// Problem 2: even if B sees ready=true, it may still read data=0
+//            because write 1 was reordered to happen after write 2</span>
+<span class="kw">while</span> (!ready) {}   <span class="cm">// may never exit</span>
+System.out.println(data);  <span class="cm">// may print 0 — data write not yet visible</span></div>
+
+    <div id="mm2" class="cpane code"><span class="cm">// ✅ FIX: volatile keyword
+// 1. Forces reads/writes to go to main memory (bypasses CPU cache)
+// 2. Prevents instruction reordering around the volatile variable</span>
+
+<span class="kw">volatile boolean</span> ready = <span class="kw">false</span>;
+<span class="kw">volatile int</span>     data  = <span class="num">0</span>;
+
+<span class="cm">// Thread A</span>
+data  = <span class="num">42</span>;          <span class="cm">// guaranteed to be written to main memory BEFORE ready</span>
+ready = <span class="kw">true</span>;       <span class="cm">// volatile write creates memory barrier</span>
+
+<span class="cm">// Thread B</span>
+<span class="kw">while</span> (!ready) {}   <span class="cm">// always reads from main memory — will eventually see true</span>
+System.out.println(data);  <span class="cm">// guaranteed to see 42 (happens-before)</span>
+
+<span class="cm">// volatile is NOT enough for compound operations (check-then-act)
+// volatile int x = 0;  then x++ is still NOT thread-safe!
+// volatile only protects single reads/writes
+// Use AtomicInteger or synchronized for compound updates</span></div>
+
+    <div id="mm3" class="cpane code"><span class="cm">// Java Memory Model: Happens-Before guarantees
+// If X happens-before Y, all effects of X are visible when Y executes</span>
+
+<span class="cm">// Rule 1: Thread start
+// Everything before t.start() is visible to t when it begins</span>
+data = <span class="num">42</span>;      <span class="cm">// ← visible to t</span>
+t.start();
+
+<span class="cm">// Rule 2: Thread join
+// Everything t does is visible after t.join() returns</span>
+t.join();
+System.out.println(sharedVar);  <span class="cm">// safe to read t's writes</span>
+
+<span class="cm">// Rule 3: Lock release → acquire
+// Everything before unlock() is visible after the next lock() on same lock</span>
+lock.lock(); data = <span class="num">99</span>; lock.unlock();  <span class="cm">// Thread A</span>
+lock.lock(); System.out.println(data);  lock.unlock();  <span class="cm">// Thread B sees 99</span>
+
+<span class="cm">// Rule 4: volatile write → read
+// Everything before volatile write is visible after volatile read of same var</span>
+
+<span class="cm">// Rule 5: Static initializers
+// Class static fields are safely visible to all threads after class load</span>
+<span class="kw">class</span> <span class="cls">Cfg</span> { <span class="kw">static final</span> <span class="kw">int</span> MAX = <span class="num">100</span>; }  <span class="cm">// always visible, no lock needed</span></div>
+
+    <div id="mm4" class="cpane code active"><span class="cm">// Classic trap: Double-Checked Locking (DCL) without volatile
+// ❌ BROKEN: partial construction visible across threads</span>
+<span class="kw">class</span> <span class="cls">Singleton</span> {
+    <span class="kw">private static</span> <span class="cls">Singleton</span> instance;  <span class="cm">// ← missing volatile!</span>
+
+    <span class="kw">static</span> <span class="cls">Singleton</span> <span class="fn">get</span>() {
+        <span class="kw">if</span> (instance == <span class="kw">null</span>) {              <span class="cm">// check without lock</span>
+            <span class="kw">synchronized</span>(<span class="cls">Singleton</span>.<span class="kw">class</span>) {
+                <span class="kw">if</span> (instance == <span class="kw">null</span>)        <span class="cm">// double-check inside lock</span>
+                    instance = <span class="kw">new</span> <span class="cls">Singleton</span>(); <span class="cm">// BUG: partial init visible!</span>
+            }
+        }
+        <span class="kw">return</span> instance;
+    }
+}
+
+<span class="cm">// ✅ FIX 1: add volatile</span>
+<span class="kw">private volatile static</span> <span class="cls">Singleton</span> instance;  <span class="cm">// volatile fixes it</span>
+
+<span class="cm">// ✅ FIX 2 (best): Initialization-on-demand holder — no locks, no volatile</span>
+<span class="kw">class</span> <span class="cls">Singleton</span> {
+    <span class="kw">private static class</span> <span class="cls">Holder</span> {
+        <span class="kw">static final</span> <span class="cls">Singleton</span> INSTANCE = <span class="kw">new</span> <span class="cls">Singleton</span>();
+    }
+    <span class="kw">static</span> <span class="cls">Singleton</span> <span class="fn">get</span>() { <span class="kw">return</span> <span class="cls">Holder</span>.INSTANCE; }
+}
+<span class="cm">// JVM class loading guarantees thread safety of static initializers</span></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CHAPTER 9 — WHEN AND WHERE
+════════════════════════════════════════ -->
+<section id="when">
+  <span class="lbl">Chapter 9</span>
+  <h2>When and Where to Use Multithreading</h2>
+  <p class="sub">Use it intentionally, not reflexively.</p>
+
+  <table>
+    <thead><tr><th>Workload</th><th>Strategy</th><th>Why</th></tr></thead>
+    <tbody>
+      <tr><td>UI + long background task</td><td>1 background thread or async</td><td>Keep UI responsive without complex sharing</td></tr>
+      <tr><td>Web server (many requests)</td><td>Thread pool + non-blocking IO</td><td>Each request gets a thread; IO releases it fast</td></tr>
+      <tr><td>CPU-bound batch (image resize)</td><td>ForkJoinPool / parallel stream</td><td>Use all cores; tasks are independent</td></tr>
+      <tr><td>Event streaming (Kafka, queues)</td><td>Producer-consumer + BlockingQueue</td><td>Decouples produce/consume speed mismatch</td></tr>
+      <tr><td>Database per-request</td><td>Connection pool (Semaphore)</td><td>Bounded resource — limit concurrent DB connections</td></tr>
+      <tr><td>Simple single-user script</td><td>Single thread</td><td>Complexity overhead &gt; gains</td></tr>
+      <tr><td>Read-heavy cache / config</td><td>volatile or ReadWriteLock</td><td>Read-heavy: avoid exclusive lock on every read</td></tr>
+    </tbody>
+  </table>
+
+  <div class="g2" style="margin-top:12px">
+    <div class="card">
+      <h3>🚦 Quick decision checklist</h3>
+      <ul style="list-style:none;line-height:2.2;color:var(--muted);font-size:.87rem">
+        <li>☑ Tasks are independent → good parallelism candidate</li>
+        <li>☑ Shared state is minimal → lower race risk</li>
+        <li>☑ IO wait ratio is high → use many more threads than cores</li>
+        <li>☑ Work chunk is large enough → context-switch overhead stays small</li>
+        <li>☑ You can test it under concurrent load → thread bugs are timing-dependent</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>🌐 Real system examples</h3>
+      <table style="font-size:.82rem;margin-top:7px">
+        <tbody><tr><th>System</th><th>Threading model</th></tr>
+        <tr><td>Java Spring Boot</td><td>Tomcat thread pool (default 200) per HTTP request</td></tr>
+        <tr><td>Node.js</td><td>Single event loop + worker_threads for CPU</td></tr>
+        <tr><td>Python Django</td><td>Process-per-request or async (GIL limits threads)</td></tr>
+        <tr><td>Go</td><td>Goroutines (lightweight threads) + channels</td></tr>
+        <tr><td>Database</td><td>Thread per connection + background checkpoint</td></tr>
+        <tr><td>Browser</td><td>Main UI thread + service worker + render thread</td></tr>
+      </tbody></table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CHAPTER 10 — SIMULATOR
+════════════════════════════════════════ -->
+<section id="sim">
+  <span class="lbl">Chapter 10</span>
+  <h2>Interactive Thread Pool Simulator</h2>
+  <p class="sub">Adjust workers, IO ratio, and contention to see estimated speedup change.</p>
+
+  <div class="sim">
+    <div class="ctrls">
+      <div class="ctrl"><label>Tasks</label><input id="tc" type="number" min="4" max="60" value="20"></div>
+      <div class="ctrl"><label>Workers</label><input id="wc" type="number" min="1" max="24" value="4"></div>
+      <div class="ctrl"><label>Avg cost (ms)</label><input id="ac" type="number" min="10" max="400" value="100"></div>
+      <div class="ctrl"><label>IO wait ratio</label>
+        <select id="iw">
+          <option value="0">CPU-bound (0%)</option>
+          <option value="0.5">Mixed (50%)</option>
+          <option value="0.8" selected="">IO-bound (80%)</option>
+          <option value="0.95">Heavy IO (95%)</option>
+        </select>
+      </div>
+      <div class="ctrl"><label>Contention</label>
+        <select id="ct">
+          <option value="1">None</option>
+          <option value="1.25">Medium</option>
+          <option value="1.6">High</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn" id="runSim">▶ Run simulation</button>
+    <div style="margin-top:10px;font-size:.84rem;color:var(--accent)" id="simSummary">Single-thread: 1978 ms | 4-worker threaded: 540 ms | speedup: 3.66x | Optimal workers (IO ratio): ~40</div>
+    <div class="tl" id="timeline"><div class="lane"><div class="lane-title">Worker 1 | 540 ms | 5 tasks</div><div class="bars"><div class="bar" title="T4: 131ms" style="width: 32px;">T4</div><div class="bar" title="T8: 114ms" style="width: 28px;">T8</div><div class="bar" title="T12: 105ms" style="width: 26px;">T12</div><div class="bar" title="T17: 72ms" style="width: 22px;">T17</div><div class="bar" title="T20: 118ms" style="width: 29px;">T20</div></div></div><div class="lane"><div class="lane-title">Worker 2 | 459 ms | 5 tasks</div><div class="bars"><div class="bar" title="T3: 56ms" style="width: 22px;">T3</div><div class="bar" title="T5: 111ms" style="width: 27px;">T5</div><div class="bar" title="T9: 116ms" style="width: 29px;">T9</div><div class="bar" title="T13: 67ms" style="width: 22px;">T13</div><div class="bar" title="T16: 109ms" style="width: 27px;">T16</div></div></div><div class="lane"><div class="lane-title">Worker 3 | 481 ms | 5 tasks</div><div class="bars"><div class="bar" title="T2: 91ms" style="width: 22px;">T2</div><div class="bar" title="T6: 123ms" style="width: 30px;">T6</div><div class="bar" title="T10: 79ms" style="width: 22px;">T10</div><div class="bar" title="T14: 124ms" style="width: 31px;">T14</div><div class="bar" title="T19: 64ms" style="width: 22px;">T19</div></div></div><div class="lane"><div class="lane-title">Worker 4 | 498 ms | 5 tasks</div><div class="bars"><div class="bar" title="T1: 92ms" style="width: 23px;">T1</div><div class="bar" title="T7: 128ms" style="width: 32px;">T7</div><div class="bar" title="T11: 82ms" style="width: 22px;">T11</div><div class="bar" title="T15: 114ms" style="width: 28px;">T15</div><div class="bar" title="T18: 82ms" style="width: 22px;">T18</div></div></div></div>
+  </div>
+
+  <div class="hl">IO-bound tasks benefit from far more threads than CPU cores because threads idle while waiting for network/disk. Set IO wait to 95% and increase workers to 80+ to see the difference.</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CHAPTER 11 — QUIZ
+════════════════════════════════════════ -->
+<section id="quiz">
+  <span class="lbl">Chapter 11</span>
+  <h2>10-Question Quiz</h2>
+  <p class="sub">Test everything from lifecycle to memory model.</p>
+  <div id="quizRoot"><div class="qcard"><div class="quiz-q"><strong>Q1.</strong> What three CPU-level steps does count++ compile to?</div><button class="qopt" type="button">One atomic instruction</button><button class="qopt" type="button">READ, ADD, WRITE — can be interrupted between any two</button><button class="qopt" type="button">One memory write only</button><button class="qopt" type="button">Two steps: increment and save</button><div class="fb"></div></div><div class="qcard"><div class="quiz-q"><strong>Q2.</strong> Thread A holds Lock 1 and waits for Lock 2. Thread B holds Lock 2 and waits for Lock 1. What is this?</div><button class="qopt" type="button">Race condition</button><button class="qopt" type="button">Starvation</button><button class="qopt" type="button">Deadlock</button><button class="qopt" type="button">Livelock</button><div class="fb"></div></div><div class="qcard"><div class="quiz-q"><strong>Q3.</strong> What is the key difference between the Stack and the Heap in the context of multithreading?</div><button class="qopt" type="button">Stack is faster, Heap is slower</button><button class="qopt" type="button">Stack is thread-local (safe), Heap is shared between threads (needs protection)</button><button class="qopt" type="button">Stack is for objects, Heap is for primitives</button><button class="qopt" type="button">They are the same in multithreaded programs</button><div class="fb"></div></div><div class="qcard"><div class="quiz-q"><strong>Q4.</strong> You have 8 CPU cores. Tasks wait on network 90% of the time. What is the optimal thread pool size?</div><button class="qopt" type="button">8</button><button class="qopt" type="button">16</button><button class="qopt" type="button">~80 (= 8 / (1 - 0.9))</button><button class="qopt" type="button">1</button><div class="fb"></div></div><div class="qcard"><div class="quiz-q"><strong>Q5.</strong> What does the volatile keyword guarantee in Java?</div><button class="qopt" type="button">Mutual exclusion — only one thread can access the variable</button><button class="qopt" type="button">Visibility — reads/writes always go to main memory, and prevents reordering</button><button class="qopt" type="button">Atomicity for compound operations like count++</button><button class="qopt" type="button">The variable cannot be changed by any thread</button><div class="fb"></div></div><div class="qcard"><div class="quiz-q"><strong>Q6.</strong> In a bounded producer-consumer queue, what happens when a producer calls put() and the queue is full?</div><button class="qopt" type="button">The item is silently dropped</button><button class="qopt" type="button">An exception is thrown</button><button class="qopt" type="button">The producer thread BLOCKS until a consumer removes an item</button><button class="qopt" type="button">The oldest item is overwritten</button><div class="fb"></div></div><div class="qcard"><div class="quiz-q"><strong>Q7.</strong> Why must you always call lock.unlock() inside a finally block?</div><button class="qopt" type="button">For performance</button><button class="qopt" type="button">To ensure the lock is released even if an exception is thrown inside the critical section</button><button class="qopt" type="button">Because synchronized is deprecated</button><button class="qopt" type="button">To signal waiting threads</button><div class="fb"></div></div><div class="qcard"><div class="quiz-q"><strong>Q8.</strong> What does CountDownLatch(3).await() do?</div><button class="qopt" type="button">Limits 3 threads entering a section</button><button class="qopt" type="button">Pauses the calling thread until countDown() has been called 3 times</button><button class="qopt" type="button">Creates 3 new threads</button><button class="qopt" type="button">Makes 3 threads sleep for 1 second each</button><div class="fb"></div></div><div class="qcard"><div class="quiz-q"><strong>Q9.</strong> Which is the safest Singleton pattern in Java — no locks, no volatile needed?</div><button class="qopt" type="button">Eager initialization in a static field</button><button class="qopt" type="button">Double-checked locking without volatile</button><button class="qopt" type="button">Initialization-on-demand holder idiom (inner static class)</button><button class="qopt" type="button">Using a global boolean flag</button><div class="fb"></div></div><div class="qcard"><div class="quiz-q"><strong>Q10.</strong> When can adding more threads DECREASE throughput?</div><button class="qopt" type="button">When tasks are independent</button><button class="qopt" type="button">When CPU has many cores</button><button class="qopt" type="button">When lock contention and context-switch overhead outweigh parallelism gains</button><button class="qopt" type="button">Never — more threads always means more speed</button><div class="fb"></div></div></div>
+  <div id="qScore" class="hl" style="display:none;margin-top:10px"></div>
+  <button class="btn" id="qReset" style="display:none;margin-top:8px">↺ Try again</button>
+</section>
+
+<footer>🧵 Multithreading deep dive complete. Next reads: <em>Java Concurrency in Practice</em> (Goetz) · Python <code>threading</code> + <code>asyncio</code> docs · Go Tour (goroutines) · Rust <code>std::thread</code> + Rayon crate.</footer>
+<button id="topBtn" style="display: none;">Top</button>
+
+<script>
+// ── progress bar + back-to-top ──────────────────────────────────────────
+(function(){
+  var prog=document.getElementById("prog"),top=document.getElementById("topBtn");
+  window.addEventListener("scroll",function(){
+    var max=document.documentElement.scrollHeight-window.innerHeight;
+    prog.style.width=(max>0?window.scrollY/max*100:0)+"%";
+    top.style.display=window.scrollY>350?"block":"none";
+  });
+  top.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});
+})();
+
+// ── active nav ───────────────────────────────────────────────────────────
+(function(){
+  var links=Array.from(document.querySelectorAll("nav a"));
+  var secs=Array.from(document.querySelectorAll("section[id]"));
+  function upd(){
+    var cur=secs.length?secs[0].id:"";
+    secs.forEach(function(s){if(s.getBoundingClientRect().top<=140)cur=s.id;});
+    links.forEach(function(l){l.classList.toggle("active",l.getAttribute("href")==="#"+cur);});
+  }
+  window.addEventListener("scroll",upd);upd();
+})();
+
+// ── generic tab handler (scoped by data-g group) ─────────────────────────
+(function(){
+  document.querySelectorAll(".ctab").forEach(function(btn){
+    btn.addEventListener("click",function(){
+      var g=btn.getAttribute("data-g"),t=btn.getAttribute("data-t");
+      // deactivate all tabs and panes in this group
+      document.querySelectorAll(".ctab[data-g='"+g+"']").forEach(function(b){b.classList.remove("active");});
+      // find all panes that are siblings of tabs with same group
+      // panes are identified by the data-t values used in this group
+      document.querySelectorAll(".ctab[data-g='"+g+"']").forEach(function(b){
+        var pane=document.getElementById(b.getAttribute("data-t"));
+        if(pane)pane.classList.remove("active");
+      });
+      btn.classList.add("active");
+      var pane=document.getElementById(t);
+      if(pane)pane.classList.add("active");
+    });
+  });
+})();
+
+// ── accordion ────────────────────────────────────────────────────────────
+document.querySelectorAll(".acc").forEach(function(item){
+  item.querySelector(".acc-btn").addEventListener("click",function(){item.classList.toggle("open");});
+});
+
+// ── race condition visualiser ─────────────────────────────────────────────
+(function(){
+  var sv=document.getElementById("sharedVal"),
+      tA=document.getElementById("tA-st"),tB=document.getElementById("tB-st"),
+      log=document.getElementById("raceLog");
+  var count=0,running=false;
+
+  function setCount(v){count=v;sv.textContent="count = "+v;}
+  function addLog(msg,cls){
+    var d=document.createElement("div");
+    if(cls)d.className=cls;d.textContent=msg;
+    log.appendChild(d);log.scrollTop=log.scrollHeight;
+  }
+
+  function reset(){count=0;running=false;sv.textContent="count = 0";tA.textContent="idle";tB.textContent="idle";log.innerHTML="Click Run UNSAFE to see a race, or Run SAFE to see correct behavior.";}
+
+  function runUnsafe(){
+    if(running)return;running=true;count=0;log.innerHTML="";
+    var target=100,dA=false,dB=false,cA=0,cB=0,lostA=0,lostB=0;
+    function sA(){
+      if(cA>=target){dA=true;tA.textContent="done ("+cA+" increments)";check();return;}
+      var tempA=count;
+      tA.textContent="READ "+tempA;
+      setTimeout(function(){
+        var expected=tempA+1;
+        if(Math.random()<0.12){setTimeout(function(){count=expected;setCount(count);cA++;tA.textContent="WRITE "+count;setTimeout(sA,0);},3);}
+        else{count=expected;setCount(count);cA++;tA.textContent="WRITE "+count;setTimeout(sA,0);}
+      },0);
+    }
+    function sB(){
+      if(cB>=target){dB=true;tB.textContent="done ("+cB+" increments)";check();return;}
+      var tempB=count;
+      tB.textContent="READ "+tempB;
+      setTimeout(function(){
+        var expected=tempB+1;
+        if(Math.random()<0.12){setTimeout(function(){count=expected;setCount(count);cB++;tB.textContent="WRITE "+count;setTimeout(sB,0);},3);}
+        else{count=expected;setCount(count);cB++;tB.textContent="WRITE "+count;setTimeout(sB,0);}
+      },0);
+    }
+    function check(){
+      if(!dA||!dB)return;
+      var exp=target*2,lost=exp-count;
+      addLog("Final: "+count+" | Expected: "+exp,count===exp?"log-ok":"log-bad");
+      if(lost>0)addLog("⚠ "+lost+" increments LOST due to race condition!","log-bad");
+      else addLog("✓ Lucky: no race this run (try again).","log-ok");
+      running=false;
+    }
+    addLog("Starting UNSAFE: two threads each increment "+target+" times (total expected: "+(target*2)+")");
+    sA();setTimeout(sB,0);
+  }
+
+  function runSafe(){
+    if(running)return;running=true;count=0;log.innerHTML="";
+    var target=100,dA=false,dB=false,cA=0,cB=0;
+    var locked=false,queue=[];
+    function acquireLock(cb){if(!locked){locked=true;cb();}else{queue.push(cb);}}
+    function releaseLock(){if(queue.length>0){var next=queue.shift();next();}else{locked=false;}}
+    function sA(){
+      if(cA>=target){dA=true;tA.textContent="done";check();return;}
+      acquireLock(function(){
+        tA.textContent="🔒 locked, incrementing...";
+        setTimeout(function(){count++;cA++;setCount(count);tA.textContent="WRITE "+count;releaseLock();setTimeout(sA,0);},0);
+      });
+    }
+    function sB(){
+      if(cB>=target){dB=true;tB.textContent="done";check();return;}
+      acquireLock(function(){
+        tB.textContent="🔒 locked, incrementing...";
+        setTimeout(function(){count++;cB++;setCount(count);tB.textContent="WRITE "+count;releaseLock();setTimeout(sB,0);},0);
+      });
+    }
+    function check(){
+      if(!dA||!dB)return;
+      var exp=target*2;
+      addLog("Final: "+count+" | Expected: "+exp,count===exp?"log-ok":"log-bad");
+      addLog(count===exp?"✓ Perfect — synchronized lock prevented all races!":"✗ Unexpected result","log-ok");
+      running=false;
+    }
+    addLog("Starting SAFE: using mutex lock — no race possible");
+    sA();setTimeout(sB,0);
+  }
+
+  document.getElementById("raceBtn").addEventListener("click",runUnsafe);
+  document.getElementById("safeBtn").addEventListener("click",runSafe);
+  document.getElementById("resetBtn").addEventListener("click",reset);
+})();
+
+// ── producer-consumer queue demo ──────────────────────────────────────────
+(function(){
+  var items=["A","B","C"],MAX=5;
+  function render(){
+    var slots=document.getElementById("pqSlots");
+    slots.innerHTML="";
+    for(var i=0;i<MAX;i++){
+      var s=document.createElement("div");
+      s.className="slot"+(i<items.length?" filled":"");
+      s.textContent=items[i]||"";
+      slots.appendChild(s);
+    }
+    var st=document.getElementById("pqStatus");
+    st.textContent="Queue: "+items.length+"/"+MAX+" items. "+(items.length===MAX?"Producer BLOCKED (full)!":items.length===0?"Consumer BLOCKED (empty)!":"");
+    st.className="hl "+(items.length===MAX?"danger":items.length===0?"warn":"ok");
+  }
+  document.getElementById("pqProduce").addEventListener("click",function(){
+    if(items.length<MAX){var letters="ABCDEFGHIJKLMNOP";items.push(letters[items.length]);render();}
+  });
+  document.getElementById("pqConsume").addEventListener("click",function(){
+    if(items.length>0){items.shift();render();}
+  });
+  render();
+})();
+
+// ── thread pool simulator ─────────────────────────────────────────────────
+(function(){
+  var tcEl=document.getElementById("tc"),wcEl=document.getElementById("wc"),
+      acEl=document.getElementById("ac"),iwEl=document.getElementById("iw"),
+      ctEl=document.getElementById("ct"),
+      btn=document.getElementById("runSim"),
+      tl=document.getElementById("timeline"),
+      sm=document.getElementById("simSummary");
+  function rand(avg){var lo=Math.max(5,Math.floor(avg*.55)),hi=Math.floor(avg*1.45);return lo+Math.floor(Math.random()*(hi-lo+1));}
+  function run(){
+    var tc=Math.max(1,+tcEl.value),wc=Math.max(1,+wcEl.value),
+        ac=Math.max(1,+acEl.value),iw=+iwEl.value,ct=+ctEl.value;
+    var optW=Math.round(8/(1-iw));
+    var tasks=Array.from({length:tc},function(_,i){return{id:i+1,cost:rand(ac)};});
+    var workers=Array.from({length:wc},function(){return{time:0,tasks:[]};});
+    tasks.forEach(function(t){
+      workers.sort(function(a,b){return a.time-b.time;});
+      var w=workers[0],eff=Math.round(t.cost*(1-iw)*ct+t.cost*iw);
+      w.tasks.push({id:t.id,cost:eff});w.time+=eff;
+    });
+    var par=Math.max.apply(null,workers.map(function(w){return w.time;}));
+    var seq=tasks.reduce(function(s,t){return s+t.cost;},0);
+    var su=(seq/par).toFixed(2);
+    sm.textContent="Single-thread: "+seq+" ms | "+wc+"-worker threaded: "+par+" ms | speedup: "+su+"x | Optimal workers (IO ratio): ~"+optW;
+    tl.innerHTML="";
+    workers.forEach(function(w,i){
+      var lane=document.createElement("div");lane.className="lane";
+      var title=document.createElement("div");title.className="lane-title";
+      title.textContent="Worker "+(i+1)+" | "+w.time+" ms | "+w.tasks.length+" tasks";
+      var bars=document.createElement("div");bars.className="bars";
+      w.tasks.forEach(function(task){
+        var bar=document.createElement("div");bar.className="bar";
+        bar.style.width=Math.max(22,Math.floor(task.cost/4))+"px";
+        bar.title="T"+task.id+": "+task.cost+"ms";bar.textContent="T"+task.id;
+        bars.appendChild(bar);
+      });
+      lane.appendChild(title);lane.appendChild(bars);tl.appendChild(lane);
+    });
+  }
+  btn.addEventListener("click",run);run();
+})();
+
+// ── quiz ──────────────────────────────────────────────────────────────────
+(function(){
+  var Qs=[
+    {q:"What three CPU-level steps does count++ compile to?",
+     opts:["One atomic instruction","READ, ADD, WRITE — can be interrupted between any two","One memory write only","Two steps: increment and save"],
+     ans:1,exp:"count++ = READ the value into a register, ADD 1, then WRITE back. The scheduler can pause a thread between any two of these, causing a race."},
+    {q:"Thread A holds Lock 1 and waits for Lock 2. Thread B holds Lock 2 and waits for Lock 1. What is this?",
+     opts:["Race condition","Starvation","Deadlock","Livelock"],
+     ans:2,exp:"Deadlock: both threads wait forever with no progress. Fix by always acquiring locks in a consistent global order (e.g. by resource ID)."},
+    {q:"What is the key difference between the Stack and the Heap in the context of multithreading?",
+     opts:["Stack is faster, Heap is slower","Stack is thread-local (safe), Heap is shared between threads (needs protection)","Stack is for objects, Heap is for primitives","They are the same in multithreaded programs"],
+     ans:1,exp:"Each thread has its own stack — local variables are always safe. The heap is shared. Object fields and global variables on the heap are where race conditions occur."},
+    {q:"You have 8 CPU cores. Tasks wait on network 90% of the time. What is the optimal thread pool size?",
+     opts:["8","16","~80 (= 8 / (1 - 0.9))","1"],
+     ans:2,exp:"IO-bound formula: N_CORES / (1 - wait_ratio) = 8 / 0.1 = 80. Threads are idle 90% of the time, so you need many more to keep CPU busy."},
+    {q:"What does the volatile keyword guarantee in Java?",
+     opts:["Mutual exclusion — only one thread can access the variable","Visibility — reads/writes always go to main memory, and prevents reordering","Atomicity for compound operations like count++","The variable cannot be changed by any thread"],
+     ans:1,exp:"volatile guarantees visibility (bypasses CPU cache) and ordering (memory barrier). It does NOT guarantee atomicity for compound operations — use AtomicInteger or synchronized for those."},
+    {q:"In a bounded producer-consumer queue, what happens when a producer calls put() and the queue is full?",
+     opts:["The item is silently dropped","An exception is thrown","The producer thread BLOCKS until a consumer removes an item","The oldest item is overwritten"],
+     ans:2,exp:"put() on a full BlockingQueue blocks the producer thread. This is exactly the backpressure mechanism — naturally throttles the producer to match consumer speed."},
+    {q:"Why must you always call lock.unlock() inside a finally block?",
+     opts:["For performance","To ensure the lock is released even if an exception is thrown inside the critical section","Because synchronized is deprecated","To signal waiting threads"],
+     ans:1,exp:"If an exception is thrown before unlock(), the lock is never released. All other threads waiting for that lock will block forever. finally guarantees release in all paths."},
+    {q:"What does CountDownLatch(3).await() do?",
+     opts:["Limits 3 threads entering a section","Pauses the calling thread until countDown() has been called 3 times","Creates 3 new threads","Makes 3 threads sleep for 1 second each"],
+     ans:1,exp:"CountDownLatch is a one-time gate. await() blocks until the internal counter reaches 0. Each countDown() call decrements by 1. Perfect for fan-out/fan-in: start N tasks, wait for all to finish."},
+    {q:"Which is the safest Singleton pattern in Java — no locks, no volatile needed?",
+     opts:["Eager initialization in a static field","Double-checked locking without volatile","Initialization-on-demand holder idiom (inner static class)","Using a global boolean flag"],
+     ans:2,exp:"The Holder idiom uses a private inner static class. The JVM guarantees that static initializers run once and are thread-safe by the class loading mechanism. No volatile, no synchronized needed."},
+    {q:"When can adding more threads DECREASE throughput?",
+     opts:["When tasks are independent","When CPU has many cores","When lock contention and context-switch overhead outweigh parallelism gains","Never — more threads always means more speed"],
+     ans:2,exp:"If many threads compete for the same lock (high contention), they spend most of their time blocked and context-switching instead of doing useful work. This is worse than fewer threads. Profile before scaling."},
+  ];
+
+  var root=document.getElementById("quizRoot"),
+      scoreEl=document.getElementById("qScore"),
+      resetBtn=document.getElementById("qReset");
+  var score=0,answered=0;
+
+  function render(){
+    score=0;answered=0;scoreEl.style.display="none";resetBtn.style.display="none";root.innerHTML="";
+    Qs.forEach(function(item,qi){
+      var card=document.createElement("div");card.className="qcard";
+      var q=document.createElement("div");q.className="quiz-q";
+      q.innerHTML="<strong>Q"+(qi+1)+".</strong> "+item.q;card.appendChild(q);
+      item.opts.forEach(function(opt,oi){
+        var b=document.createElement("button");b.className="qopt";b.type="button";b.textContent=opt;
+        b.addEventListener("click",function(){
+          if(card.dataset.done==="1")return;card.dataset.done="1";answered++;
+          card.querySelectorAll(".qopt").forEach(function(x,xi){
+            x.disabled=true;
+            if(xi===item.ans)x.classList.add("correct");
+            else if(xi===oi)x.classList.add("wrong");
+          });
+          if(oi===item.ans)score++;
+          var fb=card.querySelector(".fb");fb.textContent=item.exp;fb.classList.add("show");
+          if(answered===Qs.length){
+            var pct=Math.round(score/Qs.length*100);
+            scoreEl.style.display="block";
+            scoreEl.className="hl "+(pct>=80?"ok":pct>=50?"":"danger");
+            scoreEl.textContent="Score: "+score+"/"+Qs.length+" ("+pct+"%)  "+(pct===100?"🏆 Perfect!":pct>=80?"✅ Great!":pct>=50?"📚 Review the flagged sections.":"💪 Re-read Chapters 4–8 carefully.");
+            resetBtn.style.display="inline-block";
+          }
+        });
+        card.appendChild(b);
+      });
+      var fb=document.createElement("div");fb.className="fb";card.appendChild(fb);
+      root.appendChild(card);
+    });
+  }
+  resetBtn.addEventListener("click",render);render();
+})();
+</script>
+
+
+
+<script>
+(function() {
+  var ws = new WebSocket('ws://' + window.location.host + 
+             '/jb-server-page?reloadMode=RELOAD_ON_SAVE&'+
+             'referrer=' + encodeURIComponent(window.location.pathname));
+  ws.onmessage = function (msg) {
+      if (msg.data === 'reload') {
+          window.location.reload();
+      }
+      if (msg.data.startsWith('update-css ')) {
+          var messageId = msg.data.substring(11);
+          var links = document.getElementsByTagName('link');
+          for (var i = 0; i < links.length; i++) {
+              var link = links[i];
+              if (link.rel !== 'stylesheet') continue;
+              var clonedLink = link.cloneNode(true);
+              var newHref = link.href.replace(/(&|\?)jbUpdateLinksId=\d+/, "$1jbUpdateLinksId=" + messageId);
+              if (newHref !== link.href) {
+                clonedLink.href = newHref;
+              }
+              else {
+                var indexOfQuest = newHref.indexOf('?');
+                if (indexOfQuest >= 0) {
+                  // to support ?foo#hash 
+                  clonedLink.href = newHref.substring(0, indexOfQuest + 1) + 'jbUpdateLinksId=' + messageId + '&' + 
+                                    newHref.substring(indexOfQuest + 1);
+                }
+                else {
+                  clonedLink.href += '?' + 'jbUpdateLinksId=' + messageId;
+                }
+              }
+              link.replaceWith(clonedLink);
+          }
+      }
+  };
+})();
+</script><div id="give-freely-root-mbnbehikldjhnfehhnaidhjhoofhpehk" class="give-freely-root" data-extension-id="mbnbehikldjhnfehhnaidhjhoofhpehk" data-extension-name="CSS Peeper" style="display: block;"><template shadowrootmode="open"><style>
+  :host {
+    all: initial;
+  }
+
+  .gf-scroll-remove::-webkit-scrollbar {
+    border-radius-bottom-right: 15px;
+  }
+
+  button {
+    cursor: pointer;
+    transition: transform 0.1s ease;
+  }
+
+  button:active {
+    transform: scale(0.98);
+  }
+
+  .give-freely-close-button:hover {
+    opacity: 0.7;
+  }
+
+  input[type="radio"] {
+    margin-right: 8px;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #e5e5e5;
+    margin: 1em 0;
+  }
+
+  dialog::backdrop  {
+    background-color: revert;
+  }
+
+  dialog.backdrop-hidden::backdrop  {
+    background-color: transparent;
+  }
+</style><div><div class="gf-app"></div></div></template></div></body></html>
