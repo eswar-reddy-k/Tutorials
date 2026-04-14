@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)file:///C:/temp/java-faq/Java_Multithreading_FAQ.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Java Multithreading FAQ</title><style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',sans-serif;background:#0a0a1a;color:#e0e0e0;line-height:1.7}.nav{background:linear-gradient(135deg,#55efc4,#00b894);padding:15px 30px;position:sticky;top:0;z-index:100;display:flex;justify-content:space-between}.nav a{color:#fff;text-decoration:none;font-weight:700}.hero{background:linear-gradient(135deg,#55efc4,#00b894);padding:60px 30px;text-align:center;color:#333}.hero h1{font-size:2.8rem}.hero p{font-size:1.1rem;opacity:0.8}.container{max-width:1100px;margin:0 auto;padding:30px 20px}.faq{background:linear-gradient(145deg,#12121f,#1a1a2e);border:1px solid #222;border-radius:15px;margin-bottom:25px;overflow:hidden}.faq-header{background:#161625;padding:20px 25px;display:flex;align-items:center;gap:15px}.faq-num{background:linear-gradient(135deg,#55efc4,#00b894);color:#333;min-width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800}.faq-header h3{color:#fff;font-size:1.15rem;flex:1}.faq-body{padding:25px}pre{background:#0d0d1a;border:1px solid #333;border-radius:10px;padding:18px;overflow-x:auto;margin:10px 0;font-size:0.88rem;line-height:1.6}code{font-family:monospace;color:#f8f8f2}table{width:100%;border-collapse:collapse;margin:10px 0;font-size:0.9rem}th{background:#1a1a2e;color:#55efc4;padding:10px 14px;text-align:left;border:1px solid #333}td{padding:10px 14px;border:1px solid #222;background:#111}.diagram{background:#0d0d1a;border:1px solid #444;border-radius:10px;padding:20px;margin:10px 0;font-family:monospace;font-size:0.83rem;white-space:pre;overflow-x:auto;line-height:1.5;color:#8be9fd}.tag{display:inline-block;padding:2px 10px;border-radius:12px;font-size:0.75rem;font-weight:600;margin:2px}.tag-hot{background:#ff555533;color:#ff5555}.tag-imp{background:#ffb86c33;color:#ffb86c}.tip{background:#50fa7b15;border-left:4px solid #50fa7b;padding:12px 18px;border-radius:0 8px 8px 0;margin:10px 0}.warn{background:#ff555515;border-left:4px solid #ff5555;padding:12px 18px;border-radius:0 8px 8px 0;margin:10px 0}</style></head><body>
+<div class="nav"><a href="file:///C:/temp/java-faq/Java_FAQ_Index.html">← Index</a><a>⚡ Multithreading FAQ</a></div>
+<div class="hero"><h1>⚡ Multithreading Deep Dive</h1><p>22 Questions | Threads, Executors, Locks, CompletableFuture, Virtual Threads</p></div>
+<div class="container">
+<div class="faq" id="q1"><div class="faq-header"><div class="faq-num">1</div><h3>Process vs Thread <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body"><table><tbody><tr><th>Feature</th><th>Process</th><th>Thread</th></tr><tr><td>Memory</td><td>Own space</td><td>Shares heap</td></tr><tr><td>Comm</td><td>IPC (slow)</td><td>Shared vars</td></tr><tr><td>Create</td><td>Heavy</td><td>Light</td></tr><tr><td>Crash</td><td>Isolated</td><td>Can crash process</td></tr></tbody></table></div></div>
+<div class="faq" id="q2"><div class="faq-header"><div class="faq-num">2</div><h3>Creating Threads <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body"><pre><code>// 1. Extend Thread
+class MyThread extends Thread { public void run() { } }
+new MyThread().start();
+// 2. Runnable (PREFERRED)
+new Thread(() -&gt; System.out.println("Runnable")).start();
+// 3. Callable (returns result)
+Future&lt;Integer&gt; f = executor.submit(() -&gt; 42);
+int r = f.get();</code></pre><table><tbody><tr><th></th><th>Runnable</th><th>Callable</th></tr><tr><td>Method</td><td>run()</td><td>call()</td></tr><tr><td>Return</td><td>void</td><td>V</td></tr><tr><td>Exception</td><td>No checked</td><td>Yes</td></tr></tbody></table></div></div>
+<div class="faq" id="q3"><div class="faq-header"><div class="faq-num">3</div><h3>Thread Lifecycle</h3></div><div class="faq-body"><div class="diagram">NEW -start()-&gt; RUNNABLE &lt;-&gt; RUNNING
+                  ^               |
+               notify      sleep/wait/join
+                  |               v
+              BLOCKED    WAITING / TIMED_WAITING
+                                  |
+                           TERMINATED</div></div></div>
+<div class="faq" id="q4"><div class="faq-header"><div class="faq-num">4</div><h3>synchronized <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body"><pre><code>public synchronized void inc() { count++; }
+synchronized (lockObj) { count++; }
+public static synchronized void m() { }</code></pre><div class="warn">All threads must sync on SAME lock for same data.</div></div></div>
+<div class="faq" id="q5"><div class="faq-header"><div class="faq-num">5</div><h3>volatile <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body"><pre><code>volatile boolean running = true;
+// Visibility guarantee. NOT atomic (count++ unsafe).</code></pre><table><tbody><tr><th></th><th>volatile</th><th>synchronized</th></tr><tr><td>Gives</td><td>Visibility</td><td>Visibility+Atomicity</td></tr><tr><td>Blocks?</td><td>No</td><td>Yes</td></tr><tr><td>Use</td><td>Flags</td><td>Compound ops</td></tr></tbody></table></div></div>
+<div class="faq" id="q6"><div class="faq-header"><div class="faq-num">6</div><h3>Atomic Classes</h3></div><div class="faq-body"><pre><code>AtomicInteger c = new AtomicInteger(0);
+c.incrementAndGet();      // atomic ++
+c.compareAndSet(5, 10);   // CAS
+// CPU-level CAS - no locks! LongAdder for high contention</code></pre></div></div>
+<div class="faq" id="q7"><div class="faq-header"><div class="faq-num">7</div><h3>wait/notify/notifyAll</h3></div><div class="faq-body"><pre><code>synchronized (lock) {
+    while (!ready) lock.wait();
+    lock.notifyAll();
+}
+// Always while() not if() - spurious wakeups!</code></pre><table><tbody><tr><th>Method</th><th>Lock?</th><th>Resumes</th></tr><tr><td>sleep(ms)</td><td>Keeps</td><td>Timeout</td></tr><tr><td>wait()</td><td>Releases</td><td>notify</td></tr><tr><td>yield()</td><td>Keeps</td><td>Hint</td></tr><tr><td>join()</td><td>Keeps</td><td>Thread dies</td></tr></tbody></table></div></div>
+<div class="faq" id="q8"><div class="faq-header"><div class="faq-num">8</div><h3>Deadlock <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body"><div class="diagram">Thread A: lock(R1) -&gt; wants R2 BLOCKED
+Thread B: lock(R2) -&gt; wants R1 BLOCKED = DEADLOCK!</div><pre><code>// FIX: Always lock in SAME ORDER
+// 4 conditions: Mutual Exclusion, Hold-Wait, No Preemption, Circular Wait</code></pre><table><tbody><tr><th>Deadlock</th><td>Stuck forever</td></tr><tr><th>Livelock</th><td>Active, no progress</td></tr><tr><th>Starvation</th><td>Never gets turn</td></tr></tbody></table></div></div>
+<div class="faq" id="q9"><div class="faq-header"><div class="faq-num">9</div><h3>ExecutorService <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body"><pre><code>ExecutorService pool = Executors.newFixedThreadPool(10);
+// Also: newCachedThreadPool, newSingleThreadExecutor, newScheduledThreadPool
+Future&lt;String&gt; f = pool.submit(() -&gt; fetch());
+String r = f.get(5, TimeUnit.SECONDS);
+pool.shutdown();</code></pre><table><tbody><tr><th>Pool</th><th>Core</th><th>Max</th><th>Use</th></tr><tr><td>Fixed</td><td>N</td><td>N</td><td>Predictable</td></tr><tr><td>Cached</td><td>0</td><td>MAX</td><td>Burst</td></tr><tr><td>Single</td><td>1</td><td>1</td><td>Sequential</td></tr><tr><td>Scheduled</td><td>N</td><td>MAX</td><td>Periodic</td></tr></tbody></table><div class="warn">Production: ThreadPoolExecutor with bounded queue + rejection policy.</div></div></div>
+<div class="faq" id="q10"><div class="faq-header"><div class="faq-num">10</div><h3>ThreadPoolExecutor</h3></div><div class="faq-body"><pre><code>new ThreadPoolExecutor(5, 20, 60, TimeUnit.SECONDS,
+    new LinkedBlockingQueue&lt;&gt;(100), new CallerRunsPolicy());
+// Reject: Abort, CallerRuns, Discard, DiscardOldest</code></pre></div></div>
+<div class="faq" id="q11"><div class="faq-header"><div class="faq-num">11</div><h3>ReentrantLock vs synchronized <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body"><pre><code>ReentrantLock lock = new ReentrantLock();
+lock.lock();
+try { } finally { lock.unlock(); }
+if (lock.tryLock(5, TimeUnit.SECONDS)) { try { } finally { lock.unlock(); } }</code></pre><table><tbody><tr><th></th><th>synchronized</th><th>ReentrantLock</th></tr><tr><td>Unlock</td><td>Auto</td><td>Manual</td></tr><tr><td>tryLock</td><td>No</td><td>Yes</td></tr><tr><td>Fair</td><td>No</td><td>Optional</td></tr><tr><td>Conditions</td><td>1</td><td>Multiple</td></tr></tbody></table></div></div>
+<div class="faq" id="q12"><div class="faq-header"><div class="faq-num">12</div><h3>ReadWriteLock</h3></div><div class="faq-body"><pre><code>ReadWriteLock rw = new ReentrantReadWriteLock();
+rw.readLock().lock();  // many readers
+rw.writeLock().lock(); // exclusive write</code></pre></div></div>
+<div class="faq" id="q13"><div class="faq-header"><div class="faq-num">13</div><h3>CountDownLatch vs CyclicBarrier</h3></div><div class="faq-body"><pre><code>CountDownLatch l = new CountDownLatch(3); // one waits for N
+CyclicBarrier b = new CyclicBarrier(3);   // N wait for each other (reusable)</code></pre></div></div>
+<div class="faq" id="q14"><div class="faq-header"><div class="faq-num">14</div><h3>Semaphore</h3></div><div class="faq-body"><pre><code>Semaphore s = new Semaphore(5);
+s.acquire(); try { use(); } finally { s.release(); }</code></pre></div></div>
+<div class="faq" id="q15"><div class="faq-header"><div class="faq-num">15</div><h3>CompletableFuture <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body"><pre><code>CompletableFuture.supplyAsync(() -&gt; fetchUser(id))
+  .thenApply(u -&gt; u.getEmail())
+  .thenApply(String::toUpperCase)
+  .exceptionally(ex -&gt; "fallback@mail.com")
+  .thenAccept(System.out::println);
+f1.thenCombine(f2, (a,b) -&gt; a+b);
+CompletableFuture.allOf(f1,f2,f3).join();</code></pre><table><tbody><tr><th>Method</th><th>Use</th></tr><tr><td>thenApply</td><td>Transform T-&gt;U</td></tr><tr><td>thenAccept</td><td>Consume T</td></tr><tr><td>thenCompose</td><td>FlatMap</td></tr><tr><td>thenCombine</td><td>Merge two</td></tr><tr><td>exceptionally</td><td>Error recovery</td></tr><tr><td>handle</td><td>Both cases</td></tr></tbody></table></div></div>
+<div class="faq" id="q16"><div class="faq-header"><div class="faq-num">16</div><h3>ThreadLocal <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body"><pre><code>ThreadLocal&lt;User&gt; ctx = new ThreadLocal&lt;&gt;();
+try { ctx.set(user); process(); }
+finally { ctx.remove(); } // MUST in pools!</code></pre><div class="warn">Memory leak in thread pools! Always remove() in finally.</div></div></div>
+<div class="faq" id="q17"><div class="faq-header"><div class="faq-num">17</div><h3>Fork/Join</h3></div><div class="faq-body"><pre><code>class Sum extends RecursiveTask&lt;Long&gt; {
+  protected Long compute() {
+    if (small) return direct();
+    Sum left = new Sum(half1); left.fork();
+    long r = new Sum(half2).compute();
+    return left.join() + r;
+  }
+}
+ForkJoinPool.commonPool().invoke(task);</code></pre></div></div>
+<div class="faq" id="q18"><div class="faq-header"><div class="faq-num">18</div><h3>Virtual Threads (Java 21+) <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body"><pre><code>Thread.ofVirtual().start(() -&gt; work());
+try (var e = Executors.newVirtualThreadPerTaskExecutor()) {
+  for (int i=0; i&lt;100_000; i++)
+    e.submit(() -&gt; { Thread.sleep(1000); return db(); });
+}</code></pre><table><tbody><tr><th></th><th>Platform</th><th>Virtual</th></tr><tr><td>By</td><td>OS</td><td>JVM</td></tr><tr><td>Memory</td><td>~1MB</td><td>~KB</td></tr><tr><td>Count</td><td>Thousands</td><td>Millions</td></tr><tr><td>Block</td><td>Wastes thread</td><td>Unmounts</td></tr></tbody></table><div class="tip">Handle 100K+ concurrent I/O requests with virtual threads!</div></div></div>
+<div class="faq" id="q19"><div class="faq-header"><div class="faq-num">19</div><h3>Concurrent Collections</h3></div><div class="faq-body"><table><tbody><tr><th>Unsafe</th><th>Safe</th></tr><tr><td>ArrayList</td><td>CopyOnWriteArrayList</td></tr><tr><td>HashMap</td><td>ConcurrentHashMap</td></tr><tr><td>TreeMap</td><td>ConcurrentSkipListMap</td></tr><tr><td>Queue</td><td>BlockingQueue</td></tr></tbody></table></div></div>
+<div class="faq" id="q20"><div class="faq-header"><div class="faq-num">20</div><h3>BlockingQueue</h3></div><div class="faq-body"><pre><code>BlockingQueue&lt;String&gt; q = new LinkedBlockingQueue&lt;&gt;(10);
+q.put("x");  // blocks if full
+q.take();     // blocks if empty</code></pre></div></div>
+<div class="faq" id="q21"><div class="faq-header"><div class="faq-num">21</div><h3>Double-Checked Locking <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body"><pre><code>private static volatile Singleton inst;
+public static Singleton get() {
+  if (inst == null) {
+    synchronized (Singleton.class) {
+      if (inst == null) inst = new Singleton();
+    }
+  }
+  return inst;
+} // volatile prevents reordering!</code></pre></div></div>
+<div class="faq" id="q22"><div class="faq-header"><div class="faq-num">22</div><h3>Best Practices <span class="tag tag-imp">MUST KNOW</span></h3></div><div class="faq-body"><div class="tip">1. ExecutorService over raw threads<br>2. CompletableFuture for async<br>3. Concurrent collections over sync wrappers<br>4. Atomic classes for simple ops<br>5. Minimize sync scope<br>6. Lock ordering prevents deadlock<br>7. Always remove ThreadLocal<br>8. volatile for flags<br>9. Prefer immutable objects<br>10. Always shutdown executors<br>11. Virtual Threads for I/O (21+)<br>12. Name threads for debugging<br>13. Handle InterruptedException properly<br>14. Use tryLock with timeout</div></div></div>
+
+<div class="faq" id="q23"><div class="faq-header"><div class="faq-num">23</div><h3>Java Memory Model (JMM) - happens-before <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// JMM defines when one thread's write is VISIBLE to another thread's read
+// "happens-before" = guarantee of visibility
+
+// These establish happens-before:
+// 1. synchronized exit -&gt; next synchronized entry (same lock)
+// 2. volatile write -&gt; next volatile read (same var)
+// 3. Thread.start() -&gt; everything in run()
+// 4. Everything in run() -&gt; Thread.join() returns
+// 5. Final field write in constructor -&gt; any read after constructor
+
+volatile boolean ready = false;
+int data = 0;
+// Thread A:
+data = 42; ready = true;       // volatile write
+// Thread B:
+if (ready) print(data);        // GUARANTEED to see 42</code></pre>
+<div class="diagram">
+Without guarantee:              With volatile/sync:
+Thread A: data=42, ready=true   Thread A: data=42, ready=true
+Thread B: ready=true, data=0    Thread B: ready=true, data=42
+               STALE!                         CORRECT!
+</div>
+</div></div>
+
+<div class="faq" id="q24"><div class="faq-header"><div class="faq-num">24</div><h3>Daemon Thread vs User Thread <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>Thread daemon = new Thread(() -&gt; {
+    while (true) { cleanup(); sleep(5000); }
+});
+daemon.setDaemon(true); // MUST set BEFORE start()!
+daemon.start();
+// JVM exits even if daemon threads are still running
+// Examples: GC thread, Finalizer thread</code></pre>
+<table><tbody><tr><th></th><th>User Thread</th><th>Daemon Thread</th></tr>
+<tr><td>JVM waits?</td><td>Yes</td><td>No</td></tr>
+<tr><td>Use</td><td>Business logic</td><td>Background tasks</td></tr>
+<tr><td>Abrupt stop?</td><td>No</td><td>Yes (on JVM exit)</td></tr></tbody></table>
+</div></div>
+
+<div class="faq" id="q25"><div class="faq-header"><div class="faq-num">25</div><h3>InterruptedException handling <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// WRONG: swallowing interrupt
+try { Thread.sleep(1000); }
+catch (InterruptedException e) { } // BAD!
+
+// RIGHT: re-interrupt (restore flag)
+try { Thread.sleep(1000); }
+catch (InterruptedException e) {
+    Thread.currentThread().interrupt(); // restore flag
+    return;
+}
+
+// RIGHT: propagate
+void process() throws InterruptedException {
+    Thread.sleep(1000);
+}
+
+// Non-blocking check:
+while (!Thread.currentThread().isInterrupted()) { doWork(); }</code></pre>
+</div></div>
+
+<div class="faq" id="q26"><div class="faq-header"><div class="faq-num">26</div><h3>StampedLock (Java 8+)</h3></div><div class="faq-body">
+<pre><code>StampedLock lock = new StampedLock();
+// Optimistic read (NO locking! Ultra fast)
+long stamp = lock.tryOptimisticRead();
+double x = this.x; double y = this.y;
+if (!lock.validate(stamp)) {         // write happened?
+    stamp = lock.readLock();          // fallback to read lock
+    try { x = this.x; y = this.y; }
+    finally { lock.unlockRead(stamp); }
+}
+// Write lock
+long ws = lock.writeLock();
+try { this.x = newX; } finally { lock.unlockWrite(ws); }</code></pre>
+<table><tbody><tr><th></th><th>ReadWriteLock</th><th>StampedLock</th></tr>
+<tr><td>Optimistic read</td><td>No</td><td>Yes</td></tr>
+<tr><td>Reentrant</td><td>Yes</td><td>No</td></tr>
+<tr><td>Performance</td><td>Good</td><td>Better (read-heavy)</td></tr></tbody></table>
+</div></div>
+
+<div class="faq" id="q27"><div class="faq-header"><div class="faq-num">27</div><h3>Phaser and Exchanger</h3></div><div class="faq-body">
+<pre><code>// Phaser: flexible CyclicBarrier (dynamic registration)
+Phaser phaser = new Phaser(1);
+for (int i = 0; i &lt; 3; i++) {
+    phaser.register();
+    new Thread(() -&gt; {
+        phaser.arriveAndAwaitAdvance(); // phase 1
+        doWork();
+        phaser.arriveAndDeregister();
+    }).start();
+}
+phaser.arriveAndDeregister();
+
+// Exchanger: two threads swap data
+Exchanger&lt;String&gt; ex = new Exchanger&lt;&gt;();
+// T1: String got = ex.exchange("from T1");
+// T2: String got = ex.exchange("from T2");</code></pre>
+</div></div>
+
+<div class="faq" id="q28"><div class="faq-header"><div class="faq-num">28</div><h3>Custom ThreadFactory</h3></div><div class="faq-body">
+<pre><code>ThreadFactory factory = r -&gt; {
+    Thread t = new Thread(r, "order-proc-" + counter.incrementAndGet());
+    t.setDaemon(false);
+    t.setUncaughtExceptionHandler((th, ex) -&gt;
+        log.error("Thread {} failed", th.getName(), ex));
+    return t;
+};
+ExecutorService pool = Executors.newFixedThreadPool(10, factory);
+// Thread dumps show: "order-proc-1" instead of "pool-1-thread-3"</code></pre>
+</div></div>
+
+<div class="faq" id="q29"><div class="faq-header"><div class="faq-num">29</div><h3>Parallel Streams Thread Safety <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// DANGER: non-thread-safe operations
+List&lt;String&gt; results = new ArrayList&lt;&gt;(); // NOT safe!
+list.parallelStream().forEach(results::add); // RACE CONDITION!
+
+// FIX: use thread-safe collector
+List&lt;String&gt; safe = list.parallelStream().collect(Collectors.toList());
+
+// When to use parallel streams:
+// YES: large datasets (10K+), CPU-intensive per element, no shared state
+// NO: small datasets, I/O ops (use virtual threads), order-dependent</code></pre>
+</div></div>
+
+<div class="faq" id="q30"><div class="faq-header"><div class="faq-num">30</div><h3>CompletableFuture Advanced Patterns <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// Timeout (Java 9+)
+cf.orTimeout(5, TimeUnit.SECONDS);
+cf.completeOnTimeout("default", 5, TimeUnit.SECONDS);
+
+// Collect all results
+List&lt;CompletableFuture&lt;String&gt;&gt; futures = ids.stream()
+    .map(id -&gt; supplyAsync(() -&gt; fetch(id))).collect(toList());
+List&lt;String&gt; results = futures.stream()
+    .map(CompletableFuture::join).collect(toList());
+
+// Custom executor (DON'T use common pool for I/O!)
+ExecutorService ioPool = Executors.newFixedThreadPool(50);
+supplyAsync(() -&gt; dbCall(), ioPool);
+
+// Retry pattern
+CompletableFuture&lt;String&gt; retry(Supplier&lt;String&gt; op, int n) {
+    return supplyAsync(op).exceptionally(ex -&gt;
+        n &gt; 0 ? retry(op, n-1).join() : null);
+}</code></pre>
+</div></div>
+
+<div class="faq" id="q31"><div class="faq-header"><div class="faq-num">31</div><h3>Producer-Consumer Pattern <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>BlockingQueue&lt;Order&gt; queue = new LinkedBlockingQueue&lt;&gt;(100);
+
+// Producer
+class Producer implements Runnable {
+    public void run() {
+        while (running) queue.put(receiveOrder()); // blocks if full
+    }
+}
+// Consumer
+class Consumer implements Runnable {
+    public void run() {
+        while (running) processOrder(queue.take()); // blocks if empty
+    }
+}
+// 1 producer, 3 consumers
+executor.submit(new Producer());
+for (int i = 0; i &lt; 3; i++) executor.submit(new Consumer());</code></pre>
+</div></div>
+
+<div class="faq" id="q32"><div class="faq-header"><div class="faq-num">32</div><h3>Race Condition Example and Fix <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>class BankAccount {
+    private int balance = 1000;
+
+    // WRONG: check-then-act NOT atomic!
+    void withdraw(int amt) {
+        if (balance &gt;= amt) { // T1: 1000&gt;=800 YES
+            // T2 also checks: 1000&gt;=800 YES (interleaved!)
+            balance -= amt;    // T1: 200, T2: 200-800 = -600! BUG
+        }
+    }
+
+    // FIX: synchronized
+    synchronized void withdraw(int amt) {
+        if (balance &gt;= amt) balance -= amt;
+    }
+}</code></pre>
+</div></div>
+
+<div class="faq" id="q33"><div class="faq-header"><div class="faq-num">33</div><h3>ScheduledExecutorService</h3></div><div class="faq-body">
+<pre><code>ScheduledExecutorService sched = Executors.newScheduledThreadPool(2);
+
+sched.schedule(() -&gt; cleanup(), 5, TimeUnit.SECONDS);       // once
+sched.scheduleAtFixedRate(() -&gt; heartbeat(), 0, 10, SECONDS);  // start-to-start
+sched.scheduleWithFixedDelay(() -&gt; poll(), 0, 10, SECONDS);    // end-to-start
+
+// CRITICAL: if task throws exception, future runs SILENTLY CANCELLED!
+sched.scheduleAtFixedRate(() -&gt; {
+    try { riskyTask(); }
+    catch (Exception e) { log.error("Failed", e); }
+}, 0, 10, SECONDS);</code></pre>
+</div></div>
+
+<div class="faq" id="q34"><div class="faq-header"><div class="faq-num">34</div><h3>Structured Concurrency (Java 21+ Preview) <span class="tag tag-imp">NEW</span></h3></div><div class="faq-body">
+<pre><code>try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
+    Subtask&lt;User&gt; user = scope.fork(() -&gt; fetchUser(id));
+    Subtask&lt;Order&gt; order = scope.fork(() -&gt; fetchOrder(id));
+    scope.join();          // wait for both
+    scope.throwIfFailed(); // propagate errors
+    return new UserOrder(user.get(), order.get());
+}
+// If either fails: other is cancelled automatically!
+// No leaked threads, no orphan tasks</code></pre>
+</div></div>
+
+<div class="faq" id="q35"><div class="faq-header"><div class="faq-num">35</div><h3>Thread Dump Analysis <span class="tag tag-imp">PRODUCTION</span></h3></div><div class="faq-body">
+<pre><code>// Get dump: jstack &lt;pid&gt; | jcmd &lt;pid&gt; Thread.print | kill -3 &lt;pid&gt;
+// Look for:
+// BLOCKED: waiting for lock
+// WAITING: in wait()
+// "Found one Java-level deadlock:" = deadlock detected
+
+// High CPU thread:
+// 1. top -H -p &lt;pid&gt; (find thread ID)
+// 2. printf '%x\n' &lt;tid&gt; (convert to hex)
+// 3. Find "nid=0x&lt;hex&gt;" in dump</code></pre>
+</div></div>
+
+<div class="faq" id="q36"><div class="faq-header"><div class="faq-num">36</div><h3>Immutable Objects are Thread-Safe <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// Immutable = no state change = no sync needed
+public final class Money {               // final class
+    private final BigDecimal amount;      // final fields
+    private final String currency;
+    public Money(BigDecimal a, String c) { amount=a; currency=c; }
+    // No setters! New instances for changes:
+    public Money add(Money o) { return new Money(amount.add(o.amount), currency); }
+}
+// Java records (16+) are automatically immutable:
+record Point(int x, int y) { }</code></pre>
+</div></div>
+
+<div class="faq" id="q37"><div class="faq-header"><div class="faq-num">37</div><h3>Thread Pool Sizing Formula <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// Brian Goetz formula: Threads = N_cpu * U_cpu * (1 + W/C)
+// N_cpu = CPUs, U_cpu = target utilization, W/C = wait/compute ratio
+int cpus = Runtime.getRuntime().availableProcessors();</code></pre>
+<table><tbody><tr><th>Task Type</th><th>W/C</th><th>Pool (8 CPU)</th></tr>
+<tr><td>CPU-bound</td><td>~0</td><td>9</td></tr>
+<tr><td>I/O moderate</td><td>~1</td><td>16</td></tr>
+<tr><td>I/O heavy</td><td>~10</td><td>88</td></tr>
+<tr><td>Network calls</td><td>~50</td><td>Virtual threads!</td></tr></tbody></table>
+</div></div>
+
+<div class="faq" id="q38"><div class="faq-header"><div class="faq-num">38</div><h3>ConcurrentHashMap Internals <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// Java 8+: per-bucket (node) locking using CAS + synchronized
+ConcurrentHashMap&lt;String, Integer&gt; map = new ConcurrentHashMap&lt;&gt;();
+map.putIfAbsent("key", 1);
+map.compute("key", (k, v) -&gt; v == null ? 1 : v + 1); // atomic!
+map.merge("key", 1, Integer::sum);
+
+// Bulk parallel ops (Java 8+):
+map.forEach(2, (k, v) -&gt; process(k, v));     // parallelism threshold=2
+map.search(2, (k, v) -&gt; v &gt; 100 ? k : null);
+map.reduce(2, (k, v) -&gt; v, Integer::sum);</code></pre>
+<div class="warn">ConcurrentHashMap: NO null keys or values! NullPointerException.</div>
+</div></div>
+
+<div class="faq" id="q39"><div class="faq-header"><div class="faq-num">39</div><h3>Work Stealing Pool</h3></div><div class="faq-body">
+<pre><code>ExecutorService pool = Executors.newWorkStealingPool();
+// Each thread has own deque; idle threads steal from busy threads
+
+// Customize common pool (for parallel streams):
+// -Djava.util.concurrent.ForkJoinPool.common.parallelism=16
+
+// Custom pool for parallel stream:
+ForkJoinPool custom = new ForkJoinPool(32);
+List&lt;String&gt; r = custom.submit(() -&gt;
+    list.parallelStream().map(this::process).collect(toList())
+).get();</code></pre>
+</div></div>
+
+<div class="faq" id="q40"><div class="faq-header"><div class="faq-num">40</div><h3>Quick Interview Q&amp;A Table <span class="tag tag-imp">MUST KNOW</span></h3></div><div class="faq-body">
+<table><tbody><tr><th>Question</th><th>Answer</th></tr>
+<tr><td>start() vs run()</td><td>start() = new thread; run() = same thread</td></tr>
+<tr><td>Start thread twice?</td><td>No: IllegalThreadStateException</td></tr>
+<tr><td>sync method vs block?</td><td>Block is finer-grained, preferred</td></tr>
+<tr><td>Thread starvation?</td><td>Thread never gets CPU/lock</td></tr>
+<tr><td>Thread-safe?</td><td>Correct under concurrent access</td></tr>
+<tr><td>Race condition?</td><td>Output depends on timing</td></tr>
+<tr><td>notify vs notifyAll?</td><td>notify=1 thread; notifyAll=all</td></tr>
+<tr><td>What is CAS?</td><td>CPU instruction for lock-free atomics</td></tr>
+<tr><td>False sharing?</td><td>Cache line contention on adjacent memory</td></tr>
+<tr><td>Thread confinement?</td><td>Data used by only one thread</td></tr>
+<tr><td>Spin lock?</td><td>Busy-wait loop for very short waits</td></tr>
+<tr><td>Memory barrier?</td><td>CPU instruction for visibility across cores</td></tr></tbody></table>
+</div></div>
+
+</div>
+<div style="text-align:center;padding:40px;opacity:0.4"><a href="file:///C:/temp/java-faq/Java_Collections_FAQ.html" style="color:#8be9fd">← Collections</a> | <a href="file:///C:/temp/java-faq/Java_FAQ_Index.html" style="color:#8be9fd">Index</a></div>
+
+</body></html>

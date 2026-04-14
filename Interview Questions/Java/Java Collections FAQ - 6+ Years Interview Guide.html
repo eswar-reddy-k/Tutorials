@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)file:///C:/temp/java-faq/Java_Collections_FAQ.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Java Collections FAQ - 6+ Years Interview Guide</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',Tahoma,sans-serif;background:#0a0a1a;color:#e0e0e0;line-height:1.7}.nav{background:linear-gradient(135deg,#00cec9,#0984e3);padding:15px 30px;position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center}.nav a{color:#fff;text-decoration:none;font-weight:700}.hero{background:linear-gradient(135deg,#00cec9,#0984e3);padding:60px 30px;text-align:center}.hero h1{font-size:2.8rem;margin-bottom:10px}.hero p{font-size:1.1rem;opacity:0.9}.container{max-width:1100px;margin:0 auto;padding:30px 20px}.faq{background:linear-gradient(145deg,#12121f,#1a1a2e);border:1px solid #222;border-radius:15px;margin-bottom:25px;overflow:hidden}.faq:hover{border-color:#00cec944}.faq-header{background:#161625;padding:20px 25px;display:flex;align-items:center;gap:15px}.faq-num{background:linear-gradient(135deg,#00cec9,#0984e3);color:#fff;min-width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800}.faq-header h3{color:#fff;font-size:1.15rem;flex:1}.faq-body{padding:25px}.section{margin-bottom:20px}.section-title{display:flex;align-items:center;gap:8px;font-weight:700;font-size:1rem;margin-bottom:10px;padding:8px 12px;border-radius:8px}.what{color:#8be9fd;background:#8be9fd15}.why{color:#50fa7b;background:#50fa7b15}.mistake{color:#ff5555;background:#ff555515}.best{color:#50fa7b;background:#50fa7b15}pre{background:#0d0d1a;border:1px solid #333;border-radius:10px;padding:18px;overflow-x:auto;margin:10px 0;font-size:0.88rem;line-height:1.6}code{font-family:'Cascadia Code',monospace;color:#f8f8f2}table{width:100%;border-collapse:collapse;margin:10px 0;font-size:0.9rem}th{background:#1a1a2e;color:#00cec9;padding:10px 14px;text-align:left;border:1px solid #333}td{padding:10px 14px;border:1px solid #222;background:#111}.diagram{background:#0d0d1a;border:1px solid #444;border-radius:10px;padding:20px;margin:10px 0;font-family:monospace;font-size:0.83rem;white-space:pre;overflow-x:auto;line-height:1.5;color:#8be9fd}.tag{display:inline-block;padding:2px 10px;border-radius:12px;font-size:0.75rem;font-weight:600;margin:2px}.tag-hot{background:#ff555533;color:#ff5555}.tag-imp{background:#ffb86c33;color:#ffb86c}.tip{background:#50fa7b15;border-left:4px solid #50fa7b;padding:12px 18px;border-radius:0 8px 8px 0;margin:10px 0}.warn{background:#ff555515;border-left:4px solid #ff5555;padding:12px 18px;border-radius:0 8px 8px 0;margin:10px 0}
+</style>
+</head>
+<body>
+<div class="nav"><a href="file:///C:/temp/java-faq/Java_FAQ_Index.html">← Index</a><a>📦 Collections FAQ</a></div>
+<div class="hero"><h1>📦 Collections Framework Deep Dive</h1><p>45+ Questions | List, Set, Map, Queue, HashMap Internals, Generics, Concurrent Collections</p></div>
+<div class="container">
+
+<div class="faq" id="q1"><div class="faq-header"><div class="faq-num">1</div><h3>Collections Framework Hierarchy <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<div class="diagram">
+                        Iterable
+                           |
+                       Collection
+                      /    |    \
+                   List   Set   Queue
+                  / | \    |  \    |  \
+         ArrayList  |  \  HashSet | PriorityQueue  Deque
+         LinkedList |   \  |    TreeSet            / \
+         Vector  CopyOnWrite  LinkedHashSet  ArrayDeque LinkedList
+            |     ArrayList
+          Stack
+
+                        Map (separate hierarchy, NOT Collection!)
+                      /    |    \
+                HashMap  TreeMap  LinkedHashMap
+                   |
+           ConcurrentHashMap
+                   |
+              WeakHashMap
+</div>
+</div></div>
+
+<div class="faq" id="q2"><div class="faq-header"><div class="faq-num">2</div><h3>List vs Set vs Map vs Queue <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<table><tbody><tr><th>Interface</th><th>Duplicates</th><th>Order</th><th>Null</th><th>Use Case</th></tr>
+<tr><td>List</td><td>Yes</td><td>Insertion order</td><td>Yes</td><td>Ordered collection, access by index</td></tr>
+<tr><td>Set</td><td>No</td><td>Depends on impl</td><td>Depends</td><td>Unique elements</td></tr>
+<tr><td>Map</td><td>Keys: No, Values: Yes</td><td>Depends on impl</td><td>Depends</td><td>Key-value pairs</td></tr>
+<tr><td>Queue</td><td>Yes</td><td>FIFO (usually)</td><td>Depends</td><td>Processing order</td></tr></tbody></table>
+</div></div>
+
+<div class="faq" id="q3"><div class="faq-header"><div class="faq-num">3</div><h3>ArrayList vs LinkedList <span class="tag tag-hot">HOT</span><span class="tag tag-imp">MUST KNOW</span></h3></div><div class="faq-body">
+<table><tbody><tr><th>Operation</th><th>ArrayList</th><th>LinkedList</th></tr>
+<tr><td>Internal structure</td><td>Dynamic array</td><td>Doubly-linked list</td></tr>
+<tr><td>get(index)</td><td>O(1) - direct index</td><td>O(n) - traverse from head/tail</td></tr>
+<tr><td>add(end)</td><td>O(1) amortized</td><td>O(1)</td></tr>
+<tr><td>add(middle)</td><td>O(n) - shift elements</td><td>O(1) - if at node, O(n) to find</td></tr>
+<tr><td>remove(middle)</td><td>O(n) - shift elements</td><td>O(1) - if at node</td></tr>
+<tr><td>Memory</td><td>Less (contiguous array)</td><td>More (node + 2 pointers per element)</td></tr>
+<tr><td>Cache friendly</td><td>Yes (contiguous memory)</td><td>No (scattered nodes)</td></tr>
+<tr><td>Implements</td><td>List, RandomAccess</td><td>List, Deque, Queue</td></tr></tbody></table>
+<pre><code>// ArrayList: DEFAULT choice for most cases
+List&lt;String&gt; names = new ArrayList&lt;&gt;();
+names.add("Alice");       // O(1)
+names.get(0);             // O(1) fast random access
+names.add(0, "Bob");      // O(n) shift all elements right
+
+// LinkedList: Only when frequent insert/remove at both ends
+Deque&lt;String&gt; deque = new LinkedList&lt;&gt;();
+deque.addFirst("First");  // O(1)
+deque.addLast("Last");    // O(1)
+deque.removeFirst();      // O(1)</code></pre>
+<div class="tip"><b>In practice, ArrayList wins almost always</b> due to CPU cache locality. Even for insert/remove, array shifting is fast because of contiguous memory. Use LinkedList only as a Deque.</div>
+</div></div>
+
+<div class="faq" id="q4"><div class="faq-header"><div class="faq-num">4</div><h3>ArrayList internal working <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// ArrayList uses Object[] internally
+// Default initial capacity: 10
+ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;();     // capacity=10
+ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;(100);  // capacity=100
+
+// When array is full: grows by 50%
+// newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1)
+// 10 -&gt; 15 -&gt; 22 -&gt; 33 -&gt; 49 -&gt; ...
+
+// This is why pre-sizing matters for large lists:
+List&lt;Integer&gt; bigList = new ArrayList&lt;&gt;(100000); // Avoids resizing</code></pre>
+<div class="diagram">
+ Initial: [_, _, _, _, _, _, _, _, _, _]  capacity=10, size=0
+ Add 3:   [A, B, C, _, _, _, _, _, _, _]  capacity=10, size=3
+ Add 10:  [A, B, C, D, E, F, G, H, I, J] capacity=10, size=10
+ Add 11:  [A, B, C, D, E, F, G, H, I, J, K, _, _, _, _]
+          capacity=15 (grew 50%), size=11
+          Old array is copied to new larger array (Arrays.copyOf)
+</div>
+</div></div>
+
+<div class="faq" id="q5"><div class="faq-header"><div class="faq-num">5</div><h3>HashMap Internal Working <span class="tag tag-hot">HOT</span><span class="tag tag-imp">MUST KNOW</span></h3></div><div class="faq-body">
+<div class="section"><div class="section-title what">How HashMap works step-by-step</div></div>
+<div class="diagram">
+ HashMap internals: Array of Node (bucket array)
+
+ Index:  [0]  [1]  [2]  [3]  [4]  [5]  [6]  [7]  ...  [15]
+          |         |                   |
+         null      Node              Node
+                  (K1,V1)           (K3,V3)
+                    |                 |
+                  Node              Node
+                 (K2,V2)           (K4,V4)
+                  (collision:       (linked list for collisions)
+                   linked list)
+
+ Java 8+: When a bucket has &gt; 8 nodes, linked list -&gt; RED-BLACK TREE (O(n)-&gt;O(log n))
+</div>
+<pre><code>// Step-by-step: map.put("John", 30)
+// 1. Calculate hashCode: "John".hashCode() = 2314539
+// 2. Calculate bucket index: hash &amp; (capacity-1) = 2314539 &amp; 15 = 11
+// 3. Go to bucket[11]
+// 4. If empty: create new Node(hash, "John", 30, null)
+// 5. If occupied: traverse linked list
+//    - If key found (equals()): replace value
+//    - If key not found: add to end (Java 8) or beginning (Java 7)
+
+// Step-by-step: map.get("John")
+// 1. Calculate hashCode, then bucket index (same as put)
+// 2. Go to bucket[11]
+// 3. Compare: first node's hash == key.hashCode() AND key.equals(nodeKey)?
+// 4. If match: return value
+// 5. If not: traverse to next node. Repeat.
+
+// CRITICAL: This is why equals() and hashCode() contract matters!
+// Bad hashCode = all keys in one bucket = O(n) instead of O(1)</code></pre>
+<table><tbody><tr><th>Property</th><th>Value</th></tr>
+<tr><td>Default capacity</td><td>16 (must be power of 2)</td></tr>
+<tr><td>Load factor</td><td>0.75 (rehash when 75% full)</td></tr>
+<tr><td>Treeify threshold</td><td>8 (linked list to tree)</td></tr>
+<tr><td>Untreeify threshold</td><td>6 (tree back to list)</td></tr>
+<tr><td>Growth</td><td>Double capacity on rehash</td></tr></tbody></table>
+</div></div>
+
+<div class="faq" id="q6"><div class="faq-header"><div class="faq-num">6</div><h3>HashSet Internal Working</h3></div><div class="faq-body">
+<pre><code>// SURPRISE: HashSet uses HashMap internally!
+// Elements stored as KEYS, value is a dummy constant object
+// HashSet&lt;E&gt; = HashMap&lt;E, Object&gt; where value = PRESENT (dummy)
+
+HashSet&lt;String&gt; set = new HashSet&lt;&gt;();
+set.add("Hello"); // Internally: map.put("Hello", PRESENT)
+set.contains("Hello"); // Internally: map.containsKey("Hello")</code></pre>
+</div></div>
+
+<div class="faq" id="q7"><div class="faq-header"><div class="faq-num">7</div><h3>HashMap vs LinkedHashMap vs TreeMap <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<table><tbody><tr><th>Feature</th><th>HashMap</th><th>LinkedHashMap</th><th>TreeMap</th></tr>
+<tr><td>Order</td><td>No order</td><td>Insertion order</td><td>Sorted (natural/comparator)</td></tr>
+<tr><td>Null keys</td><td>1 allowed</td><td>1 allowed</td><td>No (throws NPE)</td></tr>
+<tr><td>get/put</td><td>O(1)</td><td>O(1)</td><td>O(log n)</td></tr>
+<tr><td>Implements</td><td>Map</td><td>Map</td><td>NavigableMap, SortedMap</td></tr>
+<tr><td>Internal</td><td>Array + LinkedList/Tree</td><td>HashMap + Doubly-linked list</td><td>Red-Black Tree</td></tr>
+<tr><td>Use case</td><td>General purpose</td><td>Cache (LRU), maintain order</td><td>Sorted keys, range queries</td></tr></tbody></table>
+<pre><code>// LinkedHashMap as LRU Cache
+LinkedHashMap&lt;String, String&gt; lru = new LinkedHashMap&lt;&gt;(16, 0.75f, true) {
+    @Override
+    protected boolean removeEldestEntry(Map.Entry&lt;String, String&gt; eldest) {
+        return size() &gt; 100; // Remove oldest when size exceeds 100
+    }
+};
+
+// TreeMap: sorted operations
+TreeMap&lt;Integer, String&gt; tree = new TreeMap&lt;&gt;();
+tree.put(3, "C"); tree.put(1, "A"); tree.put(2, "B");
+tree.firstKey();       // 1
+tree.lastKey();        // 3
+tree.subMap(1, 3);     // {1=A, 2=B} (range query)</code></pre>
+</div></div>
+
+<div class="faq" id="q8"><div class="faq-header"><div class="faq-num">8</div><h3>ConcurrentHashMap <span class="tag tag-hot">HOT</span><span class="tag tag-imp">MUST KNOW</span></h3></div><div class="faq-body">
+<div class="section"><div class="section-title what">What is it?</div>Thread-safe Map without locking the entire map. Uses fine-grained locking (per bucket/node in Java 8+).</div>
+<table><tbody><tr><th>Feature</th><th>HashMap</th><th>Hashtable</th><th>ConcurrentHashMap</th></tr>
+<tr><td>Thread safe?</td><td>No</td><td>Yes (synchronized)</td><td>Yes (fine-grained)</td></tr>
+<tr><td>Null keys/values?</td><td>Yes/Yes</td><td>No/No</td><td>No/No</td></tr>
+<tr><td>Performance</td><td>Fastest (no sync)</td><td>Slow (full lock)</td><td>Fast (segment lock)</td></tr>
+<tr><td>Iterator</td><td>Fail-fast</td><td>Fail-fast</td><td>Weakly consistent</td></tr>
+<tr><td>Locking</td><td>None</td><td>Entire map</td><td>Per bucket (Java 8+)</td></tr></tbody></table>
+<pre><code>ConcurrentHashMap&lt;String, Integer&gt; map = new ConcurrentHashMap&lt;&gt;();
+map.put("count", 0);
+
+// Atomic operations (no separate lock needed!)
+map.putIfAbsent("count", 0);
+map.compute("count", (key, val) -&gt; val + 1);
+map.merge("count", 1, Integer::sum);
+
+// DON'T do this (not atomic!):
+map.put("count", map.get("count") + 1); // Race condition!</code></pre>
+</div></div>
+
+<div class="faq" id="q9"><div class="faq-header"><div class="faq-num">9</div><h3>HashSet vs LinkedHashSet vs TreeSet</h3></div><div class="faq-body">
+<table><tbody><tr><th>Feature</th><th>HashSet</th><th>LinkedHashSet</th><th>TreeSet</th></tr>
+<tr><td>Order</td><td>No order</td><td>Insertion order</td><td>Sorted</td></tr>
+<tr><td>Null</td><td>1 allowed</td><td>1 allowed</td><td>No</td></tr>
+<tr><td>Performance</td><td>O(1)</td><td>O(1)</td><td>O(log n)</td></tr>
+<tr><td>Internal</td><td>HashMap</td><td>LinkedHashMap</td><td>TreeMap</td></tr></tbody></table>
+</div></div>
+
+<div class="faq" id="q10"><div class="faq-header"><div class="faq-num">10</div><h3>Comparable vs Comparator <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<table><tbody><tr><th>Feature</th><th>Comparable</th><th>Comparator</th></tr>
+<tr><td>Package</td><td>java.lang</td><td>java.util</td></tr>
+<tr><td>Method</td><td>compareTo(T o)</td><td>compare(T o1, T o2)</td></tr>
+<tr><td>Modifies class?</td><td>Yes (implements in class)</td><td>No (external class/lambda)</td></tr>
+<tr><td>How many?</td><td>One natural ordering</td><td>Multiple custom orderings</td></tr>
+<tr><td>Used by</td><td>Collections.sort(), TreeSet</td><td>Collections.sort(list, comp)</td></tr></tbody></table>
+<pre><code>// Comparable: natural ordering (inside the class)
+public class Employee implements Comparable&lt;Employee&gt; {
+    String name; int salary;
+
+    @Override
+    public int compareTo(Employee other) {
+        return Integer.compare(this.salary, other.salary); // by salary
+    }
+}
+Collections.sort(employees); // Uses compareTo()
+
+// Comparator: custom ordering (external, multiple)
+Comparator&lt;Employee&gt; byName = Comparator.comparing(Employee::getName);
+Comparator&lt;Employee&gt; bySalaryDesc = Comparator.comparing(Employee::getSalary).reversed();
+Comparator&lt;Employee&gt; byNameThenSalary = byName.thenComparing(bySalaryDesc);
+
+employees.sort(byNameThenSalary); // Sort by name, then salary desc</code></pre>
+</div></div>
+
+<div class="faq" id="q11"><div class="faq-header"><div class="faq-num">11</div><h3>Iterator and ListIterator <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// Iterator: forward only, all Collections
+Iterator&lt;String&gt; it = list.iterator();
+while (it.hasNext()) {
+    String s = it.next();
+    if (s.equals("remove_me")) {
+        it.remove(); // SAFE removal during iteration!
+    }
+}
+
+// ListIterator: forward + backward, only Lists
+ListIterator&lt;String&gt; lit = list.listIterator();
+while (lit.hasNext()) {
+    String s = lit.next();
+    lit.set("modified");  // Replace current element
+    lit.add("new");       // Insert before current position
+}
+lit.previous(); // Go backward</code></pre>
+<div class="warn"><b>ConcurrentModificationException</b>: If you modify a collection directly during iteration (using list.remove() instead of iterator.remove()), you get this error! This is called <b>fail-fast</b> behavior.</div>
+</div></div>
+
+<div class="faq" id="q12"><div class="faq-header"><div class="faq-num">12</div><h3>fail-fast vs fail-safe Iterators <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<table><tbody><tr><th>Feature</th><th>Fail-Fast</th><th>Fail-Safe</th></tr>
+<tr><td>Throws ConcurrentModificationException?</td><td>Yes</td><td>No</td></tr>
+<tr><td>Works on</td><td>Original collection</td><td>Copy/snapshot of collection</td></tr>
+<tr><td>Collections</td><td>ArrayList, HashMap, HashSet</td><td>CopyOnWriteArrayList, ConcurrentHashMap</td></tr>
+<tr><td>Performance</td><td>Faster (no copy)</td><td>Slower (needs copy/snapshot)</td></tr></tbody></table>
+<pre><code>// FAIL-FAST: ConcurrentModificationException!
+List&lt;String&gt; list = new ArrayList&lt;&gt;(List.of("A","B","C"));
+for (String s : list) {
+    list.remove(s); // BOOM! ConcurrentModificationException
+}
+
+// FAIL-SAFE: No exception
+CopyOnWriteArrayList&lt;String&gt; safeList = new CopyOnWriteArrayList&lt;&gt;(List.of("A","B","C"));
+for (String s : safeList) {
+    safeList.remove(s); // OK - iterates on snapshot
+}</code></pre>
+</div></div>
+
+<div class="faq" id="q13"><div class="faq-header"><div class="faq-num">13</div><h3>Generics Basics <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<div class="section"><div class="section-title what">What are Generics?</div>Type parameters that let you write type-safe, reusable code without casting.</div>
+<pre><code>// WITHOUT generics (Java 1.4): unsafe, needs casting
+List list = new ArrayList();
+list.add("Hello");
+list.add(42);  // No compile error! Mixed types!
+String s = (String) list.get(1); // ClassCastException at RUNTIME!
+
+// WITH generics: type-safe at compile time
+List&lt;String&gt; list = new ArrayList&lt;&gt;();
+list.add("Hello");
+// list.add(42);  // COMPILE ERROR! Only String allowed.
+String s = list.get(0); // No cast needed!
+
+// Generic class
+public class Box&lt;T&gt; {
+    private T item;
+    public void set(T item) { this.item = item; }
+    public T get() { return item; }
+}
+Box&lt;String&gt; strBox = new Box&lt;&gt;();
+Box&lt;Integer&gt; intBox = new Box&lt;&gt;();</code></pre>
+</div></div>
+
+<div class="faq" id="q14"><div class="faq-header"><div class="faq-num">14</div><h3>Wildcards: ? extends and ? super <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// ? extends T = UPPER bound (read-only, producer)
+// "Anything that IS-A T or subclass of T"
+void printAll(List&lt;? extends Number&gt; list) {
+    for (Number n : list) {
+        System.out.println(n); // Can READ as Number
+    }
+    // list.add(42); // COMPILE ERROR! Can't write (don't know exact type)
+}
+printAll(List.of(1, 2, 3));     // List&lt;Integer&gt; OK
+printAll(List.of(1.0, 2.0));    // List&lt;Double&gt; OK
+
+// ? super T = LOWER bound (write-only, consumer)
+// "Anything that IS-A T or superclass of T"
+void addNumbers(List&lt;? super Integer&gt; list) {
+    list.add(42);    // Can WRITE Integers
+    list.add(100);
+    // Integer n = list.get(0); // ERROR! Can only get as Object
+}
+addNumbers(new ArrayList&lt;Number&gt;());  // OK
+addNumbers(new ArrayList&lt;Object&gt;());  // OK</code></pre>
+<div class="tip"><b>PECS: Producer Extends, Consumer Super</b><br>
+If you READ from collection: use <code>? extends T</code><br>
+If you WRITE to collection: use <code>? super T</code><br>
+If you do BOTH: use exact type <code>T</code>
+</div>
+</div></div>
+
+<div class="faq" id="q15"><div class="faq-header"><div class="faq-num">15</div><h3>Type Erasure</h3></div><div class="faq-body">
+<div class="section"><div class="section-title what">What is it?</div>Generics are a compile-time feature only. At runtime, type information is ERASED. <code>List&lt;String&gt;</code> becomes <code>List</code>.</div>
+<pre><code>// At compile time:
+List&lt;String&gt; strings = new ArrayList&lt;&gt;();
+List&lt;Integer&gt; ints = new ArrayList&lt;&gt;();
+
+// At runtime (after erasure):
+// Both become just List (raw type). Type info is gone!
+strings.getClass() == ints.getClass() // TRUE! Both are ArrayList.class
+
+// This is why you CAN'T do:
+// new T()          - type unknown at runtime
+// new T[]          - can't create generic array
+// instanceof List&lt;String&gt;  - type erased</code></pre>
+</div></div>
+
+<div class="faq" id="q16"><div class="faq-header"><div class="faq-num">16</div><h3>Collections utility class</h3></div><div class="faq-body">
+<pre><code>// Sorting
+Collections.sort(list);
+Collections.sort(list, Comparator.reverseOrder());
+
+// Searching
+int index = Collections.binarySearch(sortedList, "target");
+
+// Unmodifiable (returns read-only VIEW, Java 9+ use List.of())
+List&lt;String&gt; readOnly = Collections.unmodifiableList(list);
+List&lt;String&gt; immutable = List.of("A", "B", "C"); // Java 9+ truly immutable
+
+// Synchronized wrappers
+List&lt;String&gt; syncList = Collections.synchronizedList(new ArrayList&lt;&gt;());
+Map&lt;String,String&gt; syncMap = Collections.synchronizedMap(new HashMap&lt;&gt;());
+
+// Other
+Collections.frequency(list, "target"); // count occurrences
+Collections.disjoint(list1, list2);    // true if no common elements
+Collections.swap(list, 0, 1);
+Collections.rotate(list, 2);
+Collections.shuffle(list);</code></pre>
+</div></div>
+
+<div class="faq" id="q17"><div class="faq-header"><div class="faq-num">17</div><h3>List.of(), Map.of(), Set.of() (Java 9+) <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// Immutable collections (Java 9+)
+List&lt;String&gt; list = List.of("A", "B", "C");
+Set&lt;String&gt; set = Set.of("A", "B", "C");
+Map&lt;String, Integer&gt; map = Map.of("A", 1, "B", 2);
+
+// list.add("D");     // UnsupportedOperationException!
+// list.set(0, "Z");  // UnsupportedOperationException!
+// Null NOT allowed!
+
+// Java 10+: Copy
+List&lt;String&gt; copy = List.copyOf(mutableList); // immutable copy</code></pre>
+</div></div>
+
+<div class="faq" id="q18"><div class="faq-header"><div class="faq-num">18</div><h3>Queue and Deque</h3></div><div class="faq-body">
+<pre><code>// Queue: FIFO (First In, First Out)
+Queue&lt;String&gt; queue = new LinkedList&lt;&gt;();
+queue.offer("A"); queue.offer("B"); queue.offer("C");
+queue.poll();   // "A" (removes and returns head)
+queue.peek();   // "B" (returns head without removing)
+
+// PriorityQueue: Elements sorted by natural order or Comparator
+PriorityQueue&lt;Integer&gt; pq = new PriorityQueue&lt;&gt;();
+pq.offer(30); pq.offer(10); pq.offer(20);
+pq.poll(); // 10 (smallest first = min-heap)
+
+// Deque: Double-ended queue (can add/remove from both ends)
+Deque&lt;String&gt; deque = new ArrayDeque&lt;&gt;();
+deque.offerFirst("A"); deque.offerLast("B");
+deque.pollFirst(); // "A"
+deque.pollLast();  // "B"
+// ArrayDeque is faster than LinkedList as a Deque!</code></pre>
+<table><tbody><tr><th>Method</th><th>Throws Exception</th><th>Returns null/false</th></tr>
+<tr><td>Insert</td><td>add(e)</td><td>offer(e)</td></tr>
+<tr><td>Remove</td><td>remove()</td><td>poll()</td></tr>
+<tr><td>Examine</td><td>element()</td><td>peek()</td></tr></tbody></table>
+</div></div>
+
+<div class="faq" id="q19"><div class="faq-header"><div class="faq-num">19</div><h3>equals() and hashCode() contract for Collections <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// If you use custom objects as HashMap keys or in HashSet,
+// you MUST override both equals() AND hashCode()
+
+public class Employee {
+    private String id;
+    private String name;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Employee e)) return false;
+        return Objects.equals(id, e.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id); // MUST use same fields as equals!
+    }
+}
+
+// What happens without proper equals/hashCode:
+Set&lt;Employee&gt; set = new HashSet&lt;&gt;();
+set.add(new Employee("1", "John"));
+set.add(new Employee("1", "John"));
+// Without override: set.size() = 2 (treated as different!)
+// With proper override: set.size() = 1 (duplicates detected)</code></pre>
+</div></div>
+
+<div class="faq" id="q20"><div class="faq-header"><div class="faq-num">20</div><h3>How to choose the right Collection? <span class="tag tag-imp">DECISION TABLE</span></h3></div><div class="faq-body">
+<table><tbody><tr><th>Need</th><th>Use</th><th>Why</th></tr>
+<tr><td>Ordered list, fast random access</td><td>ArrayList</td><td>O(1) get, cache-friendly</td></tr>
+<tr><td>Frequent insert/delete at ends</td><td>ArrayDeque</td><td>O(1) both ends, better than LinkedList</td></tr>
+<tr><td>Unique elements, no order</td><td>HashSet</td><td>O(1) add/contains</td></tr>
+<tr><td>Unique elements, sorted</td><td>TreeSet</td><td>O(log n), NavigableSet</td></tr>
+<tr><td>Unique elements, insertion order</td><td>LinkedHashSet</td><td>O(1) + order</td></tr>
+<tr><td>Key-value, fast lookup</td><td>HashMap</td><td>O(1) get/put</td></tr>
+<tr><td>Key-value, sorted keys</td><td>TreeMap</td><td>O(log n), range queries</td></tr>
+<tr><td>Key-value, insertion order</td><td>LinkedHashMap</td><td>O(1) + order, LRU cache</td></tr>
+<tr><td>Thread-safe map</td><td>ConcurrentHashMap</td><td>Fine-grained locking</td></tr>
+<tr><td>Thread-safe list (read-heavy)</td><td>CopyOnWriteArrayList</td><td>Snapshot iteration</td></tr>
+<tr><td>Priority processing</td><td>PriorityQueue</td><td>Min/max heap</td></tr>
+<tr><td>FIFO queue</td><td>ArrayDeque</td><td>Faster than LinkedList</td></tr>
+<tr><td>Stack (LIFO)</td><td>ArrayDeque</td><td>Don't use java.util.Stack!</td></tr></tbody></table>
+</div></div>
+
+<div class="faq" id="q21"><div class="faq-header"><div class="faq-num">21</div><h3>Vector vs ArrayList vs CopyOnWriteArrayList</h3></div><div class="faq-body">
+<table><tbody><tr><th>Feature</th><th>ArrayList</th><th>Vector</th><th>CopyOnWriteArrayList</th></tr>
+<tr><td>Thread safe?</td><td>No</td><td>Yes (synchronized)</td><td>Yes (copy-on-write)</td></tr>
+<tr><td>Growth</td><td>50%</td><td>100% (doubles)</td><td>Copies entire array on write</td></tr>
+<tr><td>Performance</td><td>Fastest</td><td>Slow (full sync)</td><td>Fast reads, slow writes</td></tr>
+<tr><td>Use?</td><td>Default choice</td><td>Legacy - don't use</td><td>Read-heavy concurrent</td></tr></tbody></table>
+<div class="warn">Never use Vector or Hashtable in new code. They are legacy classes from Java 1.0. Use ArrayList + external sync or CopyOnWriteArrayList instead.</div>
+</div></div>
+
+<div class="faq" id="q22"><div class="faq-header"><div class="faq-num">22</div><h3>WeakHashMap</h3></div><div class="faq-body">
+<pre><code>// Keys are WeakReferences - entries auto-removed when key is GC'd
+WeakHashMap&lt;Object, String&gt; cache = new WeakHashMap&lt;&gt;();
+Object key = new Object();
+cache.put(key, "value");
+key = null; // Key now eligible for GC
+System.gc();
+// After GC: cache may be empty! Entry was auto-removed.
+
+// Use case: Metadata caches where you don't want to prevent GC of keys</code></pre>
+</div></div>
+
+<div class="faq" id="q23"><div class="faq-header"><div class="faq-num">23</div><h3>EnumSet and EnumMap</h3></div><div class="faq-body">
+<pre><code>enum Day { MON, TUE, WED, THU, FRI, SAT, SUN }
+
+// EnumSet: ultra-fast Set for enums (uses bit vector internally)
+EnumSet&lt;Day&gt; weekend = EnumSet.of(Day.SAT, Day.SUN);
+EnumSet&lt;Day&gt; weekdays = EnumSet.complementOf(weekend);
+EnumSet&lt;Day&gt; all = EnumSet.allOf(Day.class);
+
+// EnumMap: ultra-fast Map with enum keys (uses array internally)
+EnumMap&lt;Day, String&gt; schedule = new EnumMap&lt;&gt;(Day.class);
+schedule.put(Day.MON, "Meeting");
+// Faster than HashMap for enum keys!</code></pre>
+</div></div>
+
+<div class="faq" id="q24"><div class="faq-header"><div class="faq-num">24</div><h3>Stream API with Collections (Quick Reference)</h3></div><div class="faq-body">
+<pre><code>List&lt;Employee&gt; employees = getEmployees();
+
+// Filter + Map + Collect
+List&lt;String&gt; names = employees.stream()
+    .filter(e -&gt; e.getSalary() &gt; 50000)
+    .map(Employee::getName)
+    .sorted()
+    .collect(Collectors.toList());
+
+// Group by
+Map&lt;String, List&lt;Employee&gt;&gt; byDept = employees.stream()
+    .collect(Collectors.groupingBy(Employee::getDepartment));
+
+// Statistics
+IntSummaryStatistics stats = employees.stream()
+    .mapToInt(Employee::getSalary)
+    .summaryStatistics();
+stats.getAverage(); stats.getMax(); stats.getCount();
+
+// toMap
+Map&lt;String, Employee&gt; byId = employees.stream()
+    .collect(Collectors.toMap(Employee::getId, Function.identity()));</code></pre>
+</div></div>
+
+<div class="faq" id="q25"><div class="faq-header"><div class="faq-num">25</div><h3>Collections Best Practices <span class="tag tag-imp">MUST KNOW</span></h3></div><div class="faq-body">
+<div class="tip">
+<b>1.</b> Program to interface: <code>List&lt;String&gt; list = new ArrayList&lt;&gt;()</code> not <code>ArrayList&lt;String&gt;</code><br>
+<b>2.</b> Pre-size collections when you know the size<br>
+<b>3.</b> Use List.of(), Map.of() for immutable collections<br>
+<b>4.</b> Always override equals + hashCode for custom keys<br>
+<b>5.</b> Use ConcurrentHashMap, not synchronized HashMap<br>
+<b>6.</b> Use ArrayDeque instead of Stack<br>
+<b>7.</b> Use EnumSet/EnumMap for enum keys<br>
+<b>8.</b> Avoid modifying collections during iteration (use Iterator.remove())<br>
+<b>9.</b> Use Collections.unmodifiableXxx() for defensive copies<br>
+<b>10.</b> Prefer streams for complex transformations
+</div>
+</div></div>
+
+<div class="faq" id="q26"><div class="faq-header"><div class="faq-num">26</div><h3>HashMap Rehashing - How it works <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// When: size &gt; capacity * loadFactor (default: 16 * 0.75 = 12)
+// What happens:
+// 1. Create new array of double size (16 -&gt; 32)
+// 2. Recalculate bucket index for EVERY entry (hash &amp; (newCapacity-1))
+// 3. Move entries to new positions
+// This is O(n) and expensive! That's why pre-sizing matters.
+
+HashMap&lt;String, String&gt; map = new HashMap&lt;&gt;(1000); // avoid rehashing!
+// Also: loadFactor can be tuned
+// Lower (0.5): more memory, fewer collisions, faster get
+// Higher (1.0): less memory, more collisions, slower get</code></pre>
+<div class="diagram">
+Before rehash (capacity=4):         After rehash (capacity=8):
+[0] -&gt; A -&gt; C                       [0] -&gt; A
+[1] -&gt; B                            [1] -&gt; B
+[2] -&gt; null                         [2] -&gt; null
+[3] -&gt; D                            [3] -&gt; D
+                                    [4] -&gt; C   (rehashed from [0])
+                                    [5-7] -&gt; null
+</div>
+</div></div>
+
+<div class="faq" id="q27"><div class="faq-header"><div class="faq-num">27</div><h3>How does HashMap handle null key?</h3></div><div class="faq-body">
+<pre><code>// null key ALWAYS goes to bucket[0]
+// HashMap has special handling: hash(null) = 0
+HashMap&lt;String, String&gt; map = new HashMap&lt;&gt;();
+map.put(null, "value");   // Stored at index 0
+map.get(null);            // "value"
+
+// Only ONE null key allowed (second put replaces value)
+// TreeMap: null key NOT allowed (throws NullPointerException)
+//   because it needs to call compareTo() on keys
+// ConcurrentHashMap: null key AND null value NOT allowed
+//   because null is ambiguous (absent vs null value)</code></pre>
+</div></div>
+
+<div class="faq" id="q28"><div class="faq-header"><div class="faq-num">28</div><h3>IdentityHashMap</h3></div><div class="faq-body">
+<pre><code>// Uses == instead of equals() for key comparison
+// Uses System.identityHashCode() instead of hashCode()
+IdentityHashMap&lt;String, String&gt; map = new IdentityHashMap&lt;&gt;();
+String s1 = new String("Hello");
+String s2 = new String("Hello");
+
+map.put(s1, "first");
+map.put(s2, "second");
+map.size(); // 2! (s1 != s2 by reference, even though equals returns true)
+
+// Regular HashMap: size would be 1 (s1.equals(s2) = true)
+// Use case: Object graph serialization, tracking exact object instances</code></pre>
+</div></div>
+
+<div class="faq" id="q29"><div class="faq-header"><div class="faq-num">29</div><h3>NavigableMap and NavigableSet</h3></div><div class="faq-body">
+<pre><code>NavigableMap&lt;Integer, String&gt; map = new TreeMap&lt;&gt;();
+map.put(1, "A"); map.put(3, "C"); map.put(5, "E"); map.put(7, "G");
+
+map.floorKey(4);     // 3 (greatest key &lt;= 4)
+map.ceilingKey(4);   // 5 (smallest key &gt;= 4)
+map.lowerKey(5);     // 3 (greatest key &lt; 5)
+map.higherKey(5);    // 7 (smallest key &gt; 5)
+map.headMap(5);      // {1=A, 3=C} (keys &lt; 5)
+map.tailMap(5);      // {5=E, 7=G} (keys &gt;= 5)
+map.subMap(3, 7);    // {3=C, 5=E} (3 &lt;= key &lt; 7)
+map.descendingMap(); // {7=G, 5=E, 3=C, 1=A}
+map.firstEntry();    // 1=A
+map.pollLastEntry(); // removes and returns 7=G
+
+// NavigableSet: same methods for TreeSet
+NavigableSet&lt;Integer&gt; set = new TreeSet&lt;&gt;(Set.of(1,3,5,7));
+set.floor(4);        // 3
+set.ceiling(4);      // 5</code></pre>
+</div></div>
+
+<div class="faq" id="q30"><div class="faq-header"><div class="faq-num">30</div><h3>CopyOnWriteArrayList and CopyOnWriteArraySet</h3></div><div class="faq-body">
+<pre><code>// Every WRITE (add/set/remove) creates a NEW copy of internal array
+// Reads are lock-free, extremely fast
+// Writes are expensive (array copy)
+
+CopyOnWriteArrayList&lt;String&gt; list = new CopyOnWriteArrayList&lt;&gt;();
+list.add("A"); // Creates new internal array
+
+// SAFE to iterate while modifying (iterator uses snapshot)
+for (String s : list) {
+    list.add("new"); // No ConcurrentModificationException!
+    // But "new" won't appear in THIS iteration
+}
+
+// Use when: Read-heavy, write-rare scenarios
+// Examples: listener lists, configuration values, routing tables</code></pre>
+<table><tbody><tr><th>Operation</th><th>ArrayList</th><th>CopyOnWriteArrayList</th></tr>
+<tr><td>get(i)</td><td>O(1)</td><td>O(1) no lock</td></tr>
+<tr><td>add(e)</td><td>O(1)</td><td>O(n) copies array</td></tr>
+<tr><td>Iteration</td><td>Fail-fast</td><td>Snapshot (safe)</td></tr>
+<tr><td>Thread-safe</td><td>No</td><td>Yes</td></tr></tbody></table>
+</div></div>
+
+<div class="faq" id="q31"><div class="faq-header"><div class="faq-num">31</div><h3>BlockingQueue implementations</h3></div><div class="faq-body">
+<pre><code>// Producer-Consumer pattern
+BlockingQueue&lt;Task&gt; queue = new LinkedBlockingQueue&lt;&gt;(100);
+
+// Producer
+queue.put(task);    // Blocks if queue is full
+queue.offer(task, 5, TimeUnit.SECONDS); // Timeout version
+
+// Consumer
+Task t = queue.take();    // Blocks if queue is empty
+Task t = queue.poll(5, TimeUnit.SECONDS); // Timeout version</code></pre>
+<table><tbody><tr><th>Implementation</th><th>Bounded?</th><th>Structure</th><th>Use Case</th></tr>
+<tr><td>ArrayBlockingQueue</td><td>Yes (fixed)</td><td>Array</td><td>Bounded producer-consumer</td></tr>
+<tr><td>LinkedBlockingQueue</td><td>Optional</td><td>Linked list</td><td>General purpose</td></tr>
+<tr><td>PriorityBlockingQueue</td><td>No</td><td>Heap</td><td>Priority processing</td></tr>
+<tr><td>SynchronousQueue</td><td>0 capacity</td><td>Direct handoff</td><td>Thread handoff</td></tr>
+<tr><td>DelayQueue</td><td>No</td><td>Heap</td><td>Scheduled tasks</td></tr></tbody></table>
+</div></div>
+
+<div class="faq" id="q32"><div class="faq-header"><div class="faq-num">32</div><h3>Map.compute(), merge(), computeIfAbsent() (Java 8+) <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>Map&lt;String, Integer&gt; wordCount = new HashMap&lt;&gt;();
+
+// OLD way: verbose!
+if (wordCount.containsKey(word)) {
+    wordCount.put(word, wordCount.get(word) + 1);
+} else {
+    wordCount.put(word, 1);
+}
+
+// NEW way: merge() - single line!
+wordCount.merge(word, 1, Integer::sum);
+
+// computeIfAbsent: compute value only if key is absent
+Map&lt;String, List&lt;String&gt;&gt; groups = new HashMap&lt;&gt;();
+groups.computeIfAbsent("team1", k -&gt; new ArrayList&lt;&gt;()).add("Alice");
+// Creates list only if "team1" not present, then adds "Alice"
+
+// compute: always compute new value
+map.compute("count", (k, v) -&gt; v == null ? 1 : v + 1);
+
+// computeIfPresent: only if key exists
+map.computeIfPresent("count", (k, v) -&gt; v + 1);
+
+// getOrDefault
+int count = map.getOrDefault("missing", 0); // 0 instead of null</code></pre>
+</div></div>
+
+<div class="faq" id="q33"><div class="faq-header"><div class="faq-num">33</div><h3>HashMap vs Hashtable vs Collections.synchronizedMap <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<table><tbody><tr><th></th><th>HashMap</th><th>Hashtable</th><th>synchronizedMap</th><th>ConcurrentHashMap</th></tr>
+<tr><td>Thread-safe?</td><td>No</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Null key?</td><td>Yes</td><td>No</td><td>Yes</td><td>No</td></tr>
+<tr><td>Lock granularity</td><td>None</td><td>Entire map</td><td>Entire map</td><td>Per bucket</td></tr>
+<tr><td>Iterator</td><td>Fail-fast</td><td>Fail-fast</td><td>Fail-fast</td><td>Weakly consistent</td></tr>
+<tr><td>Legacy?</td><td>No</td><td>Yes</td><td>No</td><td>No</td></tr>
+<tr><td>Use in production?</td><td>Single-thread</td><td>Never</td><td>Rarely</td><td>Yes!</td></tr></tbody></table>
+<div class="tip">For concurrent access: always use <b>ConcurrentHashMap</b>. Never Hashtable. Never synchronizedMap (unless you need null keys).</div>
+</div></div>
+
+<div class="faq" id="q34"><div class="faq-header"><div class="faq-num">34</div><h3>Why HashMap capacity must be power of 2?</h3></div><div class="faq-body">
+<pre><code>// Bucket index calculation: hash &amp; (capacity - 1)
+// This is a BITWISE AND, which is much faster than modulo (%)
+// But it only works correctly when capacity is power of 2!
+
+// Example: capacity = 16 (binary: 10000), capacity-1 = 15 (binary: 01111)
+// hash &amp; 01111 = last 4 bits of hash = index 0-15
+
+// If capacity = 10 (not power of 2):
+// capacity-1 = 9 = 01001
+// hash &amp; 01001 only uses bits 0 and 3 → uneven bucket distribution!
+
+// HashMap ensures power of 2:
+// If you pass capacity=10, it rounds up to 16
+// tableSizeFor(10) → 16</code></pre>
+</div></div>
+
+<div class="faq" id="q35"><div class="faq-header"><div class="faq-num">35</div><h3>ConcurrentSkipListMap and ConcurrentSkipListSet</h3></div><div class="faq-body">
+<pre><code>// Thread-safe sorted Map/Set (concurrent version of TreeMap/TreeSet)
+// Uses skip list data structure (probabilistic balancing)
+
+ConcurrentSkipListMap&lt;String, Integer&gt; map = new ConcurrentSkipListMap&lt;&gt;();
+map.put("B", 2); map.put("A", 1); map.put("C", 3);
+// Automatically sorted by keys: A=1, B=2, C=3
+
+// Supports NavigableMap operations (floor, ceiling, subMap, etc.)
+// O(log n) for all operations
+// Weakly consistent iterators (no ConcurrentModificationException)</code></pre>
+<table><tbody><tr><th></th><th>TreeMap</th><th>ConcurrentSkipListMap</th></tr>
+<tr><td>Thread-safe</td><td>No</td><td>Yes</td></tr>
+<tr><td>Structure</td><td>Red-Black Tree</td><td>Skip List</td></tr>
+<tr><td>Performance</td><td>O(log n)</td><td>O(log n)</td></tr>
+<tr><td>Iterator</td><td>Fail-fast</td><td>Weakly consistent</td></tr></tbody></table>
+</div></div>
+
+<div class="faq" id="q36"><div class="faq-header"><div class="faq-num">36</div><h3>Collections.unmodifiable vs List.of() vs List.copyOf() <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>List&lt;String&gt; original = new ArrayList&lt;&gt;(List.of("A", "B"));
+
+// unmodifiableList: READ-ONLY VIEW (changes to original visible!)
+List&lt;String&gt; view = Collections.unmodifiableList(original);
+original.add("C");
+view.size(); // 3! Changes to original are reflected.
+
+// List.copyOf(): TRUE IMMUTABLE COPY (Java 10+)
+List&lt;String&gt; copy = List.copyOf(original);
+original.add("D");
+copy.size(); // 3! Independent of original.
+
+// List.of(): IMMUTABLE from scratch (Java 9+)
+List&lt;String&gt; immutable = List.of("X", "Y");
+// immutable.add("Z"); // UnsupportedOperationException!</code></pre>
+<table><tbody><tr><th></th><th>unmodifiableList</th><th>List.of()</th><th>List.copyOf()</th></tr>
+<tr><td>Immutable?</td><td>View only</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Null elements?</td><td>Yes</td><td>No</td><td>No</td></tr>
+<tr><td>Original changes visible?</td><td>Yes</td><td>N/A</td><td>No</td></tr></tbody></table>
+</div></div>
+
+<div class="faq" id="q37"><div class="faq-header"><div class="faq-num">37</div><h3>Spliterator (Java 8+)</h3></div><div class="faq-body">
+<pre><code>// Spliterator = Splittable Iterator (designed for parallel processing)
+// Used internally by Stream API for parallel streams
+
+List&lt;String&gt; list = List.of("A", "B", "C", "D", "E");
+Spliterator&lt;String&gt; spliterator = list.spliterator();
+
+// tryAdvance: process one element
+spliterator.tryAdvance(System.out::println); // "A"
+
+// forEachRemaining: process all remaining
+spliterator.forEachRemaining(System.out::println); // B, C, D, E
+
+// trySplit: split for parallel processing
+Spliterator&lt;String&gt; first = spliterator.trySplit(); // first half
+// spliterator keeps second half
+
+// Characteristics: ORDERED, SORTED, SIZED, DISTINCT, NONNULL, IMMUTABLE
+// ArrayList: ORDERED | SIZED | SUBSIZED
+// HashSet: SIZED | DISTINCT</code></pre>
+</div></div>
+
+<div class="faq" id="q38"><div class="faq-header"><div class="faq-num">38</div><h3>PriorityQueue Internal Working <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// PriorityQueue uses BINARY HEAP (min-heap by default)
+// NOT sorted! Only guarantees head is the smallest
+
+PriorityQueue&lt;Integer&gt; pq = new PriorityQueue&lt;&gt;();
+pq.offer(30); pq.offer(10); pq.offer(20);
+// Internal: [10, 30, 20] (heap property, not fully sorted!)
+pq.poll(); // 10 (always returns minimum)
+pq.poll(); // 20
+pq.poll(); // 30
+
+// Max-heap: use reverse comparator
+PriorityQueue&lt;Integer&gt; maxHeap = new PriorityQueue&lt;&gt;(Comparator.reverseOrder());
+
+// Custom objects: provide Comparator
+PriorityQueue&lt;Task&gt; taskQueue = new PriorityQueue&lt;&gt;(
+    Comparator.comparing(Task::getPriority)
+);</code></pre>
+<table><tbody><tr><th>Operation</th><th>Complexity</th></tr>
+<tr><td>offer() / add()</td><td>O(log n)</td></tr>
+<tr><td>poll() / remove()</td><td>O(log n)</td></tr>
+<tr><td>peek()</td><td>O(1)</td></tr>
+<tr><td>contains()</td><td>O(n)</td></tr></tbody></table>
+</div></div>
+
+<div class="faq" id="q39"><div class="faq-header"><div class="faq-num">39</div><h3>Bounded Wildcards in Collections API <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// Real examples from Java Collections API:
+
+// Collections.sort() uses ? super T (consumer)
+public static &lt;T&gt; void sort(List&lt;T&gt; list, Comparator&lt;? super T&gt; c)
+// Why? Comparator&lt;Number&gt; should work for List&lt;Integer&gt;
+
+// Collections.addAll() uses ? extends T
+public static &lt;T&gt; boolean addAll(Collection&lt;? super T&gt; c, T... elements)
+
+// Collections.copy() uses BOTH
+public static &lt;T&gt; void copy(List&lt;? super T&gt; dest, List&lt;? extends T&gt; src)
+// src is PRODUCER (extends), dest is CONSUMER (super)
+
+// Generic method example:
+&lt;T extends Comparable&lt;? super T&gt;&gt; T findMax(List&lt;? extends T&gt; list) {
+    return list.stream().max(Comparator.naturalOrder()).orElseThrow();
+}
+// This works for List&lt;Integer&gt;, List&lt;Double&gt;, etc.</code></pre>
+</div></div>
+
+<div class="faq" id="q40"><div class="faq-header"><div class="faq-num">40</div><h3>HashMap in Java 7 vs Java 8 <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<table><tbody><tr><th>Feature</th><th>Java 7</th><th>Java 8+</th></tr>
+<tr><td>Collision handling</td><td>Linked list only</td><td>Linked list → Red-Black tree (&gt;8 nodes)</td></tr>
+<tr><td>Insertion</td><td>Head insertion</td><td>Tail insertion</td></tr>
+<tr><td>Worst case get()</td><td>O(n)</td><td>O(log n) (tree)</td></tr>
+<tr><td>Infinite loop?</td><td>Yes (concurrent resize)</td><td>No (tail insertion)</td></tr>
+<tr><td>hash()</td><td>4 bit shifts</td><td>1 XOR (simpler, faster)</td></tr></tbody></table>
+<div class="warn"><b>Java 7 Bug:</b> Under concurrent access, head insertion during resize could create a circular linked list → infinite loop in get()! Java 8 fixed this with tail insertion.</div>
+</div></div>
+
+<div class="faq" id="q41"><div class="faq-header"><div class="faq-num">41</div><h3>Sequenced Collections (Java 21+) <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// New interfaces in Java 21 for collections with defined encounter order
+
+// SequencedCollection: first/last access and reversed view
+SequencedCollection&lt;String&gt; list = new ArrayList&lt;&gt;();
+list.addFirst("A");
+list.addLast("Z");
+list.getFirst();    // "A"
+list.getLast();     // "Z"
+list.reversed();    // reversed view
+
+// SequencedSet: LinkedHashSet, TreeSet
+SequencedSet&lt;String&gt; set = new LinkedHashSet&lt;&gt;();
+set.addFirst("X"); set.addLast("Y");
+
+// SequencedMap: LinkedHashMap, TreeMap
+SequencedMap&lt;String, Integer&gt; map = new LinkedHashMap&lt;&gt;();
+map.putFirst("first", 1);
+map.putLast("last", 99);
+map.firstEntry();   // first=1
+map.lastEntry();    // last=99
+map.sequencedKeySet().reversed();</code></pre>
+<div class="diagram">
+                    SequencedCollection
+                    /              \
+           SequencedSet     (List already has this)
+                |
+         SortedSet (TreeSet)
+         LinkedHashSet
+
+                    SequencedMap
+                    /          \
+            SortedMap       LinkedHashMap
+           (TreeMap)
+</div>
+</div></div>
+
+<div class="faq" id="q42"><div class="faq-header"><div class="faq-num">42</div><h3>Collections Interview Coding Patterns <span class="tag tag-imp">MUST KNOW</span></h3></div><div class="faq-body">
+<pre><code>// 1. Frequency count
+Map&lt;String, Long&gt; freq = list.stream()
+    .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+// 2. Remove duplicates preserving order
+List&lt;String&gt; unique = new ArrayList&lt;&gt;(new LinkedHashSet&lt;&gt;(list));
+
+// 3. Find top N elements
+List&lt;Integer&gt; top3 = list.stream()
+    .sorted(Comparator.reverseOrder())
+    .limit(3)
+    .collect(Collectors.toList());
+
+// 4. Merge two maps
+map1.forEach((k, v) -&gt; map2.merge(k, v, Integer::sum));
+
+// 5. Partition (split into two groups)
+Map&lt;Boolean, List&lt;Integer&gt;&gt; parts = numbers.stream()
+    .collect(Collectors.partitioningBy(n -&gt; n % 2 == 0));
+// true -&gt; evens, false -&gt; odds
+
+// 6. Convert List to Map
+Map&lt;String, Employee&gt; byId = employees.stream()
+    .collect(Collectors.toMap(Employee::getId, Function.identity(),
+        (existing, replacement) -&gt; existing)); // handle duplicates!
+
+// 7. Flatten nested collections
+List&lt;String&gt; all = listOfLists.stream()
+    .flatMap(Collection::stream)
+    .collect(Collectors.toList());</code></pre>
+</div></div>
+
+</div>
+<div style="text-align:center;padding:40px;opacity:0.4">
+<a href="file:///C:/temp/java-faq/Java_Exceptions_FAQ.html" style="color:#8be9fd">← Exceptions</a> |
+<a href="file:///C:/temp/java-faq/Java_FAQ_Index.html" style="color:#8be9fd">Index</a> |
+<a href="file:///C:/temp/java-faq/Java_Multithreading_FAQ.html" style="color:#8be9fd">Multithreading →</a>
+</div>
+
+
+</body></html>

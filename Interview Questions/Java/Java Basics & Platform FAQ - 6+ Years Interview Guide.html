@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)file:///C:/temp/java-faq/Java_Basics_FAQ.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Java Basics &amp; Platform FAQ - 6+ Years Interview Guide</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Tahoma,sans-serif;background:#0a0a1a;color:#e0e0e0;line-height:1.7}
+.nav{background:linear-gradient(135deg,#ff6b6b,#ee5a24);padding:15px 30px;position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;box-shadow:0 4px 20px rgba(0,0,0,0.5)}
+.nav a{color:#fff;text-decoration:none;font-weight:700;font-size:1.1rem}
+.nav .back{opacity:0.8;font-size:0.9rem}
+.hero{background:linear-gradient(135deg,#ff6b6b 0%,#ee5a24 100%);padding:60px 30px;text-align:center}
+.hero h1{font-size:2.8rem;margin-bottom:10px}
+.hero p{font-size:1.1rem;opacity:0.9}
+.container{max-width:1100px;margin:0 auto;padding:30px 20px}
+.toc{background:#111;border:1px solid #333;border-radius:15px;padding:30px;margin-bottom:40px}
+.toc h2{color:#ff6b6b;margin-bottom:15px;font-size:1.4rem}
+.toc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:8px}
+.toc a{color:#8be9fd;text-decoration:none;padding:4px 0;display:block;font-size:0.9rem;transition:color 0.2s}
+.toc a:hover{color:#ff6b6b}
+.faq{background:linear-gradient(145deg,#12121f,#1a1a2e);border:1px solid #222;border-radius:15px;margin-bottom:25px;overflow:hidden;transition:all 0.3s}
+.faq:hover{border-color:#ff6b6b44}
+.faq-header{background:#161625;padding:20px 25px;cursor:pointer;display:flex;align-items:center;gap:15px}
+.faq-num{background:linear-gradient(135deg,#ff6b6b,#ee5a24);color:#fff;min-width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.9rem}
+.faq-header h3{color:#fff;font-size:1.15rem;flex:1}
+.faq-body{padding:25px}
+.faq-body .section{margin-bottom:20px}
+.faq-body .section-title{display:flex;align-items:center;gap:8px;font-weight:700;font-size:1rem;margin-bottom:10px;padding:8px 12px;border-radius:8px}
+.what{color:#8be9fd;background:#8be9fd15}
+.why{color:#50fa7b;background:#50fa7b15}
+.when{color:#ffb86c;background:#ffb86c15}
+.where{color:#bd93f9;background:#bd93f915}
+.who{color:#ff79c6;background:#ff79c615}
+.mistake{color:#ff5555;background:#ff555515}
+.best{color:#50fa7b;background:#50fa7b15}
+pre{background:#0d0d1a;border:1px solid #333;border-radius:10px;padding:18px;overflow-x:auto;margin:10px 0;font-size:0.88rem;line-height:1.6}
+code{font-family:'Cascadia Code','Fira Code',monospace;color:#f8f8f2}
+.keyword{color:#ff79c6}
+.string{color:#f1fa8c}
+.comment{color:#6272a4}
+.type{color:#8be9fd}
+.func{color:#50fa7b}
+.num{color:#bd93f9}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:0.9rem}
+th{background:#1a1a2e;color:#ff6b6b;padding:10px 14px;text-align:left;border:1px solid #333}
+td{padding:10px 14px;border:1px solid #222;background:#111}
+tr:hover td{background:#1a1a2e}
+.diagram{background:#0d0d1a;border:1px solid #444;border-radius:10px;padding:20px;margin:10px 0;font-family:'Cascadia Code',monospace;font-size:0.85rem;white-space:pre;overflow-x:auto;line-height:1.5;color:#8be9fd}
+.tag{display:inline-block;padding:2px 10px;border-radius:12px;font-size:0.75rem;font-weight:600;margin:2px}
+.tag-hot{background:#ff555533;color:#ff5555}
+.tag-imp{background:#ffb86c33;color:#ffb86c}
+.tag-fav{background:#50fa7b33;color:#50fa7b}
+.tip{background:#50fa7b15;border-left:4px solid #50fa7b;padding:12px 18px;border-radius:0 8px 8px 0;margin:10px 0;font-size:0.92rem}
+.warn{background:#ff555515;border-left:4px solid #ff5555;padding:12px 18px;border-radius:0 8px 8px 0;margin:10px 0;font-size:0.92rem}
+</style>
+</head>
+<body>
+<div class="nav">
+<a href="file:///C:/temp/java-faq/Java_FAQ_Index.html" class="back">← Back to Index</a>
+<a>☕ Java Basics &amp; Platform FAQ</a>
+</div>
+<div class="hero">
+<h1>🏗 Java Basics &amp; Platform</h1>
+<p>40+ Interview Questions for 6+ Years Experience | JVM, JDK, JRE, Compilation, ClassLoading, Data Types, Keywords</p>
+</div>
+<div class="container">
+
+<div class="toc">
+<h2>📜 Table of Contents</h2>
+<div class="toc-grid">
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q1">Q1. What is Java Platform Independence?</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q2">Q2. JDK vs JRE vs JVM</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q3">Q3. JVM Architecture in Detail</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q4">Q4. What is Bytecode?</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q5">Q5. Java Compilation Process</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q6">Q6. What is JIT Compiler?</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q7">Q7. ClassLoader Subsystem</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q8">Q8. Types of ClassLoaders</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q9">Q9. Class Loading Phases</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q10">Q10. What is the static keyword?</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q11">Q11. What is the final keyword?</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q12">Q12. static vs final vs static final</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q13">Q13. Primitive Data Types</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q14">Q14. Autoboxing and Unboxing</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q15">Q15. Type Casting (Widening vs Narrowing)</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q16">Q16. What is var keyword?</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q17">Q17. Access Modifiers</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q18">Q18. What is a Package?</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q19">Q19. main() method deep dive</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q20">Q20. Pass by Value vs Pass by Reference</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q21">Q21. What are Wrapper Classes?</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q22">Q22. What is strictfp?</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q23">Q23. What is transient keyword?</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q24">Q24. What is volatile keyword?</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q25">Q25. What is instanceof operator?</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q26">Q26. What are Enums?</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q27">Q27. What are Annotations?</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q28">Q28. What is Reflection API?</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q29">Q29. What is Serialization?</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q30">Q30. What is Cloning?</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q31">Q31. Shallow Copy vs Deep Copy</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q32">Q32. What are Records (Java 16)?</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q33">Q33. Sealed Classes (Java 17)</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q34">Q34. Pattern Matching instanceof</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q35">Q35. Switch Expressions</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q36">Q36. Text Blocks</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q37">Q37. What is classpath?</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q38">Q38. Stack vs Heap at a Glance</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q39">Q39. Garbage Collection Overview</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q40">Q40. equals() vs ==</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q41">Q41. hashCode() contract</a>
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html#q42">Q42. toString() method</a>
+</div>
+</div>
+
+<!-- ===== Q1 ===== -->
+<div class="faq" id="q1">
+<div class="faq-header"><div class="faq-num">1</div><h3>What is Java Platform Independence? <span class="tag tag-hot">HOT</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">🤔 What is it?</div>
+Platform independence means you write your Java code ONCE, compile it, and that compiled file (bytecode) can run on ANY operating system - Windows, Mac, Linux - without changing a single line. The JVM (Java Virtual Machine) on each OS reads the same bytecode and translates it for that specific OS.
+<br><br>Think of it like a universal remote control. You have ONE remote (bytecode), and it works with any TV brand (operating system) because each TV has a receiver (JVM) that understands the same signal.
+</div>
+<div class="section"><div class="section-title why">💡 Why does this exist?</div>
+Before Java (in C/C++ days), if you wrote code on Windows, you had to recompile it separately for Linux and Mac. This was painful. Java solved it by introducing an intermediate layer - the JVM.
+<br><br>
+<table>
+<tbody><tr><th>Without Java (C/C++)</th><th>With Java</th></tr>
+<tr><td>Write code → Compile for Windows → Runs on Windows ONLY</td><td>Write code → Compile to bytecode → Runs on ANY OS with JVM</td></tr>
+<tr><td>Need separate binaries for each OS</td><td>One .class file works everywhere</td></tr>
+</tbody></table>
+</div>
+<div class="section"><div class="section-title when">⏰ When is this important?</div>
+- When building server-side apps deployed on Linux but developed on Windows/Mac<br>
+- When building cross-platform desktop apps<br>
+- When distributing libraries (JARs) that need to work everywhere
+</div>
+<div class="diagram">
+  Your Code (.java)
+       |
+       v
+  javac compiler
+       |
+       v
+  Bytecode (.class)  &lt;--- Platform INDEPENDENT
+       |
+  +----+----+----+
+  |    |    |    |
+  v    v    v    v
+ JVM  JVM  JVM  JVM  &lt;--- Platform DEPENDENT
+(Win)(Mac)(Lin)(Sol)
+  |    |    |    |
+  v    v    v    v
+ Native Machine Code
+</div>
+<div class="section"><div class="section-title mistake">⚠️ Common Mistakes</div>
+<div class="warn">
+❌ Saying "Java is platform independent" - WRONG! Java LANGUAGE is platform independent. The JVM itself IS platform dependent (you need a different JVM for each OS).<br><br>
+❌ Confusing .java file with .class file - The .java is source code, the .class is bytecode. Only bytecode is portable.
+</div></div>
+<div class="section"><div class="section-title best">✅ Best Practice Interview Answer</div>
+<div class="tip">"Java achieves platform independence through bytecode. The source code is compiled by javac into platform-independent bytecode (.class files). This bytecode is then interpreted or JIT-compiled by the platform-specific JVM into native machine code. So the motto is 'Write Once, Run Anywhere' - but the JVM itself is platform-dependent."</div>
+</div>
+</div></div>
+
+<!-- ===== Q2 ===== -->
+<div class="faq" id="q2">
+<div class="faq-header"><div class="faq-num">2</div><h3>JDK vs JRE vs JVM - What's the difference? <span class="tag tag-hot">HOT</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">🤔 What are they?</div>
+Think of it like a restaurant:
+<br>- <b>JVM</b> = The Chef (executes/cooks the bytecode into native code)
+<br>- <b>JRE</b> = The Kitchen (Chef + utensils + ingredients = JVM + core libraries)
+<br>- <b>JDK</b> = The Entire Restaurant (Kitchen + recipe books + menu design tools = JRE + development tools)
+</div>
+<div class="section">
+<table>
+<tbody><tr><th>Feature</th><th>JVM</th><th>JRE</th><th>JDK</th></tr>
+<tr><td>Full Form</td><td>Java Virtual Machine</td><td>Java Runtime Environment</td><td>Java Development Kit</td></tr>
+<tr><td>Purpose</td><td>Execute bytecode</td><td>Run Java programs</td><td>Develop + Run Java programs</td></tr>
+<tr><td>Contains</td><td>Interpreter, JIT, GC, ClassLoader</td><td>JVM + Core Libraries (rt.jar)</td><td>JRE + javac, jar, javadoc, jdb</td></tr>
+<tr><td>Who needs it?</td><td>Embedded in JRE</td><td>End users who run apps</td><td>Developers who write code</td></tr>
+<tr><td>Can compile?</td><td>No</td><td>No</td><td>Yes (has javac)</td></tr>
+<tr><td>Can run?</td><td>Yes (bytecode)</td><td>Yes</td><td>Yes</td></tr>
+</tbody></table>
+</div>
+<div class="diagram">
++-----------------------------------------------+
+|                    JDK                         |
+|  +------------------------------------------+ |
+|  |                 JRE                       | |
+|  |  +-------------------------------------+ | |
+|  |  |              JVM                     | | |
+|  |  |  ClassLoader | Memory | Exec Engine  | | |
+|  |  +-------------------------------------+ | |
+|  |  + Core Libraries (java.lang, java.util)| |
+|  +------------------------------------------+ |
+|  + Dev Tools: javac, jar, javadoc, jshell    |
++-----------------------------------------------+
+</div>
+<div class="section"><div class="section-title mistake">⚠️ Common Mistakes</div>
+<div class="warn">
+❌ Since Java 11, JRE is NOT distributed separately. The JDK now includes everything.<br>
+❌ Don't say "JRE can compile code" - it cannot. Only JDK has javac.
+</div></div>
+<div class="section"><div class="section-title best">✅ Interview Tip</div>
+<div class="tip">Mention that since Java 9+ (with modules / JPMS), you can create custom runtime images using jlink - essentially build your own mini-JRE with only the modules your app needs. This shows you're up-to-date!</div>
+</div>
+</div></div>
+
+<!-- ===== Q3 ===== -->
+<div class="faq" id="q3">
+<div class="faq-header"><div class="faq-num">3</div><h3>Explain JVM Architecture in Detail <span class="tag tag-hot">HOT</span><span class="tag tag-imp">MUST KNOW</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">🤔 What is JVM Architecture?</div>
+The JVM is like a mini-computer inside your computer. It has its own memory management, its own way of loading code, and its own engine to run that code. Here are the 3 main parts:
+</div>
+<div class="diagram">
+                         JVM ARCHITECTURE
+ ====================================================================
+ |                                                                    |
+ |  1. CLASS LOADER SUBSYSTEM                                        |
+ |  +-----------+  +-----------+  +-----------+                      |
+ |  |  Loading  |-&gt;|  Linking  |-&gt;| Initialize|                      |
+ |  +-----------+  +-----------+  +-----------+                      |
+ |                                                                    |
+ |  2. RUNTIME DATA AREAS (MEMORY)                                   |
+ |  +--------+ +--------+ +----------+ +--------+ +--------+        |
+ |  | Method | |  Heap  | |  Stack   | |   PC   | | Native |        |
+ |  |  Area  | |        | | (per     | |Register| | Method |        |
+ |  |(shared)| |(shared)| | thread)  | |(per th)| | Stack  |        |
+ |  +--------+ +--------+ +----------+ +--------+ +--------+        |
+ |                                                                    |
+ |  3. EXECUTION ENGINE                                              |
+ |  +-------------+ +-----+ +----+                                   |
+ |  | Interpreter | | JIT | | GC |                                   |
+ |  +-------------+ +-----+ +----+                                   |
+ ====================================================================
+</div>
+<div class="section">
+<b>Part 1: ClassLoader Subsystem</b> - Loads .class files into memory
+<br><b>Part 2: Runtime Data Areas</b> - Memory spaces for running programs
+<table>
+<tbody><tr><th>Area</th><th>What it stores</th><th>Shared?</th></tr>
+<tr><td>Method Area (Metaspace)</td><td>Class metadata, static variables, constant pool</td><td>Yes - all threads</td></tr>
+<tr><td>Heap</td><td>All objects and instance variables</td><td>Yes - all threads</td></tr>
+<tr><td>Stack</td><td>Method calls, local variables, partial results</td><td>No - per thread</td></tr>
+<tr><td>PC Register</td><td>Address of currently executing instruction</td><td>No - per thread</td></tr>
+<tr><td>Native Method Stack</td><td>Native (C/C++) method information</td><td>No - per thread</td></tr>
+</tbody></table>
+<br><b>Part 3: Execution Engine</b>
+<br>- <b>Interpreter</b>: Reads bytecode line by line and executes (slow for repeated code)
+<br>- <b>JIT Compiler</b>: Compiles hot (frequently used) bytecode to native code for speed
+<br>- <b>GC</b>: Garbage Collector - automatically frees unused objects
+</div>
+<div class="section"><div class="section-title where">🌐 Where is this asked?</div>
+This is a TOP interview question for 6+ year candidates. Interviewers expect you to draw this diagram and explain each part. It shows you understand what happens UNDER THE HOOD, not just surface-level coding.
+</div>
+<div class="section"><div class="section-title best">✅ Pro Tip</div>
+<div class="tip">When answering, structure it as: "JVM has 3 main subsystems - ClassLoader, Memory Areas, and Execution Engine" then explain each. Mention that Method Area was called PermGen before Java 8 and is now Metaspace.</div>
+</div>
+</div></div>
+
+<!-- ===== Q4 ===== -->
+<div class="faq" id="q4">
+<div class="faq-header"><div class="faq-num">4</div><h3>What is Bytecode? How is it different from Machine Code?</h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">🤔 What is it?</div>
+Bytecode is the INTERMEDIATE code that javac produces. It's NOT human-readable source code, and it's NOT machine code that your CPU understands directly. It sits in between.
+<br><br>Analogy: Imagine you write a letter in English (source code). A translator converts it to a universal language like Esperanto (bytecode). Then each country's local translator (JVM) converts Esperanto to their local language (machine code).
+</div>
+<pre><code><span class="comment">// Source code (Hello.java)</span>
+<span class="keyword">public class</span> <span class="type">Hello</span> {
+    <span class="keyword">public static void</span> <span class="func">main</span>(<span class="type">String</span>[] args) {
+        <span class="type">System</span>.out.<span class="func">println</span>(<span class="string">"Hello"</span>);
+    }
+}
+
+<span class="comment">// After: javac Hello.java -&gt; Hello.class (bytecode)</span>
+<span class="comment">// View with: javap -c Hello.class</span>
+<span class="comment">//   0: getstatic     #2  // Field java/lang/System.out</span>
+<span class="comment">//   3: ldc           #3  // String Hello</span>
+<span class="comment">//   5: invokevirtual #4  // Method println</span>
+<span class="comment">//   8: return</span></code></pre>
+<table>
+<tbody><tr><th>Aspect</th><th>Source Code (.java)</th><th>Bytecode (.class)</th><th>Machine Code</th></tr>
+<tr><td>Human readable?</td><td>Yes</td><td>No (but javap can show it)</td><td>No</td></tr>
+<tr><td>Platform independent?</td><td>Yes</td><td>Yes</td><td>No</td></tr>
+<tr><td>Executed by</td><td>Nothing directly</td><td>JVM</td><td>CPU directly</td></tr>
+<tr><td>Format</td><td>Text</td><td>Binary (cafebabe header)</td><td>Binary (OS specific)</td></tr>
+</tbody></table>
+<div class="section"><div class="section-title best">✅ Interview Tip</div>
+<div class="tip">Mention that every .class file starts with the magic number 0xCAFEBABE - this is how JVM verifies it's a valid class file. Fun fact interviewers love!</div>
+</div>
+</div></div>
+
+<!-- ===== Q5 ===== -->
+<div class="faq" id="q5">
+<div class="faq-header"><div class="faq-num">5</div><h3>Explain the complete Java Compilation and Execution Process</h3></div>
+<div class="faq-body">
+<div class="diagram">
+ STEP-BY-STEP: From Writing Code to Execution
+ ================================================
+
+ Step 1: WRITE        Hello.java  (source code in text editor/IDE)
+            |
+ Step 2: COMPILE      javac Hello.java
+            |          Syntax check -&gt; Parse Tree -&gt; Bytecode generation
+            v
+ Step 3: BYTECODE     Hello.class  (platform independent)
+            |
+ Step 4: CLASSLOAD    ClassLoader loads .class into JVM memory
+            |          Bootstrap -&gt; Extension -&gt; Application loader
+            v
+ Step 5: VERIFY       Bytecode Verifier checks:
+            |          - Valid format (cafebabe)
+            |          - No stack overflow
+            |          - Correct data types
+            v
+ Step 6: EXECUTE      Execution Engine
+            |          |
+            |          +-- Interpreter (line-by-line, first run)
+            |          |
+            |          +-- JIT Compiler (hot methods -&gt; native code)
+            |          |
+            |          +-- GC (cleans unused objects in background)
+            v
+ Step 7: NATIVE CODE  Runs on actual CPU/hardware
+</div>
+<div class="section"><div class="section-title mistake">⚠️ Common Mistakes</div>
+<div class="warn">
+❌ Saying "Java is interpreted" - It's BOTH interpreted AND compiled (JIT). The interpreter runs first, then JIT kicks in for hot code.<br>
+❌ Forgetting the verification step - JVM ALWAYS verifies bytecode before executing for security.
+</div></div>
+</div></div>
+
+<!-- ===== Q6 ===== -->
+<div class="faq" id="q6">
+<div class="faq-header"><div class="faq-num">6</div><h3>What is JIT (Just-In-Time) Compiler? <span class="tag tag-hot">HOT</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">🤔 What is it?</div>
+JIT is a component of the JVM Execution Engine that compiles frequently executed bytecode (called "hot spots") into native machine code at runtime. This makes Java programs faster because native code runs directly on CPU without interpretation.
+<br><br>Analogy: Imagine you translate a foreign recipe every time you cook (interpreter). But for your favorite dish that you cook daily, you memorize the translation (JIT). Now you cook faster because you don't need to translate each time.
+</div>
+<div class="section"><div class="section-title why">💡 Why does it exist?</div>
+<table>
+<tbody><tr><th>Without JIT (Interpreter only)</th><th>With JIT</th></tr>
+<tr><td>Every line translated every time</td><td>Hot code compiled once, reused as native</td></tr>
+<tr><td>Slow for loops, repeated methods</td><td>Fast for hot paths</td></tr>
+<tr><td>Low startup time</td><td>Slightly higher startup, much better throughput</td></tr>
+</tbody></table>
+</div>
+<div class="diagram">
+  Method called 1st time     -&gt; Interpreter runs it
+  Method called 2nd time     -&gt; Interpreter runs it
+  ...
+  Method called 10,000th time -&gt; JIT says "This is HOT!"
+                                 |
+                                 v
+                          Compiles to NATIVE CODE
+                                 |
+                                 v
+                    Future calls use native code (FAST!)
+</div>
+<div class="section"><div class="section-title best">✅ Advanced Points for 6+ Yrs</div>
+<div class="tip">
+- JIT has two compilers: <b>C1 (Client)</b> = fast compile, less optimization. <b>C2 (Server)</b> = slower compile, deep optimization.<br>
+- <b>Tiered Compilation</b> (default since Java 8): Uses C1 first for quick results, then C2 for hot methods.<br>
+- JIT does: Method inlining, dead code elimination, loop unrolling, escape analysis.<br>
+- Use <code>-XX:+PrintCompilation</code> to see what JIT is compiling.
+</div></div>
+</div></div>
+
+<!-- ===== Q7 ===== -->
+<div class="faq" id="q7">
+<div class="faq-header"><div class="faq-num">7</div><h3>Explain the ClassLoader Subsystem <span class="tag tag-imp">MUST KNOW</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">🤔 What is it?</div>
+The ClassLoader is responsible for finding .class files and loading them into JVM memory. It works on a principle called <b>Delegation Hierarchy</b> - before loading a class, it asks its parent first. If the parent can't find it, then it tries itself.
+<br><br>Analogy: A student (App ClassLoader) has a question. Before answering, they ask their teacher (Extension ClassLoader). The teacher asks the principal (Bootstrap ClassLoader). If the principal knows, great. If not, it goes back down the chain.
+</div>
+<div class="diagram">
+          Bootstrap ClassLoader (C/C++ code)
+          Loads: java.lang.*, java.util.* (core Java)
+          Location: jrt:/java.base (Java 9+)
+                    |
+                    v
+          Platform ClassLoader (was Extension)
+          Loads: javax.*, extension JARs
+          Location: $JAVA_HOME/lib/ext (pre-9)
+                    |
+                    v
+          Application ClassLoader (System)
+          Loads: YOUR code, classpath JARs
+          Location: -classpath / -cp
+                    |
+                    v
+          Custom ClassLoaders (optional)
+          Use case: App servers, plugin systems
+</div>
+<div class="section"><div class="section-title why">💡 Why Delegation Model?</div>
+<b>Security!</b> If someone creates a malicious <code>java.lang.String</code> class, the Bootstrap ClassLoader will always load the REAL String class first. The malicious one never gets loaded. This is called the <b>Sandbox Security Model</b>.
+</div>
+<pre><code><span class="comment">// See which classloader loaded a class</span>
+<span class="type">System</span>.out.<span class="func">println</span>(<span class="type">String</span>.<span class="keyword">class</span>.<span class="func">getClassLoader</span>());
+<span class="comment">// Output: null (Bootstrap - implemented in native code)</span>
+
+<span class="type">System</span>.out.<span class="func">println</span>(<span class="type">MyApp</span>.<span class="keyword">class</span>.<span class="func">getClassLoader</span>());
+<span class="comment">// Output: jdk.internal.loader.ClassLoaders$AppClassLoader</span></code></pre>
+</div></div>
+
+<!-- ===== Q8 ===== -->
+<div class="faq" id="q8">
+<div class="faq-header"><div class="faq-num">8</div><h3>What are the 3 types of ClassLoaders?</h3></div>
+<div class="faq-body">
+<table>
+<tbody><tr><th>ClassLoader</th><th>Loads From</th><th>Example Classes</th><th>Java 9+ Name</th></tr>
+<tr><td><b>Bootstrap</b></td><td>Core Java modules (jrt:/)</td><td>String, Object, System, Integer</td><td>Bootstrap (null)</td></tr>
+<tr><td><b>Extension</b></td><td>$JAVA_HOME/lib/ext</td><td>javax.crypto.*, JavaFX (pre-9)</td><td>Platform ClassLoader</td></tr>
+<tr><td><b>Application</b></td><td>classpath (-cp)</td><td>Your classes, third-party JARs</td><td>Application ClassLoader</td></tr>
+</tbody></table>
+<pre><code><span class="comment">// Custom ClassLoader example (used by Tomcat, OSGi, etc.)</span>
+<span class="keyword">public class</span> <span class="type">MyClassLoader</span> <span class="keyword">extends</span> <span class="type">ClassLoader</span> {
+    <span class="keyword">@Override</span>
+    <span class="keyword">protected</span> <span class="type">Class</span>&lt;?&gt; <span class="func">findClass</span>(<span class="type">String</span> name) <span class="keyword">throws</span> <span class="type">ClassNotFoundException</span> {
+        <span class="keyword">byte</span>[] bytes = <span class="func">loadClassFromFile</span>(name);
+        <span class="keyword">return</span> <span class="func">defineClass</span>(name, bytes, <span class="num">0</span>, bytes.length);
+    }
+
+    <span class="keyword">private byte</span>[] <span class="func">loadClassFromFile</span>(<span class="type">String</span> name) {
+        <span class="comment">// Read .class bytes from file, network, DB, etc.</span>
+        <span class="comment">// This is how app servers achieve hot deployment!</span>
+    }
+}</code></pre>
+<div class="section"><div class="section-title where">🌐 Where are Custom ClassLoaders used?</div>
+- <b>Tomcat/JBoss</b>: Each WAR file gets its own ClassLoader (class isolation)<br>
+- <b>OSGi</b>: Plugin system with independent ClassLoaders<br>
+- <b>JUnit</b>: Loads test classes in isolated ClassLoaders<br>
+- <b>Spring Boot DevTools</b>: Restart ClassLoader for hot reloading
+</div>
+</div></div>
+
+<!-- ===== Q9 ===== -->
+<div class="faq" id="q9">
+<div class="faq-header"><div class="faq-num">9</div><h3>What are the 3 phases of Class Loading?</h3></div>
+<div class="faq-body">
+<div class="diagram">
+  Loading ---------&gt; Linking ---------------------&gt; Initialization
+  (Find .class)     |                              (Run static blocks)
+                     +-- Verification (valid bytecode?)
+                     +-- Preparation (default values for static fields)
+                     +-- Resolution (symbolic refs -&gt; direct refs)
+</div>
+<table>
+<tbody><tr><th>Phase</th><th>What Happens</th><th>Example</th></tr>
+<tr><td><b>1. Loading</b></td><td>ClassLoader finds and reads .class bytes into memory</td><td>Reads MyApp.class from classpath</td></tr>
+<tr><td><b>2a. Verification</b></td><td>Bytecode Verifier checks format, no illegal operations</td><td>Ensures cafebabe magic number, valid opcodes</td></tr>
+<tr><td><b>2b. Preparation</b></td><td>Allocates memory for static variables, sets defaults</td><td>static int x; gets default 0 (not your assigned value yet!)</td></tr>
+<tr><td><b>2c. Resolution</b></td><td>Symbolic references (names) resolved to actual memory addresses</td><td>"java/lang/String" -&gt; actual String class in memory</td></tr>
+<tr><td><b>3. Initialization</b></td><td>Runs static blocks and assigns static variable values</td><td>static int x = 10; NOW x becomes 10</td></tr>
+</tbody></table>
+<pre><code><span class="keyword">public class</span> <span class="type">Example</span> {
+    <span class="keyword">static int</span> x = <span class="num">10</span>;   <span class="comment">// Preparation: x=0, Initialization: x=10</span>
+    <span class="keyword">static</span> {
+        <span class="type">System</span>.out.<span class="func">println</span>(<span class="string">"Static block runs during INITIALIZATION"</span>);
+    }
+}</code></pre>
+</div></div>
+
+<!-- ===== Q10 ===== -->
+<div class="faq" id="q10">
+<div class="faq-header"><div class="faq-num">10</div><h3>What is the static keyword? Explain ALL uses. <span class="tag tag-hot">HOT</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">🤔 What is it?</div>
+<code>static</code> means "belongs to the CLASS, not to any specific object." When something is static, there's only ONE copy shared across ALL objects of that class.
+<br><br>Analogy: In an apartment building, each flat has its own kitchen (instance variable). But there's ONE shared swimming pool (static variable) that all residents use.
+</div>
+<div class="section"><b>5 Uses of static:</b></div>
+<pre><code><span class="comment">// 1. Static Variable (Class Variable)</span>
+<span class="keyword">public class</span> <span class="type">Employee</span> {
+    <span class="keyword">static int</span> companyId = <span class="num">100</span>;   <span class="comment">// ONE copy shared by ALL employees</span>
+    <span class="type">String</span> name;                    <span class="comment">// Each employee has their OWN name</span>
+}
+
+<span class="comment">// 2. Static Method</span>
+<span class="keyword">public static int</span> <span class="func">add</span>(<span class="keyword">int</span> a, <span class="keyword">int</span> b) {
+    <span class="keyword">return</span> a + b;    <span class="comment">// No need to create object. Call: Math.add(5,3)</span>
+}
+
+<span class="comment">// 3. Static Block (runs once when class is loaded)</span>
+<span class="keyword">static</span> {
+    <span class="type">System</span>.out.<span class="func">println</span>(<span class="string">"I run ONCE when class is first loaded!"</span>);
+    <span class="comment">// Use: Loading config, initializing DB connections, loading native libs</span>
+}
+
+<span class="comment">// 4. Static Nested Class</span>
+<span class="keyword">public class</span> <span class="type">Outer</span> {
+    <span class="keyword">static class</span> <span class="type">Inner</span> {
+        <span class="comment">// Can be created WITHOUT outer instance: new Outer.Inner()</span>
+    }
+}
+
+<span class="comment">// 5. Static Import</span>
+<span class="keyword">import static</span> java.lang.<span class="type">Math</span>.PI;
+<span class="keyword">import static</span> java.lang.<span class="type">Math</span>.sqrt;
+<span class="comment">// Now use PI directly instead of Math.PI</span></code></pre>
+<div class="section"><div class="section-title mistake">⚠️ Common Mistakes</div>
+<div class="warn">
+❌ <b>Accessing instance variable from static method</b>: static method can't access non-static members directly (because there's no object context!)
+<br>❌ <b>Overriding static methods</b>: You CAN'T override static methods. You can only HIDE them. This is called Method Hiding.
+<br>❌ <b>Memory leak with static</b>: Static variables live as long as the class is loaded (essentially forever). Don't store large objects in static fields carelessly.
+</div></div>
+<table>
+<tbody><tr><th>Feature</th><th>Static</th><th>Non-Static (Instance)</th></tr>
+<tr><td>Belongs to</td><td>Class</td><td>Object</td></tr>
+<tr><td>Memory</td><td>One copy (Metaspace)</td><td>One per object (Heap)</td></tr>
+<tr><td>Access</td><td>ClassName.member</td><td>objectRef.member</td></tr>
+<tr><td>Can access static?</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Can access instance?</td><td>No (directly)</td><td>Yes</td></tr>
+<tr><td>Can use 'this'?</td><td>No</td><td>Yes</td></tr>
+</tbody></table>
+</div></div>
+
+<!-- ===== Q11 ===== -->
+<div class="faq" id="q11">
+<div class="faq-header"><div class="faq-num">11</div><h3>What is the final keyword? Explain ALL uses.</h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">🤔 What is it?</div>
+<code>final</code> means "this CANNOT be changed/modified/overridden." It's Java's way of making things immutable or locked down.
+</div>
+<pre><code><span class="comment">// 1. final Variable = CONSTANT (can't reassign)</span>
+<span class="keyword">final int</span> MAX = <span class="num">100</span>;
+MAX = <span class="num">200</span>; <span class="comment">// COMPILE ERROR!</span>
+
+<span class="comment">// 2. final Method = CAN'T be overridden by subclass</span>
+<span class="keyword">class</span> <span class="type">Parent</span> {
+    <span class="keyword">final void</span> <span class="func">doSomething</span>() {
+        <span class="comment">// Child class CANNOT override this method</span>
+    }
+}
+
+<span class="comment">// 3. final Class = CAN'T be extended/inherited</span>
+<span class="keyword">final class</span> <span class="type">ImmutableConfig</span> {
+    <span class="comment">// NO class can extend this. String, Integer are final classes!</span>
+}
+
+<span class="comment">// 4. final Parameter = can't reassign inside method</span>
+<span class="keyword">void</span> <span class="func">process</span>(<span class="keyword">final</span> <span class="type">String</span> name) {
+    name = <span class="string">"other"</span>; <span class="comment">// COMPILE ERROR!</span>
+}
+
+<span class="comment">// 5. Blank final variable (assigned in constructor)</span>
+<span class="keyword">class</span> <span class="type">User</span> {
+    <span class="keyword">final</span> <span class="type">String</span> id;  <span class="comment">// No value here...</span>
+    <span class="type">User</span>(<span class="type">String</span> id) {
+        <span class="keyword">this</span>.id = id;    <span class="comment">// ...assigned here. MUST be assigned in constructor!</span>
+    }
+}</code></pre>
+<div class="section"><div class="section-title mistake">⚠️ TRICKY: final does NOT mean the OBJECT is immutable!</div>
+<div class="warn">
+<pre><code><span class="keyword">final</span> <span class="type">List</span>&lt;<span class="type">String</span>&gt; list = <span class="keyword">new</span> <span class="type">ArrayList</span>&lt;&gt;();
+list.<span class="func">add</span>(<span class="string">"Hello"</span>);     <span class="comment">// This WORKS! You can modify the object.</span>
+list = <span class="keyword">new</span> <span class="type">ArrayList</span>&lt;&gt;(); <span class="comment">// This FAILS! Can't reassign the reference.</span>
+<span class="comment">// final locks the REFERENCE, not the OBJECT it points to!</span></code></pre>
+</div></div>
+</div></div>
+
+<!-- ===== Q12 ===== -->
+<div class="faq" id="q12">
+<div class="faq-header"><div class="faq-num">12</div><h3>static vs final vs static final</h3></div>
+<div class="faq-body">
+<table>
+<tbody><tr><th>Keyword</th><th>Meaning</th><th>Example</th><th>When to Use</th></tr>
+<tr><td><code>static</code></td><td>Belongs to class, shared copy</td><td><code>static int count = 0;</code></td><td>Counters, utility methods, shared config</td></tr>
+<tr><td><code>final</code></td><td>Can't be changed after assignment</td><td><code>final int x = 5;</code></td><td>Method params, blank finals in constructors</td></tr>
+<tr><td><code>static final</code></td><td>Class-level CONSTANT</td><td><code>static final double PI = 3.14;</code></td><td>Constants (naming: ALL_CAPS)</td></tr>
+</tbody></table>
+<pre><code><span class="keyword">public class</span> <span class="type">Config</span> {
+    <span class="keyword">static int</span> instanceCount = <span class="num">0</span>;              <span class="comment">// Can change, shared</span>
+    <span class="keyword">final int</span> id;                                <span class="comment">// Can't change, per object</span>
+    <span class="keyword">static final</span> <span class="type">String</span> APP = <span class="string">"MyApp"</span>;          <span class="comment">// Can't change, shared = TRUE CONSTANT</span>
+    <span class="keyword">static final</span> <span class="type">List</span>&lt;<span class="type">String</span>&gt; ROLES =
+        <span class="type">Collections</span>.<span class="func">unmodifiableList</span>(             <span class="comment">// Immutable constant collection</span>
+            <span class="type">Arrays</span>.<span class="func">asList</span>(<span class="string">"ADMIN"</span>, <span class="string">"USER"</span>));
+
+    <span class="type">Config</span>(<span class="keyword">int</span> id) {
+        <span class="keyword">this</span>.id = id;
+        instanceCount++;
+    }
+}</code></pre>
+</div></div>
+
+<!-- ===== Q13 ===== -->
+<div class="faq" id="q13">
+<div class="faq-header"><div class="faq-num">13</div><h3>Explain ALL 8 Primitive Data Types <span class="tag tag-hot">HOT</span></h3></div>
+<div class="faq-body">
+<table>
+<tbody><tr><th>Type</th><th>Size</th><th>Range</th><th>Default</th><th>Example</th></tr>
+<tr><td><code>byte</code></td><td>1 byte (8 bit)</td><td>-128 to 127</td><td>0</td><td><code>byte age = 25;</code></td></tr>
+<tr><td><code>short</code></td><td>2 bytes (16 bit)</td><td>-32,768 to 32,767</td><td>0</td><td><code>short year = 2024;</code></td></tr>
+<tr><td><code>int</code></td><td>4 bytes (32 bit)</td><td>-2.1B to 2.1B</td><td>0</td><td><code>int salary = 50000;</code></td></tr>
+<tr><td><code>long</code></td><td>8 bytes (64 bit)</td><td>Very large</td><td>0L</td><td><code>long pop = 8000000000L;</code></td></tr>
+<tr><td><code>float</code></td><td>4 bytes</td><td>~7 decimal digits</td><td>0.0f</td><td><code>float pi = 3.14f;</code></td></tr>
+<tr><td><code>double</code></td><td>8 bytes</td><td>~15 decimal digits</td><td>0.0d</td><td><code>double rate = 3.14159;</code></td></tr>
+<tr><td><code>char</code></td><td>2 bytes (16 bit)</td><td>0 to 65,535 (Unicode)</td><td>'\u0000'</td><td><code>char grade = 'A';</code></td></tr>
+<tr><td><code>boolean</code></td><td>~1 bit (JVM dependent)</td><td>true or false</td><td>false</td><td><code>boolean active = true;</code></td></tr>
+</tbody></table>
+<div class="section"><div class="section-title mistake">⚠️ Common Mistakes</div>
+<div class="warn">
+❌ <code>float f = 3.14;</code> - ERROR! 3.14 is double by default. Use <code>3.14f</code><br>
+❌ <code>long l = 2147483648;</code> - ERROR! Literal exceeds int range. Use <code>2147483648L</code><br>
+❌ Comparing float/double with <code>==</code> - Never! Use <code>Math.abs(a-b) &lt; 0.0001</code> instead.<br>
+❌ <code>char c = "A";</code> - ERROR! char uses single quotes: <code>'A'</code>
+</div></div>
+</div></div>
+
+<!-- ===== Q14 ===== -->
+<div class="faq" id="q14">
+<div class="faq-header"><div class="faq-num">14</div><h3>What is Autoboxing and Unboxing? <span class="tag tag-hot">HOT</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">🤔 What is it?</div>
+<b>Autoboxing</b> = Automatic conversion of primitive to Wrapper object (int -&gt; Integer)<br>
+<b>Unboxing</b> = Automatic conversion of Wrapper object to primitive (Integer -&gt; int)<br><br>
+Java does this for you so you don't have to manually convert.
+</div>
+<pre><code><span class="comment">// AUTOBOXING: primitive -&gt; Wrapper</span>
+<span class="keyword">int</span> num = <span class="num">5</span>;
+<span class="type">Integer</span> obj = num;  <span class="comment">// Compiler does: Integer.valueOf(5)</span>
+
+<span class="comment">// UNBOXING: Wrapper -&gt; primitive</span>
+<span class="type">Integer</span> obj2 = <span class="keyword">new</span> <span class="type">Integer</span>(<span class="num">10</span>);
+<span class="keyword">int</span> num2 = obj2;   <span class="comment">// Compiler does: obj2.intValue()</span>
+
+<span class="comment">// Used everywhere with Collections (can't store primitives)</span>
+<span class="type">List</span>&lt;<span class="type">Integer</span>&gt; list = <span class="keyword">new</span> <span class="type">ArrayList</span>&lt;&gt;();
+list.<span class="func">add</span>(<span class="num">42</span>);       <span class="comment">// Autoboxing: 42 -&gt; Integer.valueOf(42)</span>
+<span class="keyword">int</span> val = list.<span class="func">get</span>(<span class="num">0</span>); <span class="comment">// Unboxing: Integer -&gt; int</span></code></pre>
+<div class="section"><div class="section-title mistake">⚠️ TRICKY Integer Cache Interview Question!</div>
+<div class="warn">
+<pre><code><span class="type">Integer</span> a = <span class="num">127</span>;
+<span class="type">Integer</span> b = <span class="num">127</span>;
+<span class="type">System</span>.out.<span class="func">println</span>(a == b);  <span class="comment">// TRUE! (cached: -128 to 127)</span>
+
+<span class="type">Integer</span> c = <span class="num">128</span>;
+<span class="type">Integer</span> d = <span class="num">128</span>;
+<span class="type">System</span>.out.<span class="func">println</span>(c == d);  <span class="comment">// FALSE! (not cached, new objects)</span>
+<span class="type">System</span>.out.<span class="func">println</span>(c.<span class="func">equals</span>(d));  <span class="comment">// TRUE! (compares value)</span></code></pre>
+Java caches Integer objects from -128 to 127 for performance. Always use <code>.equals()</code> for wrapper comparisons!
+</div></div>
+<div class="section"><div class="section-title mistake">⚠️ NullPointerException Trap</div>
+<div class="warn">
+<pre><code><span class="type">Integer</span> x = <span class="keyword">null</span>;
+<span class="keyword">int</span> y = x;  <span class="comment">// BOOM! NullPointerException during unboxing!</span>
+<span class="comment">// Always null-check wrapper types before unboxing</span></code></pre>
+</div></div>
+</div></div>
+
+<!-- ===== Q15 ===== -->
+<div class="faq" id="q15">
+<div class="faq-header"><div class="faq-num">15</div><h3>Type Casting: Widening vs Narrowing</h3></div>
+<div class="faq-body">
+<div class="diagram">
+ WIDENING (Implicit - Safe, No data loss)
+ byte -&gt; short -&gt; int -&gt; long -&gt; float -&gt; double
+                  char --^
+
+ NARROWING (Explicit - Risky, Possible data loss)
+ double -&gt; float -&gt; long -&gt; int -&gt; short -&gt; byte
+</div>
+<pre><code><span class="comment">// WIDENING: Automatic (small to big) - SAFE</span>
+<span class="keyword">int</span> i = <span class="num">100</span>;
+<span class="keyword">long</span> l = i;        <span class="comment">// int -&gt; long (automatic)</span>
+<span class="keyword">double</span> d = i;      <span class="comment">// int -&gt; double (automatic)</span>
+
+<span class="comment">// NARROWING: Manual cast required (big to small) - RISKY</span>
+<span class="keyword">double</span> d2 = <span class="num">9.99</span>;
+<span class="keyword">int</span> i2 = (<span class="keyword">int</span>) d2;  <span class="comment">// 9 (decimal part LOST!)</span>
+
+<span class="keyword">int</span> big = <span class="num">130</span>;
+<span class="keyword">byte</span> b = (<span class="keyword">byte</span>) big; <span class="comment">// -126 (overflow! 130 wraps around in byte range)</span></code></pre>
+<div class="section"><div class="section-title mistake">⚠️ Common Mistakes</div>
+<div class="warn">
+❌ <code>long l = 10; float f = l;</code> - Compiles but may lose precision! long has 64 bits, float has 32 bits.<br>
+❌ Assuming <code>(int)</code> rounds a double. It TRUNCATES (chops off decimal), doesn't round. Use <code>Math.round()</code> for rounding.
+</div></div>
+</div></div>
+
+<!-- ===== Q16 ===== -->
+<div class="faq" id="q16">
+<div class="faq-header"><div class="faq-num">16</div><h3>What is the var keyword (Java 10+)?</h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">🤔 What is it?</div>
+<code>var</code> is a LOCAL variable type inference feature. The compiler figures out the type for you from the right side. It does NOT make Java dynamically typed - the type is still fixed at compile time.
+</div>
+<pre><code><span class="comment">// Without var</span>
+<span class="type">Map</span>&lt;<span class="type">String</span>, <span class="type">List</span>&lt;<span class="type">Integer</span>&gt;&gt; map = <span class="keyword">new</span> <span class="type">HashMap</span>&lt;<span class="type">String</span>, <span class="type">List</span>&lt;<span class="type">Integer</span>&gt;&gt;();
+
+<span class="comment">// With var (cleaner!)</span>
+<span class="keyword">var</span> map = <span class="keyword">new</span> <span class="type">HashMap</span>&lt;<span class="type">String</span>, <span class="type">List</span>&lt;<span class="type">Integer</span>&gt;&gt;();
+
+<span class="comment">// More examples</span>
+<span class="keyword">var</span> name = <span class="string">"John"</span>;           <span class="comment">// Inferred as String</span>
+<span class="keyword">var</span> list = <span class="type">List</span>.<span class="func">of</span>(<span class="num">1</span>,<span class="num">2</span>,<span class="num">3</span>);    <span class="comment">// Inferred as List&lt;Integer&gt;</span>
+<span class="keyword">var</span> stream = list.<span class="func">stream</span>();   <span class="comment">// Inferred as Stream&lt;Integer&gt;</span></code></pre>
+<table>
+<tbody><tr><th>✅ Can use var</th><th>❌ Cannot use var</th></tr>
+<tr><td>Local variables in methods</td><td>Class fields / instance variables</td></tr>
+<tr><td>For-loop variables</td><td>Method parameters</td></tr>
+<tr><td>Try-with-resources</td><td>Return types</td></tr>
+<tr><td></td><td>var = null (can't infer type)</td></tr>
+</tbody></table>
+</div></div>
+
+<!-- ===== Q17 ===== -->
+<div class="faq" id="q17">
+<div class="faq-header"><div class="faq-num">17</div><h3>Explain ALL 4 Access Modifiers <span class="tag tag-hot">HOT</span></h3></div>
+<div class="faq-body">
+<table>
+<tbody><tr><th>Modifier</th><th>Same Class</th><th>Same Package</th><th>Subclass (diff pkg)</th><th>Other Package</th></tr>
+<tr><td><code>private</code></td><td>✅</td><td>❌</td><td>❌</td><td>❌</td></tr>
+<tr><td><code>default</code> (no keyword)</td><td>✅</td><td>✅</td><td>❌</td><td>❌</td></tr>
+<tr><td><code>protected</code></td><td>✅</td><td>✅</td><td>✅</td><td>❌</td></tr>
+<tr><td><code>public</code></td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+</tbody></table>
+<div class="diagram">
+ Visibility (least to most):
+ private -&gt; default -&gt; protected -&gt; public
+    |          |           |          |
+ Lock in    Lock in     Lock in    Open to
+ your room  your house  family     everyone
+</div>
+<div class="section"><div class="section-title when">⏰ When to use which?</div>
+- <b>private</b>: Internal implementation details, helper methods (MOST restrictive - use by default!)<br>
+- <b>default</b>: Package-level utility classes (rare, used in frameworks)<br>
+- <b>protected</b>: Methods intended for subclass extension<br>
+- <b>public</b>: API contracts, service interfaces (use sparingly)
+</div>
+<div class="section"><div class="section-title best">✅ Best Practice</div>
+<div class="tip">Always start with <code>private</code> and increase visibility only when needed. This is the principle of <b>Least Privilege</b> - a core security concept.</div>
+</div>
+</div></div>
+
+<!-- ===== Q18 ===== -->
+<div class="faq" id="q18">
+<div class="faq-header"><div class="faq-num">18</div><h3>What is a Package in Java?</h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">🤔 What is it?</div>
+A package is like a FOLDER that groups related classes. It prevents naming conflicts and provides access control.
+<br>Analogy: Like organizing files in folders on your computer. You can have a file called <code>Report.docx</code> in both <code>Sales/</code> and <code>HR/</code> folders without conflict.
+</div>
+<pre><code><span class="comment">// Declaring a package (MUST be first line)</span>
+<span class="keyword">package</span> com.company.service;
+
+<span class="comment">// Importing from another package</span>
+<span class="keyword">import</span> com.company.model.User;
+<span class="keyword">import</span> com.company.model.*;    <span class="comment">// Import all classes (not sub-packages!)</span>
+<span class="keyword">import static</span> java.lang.Math.PI; <span class="comment">// Static import</span></code></pre>
+<div class="section"><div class="section-title mistake">⚠️ Common Mistakes</div>
+<div class="warn">
+❌ <code>import java.util.*</code> does NOT import sub-packages like <code>java.util.concurrent.*</code><br>
+❌ <code>java.lang</code> is auto-imported, you don't need to import String, System, etc.<br>
+❌ Wildcard imports (*) can cause ambiguity if two packages have same class name
+</div></div>
+</div></div>
+
+<!-- ===== Q19 ===== -->
+<div class="faq" id="q19">
+<div class="faq-header"><div class="faq-num">19</div><h3>Explain main() method in detail <span class="tag tag-imp">MUST KNOW</span></h3></div>
+<div class="faq-body">
+<pre><code><span class="keyword">public static void</span> <span class="func">main</span>(<span class="type">String</span>[] args) { }
+
+<span class="comment">// Let's break down each word:</span>
+<span class="comment">// public  -&gt; JVM needs to call it from outside the class</span>
+<span class="comment">// static  -&gt; JVM calls it WITHOUT creating an object of the class</span>
+<span class="comment">// void    -&gt; Returns nothing to JVM</span>
+<span class="comment">// main    -&gt; Name JVM looks for (convention, hardcoded in JVM)</span>
+<span class="comment">// String[] args -&gt; Command line arguments</span></code></pre>
+<div class="section"><b>Interview Questions about main():</b></div>
+<pre><code><span class="comment">// Q: Can we overload main()?</span>
+<span class="keyword">public static void</span> <span class="func">main</span>(<span class="type">String</span>[] args) { }  <span class="comment">// JVM entry point</span>
+<span class="keyword">public static void</span> <span class="func">main</span>(<span class="keyword">int</span> x) { }          <span class="comment">// Valid overload, but JVM won't call this</span>
+
+<span class="comment">// Q: Can we make main() final?</span>
+<span class="keyword">public static final void</span> <span class="func">main</span>(<span class="type">String</span>[] args) { } <span class="comment">// YES! Works fine.</span>
+
+<span class="comment">// Q: Can we make main() synchronized?</span>
+<span class="keyword">public static synchronized void</span> <span class="func">main</span>(<span class="type">String</span>[] args) { } <span class="comment">// YES!</span>
+
+<span class="comment">// Q: Can we declare main() without public?</span>
+<span class="comment">// Before Java 17: YES (with warning). Java 17+: Might not work (stricter rules)</span>
+
+<span class="comment">// Q: What are args for?</span>
+<span class="comment">// java MyApp hello world  -&gt;  args[0]="hello", args[1]="world"</span></code></pre>
+</div></div>
+
+<!-- ===== Q20 ===== -->
+<div class="faq" id="q20">
+<div class="faq-header"><div class="faq-num">20</div><h3>Is Java Pass by Value or Pass by Reference? <span class="tag tag-hot">HOT</span><span class="tag tag-imp">TRICKY</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">🤔 The Answer</div>
+<b>Java is ALWAYS Pass by Value.</b> Period. But here's the confusion: when you pass an object, you're passing the VALUE of the reference (memory address), not the object itself.
+</div>
+<pre><code><span class="comment">// PRIMITIVE: Pass by value (copy of value)</span>
+<span class="keyword">void</span> <span class="func">change</span>(<span class="keyword">int</span> x) { x = <span class="num">99</span>; }
+
+<span class="keyword">int</span> a = <span class="num">10</span>;
+<span class="func">change</span>(a);
+<span class="type">System</span>.out.<span class="func">println</span>(a);  <span class="comment">// Still 10! (copy was changed, not original)</span>
+
+<span class="comment">// OBJECT: Pass by value OF THE REFERENCE (copy of address)</span>
+<span class="keyword">void</span> <span class="func">modify</span>(<span class="type">StringBuilder</span> sb) {
+    sb.<span class="func">append</span>(<span class="string">" World"</span>);  <span class="comment">// This WORKS - modifying same object via copied reference</span>
+}
+
+<span class="keyword">void</span> <span class="func">reassign</span>(<span class="type">StringBuilder</span> sb) {
+    sb = <span class="keyword">new</span> <span class="type">StringBuilder</span>(<span class="string">"New"</span>);  <span class="comment">// This does NOT affect original</span>
+}
+
+<span class="type">StringBuilder</span> s = <span class="keyword">new</span> <span class="type">StringBuilder</span>(<span class="string">"Hello"</span>);
+<span class="func">modify</span>(s);
+<span class="type">System</span>.out.<span class="func">println</span>(s);  <span class="comment">// "Hello World" (object was modified)</span>
+
+<span class="func">reassign</span>(s);
+<span class="type">System</span>.out.<span class="func">println</span>(s);  <span class="comment">// STILL "Hello World" (reference copy was reassigned, not original)</span></code></pre>
+<div class="diagram">
+ PASS BY VALUE OF REFERENCE:
+
+ Calling Code:        Method:
+ s ----+              sb ----+    (sb is a COPY of s)
+       |                     |
+       v                     v
+  [StringBuilder: "Hello"]   (same object!)
+
+ After sb.append(" World"):
+ s ----+              sb ----+
+       |                     |
+       v                     v
+  [StringBuilder: "Hello World"]  (modified via copied ref)
+
+ After sb = new StringBuilder("New"):
+ s ----+              sb ----+
+       |                     |
+       v                     v
+  [Hello World]        [New]    (sb now points elsewhere, s unchanged!)
+</div>
+</div></div>
+
+<!-- ===== Q21 ===== -->
+<div class="faq" id="q21">
+<div class="faq-header"><div class="faq-num">21</div><h3>What are Wrapper Classes?</h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">🤔 What are they?</div>
+Wrapper classes wrap primitive types into objects. Every primitive has a corresponding wrapper class.
+</div>
+<table>
+<tbody><tr><th>Primitive</th><th>Wrapper</th><th>Parse Method</th><th>valueOf()</th></tr>
+<tr><td>byte</td><td>Byte</td><td>Byte.parseByte("1")</td><td>Byte.valueOf("1")</td></tr>
+<tr><td>short</td><td>Short</td><td>Short.parseShort("1")</td><td>Short.valueOf("1")</td></tr>
+<tr><td>int</td><td>Integer</td><td>Integer.parseInt("1")</td><td>Integer.valueOf("1")</td></tr>
+<tr><td>long</td><td>Long</td><td>Long.parseLong("1")</td><td>Long.valueOf("1")</td></tr>
+<tr><td>float</td><td>Float</td><td>Float.parseFloat("1.0")</td><td>Float.valueOf("1.0")</td></tr>
+<tr><td>double</td><td>Double</td><td>Double.parseDouble("1.0")</td><td>Double.valueOf("1.0")</td></tr>
+<tr><td>char</td><td>Character</td><td>N/A</td><td>Character.valueOf('a')</td></tr>
+<tr><td>boolean</td><td>Boolean</td><td>Boolean.parseBoolean("true")</td><td>Boolean.valueOf("true")</td></tr>
+</tbody></table>
+<div class="section"><div class="section-title why">💡 Why do we need them?</div>
+1. Collections only work with objects: <code>List&lt;Integer&gt;</code> not <code>List&lt;int&gt;</code><br>
+2. To represent null (primitives can't be null)<br>
+3. Utility methods: <code>Integer.parseInt()</code>, <code>Integer.toBinaryString()</code><br>
+4. Generics require objects
+</div>
+</div></div>
+
+<!-- ===== Q22 ===== -->
+<div class="faq" id="q22">
+<div class="faq-header"><div class="faq-num">22</div><h3>What is the strictfp keyword?</h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">🤔 What is it?</div>
+<code>strictfp</code> ensures that floating-point calculations give the SAME result on every platform. Without it, different CPUs may produce slightly different decimal results.
+</div>
+<pre><code><span class="keyword">strictfp class</span> <span class="type">Calculator</span> {
+    <span class="keyword">double</span> <span class="func">calculate</span>(<span class="keyword">double</span> a, <span class="keyword">double</span> b) {
+        <span class="keyword">return</span> a * b;  <span class="comment">// Guaranteed same result on ALL platforms</span>
+    }
+}
+<span class="comment">// Note: Since Java 17, strictfp is effectively default. The keyword is optional.</span></code></pre>
+</div></div>
+
+<!-- ===== Q23 ===== -->
+<div class="faq" id="q23">
+<div class="faq-header"><div class="faq-num">23</div><h3>What is the transient keyword?</h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">🤔 What is it?</div>
+<code>transient</code> tells Java: "Don't save this field when serializing the object." Used for sensitive data like passwords, or fields that can be re-computed.
+</div>
+<pre><code><span class="keyword">public class</span> <span class="type">User</span> <span class="keyword">implements</span> <span class="type">Serializable</span> {
+    <span class="type">String</span> username = <span class="string">"john"</span>;
+    <span class="keyword">transient</span> <span class="type">String</span> password = <span class="string">"secret123"</span>;  <span class="comment">// Will NOT be saved</span>
+    <span class="keyword">transient int</span> age = <span class="num">25</span>;                    <span class="comment">// Will become 0 after deserialization</span>
+}
+
+<span class="comment">// After serialize + deserialize:
+// username = "john"    (saved)
+// password = null      (transient - not saved, gets default null)
+// age = 0              (transient - not saved, gets default 0)</span></code></pre>
+</div></div>
+
+<!-- ===== Q24 ===== -->
+<div class="faq" id="q24">
+<div class="faq-header"><div class="faq-num">24</div><h3>What is the volatile keyword? <span class="tag tag-hot">HOT</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">🤔 What is it?</div>
+<code>volatile</code> tells Java: "Always read this variable from MAIN MEMORY, not from a thread's local cache." It ensures visibility of changes across threads.
+</div>
+<pre><code><span class="keyword">class</span> <span class="type">SharedFlag</span> {
+    <span class="keyword">volatile boolean</span> running = <span class="keyword">true</span>;
+    <span class="comment">// Without volatile, Thread 2 might never see Thread 1's change!</span>
+}
+
+<span class="comment">// Thread 1: flag.running = false;  (writes to main memory immediately)</span>
+<span class="comment">// Thread 2: while(flag.running)    (reads from main memory, sees false)</span></code></pre>
+<div class="section"><div class="section-title mistake">⚠️ Important</div>
+<div class="warn">
+volatile guarantees VISIBILITY but NOT ATOMICITY. <code>volatile int count; count++;</code> is NOT thread-safe because count++ is actually 3 operations (read, increment, write). Use <code>AtomicInteger</code> for that.
+</div></div>
+</div></div>
+
+<!-- ===== Q25 ===== -->
+<div class="faq" id="q25">
+<div class="faq-header"><div class="faq-num">25</div><h3>What is the instanceof operator?</h3></div>
+<div class="faq-body">
+<pre><code><span class="comment">// Checks if an object IS-A type</span>
+<span class="type">String</span> s = <span class="string">"Hello"</span>;
+<span class="type">System</span>.out.<span class="func">println</span>(s <span class="keyword">instanceof</span> <span class="type">String</span>);   <span class="comment">// true</span>
+<span class="type">System</span>.out.<span class="func">println</span>(s <span class="keyword">instanceof</span> <span class="type">Object</span>);   <span class="comment">// true (String extends Object)</span>
+<span class="type">System</span>.out.<span class="func">println</span>(<span class="keyword">null instanceof</span> <span class="type">String</span>); <span class="comment">// false (null is not instance of anything)</span>
+
+<span class="comment">// Java 16+: Pattern Matching instanceof (avoids extra cast!)</span>
+<span class="type">Object</span> obj = <span class="string">"Hello"</span>;
+
+<span class="comment">// OLD way:</span>
+<span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="type">String</span>) {
+    <span class="type">String</span> str = (<span class="type">String</span>) obj;  <span class="comment">// Manual cast needed</span>
+    <span class="type">System</span>.out.<span class="func">println</span>(str.<span class="func">length</span>());
+}
+
+<span class="comment">// NEW way (Java 16+):</span>
+<span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="type">String</span> str) {  <span class="comment">// Cast + assign in one step!</span>
+    <span class="type">System</span>.out.<span class="func">println</span>(str.<span class="func">length</span>());
+}</code></pre>
+</div></div>
+
+<!-- ===== Q26 ===== -->
+<div class="faq" id="q26">
+<div class="faq-header"><div class="faq-num">26</div><h3>What are Enums? Why not just use constants? <span class="tag tag-hot">HOT</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">🤔 What is it?</div>
+An Enum is a special class that represents a FIXED SET of constants. Think: days of the week, order statuses, directions.
+</div>
+<pre><code><span class="comment">// Basic Enum</span>
+<span class="keyword">public enum</span> <span class="type">Status</span> {
+    PENDING, APPROVED, REJECTED
+}
+
+<span class="comment">// Enum with fields, constructor, and methods</span>
+<span class="keyword">public enum</span> <span class="type">HttpStatus</span> {
+    OK(<span class="num">200</span>, <span class="string">"Success"</span>),
+    NOT_FOUND(<span class="num">404</span>, <span class="string">"Not Found"</span>),
+    SERVER_ERROR(<span class="num">500</span>, <span class="string">"Internal Server Error"</span>);
+
+    <span class="keyword">private final int</span> code;
+    <span class="keyword">private final</span> <span class="type">String</span> message;
+
+    <span class="type">HttpStatus</span>(<span class="keyword">int</span> code, <span class="type">String</span> message) {
+        <span class="keyword">this</span>.code = code;
+        <span class="keyword">this</span>.message = message;
+    }
+
+    <span class="keyword">public int</span> <span class="func">getCode</span>() { <span class="keyword">return</span> code; }
+    <span class="keyword">public</span> <span class="type">String</span> <span class="func">getMessage</span>() { <span class="keyword">return</span> message; }
+}
+
+<span class="comment">// Usage</span>
+<span class="type">HttpStatus</span> status = <span class="type">HttpStatus</span>.NOT_FOUND;
+<span class="type">System</span>.out.<span class="func">println</span>(status.<span class="func">getCode</span>());     <span class="comment">// 404</span>
+<span class="type">System</span>.out.<span class="func">println</span>(status.<span class="func">getMessage</span>());  <span class="comment">// Not Found</span></code></pre>
+<table>
+<tbody><tr><th>Feature</th><th>int Constants</th><th>Enum</th></tr>
+<tr><td>Type Safety</td><td>No (any int accepted)</td><td>Yes (only valid values)</td></tr>
+<tr><td>Namespace</td><td>No grouping</td><td>Grouped under Enum name</td></tr>
+<tr><td>Can have methods?</td><td>No</td><td>Yes</td></tr>
+<tr><td>Can implement interface?</td><td>No</td><td>Yes</td></tr>
+<tr><td>Readable print</td><td>Prints number</td><td>Prints name</td></tr>
+<tr><td>Switch-case</td><td>Works</td><td>Works (cleaner)</td></tr>
+</tbody></table>
+</div></div>
+
+<!-- ===== Q27 ===== -->
+<div class="faq" id="q27">
+<div class="faq-header"><div class="faq-num">27</div><h3>What are Annotations? <span class="tag tag-imp">MUST KNOW</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">🤔 What are they?</div>
+Annotations are METADATA (data about data) that you attach to code. They don't change the code behavior directly but provide instructions to the compiler, runtime, or tools (like Spring, JPA, etc.).
+</div>
+<pre><code><span class="comment">// Built-in Annotations</span>
+<span class="keyword">@Override</span>      <span class="comment">// Tells compiler: "I'm overriding a parent method" (compile error if not)</span>
+<span class="keyword">@Deprecated</span>   <span class="comment">// Warns: "This is old, don't use it"</span>
+<span class="keyword">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)  <span class="comment">// Hides compiler warnings</span>
+<span class="keyword">@FunctionalInterface</span>           <span class="comment">// Ensures interface has exactly 1 abstract method</span>
+<span class="keyword">@SafeVarargs</span>                    <span class="comment">// Suppresses heap pollution warning</span>
+
+<span class="comment">// Custom Annotation</span>
+<span class="keyword">@Retention</span>(<span class="type">RetentionPolicy</span>.RUNTIME)   <span class="comment">// Available at runtime (for reflection)</span>
+<span class="keyword">@Target</span>(<span class="type">ElementType</span>.METHOD)             <span class="comment">// Can only be used on methods</span>
+<span class="keyword">public @interface</span> <span class="type">LogExecutionTime</span> {
+    <span class="type">String</span> <span class="func">value</span>() <span class="keyword">default</span> <span class="string">"INFO"</span>;
+}
+
+<span class="comment">// Usage</span>
+<span class="keyword">@LogExecutionTime</span>(<span class="string">"DEBUG"</span>)
+<span class="keyword">public void</span> <span class="func">processOrder</span>() { <span class="comment">/* ... */</span> }</code></pre>
+<div class="section"><div class="section-title where">🌐 Where used in real projects?</div>
+- <b>Spring</b>: @Autowired, @Service, @RestController, @Transactional<br>
+- <b>JPA/Hibernate</b>: @Entity, @Table, @Column, @OneToMany<br>
+- <b>JUnit</b>: @Test, @BeforeEach, @MockBean<br>
+- <b>Lombok</b>: @Getter, @Setter, @Builder<br>
+- <b>Swagger</b>: @ApiOperation, @ApiResponse
+</div>
+</div></div>
+
+<!-- ===== Q28 ===== -->
+<div class="faq" id="q28">
+<div class="faq-header"><div class="faq-num">28</div><h3>What is Reflection API? <span class="tag tag-hot">HOT</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">🤔 What is it?</div>
+Reflection lets you inspect and modify class structure at RUNTIME. You can access private fields, invoke private methods, create objects dynamically - all things you normally can't do.
+<br><br>Analogy: X-ray vision for Java classes. You can see inside any class, even private parts.
+</div>
+<pre><code><span class="keyword">class</span> <span class="type">Secret</span> {
+    <span class="keyword">private</span> <span class="type">String</span> password = <span class="string">"hidden123"</span>;
+    <span class="keyword">private void</span> <span class="func">secretMethod</span>() { <span class="type">System</span>.out.<span class="func">println</span>(<span class="string">"Secret!"</span>); }
+}
+
+<span class="comment">// Using Reflection to access PRIVATE members</span>
+<span class="type">Secret</span> obj = <span class="keyword">new</span> <span class="type">Secret</span>();
+<span class="type">Class</span>&lt;?&gt; clazz = obj.<span class="func">getClass</span>();
+
+<span class="comment">// Access private field</span>
+<span class="type">Field</span> field = clazz.<span class="func">getDeclaredField</span>(<span class="string">"password"</span>);
+field.<span class="func">setAccessible</span>(<span class="keyword">true</span>);  <span class="comment">// Bypass private!</span>
+<span class="type">System</span>.out.<span class="func">println</span>(field.<span class="func">get</span>(obj));  <span class="comment">// "hidden123"</span>
+
+<span class="comment">// Call private method</span>
+<span class="type">Method</span> method = clazz.<span class="func">getDeclaredMethod</span>(<span class="string">"secretMethod"</span>);
+method.<span class="func">setAccessible</span>(<span class="keyword">true</span>);
+method.<span class="func">invoke</span>(obj);  <span class="comment">// Prints: "Secret!"</span></code></pre>
+<div class="section"><div class="section-title where">🌐 Where is it used?</div>
+Spring Framework (Dependency Injection), Hibernate (ORM mapping), JUnit (test discovery), Jackson (JSON to Object), Serialization frameworks
+</div>
+<div class="section"><div class="section-title mistake">⚠️ Downsides</div>
+<div class="warn">Slow (bypasses JIT optimizations), breaks encapsulation, compile-time safety lost, may break with Java module system (Java 9+). Avoid in application code - let frameworks handle it.</div>
+</div>
+</div></div>
+
+<!-- ===== Q29 ===== -->
+<div class="faq" id="q29">
+<div class="faq-header"><div class="faq-num">29</div><h3>What is Serialization and Deserialization? <span class="tag tag-hot">HOT</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">🤔 What is it?</div>
+<b>Serialization</b> = Converting an object to a byte stream (to save to file or send over network)<br>
+<b>Deserialization</b> = Converting byte stream back to an object<br><br>
+Analogy: Disassembling IKEA furniture to ship it (serialization), then reassembling at the destination (deserialization).
+</div>
+<pre><code><span class="keyword">public class</span> <span class="type">Employee</span> <span class="keyword">implements</span> <span class="type">Serializable</span> {
+    <span class="keyword">private static final long</span> serialVersionUID = <span class="num">1L</span>; <span class="comment">// Version control!</span>
+    <span class="type">String</span> name = <span class="string">"John"</span>;
+    <span class="keyword">int</span> age = <span class="num">30</span>;
+    <span class="keyword">transient</span> <span class="type">String</span> password = <span class="string">"secret"</span>;  <span class="comment">// Won't be serialized</span>
+}
+
+<span class="comment">// SERIALIZE (write object to file)</span>
+<span class="type">Employee</span> emp = <span class="keyword">new</span> <span class="type">Employee</span>();
+<span class="type">ObjectOutputStream</span> oos = <span class="keyword">new</span> <span class="type">ObjectOutputStream</span>(
+    <span class="keyword">new</span> <span class="type">FileOutputStream</span>(<span class="string">"employee.ser"</span>));
+oos.<span class="func">writeObject</span>(emp);
+oos.<span class="func">close</span>();
+
+<span class="comment">// DESERIALIZE (read object from file)</span>
+<span class="type">ObjectInputStream</span> ois = <span class="keyword">new</span> <span class="type">ObjectInputStream</span>(
+    <span class="keyword">new</span> <span class="type">FileInputStream</span>(<span class="string">"employee.ser"</span>));
+<span class="type">Employee</span> restored = (<span class="type">Employee</span>) ois.<span class="func">readObject</span>();
+ois.<span class="func">close</span>();
+<span class="comment">// restored.name = "John", restored.age = 30, restored.password = null</span></code></pre>
+<div class="section"><div class="section-title mistake">⚠️ Key Points</div>
+<div class="warn">
+- <b>serialVersionUID</b>: If you don't declare it, JVM auto-generates one. If class changes, UID changes, and deserialization FAILS with InvalidClassException.<br>
+- <b>static fields</b> are NOT serialized (they belong to class, not object).<br>
+- <b>transient fields</b> are NOT serialized (get default values on deserialization).<br>
+- All fields' types must ALSO be Serializable, or you get NotSerializableException.
+</div></div>
+</div></div>
+
+<!-- ===== Q30 ===== -->
+<div class="faq" id="q30">
+<div class="faq-header"><div class="faq-num">30</div><h3>What is Object Cloning?</h3></div>
+<div class="faq-body">
+<pre><code><span class="keyword">public class</span> <span class="type">Person</span> <span class="keyword">implements</span> <span class="type">Cloneable</span> {
+    <span class="type">String</span> name;
+    <span class="type">Address</span> address;  <span class="comment">// reference type</span>
+
+    <span class="keyword">@Override</span>
+    <span class="keyword">protected</span> <span class="type">Object</span> <span class="func">clone</span>() <span class="keyword">throws</span> <span class="type">CloneNotSupportedException</span> {
+        <span class="keyword">return super</span>.<span class="func">clone</span>();  <span class="comment">// SHALLOW copy</span>
+    }
+}
+
+<span class="type">Person</span> p1 = <span class="keyword">new</span> <span class="type">Person</span>(<span class="string">"John"</span>, <span class="keyword">new</span> <span class="type">Address</span>(<span class="string">"NYC"</span>));
+<span class="type">Person</span> p2 = (<span class="type">Person</span>) p1.<span class="func">clone</span>();
+
+p2.name = <span class="string">"Jane"</span>;             <span class="comment">// p1.name still "John" (String is immutable)</span>
+p2.address.city = <span class="string">"LA"</span>;        <span class="comment">// p1.address.city ALSO becomes "LA"! (shared ref)</span></code></pre>
+</div></div>
+
+<!-- ===== Q31 ===== -->
+<div class="faq" id="q31">
+<div class="faq-header"><div class="faq-num">31</div><h3>Shallow Copy vs Deep Copy <span class="tag tag-hot">HOT</span></h3></div>
+<div class="faq-body">
+<div class="diagram">
+ SHALLOW COPY:
+ p1 ---&gt; [name: "John"] [address ----&gt; [city: "NYC"]]
+ p2 ---&gt; [name: "John"] [address -----^             ]  &lt;-- SHARES same Address!
+
+ DEEP COPY:
+ p1 ---&gt; [name: "John"] [address ----&gt; [city: "NYC"]]
+ p2 ---&gt; [name: "John"] [address ----&gt; [city: "NYC"]]  &lt;-- SEPARATE Address copy!
+</div>
+<pre><code><span class="comment">// DEEP COPY: Override clone to clone inner objects too</span>
+<span class="keyword">@Override</span>
+<span class="keyword">protected</span> <span class="type">Object</span> <span class="func">clone</span>() <span class="keyword">throws</span> <span class="type">CloneNotSupportedException</span> {
+    <span class="type">Person</span> cloned = (<span class="type">Person</span>) <span class="keyword">super</span>.<span class="func">clone</span>();
+    cloned.address = (<span class="type">Address</span>) <span class="keyword">this</span>.address.<span class="func">clone</span>();  <span class="comment">// Clone inner object!</span>
+    <span class="keyword">return</span> cloned;
+}
+
+<span class="comment">// Alternative: Use Copy Constructor (Recommended!)</span>
+<span class="keyword">public</span> <span class="type">Person</span>(<span class="type">Person</span> other) {
+    <span class="keyword">this</span>.name = other.name;
+    <span class="keyword">this</span>.address = <span class="keyword">new</span> <span class="type">Address</span>(other.address);  <span class="comment">// New object</span>
+}
+
+<span class="comment">// Alternative: Serialize and Deserialize (Deep copy any Serializable object)</span></code></pre>
+<table>
+<tbody><tr><th>Feature</th><th>Shallow Copy</th><th>Deep Copy</th></tr>
+<tr><td>Copies primitives?</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Copies references?</td><td>Copies the reference (points to same object)</td><td>Creates new copies of referenced objects</td></tr>
+<tr><td>Performance</td><td>Fast</td><td>Slower</td></tr>
+<tr><td>Side effects?</td><td>Yes - changes to inner objects affect both</td><td>No - completely independent</td></tr>
+</tbody></table>
+</div></div>
+
+<!-- ===== Q32 ===== -->
+<div class="faq" id="q32">
+<div class="faq-header"><div class="faq-num">32</div><h3>What are Records (Java 16+)? <span class="tag tag-fav">MODERN</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">🤔 What is it?</div>
+A Record is a compact way to create immutable data classes. Java automatically generates constructor, getters, equals(), hashCode(), and toString().
+</div>
+<pre><code><span class="comment">// OLD way: 50+ lines of boilerplate!</span>
+<span class="keyword">public class</span> <span class="type">Employee</span> {
+    <span class="keyword">private final</span> <span class="type">String</span> name;
+    <span class="keyword">private final int</span> age;
+    <span class="comment">// Constructor, getters, equals, hashCode, toString... SO MUCH CODE</span>
+}
+
+<span class="comment">// NEW way with Record: 1 LINE!</span>
+<span class="keyword">public record</span> <span class="type">Employee</span>(<span class="type">String</span> name, <span class="keyword">int</span> age) { }
+
+<span class="comment">// Usage</span>
+<span class="type">Employee</span> e = <span class="keyword">new</span> <span class="type">Employee</span>(<span class="string">"John"</span>, <span class="num">30</span>);
+e.<span class="func">name</span>();     <span class="comment">// "John" (NOT getName()!)</span>
+e.<span class="func">age</span>();      <span class="comment">// 30</span>
+e.<span class="func">toString</span>(); <span class="comment">// "Employee[name=John, age=30]"</span>
+
+<span class="comment">// Records can have:</span>
+<span class="keyword">public record</span> <span class="type">Employee</span>(<span class="type">String</span> name, <span class="keyword">int</span> age) {
+    <span class="comment">// Compact constructor (validation)</span>
+    <span class="keyword">public</span> <span class="type">Employee</span> {
+        <span class="keyword">if</span> (age &lt; <span class="num">0</span>) <span class="keyword">throw new</span> <span class="type">IllegalArgumentException</span>(<span class="string">"Age cannot be negative"</span>);
+    }
+    <span class="comment">// Static methods, instance methods, implement interfaces</span>
+    <span class="keyword">public</span> <span class="type">String</span> <span class="func">greeting</span>() { <span class="keyword">return</span> <span class="string">"Hi, I'm "</span> + name; }
+}</code></pre>
+<div class="section"><div class="section-title mistake">⚠️ Limitations</div>
+<div class="warn">
+- Records are implicitly <b>final</b> (can't be extended)<br>
+- Fields are implicitly <b>private final</b> (immutable)<br>
+- Can't extend other classes (already extends java.lang.Record)<br>
+- CAN implement interfaces
+</div></div>
+</div></div>
+
+<!-- ===== Q33 ===== -->
+<div class="faq" id="q33">
+<div class="faq-header"><div class="faq-num">33</div><h3>What are Sealed Classes (Java 17)? <span class="tag tag-fav">MODERN</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">🤔 What is it?</div>
+Sealed classes let you CONTROL which classes can extend/implement them. It's like an exclusive club with a guest list.
+</div>
+<pre><code><span class="comment">// Only Circle, Rectangle, and Triangle can extend Shape</span>
+<span class="keyword">public sealed class</span> <span class="type">Shape</span>
+    <span class="keyword">permits</span> <span class="type">Circle</span>, <span class="type">Rectangle</span>, <span class="type">Triangle</span> {
+}
+
+<span class="keyword">public final class</span> <span class="type">Circle</span> <span class="keyword">extends</span> <span class="type">Shape</span> { }       <span class="comment">// final = no more subclasses</span>
+<span class="keyword">public sealed class</span> <span class="type">Rectangle</span> <span class="keyword">extends</span> <span class="type">Shape</span>
+    <span class="keyword">permits</span> <span class="type">Square</span> { }                               <span class="comment">// sealed = controlled extension</span>
+<span class="keyword">public non-sealed class</span> <span class="type">Triangle</span> <span class="keyword">extends</span> <span class="type">Shape</span> { } <span class="comment">// non-sealed = anyone can extend</span>
+
+<span class="comment">// WHY? Enables exhaustive pattern matching in switch:</span>
+<span class="type">String</span> <span class="func">describe</span>(<span class="type">Shape</span> shape) {
+    <span class="keyword">return switch</span> (shape) {
+        <span class="keyword">case</span> <span class="type">Circle</span> c    -&gt; <span class="string">"Circle"</span>;
+        <span class="keyword">case</span> <span class="type">Rectangle</span> r -&gt; <span class="string">"Rectangle"</span>;
+        <span class="keyword">case</span> <span class="type">Triangle</span> t  -&gt; <span class="string">"Triangle"</span>;
+        <span class="comment">// No default needed! Compiler knows all subtypes.</span>
+    };
+}</code></pre>
+</div></div>
+
+<!-- ===== Q34 ===== -->
+<div class="faq" id="q34">
+<div class="faq-header"><div class="faq-num">34</div><h3>Pattern Matching for instanceof (Java 16+)</h3></div>
+<div class="faq-body">
+<pre><code><span class="comment">// OLD: Check type + cast = 2 steps</span>
+<span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="type">String</span>) {
+    <span class="type">String</span> s = (<span class="type">String</span>) obj;
+    <span class="type">System</span>.out.<span class="func">println</span>(s.<span class="func">toUpperCase</span>());
+}
+
+<span class="comment">// NEW: Check type + cast + assign = 1 step!</span>
+<span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="type">String</span> s) {
+    <span class="type">System</span>.out.<span class="func">println</span>(s.<span class="func">toUpperCase</span>());  <span class="comment">// s is already cast!</span>
+}
+
+<span class="comment">// Works with negation too:</span>
+<span class="keyword">if</span> (!(obj <span class="keyword">instanceof</span> <span class="type">String</span> s)) {
+    <span class="keyword">return</span>;  <span class="comment">// early return</span>
+}
+<span class="type">System</span>.out.<span class="func">println</span>(s.<span class="func">toUpperCase</span>());  <span class="comment">// s is in scope here!</span></code></pre>
+</div></div>
+
+<!-- ===== Q35 ===== -->
+<div class="faq" id="q35">
+<div class="faq-header"><div class="faq-num">35</div><h3>Switch Expressions (Java 14+) <span class="tag tag-fav">MODERN</span></h3></div>
+<div class="faq-body">
+<pre><code><span class="comment">// OLD switch (statement)</span>
+<span class="keyword">int</span> numLetters;
+<span class="keyword">switch</span> (day) {
+    <span class="keyword">case</span> MONDAY: <span class="keyword">case</span> FRIDAY:
+        numLetters = <span class="num">6</span>;
+        <span class="keyword">break</span>;     <span class="comment">// Don't forget break! (bug source)</span>
+    <span class="keyword">case</span> TUESDAY:
+        numLetters = <span class="num">7</span>;
+        <span class="keyword">break</span>;
+    <span class="keyword">default</span>:
+        numLetters = <span class="num">0</span>;
+}
+
+<span class="comment">// NEW switch EXPRESSION (Java 14+)</span>
+<span class="keyword">int</span> numLetters = <span class="keyword">switch</span> (day) {
+    <span class="keyword">case</span> MONDAY, FRIDAY  -&gt; <span class="num">6</span>;    <span class="comment">// No break needed! Arrow syntax.</span>
+    <span class="keyword">case</span> TUESDAY         -&gt; <span class="num">7</span>;
+    <span class="keyword">case</span> WEDNESDAY       -&gt; <span class="num">9</span>;
+    <span class="keyword">default</span>              -&gt; <span class="num">0</span>;
+};  <span class="comment">// Note the semicolon! It's an expression now.</span>
+
+<span class="comment">// Multi-line blocks use yield</span>
+<span class="keyword">int</span> result = <span class="keyword">switch</span> (status) {
+    <span class="keyword">case</span> OK -&gt; <span class="num">1</span>;
+    <span class="keyword">case</span> ERROR -&gt; {
+        <span class="func">log</span>(<span class="string">"Error occurred"</span>);
+        <span class="keyword">yield</span> <span class="num">-1</span>;  <span class="comment">// yield returns value from block</span>
+    }
+    <span class="keyword">default</span> -&gt; <span class="num">0</span>;
+};</code></pre>
+</div></div>
+
+<!-- ===== Q36 ===== -->
+<div class="faq" id="q36">
+<div class="faq-header"><div class="faq-num">36</div><h3>Text Blocks (Java 15+)</h3></div>
+<div class="faq-body">
+<pre><code><span class="comment">// OLD: Painful string concatenation for multi-line text</span>
+<span class="type">String</span> json = <span class="string">"{\n"</span> +
+    <span class="string">"  \"name\": \"John\",\n"</span> +
+    <span class="string">"  \"age\": 30\n"</span> +
+    <span class="string">"}"</span>;
+
+<span class="comment">// NEW: Text Blocks (Java 15+) - Clean!</span>
+<span class="type">String</span> json = <span class="string">"""
+        {
+          "name": "John",
+          "age": 30
+        }
+        """</span>;
+
+<span class="comment">// Useful for SQL, HTML, JSON, XML, etc.</span>
+<span class="type">String</span> sql = <span class="string">"""
+        SELECT name, age
+        FROM employees
+        WHERE department = 'IT'
+        ORDER BY name
+        """</span>;</code></pre>
+</div></div>
+
+<!-- ===== Q37 ===== -->
+<div class="faq" id="q37">
+<div class="faq-header"><div class="faq-num">37</div><h3>What is Classpath?</h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">🤔 What is it?</div>
+Classpath tells the JVM WHERE to find .class files and JARs. It's like telling GPS all the locations where your code lives.
+</div>
+<pre><code><span class="comment">// Setting classpath via command line</span>
+java -cp .:lib/gson-2.10.jar com.app.Main
+
+<span class="comment">// Multiple paths separated by : (Unix) or ; (Windows)</span>
+java -cp src;lib/a.jar;lib/b.jar com.app.Main
+
+<span class="comment">// Or via environment variable</span>
+set CLASSPATH=C:\myapp\classes;C:\myapp\lib\*.jar</code></pre>
+<div class="section"><div class="section-title mistake">⚠️ Common Error</div>
+<div class="warn"><code>ClassNotFoundException</code> or <code>NoClassDefFoundError</code> usually means the class is not on your classpath. Check your build tool (Maven/Gradle) dependencies.</div>
+</div>
+</div></div>
+
+<!-- ===== Q38 ===== -->
+<div class="faq" id="q38">
+<div class="faq-header"><div class="faq-num">38</div><h3>Stack vs Heap Memory - Quick Overview</h3></div>
+<div class="faq-body">
+<table>
+<tbody><tr><th>Feature</th><th>Stack</th><th>Heap</th></tr>
+<tr><td>Stores</td><td>Method calls, local variables, references</td><td>Objects, instance variables</td></tr>
+<tr><td>Scope</td><td>Per thread (private)</td><td>Shared across all threads</td></tr>
+<tr><td>Speed</td><td>Very fast (LIFO)</td><td>Slower (needs GC)</td></tr>
+<tr><td>Size</td><td>Small (512KB - 1MB default)</td><td>Large (configurable)</td></tr>
+<tr><td>Error</td><td>StackOverflowError</td><td>OutOfMemoryError</td></tr>
+<tr><td>Lifetime</td><td>Until method returns</td><td>Until GC collects</td></tr>
+</tbody></table>
+<pre><code><span class="keyword">void</span> <span class="func">example</span>() {
+    <span class="keyword">int</span> x = <span class="num">10</span>;                         <span class="comment">// x is on STACK</span>
+    <span class="type">String</span> name = <span class="keyword">new</span> <span class="type">String</span>(<span class="string">"John"</span>); <span class="comment">// 'name' ref on STACK, String object on HEAP</span>
+    <span class="type">Employee</span> emp = <span class="keyword">new</span> <span class="type">Employee</span>();     <span class="comment">// 'emp' ref on STACK, Employee object on HEAP</span>
+}
+<span class="comment">// When method ends: Stack frame popped (x, name, emp references gone)
+// Heap objects become eligible for GC if no other refs point to them</span></code></pre>
+</div></div>
+
+<!-- ===== Q39 ===== -->
+<div class="faq" id="q39">
+<div class="faq-header"><div class="faq-num">39</div><h3>Garbage Collection Overview</h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">🤔 What is it?</div>
+GC is the automatic memory management system. It finds objects that are no longer reachable (no references pointing to them) and frees their memory. You DON'T manually free memory in Java.
+</div>
+<pre><code><span class="type">Employee</span> e1 = <span class="keyword">new</span> <span class="type">Employee</span>();  <span class="comment">// Object 1 created on heap</span>
+<span class="type">Employee</span> e2 = <span class="keyword">new</span> <span class="type">Employee</span>();  <span class="comment">// Object 2 created on heap</span>
+e1 = <span class="keyword">null</span>;                      <span class="comment">// Object 1 now ELIGIBLE for GC</span>
+e1 = e2;                         <span class="comment">// (if e1 was pointing to something, that becomes eligible)</span>
+
+<span class="comment">// You can REQUEST GC (but JVM may ignore it!)</span>
+<span class="type">System</span>.<span class="func">gc</span>();       <span class="comment">// Just a suggestion, not a command!</span>
+<span class="type">Runtime</span>.<span class="func">getRuntime</span>().<span class="func">gc</span>();  <span class="comment">// Same thing</span></code></pre>
+<div class="section"><div class="section-title mistake">⚠️ Key Points</div>
+<div class="warn">
+- You can NEVER force GC. <code>System.gc()</code> is just a hint.<br>
+- <code>finalize()</code> is deprecated since Java 9. Don't use it.<br>
+- More details in the Memory Management FAQ file.
+</div></div>
+</div></div>
+
+<!-- ===== Q40 ===== -->
+<div class="faq" id="q40">
+<div class="faq-header"><div class="faq-num">40</div><h3>equals() vs == <span class="tag tag-hot">HOT</span><span class="tag tag-imp">TRICKY</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">🤔 The Core Rule</div>
+<code>==</code> compares REFERENCES (are they the same object in memory?)<br>
+<code>.equals()</code> compares VALUES/CONTENT (are the contents the same?)
+</div>
+<pre><code><span class="type">String</span> a = <span class="keyword">new</span> <span class="type">String</span>(<span class="string">"Hello"</span>);
+<span class="type">String</span> b = <span class="keyword">new</span> <span class="type">String</span>(<span class="string">"Hello"</span>);
+
+a == b          <span class="comment">// FALSE (different objects in heap)</span>
+a.<span class="func">equals</span>(b)    <span class="comment">// TRUE  (same content "Hello")</span>
+
+<span class="comment">// TRICKY: String pool</span>
+<span class="type">String</span> c = <span class="string">"Hello"</span>;
+<span class="type">String</span> d = <span class="string">"Hello"</span>;
+c == d          <span class="comment">// TRUE! (same object in String pool)</span>
+c.<span class="func">equals</span>(d)    <span class="comment">// TRUE  (same content)</span>
+
+<span class="comment">// PRIMITIVES: == compares VALUES (no .equals() available)</span>
+<span class="keyword">int</span> x = <span class="num">5</span>, y = <span class="num">5</span>;
+x == y          <span class="comment">// TRUE (comparing values directly)</span></code></pre>
+<table>
+<tbody><tr><th>Type</th><th>== (double equals)</th><th>.equals()</th></tr>
+<tr><td>Primitives</td><td>Compares values</td><td>Not available</td></tr>
+<tr><td>Objects</td><td>Compares references (memory address)</td><td>Compares content (if properly overridden)</td></tr>
+<tr><td>String literals</td><td>May be true (pool)</td><td>Always true for same content</td></tr>
+<tr><td>new String()</td><td>Always false (diff objects)</td><td>True for same content</td></tr>
+</tbody></table>
+<div class="section"><div class="section-title best">✅ Best Practice</div>
+<div class="tip">ALWAYS use <code>.equals()</code> for object comparison. Use <code>==</code> only for primitives and null checks. For null-safe comparison use <code>Objects.equals(a, b)</code>.</div>
+</div>
+</div></div>
+
+<!-- ===== Q41 ===== -->
+<div class="faq" id="q41">
+<div class="faq-header"><div class="faq-num">41</div><h3>hashCode() and its contract with equals() <span class="tag tag-hot">HOT</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">🤔 What is it?</div>
+<code>hashCode()</code> returns an integer that represents the object. It's used by hash-based collections like HashMap, HashSet to determine which "bucket" to store the object in.
+</div>
+<div class="section"><b>THE CONTRACT (you MUST follow this):</b></div>
+<table>
+<tbody><tr><th>Rule</th><th>Explanation</th></tr>
+<tr><td>If a.equals(b) is TRUE</td><td>Then a.hashCode() MUST equal b.hashCode()</td></tr>
+<tr><td>If a.hashCode() == b.hashCode()</td><td>a.equals(b) MAY or MAY NOT be true (collision allowed)</td></tr>
+<tr><td>If a.equals(b) is FALSE</td><td>hashCodes CAN be same (but shouldn't be, for performance)</td></tr>
+</tbody></table>
+<pre><code><span class="keyword">public class</span> <span class="type">Employee</span> {
+    <span class="type">String</span> id;
+    <span class="type">String</span> name;
+
+    <span class="keyword">@Override</span>
+    <span class="keyword">public boolean</span> <span class="func">equals</span>(<span class="type">Object</span> o) {
+        <span class="keyword">if</span> (<span class="keyword">this</span> == o) <span class="keyword">return true</span>;
+        <span class="keyword">if</span> (o == <span class="keyword">null</span> || getClass() != o.<span class="func">getClass</span>()) <span class="keyword">return false</span>;
+        <span class="type">Employee</span> emp = (<span class="type">Employee</span>) o;
+        <span class="keyword">return</span> <span class="type">Objects</span>.<span class="func">equals</span>(id, emp.id);
+    }
+
+    <span class="keyword">@Override</span>
+    <span class="keyword">public int</span> <span class="func">hashCode</span>() {
+        <span class="keyword">return</span> <span class="type">Objects</span>.<span class="func">hash</span>(id);  <span class="comment">// MUST use same fields as equals()!</span>
+    }
+}</code></pre>
+<div class="section"><div class="section-title mistake">⚠️ What happens if you break the contract?</div>
+<div class="warn">If you override equals() but NOT hashCode(), HashMap/HashSet will NOT work correctly. Two "equal" objects could end up in different buckets, and you'll never find them.
+<br><br><b>Rule of thumb</b>: If you override equals(), ALWAYS override hashCode() too.</div>
+</div>
+</div></div>
+
+<!-- ===== Q42 ===== -->
+<div class="faq" id="q42">
+<div class="faq-header"><div class="faq-num">42</div><h3>toString() method</h3></div>
+<div class="faq-body">
+<pre><code><span class="comment">// Default toString() returns: ClassName@hashCodeInHex</span>
+<span class="type">Employee</span> e = <span class="keyword">new</span> <span class="type">Employee</span>();
+<span class="type">System</span>.out.<span class="func">println</span>(e);  <span class="comment">// Employee@1b6d3586 (useless!)</span>
+
+<span class="comment">// ALWAYS override toString() for meaningful output!</span>
+<span class="keyword">@Override</span>
+<span class="keyword">public</span> <span class="type">String</span> <span class="func">toString</span>() {
+    <span class="keyword">return</span> <span class="string">"Employee{name='"</span> + name + <span class="string">"', age="</span> + age + <span class="string">"}"</span>;
+}
+<span class="comment">// Now: Employee{name='John', age=30} (useful for debugging!)</span>
+
+<span class="comment">// PRO TIP: Use IDE "Generate toString()" or Lombok @ToString</span></code></pre>
+<div class="section"><div class="section-title best">✅ Best Practices</div>
+<div class="tip">
+- Always override toString() in your domain/entity classes<br>
+- Don't include sensitive data (passwords, SSN) in toString()<br>
+- Use it for logging and debugging<br>
+- Consider using StringJoiner or String.format() for complex formatting
+</div></div>
+</div></div>
+
+</div><!-- container -->
+<div style="text-align:center;padding:40px;opacity:0.4">
+<a href="file:///C:/temp/java-faq/Java_FAQ_Index.html" style="color:#8be9fd;text-decoration:none">← Back to Index</a> |
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html" style="color:#8be9fd;text-decoration:none">Next: OOP Concepts →</a>
+</div>
+
+
+
+</body></html>

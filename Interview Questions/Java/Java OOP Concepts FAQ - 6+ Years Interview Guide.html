@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)file:///C:/temp/java-faq/Java_OOP_FAQ.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Java OOP Concepts FAQ - 6+ Years Interview Guide</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Tahoma,sans-serif;background:#0a0a1a;color:#e0e0e0;line-height:1.7}
+.nav{background:linear-gradient(135deg,#4ecdc4,#44bd32);padding:15px 30px;position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;box-shadow:0 4px 20px rgba(0,0,0,0.5)}
+.nav a{color:#fff;text-decoration:none;font-weight:700;font-size:1.1rem}
+.nav .back{opacity:0.8;font-size:0.9rem}
+.hero{background:linear-gradient(135deg,#4ecdc4,#44bd32);padding:60px 30px;text-align:center}
+.hero h1{font-size:2.8rem;margin-bottom:10px}
+.hero p{font-size:1.1rem;opacity:0.9}
+.container{max-width:1100px;margin:0 auto;padding:30px 20px}
+.toc{background:#111;border:1px solid #333;border-radius:15px;padding:30px;margin-bottom:40px}
+.toc h2{color:#4ecdc4;margin-bottom:15px;font-size:1.4rem}
+.toc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:8px}
+.toc a{color:#8be9fd;text-decoration:none;padding:4px 0;display:block;font-size:0.88rem;transition:color 0.2s}
+.toc a:hover{color:#4ecdc4}
+.faq{background:linear-gradient(145deg,#12121f,#1a1a2e);border:1px solid #222;border-radius:15px;margin-bottom:25px;overflow:hidden}
+.faq:hover{border-color:#4ecdc444}
+.faq-header{background:#161625;padding:20px 25px;cursor:pointer;display:flex;align-items:center;gap:15px}
+.faq-num{background:linear-gradient(135deg,#4ecdc4,#44bd32);color:#fff;min-width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.9rem}
+.faq-header h3{color:#fff;font-size:1.15rem;flex:1}
+.faq-body{padding:25px}
+.faq-body .section{margin-bottom:20px}
+.section-title{display:flex;align-items:center;gap:8px;font-weight:700;font-size:1rem;margin-bottom:10px;padding:8px 12px;border-radius:8px}
+.what{color:#8be9fd;background:#8be9fd15}
+.why{color:#50fa7b;background:#50fa7b15}
+.when{color:#ffb86c;background:#ffb86c15}
+.where{color:#bd93f9;background:#bd93f915}
+.mistake{color:#ff5555;background:#ff555515}
+.best{color:#50fa7b;background:#50fa7b15}
+pre{background:#0d0d1a;border:1px solid #333;border-radius:10px;padding:18px;overflow-x:auto;margin:10px 0;font-size:0.88rem;line-height:1.6}
+code{font-family:'Cascadia Code','Fira Code',monospace;color:#f8f8f2}
+.keyword{color:#ff79c6}
+.string{color:#f1fa8c}
+.comment{color:#6272a4}
+.type{color:#8be9fd}
+.func{color:#50fa7b}
+.num{color:#bd93f9}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:0.9rem}
+th{background:#1a1a2e;color:#4ecdc4;padding:10px 14px;text-align:left;border:1px solid #333}
+td{padding:10px 14px;border:1px solid #222;background:#111}
+tr:hover td{background:#1a1a2e}
+.diagram{background:#0d0d1a;border:1px solid #444;border-radius:10px;padding:20px;margin:10px 0;font-family:'Cascadia Code',monospace;font-size:0.85rem;white-space:pre;overflow-x:auto;line-height:1.5;color:#8be9fd}
+.tag{display:inline-block;padding:2px 10px;border-radius:12px;font-size:0.75rem;font-weight:600;margin:2px}
+.tag-hot{background:#ff555533;color:#ff5555}
+.tag-imp{background:#ffb86c33;color:#ffb86c}
+.tag-fav{background:#50fa7b33;color:#50fa7b}
+.tip{background:#50fa7b15;border-left:4px solid #50fa7b;padding:12px 18px;border-radius:0 8px 8px 0;margin:10px 0;font-size:0.92rem}
+.warn{background:#ff555515;border-left:4px solid #ff5555;padding:12px 18px;border-radius:0 8px 8px 0;margin:10px 0;font-size:0.92rem}
+</style>
+</head>
+<body>
+<div class="nav">
+<a href="file:///C:/temp/java-faq/Java_FAQ_Index.html" class="back">← Back to Index</a>
+<a>☕ Java OOP FAQ</a>
+</div>
+<div class="hero">
+<h1>🧬 OOP Concepts Deep Dive</h1>
+<p>45+ Interview Questions for 6+ Years | Encapsulation, Inheritance, Polymorphism, Abstraction, SOLID, Design Patterns</p>
+</div>
+<div class="container">
+
+<div class="toc">
+<h2>Table of Contents</h2>
+<div class="toc-grid">
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q1">Q1. What are the 4 Pillars of OOP?</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q2">Q2. What is a Class vs Object?</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q3">Q3. Constructors in depth</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q4">Q4. Constructor Chaining</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q5">Q5. What is Encapsulation?</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q6">Q6. What is Inheritance?</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q7">Q7. Types of Inheritance</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q8">Q8. Why no Multiple Inheritance?</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q9">Q9. What is Polymorphism?</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q10">Q10. Method Overloading (Compile-Time)</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q11">Q11. Method Overriding (Runtime)</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q12">Q12. Overloading vs Overriding</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q13">Q13. Covariant Return Type</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q14">Q14. What is Abstraction?</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q15">Q15. Abstract Class</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q16">Q16. Interface</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q17">Q17. Abstract Class vs Interface</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q18">Q18. Default Methods (Java 8)</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q19">Q19. Functional Interfaces</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q20">Q20. Marker Interfaces</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q21">Q21. What is this keyword?</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q22">Q22. What is super keyword?</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q23">Q23. Composition vs Inheritance</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q24">Q24. Association, Aggregation, Composition</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q25">Q25. Coupling vs Cohesion</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q26">Q26. Object class methods</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q27">Q27. SOLID - Single Responsibility</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q28">Q28. SOLID - Open/Closed</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q29">Q29. SOLID - Liskov Substitution</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q30">Q30. SOLID - Interface Segregation</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q31">Q31. SOLID - Dependency Inversion</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q32">Q32. Singleton Pattern</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q33">Q33. Factory Pattern</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q34">Q34. Builder Pattern</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q35">Q35. Observer Pattern</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q36">Q36. Strategy Pattern</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q37">Q37. Immutable Class</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q38">Q38. Diamond Problem</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q39">Q39. Upcasting vs Downcasting</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q40">Q40. Method Hiding (static)</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q41">Q41. Can constructor be private?</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q42">Q42. Can we override a private method?</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q43">Q43. Can abstract class have constructor?</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q44">Q44. Can interface have constructor?</a>
+<a href="file:///C:/temp/java-faq/Java_OOP_FAQ.html#q45">Q45. When to use what?</a>
+</div>
+</div>
+
+<!-- Q1 -->
+<div class="faq" id="q1">
+<div class="faq-header"><div class="faq-num">1</div><h3>What are the 4 Pillars of OOP? <span class="tag tag-hot">HOT</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">What are they?</div>
+OOP (Object-Oriented Programming) is built on 4 pillars. Think of building a house - you need 4 walls to make it strong.
+</div>
+<div class="diagram">
+   +------------------+     +------------------+
+   |  ENCAPSULATION   |     |   INHERITANCE    |
+   |  (Data Hiding)   |     |   (Code Reuse)   |
+   |  Lock your data  |     |  Child gets from |
+   |  behind methods  |     |  Parent for free |
+   +------------------+     +------------------+
+
+   +------------------+     +------------------+
+   |  POLYMORPHISM    |     |   ABSTRACTION    |
+   |  (Many Forms)    |     |   (Hide Details) |
+   |  Same method,    |     |  Show WHAT not   |
+   |  different action |     |  HOW it works   |
+   +------------------+     +------------------+
+</div>
+<table>
+<tbody><tr><th>Pillar</th><th>One-liner</th><th>Real World Analogy</th></tr>
+<tr><td>Encapsulation</td><td>Wrap data + methods, hide internals</td><td>ATM: You press buttons (methods), you don't see the cash vault (data)</td></tr>
+<tr><td>Inheritance</td><td>Child class gets parent's features</td><td>You inherit traits from your parents</td></tr>
+<tr><td>Polymorphism</td><td>Same name, different behavior</td><td>The word "open" - open a door, open a file, open a business</td></tr>
+<tr><td>Abstraction</td><td>Show essential features, hide complexity</td><td>Car steering wheel - you turn it, you don't know the gear mechanism</td></tr>
+</tbody></table>
+</div></div>
+
+<!-- Q2 -->
+<div class="faq" id="q2">
+<div class="faq-header"><div class="faq-num">2</div><h3>What is a Class vs Object?</h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">What is it?</div>
+A <b>Class</b> is a BLUEPRINT (like an architect's drawing of a house). An <b>Object</b> is the ACTUAL thing built from that blueprint (the real house).
+</div>
+<pre><code><span class="comment">// Class = Blueprint</span>
+<span class="keyword">public class</span> <span class="type">Car</span> {
+    <span class="type">String</span> brand;    <span class="comment">// What the car HAS (state/attributes)</span>
+    <span class="keyword">int</span> speed;
+
+    <span class="keyword">void</span> <span class="func">accelerate</span>() {  <span class="comment">// What the car DOES (behavior/methods)</span>
+        speed += <span class="num">10</span>;
+    }
+}
+
+<span class="comment">// Objects = Real things created from blueprint</span>
+<span class="type">Car</span> myCar = <span class="keyword">new</span> <span class="type">Car</span>();       <span class="comment">// Object 1</span>
+myCar.brand = <span class="string">"Toyota"</span>;
+
+<span class="type">Car</span> yourCar = <span class="keyword">new</span> <span class="type">Car</span>();     <span class="comment">// Object 2 (different object, same blueprint)</span>
+yourCar.brand = <span class="string">"Honda"</span>;</code></pre>
+<table>
+<tbody><tr><th>Class</th><th>Object</th></tr>
+<tr><td>Blueprint/Template</td><td>Instance/Real thing</td></tr>
+<tr><td>Defined once</td><td>Can create many objects</td></tr>
+<tr><td>No memory until instantiated</td><td>Occupies memory on heap</td></tr>
+<tr><td>Logical entity</td><td>Physical entity</td></tr>
+<tr><td>Declared with <code>class</code> keyword</td><td>Created with <code>new</code> keyword</td></tr>
+</tbody></table>
+</div></div>
+
+<!-- Q3 -->
+<div class="faq" id="q3">
+<div class="faq-header"><div class="faq-num">3</div><h3>Constructors in Depth <span class="tag tag-hot">HOT</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">What is it?</div>
+A constructor is a special method that runs AUTOMATICALLY when you create an object with <code>new</code>. Its job is to INITIALIZE the object.
+<br><br>Rules: Same name as class, NO return type (not even void), called automatically.
+</div>
+<pre><code><span class="keyword">public class</span> <span class="type">Employee</span> {
+    <span class="type">String</span> name;
+    <span class="keyword">int</span> age;
+
+    <span class="comment">// 1. Default Constructor (no-args)</span>
+    <span class="keyword">public</span> <span class="type">Employee</span>() {
+        <span class="keyword">this</span>.name = <span class="string">"Unknown"</span>;
+        <span class="keyword">this</span>.age = <span class="num">0</span>;
+    }
+
+    <span class="comment">// 2. Parameterized Constructor</span>
+    <span class="keyword">public</span> <span class="type">Employee</span>(<span class="type">String</span> name, <span class="keyword">int</span> age) {
+        <span class="keyword">this</span>.name = name;
+        <span class="keyword">this</span>.age = age;
+    }
+
+    <span class="comment">// 3. Copy Constructor (Java doesn't auto-generate this!)</span>
+    <span class="keyword">public</span> <span class="type">Employee</span>(<span class="type">Employee</span> other) {
+        <span class="keyword">this</span>.name = other.name;
+        <span class="keyword">this</span>.age = other.age;
+    }
+}</code></pre>
+<div class="section"><div class="section-title mistake">Common Mistakes</div>
+<div class="warn">
+- If you write ANY constructor, Java does NOT give you the default no-arg constructor anymore.<br>
+- Constructor can be private (used in Singleton pattern).<br>
+- Constructors are NOT inherited by child classes.<br>
+- You CAN'T have both <code>this()</code> and <code>super()</code> in the same constructor.
+</div></div>
+</div></div>
+
+<!-- Q4 -->
+<div class="faq" id="q4">
+<div class="faq-header"><div class="faq-num">4</div><h3>Constructor Chaining</h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">What is it?</div>
+Calling one constructor from another. Use <code>this()</code> for same class, <code>super()</code> for parent class. MUST be the first statement.
+</div>
+<pre><code><span class="keyword">public class</span> <span class="type">Employee</span> {
+    <span class="type">String</span> name;
+    <span class="keyword">int</span> age;
+    <span class="type">String</span> department;
+
+    <span class="keyword">public</span> <span class="type">Employee</span>() {
+        <span class="keyword">this</span>(<span class="string">"Unknown"</span>, <span class="num">0</span>, <span class="string">"General"</span>);  <span class="comment">// Calls 3-arg constructor</span>
+    }
+
+    <span class="keyword">public</span> <span class="type">Employee</span>(<span class="type">String</span> name) {
+        <span class="keyword">this</span>(name, <span class="num">0</span>, <span class="string">"General"</span>);       <span class="comment">// Calls 3-arg constructor</span>
+    }
+
+    <span class="keyword">public</span> <span class="type">Employee</span>(<span class="type">String</span> name, <span class="keyword">int</span> age, <span class="type">String</span> dept) {
+        <span class="keyword">this</span>.name = name;               <span class="comment">// Final destination - actual initialization</span>
+        <span class="keyword">this</span>.age = age;
+        <span class="keyword">this</span>.department = dept;
+    }
+}
+
+<span class="comment">// Constructor chaining with parent class</span>
+<span class="keyword">class</span> <span class="type">Manager</span> <span class="keyword">extends</span> <span class="type">Employee</span> {
+    <span class="keyword">int</span> teamSize;
+    <span class="keyword">public</span> <span class="type">Manager</span>(<span class="type">String</span> name, <span class="keyword">int</span> age, <span class="keyword">int</span> teamSize) {
+        <span class="keyword">super</span>(name, age, <span class="string">"Management"</span>);  <span class="comment">// Calls parent constructor FIRST</span>
+        <span class="keyword">this</span>.teamSize = teamSize;
+    }
+}</code></pre>
+<div class="diagram">
+ Execution order when creating Manager:
+ new Manager("John", 30, 5)
+   |
+   +--&gt; Manager constructor called
+         |
+         +--&gt; super("John", 30, "Management")  // Parent constructor runs FIRST
+         |     |
+         |     +--&gt; Employee fields initialized
+         |
+         +--&gt; this.teamSize = 5  // Then child fields
+</div>
+</div></div>
+
+<!-- Q5 -->
+<div class="faq" id="q5">
+<div class="faq-header"><div class="faq-num">5</div><h3>What is Encapsulation? <span class="tag tag-hot">HOT</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">What is it?</div>
+Encapsulation means wrapping data (variables) and code (methods) together into a single unit (class), and HIDING the internal data from outside access. Only expose controlled access through getters/setters.
+<br><br>Analogy: A medicine CAPSULE. The medicine (data) is inside the capsule (class). You can only take the medicine by swallowing the capsule (using methods), not by opening it and touching the medicine directly.
+</div>
+<pre><code><span class="comment">// BAD: No encapsulation - data exposed directly</span>
+<span class="keyword">public class</span> <span class="type">BankAccount</span> {
+    <span class="keyword">public double</span> balance;  <span class="comment">// Anyone can set balance = -1000000!</span>
+}
+
+<span class="comment">// GOOD: Proper encapsulation</span>
+<span class="keyword">public class</span> <span class="type">BankAccount</span> {
+    <span class="keyword">private double</span> balance;  <span class="comment">// Hidden! Only this class can touch it.</span>
+
+    <span class="keyword">public double</span> <span class="func">getBalance</span>() {
+        <span class="keyword">return</span> balance;  <span class="comment">// Controlled READ access</span>
+    }
+
+    <span class="keyword">public void</span> <span class="func">deposit</span>(<span class="keyword">double</span> amount) {
+        <span class="keyword">if</span> (amount &gt; <span class="num">0</span>) {             <span class="comment">// VALIDATION!</span>
+            balance += amount;
+        } <span class="keyword">else</span> {
+            <span class="keyword">throw new</span> <span class="type">IllegalArgumentException</span>(<span class="string">"Amount must be positive"</span>);
+        }
+    }
+
+    <span class="keyword">public void</span> <span class="func">withdraw</span>(<span class="keyword">double</span> amount) {
+        <span class="keyword">if</span> (amount &gt; <span class="num">0</span> &amp;&amp; amount &lt;= balance) {
+            balance -= amount;
+        } <span class="keyword">else</span> {
+            <span class="keyword">throw new</span> <span class="type">IllegalArgumentException</span>(<span class="string">"Invalid withdrawal"</span>);
+        }
+    }
+}</code></pre>
+<div class="section"><div class="section-title why">Why is it used?</div>
+<b>1. Data Protection</b> - Prevent invalid states (negative balance)<br>
+<b>2. Flexibility</b> - Can change internal implementation without breaking callers<br>
+<b>3. Control</b> - Add validation, logging, security in getters/setters<br>
+<b>4. Maintenance</b> - Easier to debug because data changes go through one place
+</div>
+<div class="section"><div class="section-title best">Best Practice</div>
+<div class="tip">
+- Make ALL fields private<br>
+- Provide getters for read access, setters ONLY if modification is needed<br>
+- Add validation in setters<br>
+- Consider making classes immutable when possible (no setters at all)
+</div></div>
+</div></div>
+
+<!-- Q6 -->
+<div class="faq" id="q6">
+<div class="faq-header"><div class="faq-num">6</div><h3>What is Inheritance? <span class="tag tag-hot">HOT</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">What is it?</div>
+Inheritance means a child class (subclass) automatically gets all the fields and methods of a parent class (superclass). It's the IS-A relationship.
+<br><br>Analogy: A child inherits features from parents - eye color, height. Similarly, a Dog class inherits from an Animal class.
+</div>
+<pre><code><span class="comment">// Parent / Superclass / Base class</span>
+<span class="keyword">public class</span> <span class="type">Animal</span> {
+    <span class="type">String</span> name;
+    <span class="keyword">int</span> age;
+
+    <span class="keyword">void</span> <span class="func">eat</span>() {
+        <span class="type">System</span>.out.<span class="func">println</span>(name + <span class="string">" is eating"</span>);
+    }
+
+    <span class="keyword">void</span> <span class="func">sleep</span>() {
+        <span class="type">System</span>.out.<span class="func">println</span>(name + <span class="string">" is sleeping"</span>);
+    }
+}
+
+<span class="comment">// Child / Subclass / Derived class</span>
+<span class="keyword">public class</span> <span class="type">Dog</span> <span class="keyword">extends</span> <span class="type">Animal</span> {
+    <span class="type">String</span> breed;
+
+    <span class="keyword">void</span> <span class="func">bark</span>() {
+        <span class="type">System</span>.out.<span class="func">println</span>(name + <span class="string">" says Woof!"</span>);
+    }
+}
+
+<span class="comment">// Usage</span>
+<span class="type">Dog</span> d = <span class="keyword">new</span> <span class="type">Dog</span>();
+d.name = <span class="string">"Buddy"</span>;  <span class="comment">// Inherited from Animal</span>
+d.<span class="func">eat</span>();             <span class="comment">// Inherited from Animal - "Buddy is eating"</span>
+d.<span class="func">bark</span>();            <span class="comment">// Own method - "Buddy says Woof!"</span></code></pre>
+<div class="section"><div class="section-title mistake">What is NOT inherited?</div>
+<div class="warn">
+- <b>private</b> members (accessible through inherited public/protected methods)<br>
+- <b>Constructors</b> (but parent's constructor is called via super())<br>
+- <b>Static</b> members belong to the class, not inherited in true sense (they are accessible but not overridden)
+</div></div>
+</div></div>
+
+<!-- Q7 -->
+<div class="faq" id="q7">
+<div class="faq-header"><div class="faq-num">7</div><h3>Types of Inheritance in Java</h3></div>
+<div class="faq-body">
+<div class="diagram">
+  1. SINGLE              2. MULTILEVEL           3. HIERARCHICAL
+     A                      A                        A
+     |                      |                       / \
+     B                      B                      B   C
+                            |
+                            C
+
+  4. MULTIPLE (via Interface)    5. HYBRID (via Interface)
+     A   B  (interfaces)            A (class)
+      \ /                          / \
+       C  (class)                B     C  (classes)
+                                  \   /
+                                    D  (uses interfaces)
+</div>
+<table>
+<tbody><tr><th>Type</th><th>Supported?</th><th>How?</th></tr>
+<tr><td>Single</td><td>Yes</td><td><code>class B extends A</code></td></tr>
+<tr><td>Multilevel</td><td>Yes</td><td><code>class C extends B</code> (B extends A)</td></tr>
+<tr><td>Hierarchical</td><td>Yes</td><td><code>class B extends A</code>, <code>class C extends A</code></td></tr>
+<tr><td>Multiple</td><td>NO (with classes)</td><td>YES with interfaces: <code>class C implements A, B</code></td></tr>
+<tr><td>Hybrid</td><td>Via interfaces only</td><td>Combination of above</td></tr>
+</tbody></table>
+</div></div>
+
+<!-- Q8 -->
+<div class="faq" id="q8">
+<div class="faq-header"><div class="faq-num">8</div><h3>Why Java doesn't support Multiple Inheritance with classes? <span class="tag tag-hot">HOT</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">The Diamond Problem</div>
+If two parent classes have the same method, the child wouldn't know WHICH one to use. This ambiguity is called the Diamond Problem.
+</div>
+<div class="diagram">
+        Animal
+       /      \
+    Flying   Swimming
+       \      /
+        Duck       &lt;-- Which method does Duck use? Ambiguous!
+
+  // This would cause ambiguity:
+  class Flying { void move() { "fly"; } }
+  class Swimming { void move() { "swim"; } }
+  class Duck extends Flying, Swimming { }  // WHICH move()? COMPILER ERROR!
+</div>
+<div class="section"><div class="section-title best">The Solution: Interfaces</div>
+<pre><code><span class="keyword">interface</span> <span class="type">Flyable</span> {
+    <span class="keyword">default void</span> <span class="func">move</span>() { <span class="type">System</span>.out.<span class="func">println</span>(<span class="string">"Flying"</span>); }
+}
+
+<span class="keyword">interface</span> <span class="type">Swimmable</span> {
+    <span class="keyword">default void</span> <span class="func">move</span>() { <span class="type">System</span>.out.<span class="func">println</span>(<span class="string">"Swimming"</span>); }
+}
+
+<span class="keyword">class</span> <span class="type">Duck</span> <span class="keyword">implements</span> <span class="type">Flyable</span>, <span class="type">Swimmable</span> {
+    <span class="keyword">@Override</span>
+    <span class="keyword">public void</span> <span class="func">move</span>() {
+        <span class="type">Flyable</span>.<span class="keyword">super</span>.<span class="func">move</span>();    <span class="comment">// Explicitly choose which</span>
+        <span class="type">Swimmable</span>.<span class="keyword">super</span>.<span class="func">move</span>(); <span class="comment">// Or call both</span>
+        <span class="type">System</span>.out.<span class="func">println</span>(<span class="string">"I do both!"</span>);
+    }
+}</code></pre>
+</div>
+</div></div>
+
+<!-- Q9 -->
+<div class="faq" id="q9">
+<div class="faq-header"><div class="faq-num">9</div><h3>What is Polymorphism? <span class="tag tag-hot">HOT</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">What is it?</div>
+Poly = Many, Morph = Forms. Same method name can behave differently depending on context. Two types:
+</div>
+<table>
+<tbody><tr><th>Feature</th><th>Compile-Time (Static)</th><th>Runtime (Dynamic)</th></tr>
+<tr><td>How?</td><td>Method Overloading</td><td>Method Overriding</td></tr>
+<tr><td>Binding</td><td>Early binding (at compile time)</td><td>Late binding (at runtime)</td></tr>
+<tr><td>Which method?</td><td>Decided by parameter types</td><td>Decided by actual object type</td></tr>
+<tr><td>Same class?</td><td>Yes (same class, diff params)</td><td>No (parent-child relationship)</td></tr>
+<tr><td>Example</td><td>add(int,int) vs add(double,double)</td><td>animal.sound() = "Bark" or "Meow"</td></tr>
+</tbody></table>
+<pre><code><span class="comment">// RUNTIME POLYMORPHISM (most asked)</span>
+<span class="keyword">class</span> <span class="type">Animal</span> {
+    <span class="keyword">void</span> <span class="func">sound</span>() { <span class="type">System</span>.out.<span class="func">println</span>(<span class="string">"Some sound"</span>); }
+}
+
+<span class="keyword">class</span> <span class="type">Dog</span> <span class="keyword">extends</span> <span class="type">Animal</span> {
+    <span class="keyword">@Override</span>
+    <span class="keyword">void</span> <span class="func">sound</span>() { <span class="type">System</span>.out.<span class="func">println</span>(<span class="string">"Bark!"</span>); }
+}
+
+<span class="keyword">class</span> <span class="type">Cat</span> <span class="keyword">extends</span> <span class="type">Animal</span> {
+    <span class="keyword">@Override</span>
+    <span class="keyword">void</span> <span class="func">sound</span>() { <span class="type">System</span>.out.<span class="func">println</span>(<span class="string">"Meow!"</span>); }
+}
+
+<span class="comment">// The MAGIC: Parent reference, child object</span>
+<span class="type">Animal</span> a1 = <span class="keyword">new</span> <span class="type">Dog</span>();  <span class="comment">// Reference type: Animal, Actual object: Dog</span>
+<span class="type">Animal</span> a2 = <span class="keyword">new</span> <span class="type">Cat</span>();
+
+a1.<span class="func">sound</span>();  <span class="comment">// "Bark!" - JVM sees the ACTUAL object (Dog) at runtime</span>
+a2.<span class="func">sound</span>();  <span class="comment">// "Meow!" - JVM sees the ACTUAL object (Cat) at runtime</span>
+
+<span class="comment">// Real-world usage: Process different types uniformly</span>
+<span class="type">List</span>&lt;<span class="type">Animal</span>&gt; animals = <span class="type">List</span>.<span class="func">of</span>(<span class="keyword">new</span> <span class="type">Dog</span>(), <span class="keyword">new</span> <span class="type">Cat</span>(), <span class="keyword">new</span> <span class="type">Dog</span>());
+<span class="keyword">for</span> (<span class="type">Animal</span> a : animals) {
+    a.<span class="func">sound</span>();  <span class="comment">// Each calls its OWN implementation!</span>
+}</code></pre>
+</div></div>
+
+<!-- Q10 -->
+<div class="faq" id="q10">
+<div class="faq-header"><div class="faq-num">10</div><h3>Method Overloading (Compile-Time Polymorphism) <span class="tag tag-hot">HOT</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">What is it?</div>
+Multiple methods with the SAME NAME but DIFFERENT parameters in the same class.
+</div>
+<pre><code><span class="keyword">public class</span> <span class="type">Calculator</span> {
+    <span class="comment">// Overloaded methods - same name, different params</span>
+    <span class="keyword">int</span> <span class="func">add</span>(<span class="keyword">int</span> a, <span class="keyword">int</span> b)                    { <span class="keyword">return</span> a + b; }
+    <span class="keyword">double</span> <span class="func">add</span>(<span class="keyword">double</span> a, <span class="keyword">double</span> b)            { <span class="keyword">return</span> a + b; }
+    <span class="keyword">int</span> <span class="func">add</span>(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> c)              { <span class="keyword">return</span> a + b + c; }
+    <span class="type">String</span> <span class="func">add</span>(<span class="type">String</span> a, <span class="type">String</span> b)             { <span class="keyword">return</span> a + b; }
+}
+
+<span class="comment">// Compiler decides which to call based on arguments:</span>
+calc.<span class="func">add</span>(<span class="num">1</span>, <span class="num">2</span>);         <span class="comment">// Calls int version</span>
+calc.<span class="func">add</span>(<span class="num">1.5</span>, <span class="num">2.5</span>);     <span class="comment">// Calls double version</span>
+calc.<span class="func">add</span>(<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>);      <span class="comment">// Calls 3-arg version</span></code></pre>
+<div class="section"><div class="section-title mistake">Rules and Tricky Cases</div>
+<div class="warn">
+<b>You CAN overload by:</b> Number of params, Type of params, Order of params<br>
+<b>You CANNOT overload by:</b> Return type alone, Access modifier alone<br><br>
+<b>Tricky:</b> <code>add(int, long)</code> and <code>add(long, int)</code> ARE valid overloads. But calling <code>add(1, 1)</code> causes ambiguity error!
+</div></div>
+</div></div>
+
+<!-- Q11 -->
+<div class="faq" id="q11">
+<div class="faq-header"><div class="faq-num">11</div><h3>Method Overriding (Runtime Polymorphism) <span class="tag tag-hot">HOT</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">What is it?</div>
+Child class provides its OWN implementation of a method that already exists in the parent class. Same name, same parameters, same return type (or covariant).
+</div>
+<pre><code><span class="keyword">class</span> <span class="type">Vehicle</span> {
+    <span class="keyword">void</span> <span class="func">start</span>() {
+        <span class="type">System</span>.out.<span class="func">println</span>(<span class="string">"Vehicle starting..."</span>);
+    }
+}
+
+<span class="keyword">class</span> <span class="type">ElectricCar</span> <span class="keyword">extends</span> <span class="type">Vehicle</span> {
+    <span class="keyword">@Override</span>  <span class="comment">// ALWAYS use @Override annotation!</span>
+    <span class="keyword">void</span> <span class="func">start</span>() {
+        <span class="type">System</span>.out.<span class="func">println</span>(<span class="string">"Electric car starting silently..."</span>);
+    }
+}</code></pre>
+<div class="section"><b>Rules of Overriding:</b></div>
+<table>
+<tbody><tr><th>Rule</th><th>Explanation</th></tr>
+<tr><td>Same method signature</td><td>Name + parameters must match exactly</td></tr>
+<tr><td>Return type</td><td>Same or covariant (subtype) return type</td></tr>
+<tr><td>Access modifier</td><td>Same or WIDER (protected in parent -&gt; can be public in child)</td></tr>
+<tr><td>Exceptions</td><td>Can throw same, narrower, or no exception (NOT broader)</td></tr>
+<tr><td>static methods</td><td>Cannot be overridden (only hidden)</td></tr>
+<tr><td>final methods</td><td>Cannot be overridden</td></tr>
+<tr><td>private methods</td><td>Cannot be overridden (not visible to child)</td></tr>
+<tr><td>Constructors</td><td>Cannot be overridden</td></tr>
+</tbody></table>
+</div></div>
+
+<!-- Q12 -->
+<div class="faq" id="q12">
+<div class="faq-header"><div class="faq-num">12</div><h3>Overloading vs Overriding Comparison <span class="tag tag-imp">MUST KNOW</span></h3></div>
+<div class="faq-body">
+<table>
+<tbody><tr><th>Feature</th><th>Overloading</th><th>Overriding</th></tr>
+<tr><td>Where?</td><td>Same class</td><td>Parent-Child classes</td></tr>
+<tr><td>Method name</td><td>Same</td><td>Same</td></tr>
+<tr><td>Parameters</td><td>MUST be different</td><td>MUST be same</td></tr>
+<tr><td>Return type</td><td>Can differ</td><td>Same or covariant</td></tr>
+<tr><td>Binding</td><td>Compile-time (early)</td><td>Runtime (late)</td></tr>
+<tr><td>Access modifier</td><td>Can differ</td><td>Same or wider</td></tr>
+<tr><td>static methods</td><td>Can overload</td><td>Cannot override (only hide)</td></tr>
+<tr><td>Performance</td><td>Faster (resolved at compile)</td><td>Slightly slower (resolved at runtime)</td></tr>
+<tr><td>@Override needed?</td><td>No</td><td>Yes (best practice)</td></tr>
+</tbody></table>
+</div></div>
+
+<!-- Q13 -->
+<div class="faq" id="q13">
+<div class="faq-header"><div class="faq-num">13</div><h3>Covariant Return Type</h3></div>
+<div class="faq-body">
+<pre><code><span class="comment">// Parent returns Animal, Child can return Dog (subtype of Animal)</span>
+<span class="keyword">class</span> <span class="type">AnimalFactory</span> {
+    <span class="type">Animal</span> <span class="func">create</span>() { <span class="keyword">return new</span> <span class="type">Animal</span>(); }
+}
+
+<span class="keyword">class</span> <span class="type">DogFactory</span> <span class="keyword">extends</span> <span class="type">AnimalFactory</span> {
+    <span class="keyword">@Override</span>
+    <span class="type">Dog</span> <span class="func">create</span>() { <span class="keyword">return new</span> <span class="type">Dog</span>(); }  <span class="comment">// Dog IS-A Animal, so this is valid!</span>
+}
+
+<span class="comment">// This avoids casting at the call site:</span>
+<span class="type">DogFactory</span> factory = <span class="keyword">new</span> <span class="type">DogFactory</span>();
+<span class="type">Dog</span> dog = factory.<span class="func">create</span>();  <span class="comment">// No cast needed!</span></code></pre>
+</div></div>
+
+<!-- Q14 -->
+<div class="faq" id="q14">
+<div class="faq-header"><div class="faq-num">14</div><h3>What is Abstraction? <span class="tag tag-hot">HOT</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">What is it?</div>
+Abstraction means showing only WHAT something does, hiding HOW it does it. You define the contract (what methods exist) without worrying about implementation details.
+<br><br>Analogy: When you drive a car, you use the steering wheel, pedals, and gear shift. You don't need to know how the engine combustion works internally. The steering wheel is the ABSTRACTION.
+</div>
+<div class="section"><b>Two ways to achieve abstraction in Java:</b></div>
+<table>
+<tbody><tr><th>Abstract Class</th><th>Interface</th></tr>
+<tr><td>0 to 100% abstraction</td><td>100% abstraction (before Java 8)</td></tr>
+<tr><td>Can have concrete methods</td><td>Can have default/static methods (Java 8+)</td></tr>
+<tr><td>Can have state (fields)</td><td>Only constants (public static final)</td></tr>
+<tr><td>extends (single)</td><td>implements (multiple)</td></tr>
+</tbody></table>
+</div></div>
+
+<!-- Q15 -->
+<div class="faq" id="q15">
+<div class="faq-header"><div class="faq-num">15</div><h3>Abstract Class in Depth <span class="tag tag-hot">HOT</span></h3></div>
+<div class="faq-body">
+<pre><code><span class="keyword">public abstract class</span> <span class="type">Shape</span> {
+    <span class="type">String</span> color;  <span class="comment">// CAN have instance fields</span>
+
+    <span class="keyword">public</span> <span class="type">Shape</span>(<span class="type">String</span> color) {  <span class="comment">// CAN have constructors</span>
+        <span class="keyword">this</span>.color = color;
+    }
+
+    <span class="keyword">abstract double</span> <span class="func">area</span>();      <span class="comment">// Abstract: NO body, child MUST implement</span>
+    <span class="keyword">abstract double</span> <span class="func">perimeter</span>(); <span class="comment">// Abstract: NO body</span>
+
+    <span class="keyword">void</span> <span class="func">display</span>() {             <span class="comment">// Concrete: HAS body, child inherits</span>
+        <span class="type">System</span>.out.<span class="func">println</span>(<span class="string">"Color: "</span> + color + <span class="string">", Area: "</span> + <span class="func">area</span>());
+    }
+}
+
+<span class="keyword">public class</span> <span class="type">Circle</span> <span class="keyword">extends</span> <span class="type">Shape</span> {
+    <span class="keyword">double</span> radius;
+
+    <span class="keyword">public</span> <span class="type">Circle</span>(<span class="type">String</span> color, <span class="keyword">double</span> radius) {
+        <span class="keyword">super</span>(color);  <span class="comment">// Call abstract class constructor</span>
+        <span class="keyword">this</span>.radius = radius;
+    }
+
+    <span class="keyword">@Override</span>
+    <span class="keyword">double</span> <span class="func">area</span>() { <span class="keyword">return</span> <span class="type">Math</span>.PI * radius * radius; }
+
+    <span class="keyword">@Override</span>
+    <span class="keyword">double</span> <span class="func">perimeter</span>() { <span class="keyword">return</span> <span class="num">2</span> * <span class="type">Math</span>.PI * radius; }
+}
+
+<span class="comment">// Cannot instantiate abstract class:</span>
+<span class="comment">// Shape s = new Shape("Red"); // COMPILE ERROR!</span>
+<span class="type">Shape</span> s = <span class="keyword">new</span> <span class="type">Circle</span>(<span class="string">"Red"</span>, <span class="num">5.0</span>);  <span class="comment">// OK: Polymorphism!</span>
+s.<span class="func">display</span>();  <span class="comment">// "Color: Red, Area: 78.54"</span></code></pre>
+</div></div>
+
+<!-- Q16 -->
+<div class="faq" id="q16">
+<div class="faq-header"><div class="faq-num">16</div><h3>Interfaces in Depth <span class="tag tag-hot">HOT</span></h3></div>
+<div class="faq-body">
+<pre><code><span class="comment">// Interface = 100% contract/specification</span>
+<span class="keyword">public interface</span> <span class="type">PaymentGateway</span> {
+
+    <span class="comment">// Constants (implicitly public static final)</span>
+    <span class="type">String</span> VERSION = <span class="string">"2.0"</span>;
+
+    <span class="comment">// Abstract method (implicitly public abstract)</span>
+    <span class="keyword">boolean</span> <span class="func">processPayment</span>(<span class="keyword">double</span> amount);
+    <span class="keyword">void</span> <span class="func">refund</span>(<span class="type">String</span> transactionId);
+
+    <span class="comment">// Default method (Java 8+) - has body, can be overridden</span>
+    <span class="keyword">default void</span> <span class="func">log</span>(<span class="type">String</span> msg) {
+        <span class="type">System</span>.out.<span class="func">println</span>(<span class="string">"[Payment] "</span> + msg);
+    }
+
+    <span class="comment">// Static method (Java 8+) - belongs to interface, can't be overridden</span>
+    <span class="keyword">static</span> <span class="type">PaymentGateway</span> <span class="func">create</span>(<span class="type">String</span> type) {
+        <span class="keyword">return switch</span> (type) {
+            <span class="keyword">case</span> <span class="string">"stripe"</span>  -&gt; <span class="keyword">new</span> <span class="type">StripePayment</span>();
+            <span class="keyword">case</span> <span class="string">"paypal"</span>  -&gt; <span class="keyword">new</span> <span class="type">PayPalPayment</span>();
+            <span class="keyword">default</span>        -&gt; <span class="keyword">throw new</span> <span class="type">IllegalArgumentException</span>(<span class="string">"Unknown"</span>);
+        };
+    }
+
+    <span class="comment">// Private method (Java 9+) - helper for default methods</span>
+    <span class="keyword">private void</span> <span class="func">validate</span>(<span class="keyword">double</span> amount) {
+        <span class="keyword">if</span> (amount &lt;= <span class="num">0</span>) <span class="keyword">throw new</span> <span class="type">IllegalArgumentException</span>();
+    }
+}
+
+<span class="comment">// Implementing</span>
+<span class="keyword">public class</span> <span class="type">StripePayment</span> <span class="keyword">implements</span> <span class="type">PaymentGateway</span> {
+    <span class="keyword">@Override</span>
+    <span class="keyword">public boolean</span> <span class="func">processPayment</span>(<span class="keyword">double</span> amount) {
+        <span class="comment">// Stripe-specific logic</span>
+        <span class="keyword">return true</span>;
+    }
+
+    <span class="keyword">@Override</span>
+    <span class="keyword">public void</span> <span class="func">refund</span>(<span class="type">String</span> txnId) {
+        <span class="comment">// Stripe-specific refund</span>
+    }
+}</code></pre>
+</div></div>
+
+<!-- Q17 -->
+<div class="faq" id="q17">
+<div class="faq-header"><div class="faq-num">17</div><h3>Abstract Class vs Interface <span class="tag tag-hot">HOT</span><span class="tag tag-imp">MUST KNOW</span></h3></div>
+<div class="faq-body">
+<table>
+<tbody><tr><th>Feature</th><th>Abstract Class</th><th>Interface</th></tr>
+<tr><td>Keyword</td><td><code>abstract class</code></td><td><code>interface</code></td></tr>
+<tr><td>Methods</td><td>Abstract + Concrete</td><td>Abstract + Default + Static + Private</td></tr>
+<tr><td>Fields</td><td>Any type (instance, static)</td><td>Only <code>public static final</code></td></tr>
+<tr><td>Constructor</td><td>Yes</td><td>No</td></tr>
+<tr><td>Multiple inheritance</td><td>No (extends only 1)</td><td>Yes (implements many)</td></tr>
+<tr><td>Access modifiers</td><td>Any</td><td>Methods: public (abstract/default) or private</td></tr>
+<tr><td>When to use</td><td>IS-A + shared state/code</td><td>CAN-DO capability/contract</td></tr>
+<tr><td>Speed</td><td>Slightly faster</td><td>Slightly slower (method lookup)</td></tr>
+</tbody></table>
+<div class="section"><div class="section-title best">When to use which?</div>
+<div class="tip">
+<b>Use Abstract Class when:</b><br>
+- You want to share CODE among related classes (template method pattern)<br>
+- You need non-static/non-final fields<br>
+- Classes share IS-A relationship (Dog IS-A Animal)<br><br>
+<b>Use Interface when:</b><br>
+- Unrelated classes need same capability (Comparable, Serializable)<br>
+- You need multiple inheritance<br>
+- You want to define a CONTRACT without caring about implementation<br>
+- Strategy pattern, dependency injection
+</div></div>
+</div></div>
+
+<!-- Q18 -->
+<div class="faq" id="q18">
+<div class="faq-header"><div class="faq-num">18</div><h3>Default Methods in Interfaces (Java 8+)</h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title why">Why were they added?</div>
+To add new methods to interfaces WITHOUT breaking existing implementations. Before Java 8, adding a method to an interface would break ALL classes implementing it.
+</div>
+<pre><code><span class="keyword">public interface</span> <span class="type">Collection</span>&lt;<span class="type">E</span>&gt; {
+    <span class="comment">// This was added in Java 8 without breaking ArrayList, LinkedList, etc.</span>
+    <span class="keyword">default</span> <span class="type">Stream</span>&lt;<span class="type">E</span>&gt; <span class="func">stream</span>() {
+        <span class="keyword">return</span> <span class="type">StreamSupport</span>.<span class="func">stream</span>(<span class="func">spliterator</span>(), <span class="keyword">false</span>);
+    }
+
+    <span class="keyword">default void</span> <span class="func">forEach</span>(<span class="type">Consumer</span>&lt;? <span class="keyword">super</span> <span class="type">E</span>&gt; action) {
+        <span class="keyword">for</span> (<span class="type">E</span> e : <span class="keyword">this</span>) { action.<span class="func">accept</span>(e); }
+    }
+}</code></pre>
+</div></div>
+
+<!-- Q19 -->
+<div class="faq" id="q19">
+<div class="faq-header"><div class="faq-num">19</div><h3>Functional Interfaces <span class="tag tag-hot">HOT</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">What is it?</div>
+An interface with exactly ONE abstract method. Used as the basis for lambda expressions.
+</div>
+<pre><code><span class="keyword">@FunctionalInterface</span>
+<span class="keyword">public interface</span> <span class="type">Comparator</span>&lt;<span class="type">T</span>&gt; {
+    <span class="keyword">int</span> <span class="func">compare</span>(<span class="type">T</span> o1, <span class="type">T</span> o2);  <span class="comment">// Only ONE abstract method</span>
+    <span class="comment">// Can have default and static methods too</span>
+}
+
+<span class="comment">// Key built-in functional interfaces:</span></code></pre>
+<table>
+<tbody><tr><th>Interface</th><th>Method</th><th>Input</th><th>Output</th><th>Use Case</th></tr>
+<tr><td>Predicate&lt;T&gt;</td><td>test(T)</td><td>T</td><td>boolean</td><td>Filtering</td></tr>
+<tr><td>Function&lt;T,R&gt;</td><td>apply(T)</td><td>T</td><td>R</td><td>Transformation</td></tr>
+<tr><td>Consumer&lt;T&gt;</td><td>accept(T)</td><td>T</td><td>void</td><td>Processing (forEach)</td></tr>
+<tr><td>Supplier&lt;T&gt;</td><td>get()</td><td>none</td><td>T</td><td>Factory/Lazy init</td></tr>
+<tr><td>Runnable</td><td>run()</td><td>none</td><td>void</td><td>Thread execution</td></tr>
+<tr><td>Callable&lt;V&gt;</td><td>call()</td><td>none</td><td>V</td><td>Thread with return</td></tr>
+</tbody></table>
+<pre><code><span class="comment">// Lambda = shorter way to implement functional interface</span>
+<span class="type">Predicate</span>&lt;<span class="type">String</span>&gt; isLong = s -&gt; s.<span class="func">length</span>() &gt; <span class="num">5</span>;
+<span class="type">Function</span>&lt;<span class="type">String</span>, <span class="type">Integer</span>&gt; toLength = <span class="type">String</span>::length;
+<span class="type">Consumer</span>&lt;<span class="type">String</span>&gt; printer = <span class="type">System</span>.out::println;
+<span class="type">Supplier</span>&lt;<span class="type">List</span>&lt;<span class="type">String</span>&gt;&gt; listFactory = <span class="type">ArrayList</span>::<span class="keyword">new</span>;</code></pre>
+</div></div>
+
+<!-- Q20 -->
+<div class="faq" id="q20">
+<div class="faq-header"><div class="faq-num">20</div><h3>Marker Interfaces</h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">What is it?</div>
+An interface with NO methods. It "marks" a class as having a certain property. JVM/frameworks check <code>instanceof</code> to see if a class is marked.
+</div>
+<pre><code><span class="comment">// Built-in Marker Interfaces</span>
+<span class="keyword">public interface</span> <span class="type">Serializable</span> { }    <span class="comment">// Marks: "can be serialized"</span>
+<span class="keyword">public interface</span> <span class="type">Cloneable</span> { }       <span class="comment">// Marks: "can be cloned"</span>
+<span class="keyword">public interface</span> <span class="type">RandomAccess</span> { }    <span class="comment">// Marks: "supports fast random access"</span>
+
+<span class="comment">// Custom marker interface</span>
+<span class="keyword">public interface</span> <span class="type">Auditable</span> { }
+
+<span class="keyword">public class</span> <span class="type">Order</span> <span class="keyword">implements</span> <span class="type">Auditable</span> {
+    <span class="comment">// Now we can check: if (obj instanceof Auditable) { log changes }</span>
+}
+
+<span class="comment">// Modern alternative: Use ANNOTATIONS instead</span>
+<span class="keyword">@Retention</span>(<span class="type">RetentionPolicy</span>.RUNTIME)
+<span class="keyword">public @interface</span> <span class="type">Auditable</span> { }  <span class="comment">// Cleaner approach!</span></code></pre>
+</div></div>
+
+<!-- Q21 -->
+<div class="faq" id="q21">
+<div class="faq-header"><div class="faq-num">21</div><h3>What is this keyword?</h3></div>
+<div class="faq-body">
+<pre><code><span class="keyword">public class</span> <span class="type">Employee</span> {
+    <span class="type">String</span> name;
+
+    <span class="comment">// 1. Refer to current instance variable (most common)</span>
+    <span class="keyword">public</span> <span class="type">Employee</span>(<span class="type">String</span> name) {
+        <span class="keyword">this</span>.name = name;  <span class="comment">// this.name = field, name = parameter</span>
+    }
+
+    <span class="comment">// 2. Call another constructor (constructor chaining)</span>
+    <span class="keyword">public</span> <span class="type">Employee</span>() {
+        <span class="keyword">this</span>(<span class="string">"Unknown"</span>);  <span class="comment">// Calls the parameterized constructor</span>
+    }
+
+    <span class="comment">// 3. Pass current object as argument</span>
+    <span class="keyword">void</span> <span class="func">register</span>() {
+        <span class="type">Registry</span>.<span class="func">add</span>(<span class="keyword">this</span>);  <span class="comment">// Pass myself</span>
+    }
+
+    <span class="comment">// 4. Return current object (method chaining / fluent API)</span>
+    <span class="type">Employee</span> <span class="func">setName</span>(<span class="type">String</span> name) {
+        <span class="keyword">this</span>.name = name;
+        <span class="keyword">return this</span>;  <span class="comment">// Enables: emp.setName("A").setAge(25)</span>
+    }
+}</code></pre>
+</div></div>
+
+<!-- Q22 -->
+<div class="faq" id="q22">
+<div class="faq-header"><div class="faq-num">22</div><h3>What is super keyword?</h3></div>
+<div class="faq-body">
+<pre><code><span class="keyword">class</span> <span class="type">Animal</span> {
+    <span class="type">String</span> name;
+    <span class="type">Animal</span>(<span class="type">String</span> name) { <span class="keyword">this</span>.name = name; }
+    <span class="keyword">void</span> <span class="func">eat</span>() { <span class="type">System</span>.out.<span class="func">println</span>(<span class="string">"Animal eating"</span>); }
+}
+
+<span class="keyword">class</span> <span class="type">Dog</span> <span class="keyword">extends</span> <span class="type">Animal</span> {
+    <span class="type">String</span> breed;
+
+    <span class="comment">// 1. Call parent constructor</span>
+    <span class="type">Dog</span>(<span class="type">String</span> name, <span class="type">String</span> breed) {
+        <span class="keyword">super</span>(name);  <span class="comment">// MUST be first line. Calls Animal(name)</span>
+        <span class="keyword">this</span>.breed = breed;
+    }
+
+    <span class="comment">// 2. Call parent method</span>
+    <span class="keyword">@Override</span>
+    <span class="keyword">void</span> <span class="func">eat</span>() {
+        <span class="keyword">super</span>.<span class="func">eat</span>();  <span class="comment">// Call parent's eat() first</span>
+        <span class="type">System</span>.out.<span class="func">println</span>(<span class="string">"Dog eating kibble"</span>);
+    }
+
+    <span class="comment">// 3. Access parent field (if shadowed)</span>
+    <span class="keyword">void</span> <span class="func">show</span>() {
+        <span class="type">System</span>.out.<span class="func">println</span>(<span class="keyword">super</span>.name);  <span class="comment">// Parent's name field</span>
+    }
+}</code></pre>
+</div></div>
+
+<!-- Q23 -->
+<div class="faq" id="q23">
+<div class="faq-header"><div class="faq-num">23</div><h3>Composition vs Inheritance <span class="tag tag-hot">HOT</span><span class="tag tag-imp">MUST KNOW</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">What is Composition?</div>
+<b>Inheritance</b> = IS-A relationship (Dog IS-A Animal)<br>
+<b>Composition</b> = HAS-A relationship (Car HAS-A Engine)<br><br>
+The famous advice: <b>"Favor Composition over Inheritance"</b>
+</div>
+<pre><code><span class="comment">// INHERITANCE approach (tight coupling - fragile!)</span>
+<span class="keyword">class</span> <span class="type">Car</span> <span class="keyword">extends</span> <span class="type">Engine</span> { }  <span class="comment">// Car IS-A Engine? Doesn't make sense!</span>
+
+<span class="comment">// COMPOSITION approach (flexible - preferred!)</span>
+<span class="keyword">class</span> <span class="type">Car</span> {
+    <span class="keyword">private</span> <span class="type">Engine</span> engine;       <span class="comment">// Car HAS-A Engine. Makes sense!</span>
+    <span class="keyword">private</span> <span class="type">Transmission</span> trans;   <span class="comment">// Car HAS-A Transmission</span>
+
+    <span class="keyword">public</span> <span class="type">Car</span>(<span class="type">Engine</span> engine, <span class="type">Transmission</span> trans) {
+        <span class="keyword">this</span>.engine = engine;      <span class="comment">// Injected - easy to swap!</span>
+        <span class="keyword">this</span>.trans = trans;
+    }
+
+    <span class="keyword">void</span> <span class="func">start</span>() {
+        engine.<span class="func">ignite</span>();
+        trans.<span class="func">engage</span>();
+    }
+}</code></pre>
+<table>
+<tbody><tr><th>Feature</th><th>Inheritance</th><th>Composition</th></tr>
+<tr><td>Relationship</td><td>IS-A</td><td>HAS-A</td></tr>
+<tr><td>Coupling</td><td>Tight (child depends on parent)</td><td>Loose (can swap components)</td></tr>
+<tr><td>Flexibility</td><td>Fixed at compile time</td><td>Can change at runtime</td></tr>
+<tr><td>Encapsulation</td><td>Breaks (child sees parent internals)</td><td>Preserves (uses only public API)</td></tr>
+<tr><td>Testing</td><td>Harder to mock parent</td><td>Easy to mock components</td></tr>
+<tr><td>When to use</td><td>True IS-A + want to reuse code</td><td>Almost always (default choice)</td></tr>
+</tbody></table>
+</div></div>
+
+<!-- Q24 -->
+<div class="faq" id="q24">
+<div class="faq-header"><div class="faq-num">24</div><h3>Association, Aggregation, and Composition</h3></div>
+<div class="faq-body">
+<div class="diagram">
+ Association (uses-a):   Teacher ----&gt; Student   (loose, independent)
+ Aggregation (has-a):    Team   o---&gt; Player     (whole-part, player can exist alone)
+ Composition (owns-a):   House  *---&gt; Room       (strong, room dies with house)
+</div>
+<table>
+<tbody><tr><th>Type</th><th>Relationship</th><th>Lifecycle</th><th>Example</th></tr>
+<tr><td>Association</td><td>Uses-A</td><td>Independent</td><td>Teacher uses Student</td></tr>
+<tr><td>Aggregation</td><td>Has-A (weak)</td><td>Child can outlive parent</td><td>Team has Players (players exist without team)</td></tr>
+<tr><td>Composition</td><td>Has-A (strong)</td><td>Child dies with parent</td><td>House has Rooms (rooms don't exist without house)</td></tr>
+</tbody></table>
+<pre><code><span class="comment">// Aggregation: Department HAS Employees (employees can exist without dept)</span>
+<span class="keyword">class</span> <span class="type">Department</span> {
+    <span class="type">List</span>&lt;<span class="type">Employee</span>&gt; employees;  <span class="comment">// Employees passed in, NOT created here</span>
+    <span class="type">Department</span>(<span class="type">List</span>&lt;<span class="type">Employee</span>&gt; employees) {
+        <span class="keyword">this</span>.employees = employees;
+    }
+}
+
+<span class="comment">// Composition: Car OWNS Engine (engine created and destroyed with car)</span>
+<span class="keyword">class</span> <span class="type">Car</span> {
+    <span class="keyword">private final</span> <span class="type">Engine</span> engine = <span class="keyword">new</span> <span class="type">Engine</span>();  <span class="comment">// Created HERE, dies with Car</span>
+}</code></pre>
+</div></div>
+
+<!-- Q25 -->
+<div class="faq" id="q25">
+<div class="faq-header"><div class="faq-num">25</div><h3>Coupling vs Cohesion</h3></div>
+<div class="faq-body">
+<table>
+<tbody><tr><th>Concept</th><th>What it means</th><th>Goal</th></tr>
+<tr><td><b>Coupling</b></td><td>How much one class DEPENDS on another</td><td>LOW coupling (less dependency)</td></tr>
+<tr><td><b>Cohesion</b></td><td>How focused a class is on ONE responsibility</td><td>HIGH cohesion (focused)</td></tr>
+</tbody></table>
+<pre><code><span class="comment">// HIGH coupling (BAD) - OrderService directly creates EmailService</span>
+<span class="keyword">class</span> <span class="type">OrderService</span> {
+    <span class="type">EmailService</span> email = <span class="keyword">new</span> <span class="type">EmailService</span>();  <span class="comment">// Tightly coupled!</span>
+}
+
+<span class="comment">// LOW coupling (GOOD) - Use interface + DI</span>
+<span class="keyword">class</span> <span class="type">OrderService</span> {
+    <span class="keyword">private final</span> <span class="type">NotificationService</span> notifier;  <span class="comment">// Interface!</span>
+    <span class="type">OrderService</span>(<span class="type">NotificationService</span> notifier) {
+        <span class="keyword">this</span>.notifier = notifier;  <span class="comment">// Injected - can be Email, SMS, Push</span>
+    }
+}
+
+<span class="comment">// LOW cohesion (BAD) - God class does everything</span>
+<span class="keyword">class</span> <span class="type">UserManager</span> {
+    <span class="keyword">void</span> <span class="func">createUser</span>() {}
+    <span class="keyword">void</span> <span class="func">sendEmail</span>() {}
+    <span class="keyword">void</span> <span class="func">generateReport</span>() {}
+    <span class="keyword">void</span> <span class="func">processPayment</span>() {}  <span class="comment">// Too many responsibilities!</span>
+}
+
+<span class="comment">// HIGH cohesion (GOOD) - Each class does ONE thing</span>
+<span class="keyword">class</span> <span class="type">UserService</span> { <span class="keyword">void</span> <span class="func">createUser</span>() {} }
+<span class="keyword">class</span> <span class="type">EmailService</span> { <span class="keyword">void</span> <span class="func">sendEmail</span>() {} }
+<span class="keyword">class</span> <span class="type">ReportService</span> { <span class="keyword">void</span> <span class="func">generateReport</span>() {} }</code></pre>
+</div></div>
+
+<!-- Q26 -->
+<div class="faq" id="q26">
+<div class="faq-header"><div class="faq-num">26</div><h3>Object class methods - The Ultimate Parent <span class="tag tag-imp">MUST KNOW</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">What is it?</div>
+Every class in Java implicitly extends <code>java.lang.Object</code>. It has 11 methods:
+</div>
+<table>
+<tbody><tr><th>Method</th><th>Purpose</th><th>Override?</th></tr>
+<tr><td><code>equals(Object)</code></td><td>Compare content equality</td><td>Yes (with hashCode)</td></tr>
+<tr><td><code>hashCode()</code></td><td>Hash code for hash collections</td><td>Yes (with equals)</td></tr>
+<tr><td><code>toString()</code></td><td>String representation</td><td>Yes (for debugging)</td></tr>
+<tr><td><code>clone()</code></td><td>Create a copy</td><td>Yes (implement Cloneable)</td></tr>
+<tr><td><code>finalize()</code></td><td>Called before GC (DEPRECATED)</td><td>No - use Cleaner API</td></tr>
+<tr><td><code>getClass()</code></td><td>Runtime class info</td><td>No (final)</td></tr>
+<tr><td><code>wait()</code></td><td>Thread waits on object's monitor</td><td>No (final)</td></tr>
+<tr><td><code>notify()</code></td><td>Wake up one waiting thread</td><td>No (final)</td></tr>
+<tr><td><code>notifyAll()</code></td><td>Wake up all waiting threads</td><td>No (final)</td></tr>
+</tbody></table>
+</div></div>
+
+<!-- Q27-31 SOLID -->
+<div class="faq" id="q27">
+<div class="faq-header"><div class="faq-num">27</div><h3>SOLID - Single Responsibility Principle (SRP) <span class="tag tag-hot">HOT</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">What is it?</div>
+A class should have only ONE reason to change. One class = One job.
+</div>
+<pre><code><span class="comment">// BAD: Employee class does too much</span>
+<span class="keyword">class</span> <span class="type">Employee</span> {
+    <span class="keyword">void</span> <span class="func">calculatePay</span>() { }      <span class="comment">// Payroll logic</span>
+    <span class="keyword">void</span> <span class="func">saveToDatabase</span>() { }    <span class="comment">// Persistence logic</span>
+    <span class="keyword">void</span> <span class="func">generateReport</span>() { }    <span class="comment">// Reporting logic</span>
+}
+
+<span class="comment">// GOOD: Split responsibilities</span>
+<span class="keyword">class</span> <span class="type">Employee</span> { <span class="comment">/* only employee data */</span> }
+<span class="keyword">class</span> <span class="type">PayrollService</span> { <span class="keyword">void</span> <span class="func">calculatePay</span>(<span class="type">Employee</span> e) { } }
+<span class="keyword">class</span> <span class="type">EmployeeRepository</span> { <span class="keyword">void</span> <span class="func">save</span>(<span class="type">Employee</span> e) { } }
+<span class="keyword">class</span> <span class="type">EmployeeReportGenerator</span> { <span class="keyword">void</span> <span class="func">generate</span>(<span class="type">Employee</span> e) { } }</code></pre>
+</div></div>
+
+<div class="faq" id="q28">
+<div class="faq-header"><div class="faq-num">28</div><h3>SOLID - Open/Closed Principle (OCP) <span class="tag tag-hot">HOT</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">What is it?</div>
+Open for EXTENSION, Closed for MODIFICATION. Add new features by adding new code, not changing existing code.
+</div>
+<pre><code><span class="comment">// BAD: Must modify this method every time a new shape is added</span>
+<span class="keyword">double</span> <span class="func">calculateArea</span>(<span class="type">Object</span> shape) {
+    <span class="keyword">if</span> (shape <span class="keyword">instanceof</span> <span class="type">Circle</span>) <span class="keyword">return</span> ...;
+    <span class="keyword">else if</span> (shape <span class="keyword">instanceof</span> <span class="type">Rectangle</span>) <span class="keyword">return</span> ...;
+    <span class="comment">// Must add new if-else for every new shape!</span>
+}
+
+<span class="comment">// GOOD: Use abstraction. New shapes = new class, no modification needed</span>
+<span class="keyword">interface</span> <span class="type">Shape</span> {
+    <span class="keyword">double</span> <span class="func">area</span>();
+}
+<span class="keyword">class</span> <span class="type">Circle</span> <span class="keyword">implements</span> <span class="type">Shape</span> { <span class="keyword">public double</span> <span class="func">area</span>() { ... } }
+<span class="keyword">class</span> <span class="type">Rectangle</span> <span class="keyword">implements</span> <span class="type">Shape</span> { <span class="keyword">public double</span> <span class="func">area</span>() { ... } }
+<span class="keyword">class</span> <span class="type">Triangle</span> <span class="keyword">implements</span> <span class="type">Shape</span> { <span class="keyword">public double</span> <span class="func">area</span>() { ... } }
+<span class="comment">// Added Triangle WITHOUT modifying existing code!</span></code></pre>
+</div></div>
+
+<div class="faq" id="q29">
+<div class="faq-header"><div class="faq-num">29</div><h3>SOLID - Liskov Substitution Principle (LSP)</h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">What is it?</div>
+A child class should be able to replace its parent class WITHOUT breaking the program.
+</div>
+<pre><code><span class="comment">// BAD: Violates LSP - Square changes Rectangle's behavior</span>
+<span class="keyword">class</span> <span class="type">Rectangle</span> {
+    <span class="keyword">int</span> width, height;
+    <span class="keyword">void</span> <span class="func">setWidth</span>(<span class="keyword">int</span> w) { width = w; }
+    <span class="keyword">void</span> <span class="func">setHeight</span>(<span class="keyword">int</span> h) { height = h; }
+    <span class="keyword">int</span> <span class="func">area</span>() { <span class="keyword">return</span> width * height; }
+}
+
+<span class="keyword">class</span> <span class="type">Square</span> <span class="keyword">extends</span> <span class="type">Rectangle</span> {
+    <span class="keyword">@Override</span>
+    <span class="keyword">void</span> <span class="func">setWidth</span>(<span class="keyword">int</span> w) { width = w; height = w; }  <span class="comment">// Surprise behavior!</span>
+    <span class="keyword">@Override</span>
+    <span class="keyword">void</span> <span class="func">setHeight</span>(<span class="keyword">int</span> h) { width = h; height = h; }
+}
+
+<span class="comment">// This breaks when substituting:</span>
+<span class="type">Rectangle</span> r = <span class="keyword">new</span> <span class="type">Square</span>();
+r.<span class="func">setWidth</span>(<span class="num">5</span>);
+r.<span class="func">setHeight</span>(<span class="num">3</span>);
+r.<span class="func">area</span>();  <span class="comment">// Expected 15 (5x3), got 9 (3x3)! BROKEN!</span>
+
+<span class="comment">// GOOD: Use separate classes or a common Shape interface</span></code></pre>
+</div></div>
+
+<div class="faq" id="q30">
+<div class="faq-header"><div class="faq-num">30</div><h3>SOLID - Interface Segregation Principle (ISP)</h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">What is it?</div>
+Don't force classes to implement interfaces they don't use. Split large interfaces into smaller, focused ones.
+</div>
+<pre><code><span class="comment">// BAD: Fat interface - not all workers eat at the factory</span>
+<span class="keyword">interface</span> <span class="type">Worker</span> {
+    <span class="keyword">void</span> <span class="func">work</span>();
+    <span class="keyword">void</span> <span class="func">eat</span>();
+    <span class="keyword">void</span> <span class="func">sleep</span>();
+}
+
+<span class="keyword">class</span> <span class="type">Robot</span> <span class="keyword">implements</span> <span class="type">Worker</span> {
+    <span class="keyword">void</span> <span class="func">work</span>() { <span class="comment">/* OK */</span> }
+    <span class="keyword">void</span> <span class="func">eat</span>() { <span class="comment">/* Robots don't eat! Forced to implement! */</span> }
+    <span class="keyword">void</span> <span class="func">sleep</span>() { <span class="comment">/* Robots don't sleep! */</span> }
+}
+
+<span class="comment">// GOOD: Split into focused interfaces</span>
+<span class="keyword">interface</span> <span class="type">Workable</span> { <span class="keyword">void</span> <span class="func">work</span>(); }
+<span class="keyword">interface</span> <span class="type">Eatable</span>  { <span class="keyword">void</span> <span class="func">eat</span>(); }
+<span class="keyword">interface</span> <span class="type">Sleepable</span> { <span class="keyword">void</span> <span class="func">sleep</span>(); }
+
+<span class="keyword">class</span> <span class="type">Human</span> <span class="keyword">implements</span> <span class="type">Workable</span>, <span class="type">Eatable</span>, <span class="type">Sleepable</span> { ... }
+<span class="keyword">class</span> <span class="type">Robot</span> <span class="keyword">implements</span> <span class="type">Workable</span> { ... }  <span class="comment">// Only what it needs!</span></code></pre>
+</div></div>
+
+<div class="faq" id="q31">
+<div class="faq-header"><div class="faq-num">31</div><h3>SOLID - Dependency Inversion Principle (DIP) <span class="tag tag-hot">HOT</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">What is it?</div>
+High-level modules should NOT depend on low-level modules. Both should depend on ABSTRACTIONS (interfaces).
+</div>
+<pre><code><span class="comment">// BAD: High-level depends on low-level directly</span>
+<span class="keyword">class</span> <span class="type">OrderService</span> {
+    <span class="keyword">private</span> <span class="type">MySQLDatabase</span> db = <span class="keyword">new</span> <span class="type">MySQLDatabase</span>();  <span class="comment">// Locked to MySQL!</span>
+    <span class="keyword">void</span> <span class="func">save</span>(<span class="type">Order</span> order) { db.<span class="func">insert</span>(order); }
+}
+
+<span class="comment">// GOOD: Both depend on abstraction</span>
+<span class="keyword">interface</span> <span class="type">OrderRepository</span> {
+    <span class="keyword">void</span> <span class="func">save</span>(<span class="type">Order</span> order);
+}
+
+<span class="keyword">class</span> <span class="type">MySQLOrderRepo</span> <span class="keyword">implements</span> <span class="type">OrderRepository</span> { ... }
+<span class="keyword">class</span> <span class="type">MongoOrderRepo</span> <span class="keyword">implements</span> <span class="type">OrderRepository</span> { ... }
+
+<span class="keyword">class</span> <span class="type">OrderService</span> {
+    <span class="keyword">private final</span> <span class="type">OrderRepository</span> repo;  <span class="comment">// Depends on INTERFACE!</span>
+
+    <span class="type">OrderService</span>(<span class="type">OrderRepository</span> repo) {
+        <span class="keyword">this</span>.repo = repo;  <span class="comment">// Inject any implementation!</span>
+    }
+}
+
+<span class="comment">// Spring does this automatically with @Autowired!</span></code></pre>
+</div></div>
+
+<!-- Q32 Singleton -->
+<div class="faq" id="q32">
+<div class="faq-header"><div class="faq-num">32</div><h3>Singleton Design Pattern <span class="tag tag-hot">HOT</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">What is it?</div>
+Ensures a class has ONLY ONE instance. Used for shared resources like DB connections, configuration, caches.
+</div>
+<pre><code><span class="comment">// Thread-safe Singleton using Bill Pugh approach (BEST)</span>
+<span class="keyword">public class</span> <span class="type">DatabaseConnection</span> {
+    <span class="keyword">private</span> <span class="type">DatabaseConnection</span>() { }  <span class="comment">// Private constructor!</span>
+
+    <span class="keyword">private static class</span> <span class="type">Holder</span> {
+        <span class="keyword">private static final</span> <span class="type">DatabaseConnection</span> INSTANCE =
+            <span class="keyword">new</span> <span class="type">DatabaseConnection</span>();
+    }
+
+    <span class="keyword">public static</span> <span class="type">DatabaseConnection</span> <span class="func">getInstance</span>() {
+        <span class="keyword">return</span> <span class="type">Holder</span>.INSTANCE;  <span class="comment">// Lazy + Thread-safe (class loading guarantee)</span>
+    }
+}
+
+<span class="comment">// Even simpler: Enum Singleton (Joshua Bloch recommended)</span>
+<span class="keyword">public enum</span> <span class="type">DatabaseConnection</span> {
+    INSTANCE;
+
+    <span class="keyword">public void</span> <span class="func">connect</span>() { <span class="comment">/* ... */</span> }
+}
+<span class="comment">// Usage: DatabaseConnection.INSTANCE.connect();</span>
+<span class="comment">// Handles serialization, reflection, and thread safety for FREE!</span></code></pre>
+<div class="section"><div class="section-title mistake">Ways to break Singleton and prevention</div>
+<div class="warn">
+1. <b>Reflection</b> - Can call private constructor. Prevent: throw exception in constructor if instance exists.<br>
+2. <b>Serialization</b> - Creates new instance on deserialization. Prevent: implement <code>readResolve()</code>.<br>
+3. <b>Cloning</b> - Can clone the instance. Prevent: throw exception in <code>clone()</code>.<br>
+4. <b>Enum Singleton</b> prevents ALL of these automatically!
+</div></div>
+</div></div>
+
+<!-- Q33 Factory -->
+<div class="faq" id="q33">
+<div class="faq-header"><div class="faq-num">33</div><h3>Factory Design Pattern <span class="tag tag-hot">HOT</span></h3></div>
+<div class="faq-body">
+<pre><code><span class="comment">// Interface</span>
+<span class="keyword">interface</span> <span class="type">Notification</span> {
+    <span class="keyword">void</span> <span class="func">send</span>(<span class="type">String</span> message);
+}
+
+<span class="comment">// Implementations</span>
+<span class="keyword">class</span> <span class="type">EmailNotification</span> <span class="keyword">implements</span> <span class="type">Notification</span> {
+    <span class="keyword">public void</span> <span class="func">send</span>(<span class="type">String</span> msg) { <span class="type">System</span>.out.<span class="func">println</span>(<span class="string">"Email: "</span> + msg); }
+}
+<span class="keyword">class</span> <span class="type">SMSNotification</span> <span class="keyword">implements</span> <span class="type">Notification</span> {
+    <span class="keyword">public void</span> <span class="func">send</span>(<span class="type">String</span> msg) { <span class="type">System</span>.out.<span class="func">println</span>(<span class="string">"SMS: "</span> + msg); }
+}
+<span class="keyword">class</span> <span class="type">PushNotification</span> <span class="keyword">implements</span> <span class="type">Notification</span> {
+    <span class="keyword">public void</span> <span class="func">send</span>(<span class="type">String</span> msg) { <span class="type">System</span>.out.<span class="func">println</span>(<span class="string">"Push: "</span> + msg); }
+}
+
+<span class="comment">// Factory - hides creation logic</span>
+<span class="keyword">class</span> <span class="type">NotificationFactory</span> {
+    <span class="keyword">public static</span> <span class="type">Notification</span> <span class="func">create</span>(<span class="type">String</span> type) {
+        <span class="keyword">return switch</span> (type.<span class="func">toLowerCase</span>()) {
+            <span class="keyword">case</span> <span class="string">"email"</span> -&gt; <span class="keyword">new</span> <span class="type">EmailNotification</span>();
+            <span class="keyword">case</span> <span class="string">"sms"</span>   -&gt; <span class="keyword">new</span> <span class="type">SMSNotification</span>();
+            <span class="keyword">case</span> <span class="string">"push"</span>  -&gt; <span class="keyword">new</span> <span class="type">PushNotification</span>();
+            <span class="keyword">default</span>      -&gt; <span class="keyword">throw new</span> <span class="type">IllegalArgumentException</span>(<span class="string">"Unknown"</span>);
+        };
+    }
+}
+
+<span class="comment">// Usage: Client doesn't know or care about concrete classes</span>
+<span class="type">Notification</span> n = <span class="type">NotificationFactory</span>.<span class="func">create</span>(<span class="string">"email"</span>);
+n.<span class="func">send</span>(<span class="string">"Hello!"</span>);</code></pre>
+</div></div>
+
+<!-- Q34 Builder -->
+<div class="faq" id="q34">
+<div class="faq-header"><div class="faq-num">34</div><h3>Builder Design Pattern <span class="tag tag-hot">HOT</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title why">Why?</div>
+When a class has many optional parameters, constructors become a mess (telescoping constructor anti-pattern). Builder solves this.
+</div>
+<pre><code><span class="keyword">public class</span> <span class="type">HttpRequest</span> {
+    <span class="keyword">private final</span> <span class="type">String</span> url;
+    <span class="keyword">private final</span> <span class="type">String</span> method;
+    <span class="keyword">private final</span> <span class="type">Map</span>&lt;<span class="type">String</span>,<span class="type">String</span>&gt; headers;
+    <span class="keyword">private final</span> <span class="type">String</span> body;
+    <span class="keyword">private final int</span> timeout;
+
+    <span class="keyword">private</span> <span class="type">HttpRequest</span>(<span class="type">Builder</span> b) {
+        <span class="keyword">this</span>.url = b.url; <span class="keyword">this</span>.method = b.method;
+        <span class="keyword">this</span>.headers = b.headers; <span class="keyword">this</span>.body = b.body;
+        <span class="keyword">this</span>.timeout = b.timeout;
+    }
+
+    <span class="keyword">public static class</span> <span class="type">Builder</span> {
+        <span class="keyword">private final</span> <span class="type">String</span> url;      <span class="comment">// Required</span>
+        <span class="keyword">private</span> <span class="type">String</span> method = <span class="string">"GET"</span>; <span class="comment">// Default</span>
+        <span class="keyword">private</span> <span class="type">Map</span>&lt;<span class="type">String</span>,<span class="type">String</span>&gt; headers = <span class="keyword">new</span> <span class="type">HashMap</span>&lt;&gt;();
+        <span class="keyword">private</span> <span class="type">String</span> body;
+        <span class="keyword">private int</span> timeout = <span class="num">30000</span>;
+
+        <span class="keyword">public</span> <span class="type">Builder</span>(<span class="type">String</span> url) { <span class="keyword">this</span>.url = url; }
+
+        <span class="keyword">public</span> <span class="type">Builder</span> <span class="func">method</span>(<span class="type">String</span> m) { method = m; <span class="keyword">return this</span>; }
+        <span class="keyword">public</span> <span class="type">Builder</span> <span class="func">header</span>(<span class="type">String</span> k, <span class="type">String</span> v) { headers.<span class="func">put</span>(k,v); <span class="keyword">return this</span>; }
+        <span class="keyword">public</span> <span class="type">Builder</span> <span class="func">body</span>(<span class="type">String</span> b) { body = b; <span class="keyword">return this</span>; }
+        <span class="keyword">public</span> <span class="type">Builder</span> <span class="func">timeout</span>(<span class="keyword">int</span> t) { timeout = t; <span class="keyword">return this</span>; }
+
+        <span class="keyword">public</span> <span class="type">HttpRequest</span> <span class="func">build</span>() { <span class="keyword">return new</span> <span class="type">HttpRequest</span>(<span class="keyword">this</span>); }
+    }
+}
+
+<span class="comment">// Clean, readable usage:</span>
+<span class="type">HttpRequest</span> req = <span class="keyword">new</span> <span class="type">HttpRequest</span>.<span class="type">Builder</span>(<span class="string">"https://api.com/users"</span>)
+    .<span class="func">method</span>(<span class="string">"POST"</span>)
+    .<span class="func">header</span>(<span class="string">"Content-Type"</span>, <span class="string">"application/json"</span>)
+    .<span class="func">body</span>(<span class="string">"{\"name\":\"John\"}"</span>)
+    .<span class="func">timeout</span>(<span class="num">5000</span>)
+    .<span class="func">build</span>();</code></pre>
+</div></div>
+
+<!-- Q35 Observer -->
+<div class="faq" id="q35">
+<div class="faq-header"><div class="faq-num">35</div><h3>Observer Design Pattern</h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">What is it?</div>
+When one object changes, all its dependents are notified automatically. Like subscribing to a YouTube channel - you get notified of every new video.
+</div>
+<pre><code><span class="comment">// Observer interface</span>
+<span class="keyword">interface</span> <span class="type">OrderListener</span> {
+    <span class="keyword">void</span> <span class="func">onOrderPlaced</span>(<span class="type">Order</span> order);
+}
+
+<span class="comment">// Subject (Publisher)</span>
+<span class="keyword">class</span> <span class="type">OrderService</span> {
+    <span class="keyword">private</span> <span class="type">List</span>&lt;<span class="type">OrderListener</span>&gt; listeners = <span class="keyword">new</span> <span class="type">ArrayList</span>&lt;&gt;();
+
+    <span class="keyword">void</span> <span class="func">subscribe</span>(<span class="type">OrderListener</span> l) { listeners.<span class="func">add</span>(l); }
+
+    <span class="keyword">void</span> <span class="func">placeOrder</span>(<span class="type">Order</span> order) {
+        <span class="comment">// ... save order ...</span>
+        listeners.<span class="func">forEach</span>(l -&gt; l.<span class="func">onOrderPlaced</span>(order)); <span class="comment">// Notify all!</span>
+    }
+}
+
+<span class="comment">// Observers (Subscribers)</span>
+<span class="keyword">class</span> <span class="type">EmailNotifier</span> <span class="keyword">implements</span> <span class="type">OrderListener</span> {
+    <span class="keyword">public void</span> <span class="func">onOrderPlaced</span>(<span class="type">Order</span> o) { <span class="comment">/* send email */</span> }
+}
+<span class="keyword">class</span> <span class="type">InventoryUpdater</span> <span class="keyword">implements</span> <span class="type">OrderListener</span> {
+    <span class="keyword">public void</span> <span class="func">onOrderPlaced</span>(<span class="type">Order</span> o) { <span class="comment">/* update stock */</span> }
+}
+
+<span class="comment">// Wire up</span>
+<span class="type">OrderService</span> service = <span class="keyword">new</span> <span class="type">OrderService</span>();
+service.<span class="func">subscribe</span>(<span class="keyword">new</span> <span class="type">EmailNotifier</span>());
+service.<span class="func">subscribe</span>(<span class="keyword">new</span> <span class="type">InventoryUpdater</span>());
+service.<span class="func">placeOrder</span>(order); <span class="comment">// Both get notified!</span></code></pre>
+</div></div>
+
+<!-- Q36 Strategy -->
+<div class="faq" id="q36">
+<div class="faq-header"><div class="faq-num">36</div><h3>Strategy Design Pattern <span class="tag tag-hot">HOT</span></h3></div>
+<div class="faq-body">
+<div class="section"><div class="section-title what">What is it?</div>
+Define a family of algorithms, put each in a separate class, and make them interchangeable at runtime.
+</div>
+<pre><code><span class="comment">// Strategy interface</span>
+<span class="keyword">interface</span> <span class="type">SortStrategy</span> {
+    <span class="keyword">void</span> <span class="func">sort</span>(<span class="keyword">int</span>[] array);
+}
+
+<span class="comment">// Concrete strategies</span>
+<span class="keyword">class</span> <span class="type">BubbleSort</span> <span class="keyword">implements</span> <span class="type">SortStrategy</span> {
+    <span class="keyword">public void</span> <span class="func">sort</span>(<span class="keyword">int</span>[] arr) { <span class="comment">/* bubble sort logic */</span> }
+}
+<span class="keyword">class</span> <span class="type">QuickSort</span> <span class="keyword">implements</span> <span class="type">SortStrategy</span> {
+    <span class="keyword">public void</span> <span class="func">sort</span>(<span class="keyword">int</span>[] arr) { <span class="comment">/* quick sort logic */</span> }
+}
+
+<span class="comment">// Context class</span>
+<span class="keyword">class</span> <span class="type">Sorter</span> {
+    <span class="keyword">private</span> <span class="type">SortStrategy</span> strategy;
+    <span class="keyword">void</span> <span class="func">setStrategy</span>(<span class="type">SortStrategy</span> s) { strategy = s; }
+    <span class="keyword">void</span> <span class="func">sort</span>(<span class="keyword">int</span>[] arr) { strategy.<span class="func">sort</span>(arr); }
+}
+
+<span class="comment">// Usage - swap algorithms at runtime!</span>
+<span class="type">Sorter</span> sorter = <span class="keyword">new</span> <span class="type">Sorter</span>();
+sorter.<span class="func">setStrategy</span>(<span class="keyword">new</span> <span class="type">BubbleSort</span>());  <span class="comment">// Small data</span>
+sorter.<span class="func">sort</span>(smallArray);
+
+sorter.<span class="func">setStrategy</span>(<span class="keyword">new</span> <span class="type">QuickSort</span>());   <span class="comment">// Large data</span>
+sorter.<span class="func">sort</span>(largeArray);</code></pre>
+</div></div>
+
+<!-- Q37 Immutable -->
+<div class="faq" id="q37">
+<div class="faq-header"><div class="faq-num">37</div><h3>How to create an Immutable Class? <span class="tag tag-hot">HOT</span></h3></div>
+<div class="faq-body">
+<pre><code><span class="keyword">public final class</span> <span class="type">Money</span> {                       <span class="comment">// 1. final class (can't extend)</span>
+    <span class="keyword">private final</span> <span class="type">BigDecimal</span> amount;                <span class="comment">// 2. final fields</span>
+    <span class="keyword">private final</span> <span class="type">String</span> currency;
+    <span class="keyword">private final</span> <span class="type">List</span>&lt;<span class="type">String</span>&gt; tags;
+
+    <span class="keyword">public</span> <span class="type">Money</span>(<span class="type">BigDecimal</span> amount, <span class="type">String</span> currency, <span class="type">List</span>&lt;<span class="type">String</span>&gt; tags) {
+        <span class="keyword">this</span>.amount = amount;
+        <span class="keyword">this</span>.currency = currency;
+        <span class="keyword">this</span>.tags = <span class="type">List</span>.<span class="func">copyOf</span>(tags);               <span class="comment">// 3. Defensive copy of mutables!</span>
+    }
+
+    <span class="keyword">public</span> <span class="type">BigDecimal</span> <span class="func">getAmount</span>() { <span class="keyword">return</span> amount; }  <span class="comment">// 4. Only getters, NO setters</span>
+    <span class="keyword">public</span> <span class="type">String</span> <span class="func">getCurrency</span>() { <span class="keyword">return</span> currency; }
+    <span class="keyword">public</span> <span class="type">List</span>&lt;<span class="type">String</span>&gt; <span class="func">getTags</span>() {
+        <span class="keyword">return</span> <span class="type">Collections</span>.<span class="func">unmodifiableList</span>(tags);   <span class="comment">// 5. Return unmodifiable copy!</span>
+    }
+
+    <span class="keyword">public</span> <span class="type">Money</span> <span class="func">add</span>(<span class="type">Money</span> other) {
+        <span class="keyword">return new</span> <span class="type">Money</span>(amount.<span class="func">add</span>(other.amount), currency, tags);  <span class="comment">// 6. Return NEW object</span>
+    }
+}</code></pre>
+<div class="section"><b>5 Rules for Immutability:</b></div>
+<table>
+<tbody><tr><th>#</th><th>Rule</th><th>Why</th></tr>
+<tr><td>1</td><td>Make class <code>final</code></td><td>Prevent subclass from breaking immutability</td></tr>
+<tr><td>2</td><td>Make all fields <code>private final</code></td><td>Can't access or reassign</td></tr>
+<tr><td>3</td><td>No setters</td><td>No way to modify state</td></tr>
+<tr><td>4</td><td>Defensive copy in constructor</td><td>Caller can't modify via original reference</td></tr>
+<tr><td>5</td><td>Return copies from getters</td><td>Caller can't modify via returned reference</td></tr>
+</tbody></table>
+</div></div>
+
+<!-- Q38 Diamond -->
+<div class="faq" id="q38">
+<div class="faq-header"><div class="faq-num">38</div><h3>Diamond Problem in Java 8+ Interfaces</h3></div>
+<div class="faq-body">
+<pre><code><span class="keyword">interface</span> <span class="type">A</span> {
+    <span class="keyword">default void</span> <span class="func">greet</span>() { <span class="type">System</span>.out.<span class="func">println</span>(<span class="string">"Hello from A"</span>); }
+}
+<span class="keyword">interface</span> <span class="type">B</span> <span class="keyword">extends</span> <span class="type">A</span> {
+    <span class="keyword">default void</span> <span class="func">greet</span>() { <span class="type">System</span>.out.<span class="func">println</span>(<span class="string">"Hello from B"</span>); }
+}
+<span class="keyword">interface</span> <span class="type">C</span> <span class="keyword">extends</span> <span class="type">A</span> {
+    <span class="keyword">default void</span> <span class="func">greet</span>() { <span class="type">System</span>.out.<span class="func">println</span>(<span class="string">"Hello from C"</span>); }
+}
+
+<span class="comment">// Diamond! Must resolve explicitly.</span>
+<span class="keyword">class</span> <span class="type">D</span> <span class="keyword">implements</span> <span class="type">B</span>, <span class="type">C</span> {
+    <span class="keyword">@Override</span>
+    <span class="keyword">public void</span> <span class="func">greet</span>() {
+        <span class="type">B</span>.<span class="keyword">super</span>.<span class="func">greet</span>();  <span class="comment">// Choose B's version</span>
+    }
+}</code></pre>
+<div class="section"><b>Resolution Rules:</b> Class method wins over interface default &gt; Most specific interface wins &gt; Must override if ambiguous.</div>
+</div></div>
+
+<!-- Q39 -->
+<div class="faq" id="q39">
+<div class="faq-header"><div class="faq-num">39</div><h3>Upcasting vs Downcasting</h3></div>
+<div class="faq-body">
+<pre><code><span class="comment">// UPCASTING: Child -&gt; Parent (automatic, safe)</span>
+<span class="type">Dog</span> dog = <span class="keyword">new</span> <span class="type">Dog</span>();
+<span class="type">Animal</span> animal = dog;  <span class="comment">// Dog IS-A Animal. Always safe.</span>
+
+<span class="comment">// DOWNCASTING: Parent -&gt; Child (manual, risky)</span>
+<span class="type">Animal</span> a = <span class="keyword">new</span> <span class="type">Dog</span>();
+<span class="type">Dog</span> d = (<span class="type">Dog</span>) a;       <span class="comment">// OK - actual object IS a Dog</span>
+
+<span class="type">Animal</span> a2 = <span class="keyword">new</span> <span class="type">Cat</span>();
+<span class="type">Dog</span> d2 = (<span class="type">Dog</span>) a2;     <span class="comment">// RUNTIME ERROR! ClassCastException! Cat is NOT a Dog!</span>
+
+<span class="comment">// SAFE downcasting with instanceof</span>
+<span class="keyword">if</span> (a2 <span class="keyword">instanceof</span> <span class="type">Dog</span> dog2) {
+    dog2.<span class="func">bark</span>();  <span class="comment">// Safe!</span>
+}</code></pre>
+</div></div>
+
+<!-- Q40 -->
+<div class="faq" id="q40">
+<div class="faq-header"><div class="faq-num">40</div><h3>Method Hiding (static methods in inheritance)</h3></div>
+<div class="faq-body">
+<pre><code><span class="keyword">class</span> <span class="type">Parent</span> {
+    <span class="keyword">static void</span> <span class="func">display</span>() { <span class="type">System</span>.out.<span class="func">println</span>(<span class="string">"Parent static"</span>); }
+}
+<span class="keyword">class</span> <span class="type">Child</span> <span class="keyword">extends</span> <span class="type">Parent</span> {
+    <span class="keyword">static void</span> <span class="func">display</span>() { <span class="type">System</span>.out.<span class="func">println</span>(<span class="string">"Child static"</span>); }
+}
+
+<span class="type">Parent</span> p = <span class="keyword">new</span> <span class="type">Child</span>();
+p.<span class="func">display</span>();  <span class="comment">// "Parent static" - NOT polymorphism! Decided by REFERENCE type!</span>
+
+<span class="comment">// Compare with non-static (true overriding):</span>
+<span class="comment">// p.instanceMethod()  would print Child's version (runtime polymorphism)</span></code></pre>
+<table>
+<tbody><tr><th>Feature</th><th>Method Overriding</th><th>Method Hiding</th></tr>
+<tr><td>Type</td><td>Instance methods</td><td>Static methods</td></tr>
+<tr><td>Binding</td><td>Runtime (dynamic)</td><td>Compile-time (static)</td></tr>
+<tr><td>Which version?</td><td>Based on OBJECT type</td><td>Based on REFERENCE type</td></tr>
+</tbody></table>
+</div></div>
+
+<!-- Q41-44 Quick -->
+<div class="faq" id="q41">
+<div class="faq-header"><div class="faq-num">41</div><h3>Can a constructor be private?</h3></div>
+<div class="faq-body">
+<div class="section"><b>YES!</b> Used in:<br>
+- <b>Singleton pattern</b> (only one instance)<br>
+- <b>Factory pattern</b> (objects created via static methods)<br>
+- <b>Utility classes</b> (like <code>Math</code>, <code>Collections</code> - all static methods, no instances needed)
+</div>
+</div></div>
+
+<div class="faq" id="q42">
+<div class="faq-header"><div class="faq-num">42</div><h3>Can we override a private or static method?</h3></div>
+<div class="faq-body">
+<table>
+<tbody><tr><th>Method Type</th><th>Can Override?</th><th>Why?</th></tr>
+<tr><td>private</td><td>No</td><td>Not visible to child class. Child can define a method with same name but it's a NEW method, not override.</td></tr>
+<tr><td>static</td><td>No (hiding only)</td><td>Static methods belong to class, resolved at compile time. No polymorphism.</td></tr>
+<tr><td>final</td><td>No</td><td>Explicitly prevented. Compile error.</td></tr>
+</tbody></table>
+</div></div>
+
+<div class="faq" id="q43">
+<div class="faq-header"><div class="faq-num">43</div><h3>Can an abstract class have a constructor?</h3></div>
+<div class="faq-body">
+<div class="section"><b>YES!</b> Even though you can't instantiate an abstract class directly, the constructor is called when a concrete subclass is created (via <code>super()</code>). It's used to initialize shared state.
+</div>
+<pre><code><span class="keyword">abstract class</span> <span class="type">Shape</span> {
+    <span class="type">String</span> color;
+    <span class="type">Shape</span>(<span class="type">String</span> color) { <span class="keyword">this</span>.color = color; }  <span class="comment">// Called by subclass</span>
+}
+
+<span class="keyword">class</span> <span class="type">Circle</span> <span class="keyword">extends</span> <span class="type">Shape</span> {
+    <span class="type">Circle</span>() { <span class="keyword">super</span>(<span class="string">"Red"</span>); }  <span class="comment">// Calls Shape's constructor</span>
+}</code></pre>
+</div></div>
+
+<div class="faq" id="q44">
+<div class="faq-header"><div class="faq-num">44</div><h3>Can an interface have a constructor?</h3></div>
+<div class="faq-body">
+<div class="section"><b>NO!</b> Interfaces cannot have constructors because:
+<br>- They cannot have instance state (fields are <code>static final</code>)
+<br>- They cannot be instantiated
+<br>- A class can implement multiple interfaces (which constructor would run first?)
+</div>
+</div></div>
+
+<!-- Q45 -->
+<div class="faq" id="q45">
+<div class="faq-header"><div class="faq-num">45</div><h3>When to use Abstract Class vs Interface vs Concrete Class? <span class="tag tag-imp">DECISION TABLE</span></h3></div>
+<div class="faq-body">
+<table>
+<tbody><tr><th>Use Case</th><th>Choose</th><th>Example</th></tr>
+<tr><td>Define a CONTRACT (what to do)</td><td>Interface</td><td>PaymentGateway, Comparable</td></tr>
+<tr><td>Share CODE among related classes</td><td>Abstract Class</td><td>HttpServlet, AbstractList</td></tr>
+<tr><td>Need MULTIPLE inheritance</td><td>Interface</td><td>Serializable + Comparable</td></tr>
+<tr><td>Need CONSTRUCTOR / state</td><td>Abstract Class</td><td>Shape with color field</td></tr>
+<tr><td>Unrelated classes need same capability</td><td>Interface</td><td>Flyable for Bird AND Airplane</td></tr>
+<tr><td>Template method pattern</td><td>Abstract Class</td><td>processOrder() calls abstract validate()</td></tr>
+<tr><td>Complete, ready-to-use class</td><td>Concrete Class</td><td>ArrayList, HashMap</td></tr>
+<tr><td>Immutable value object</td><td>Record (Java 16+)</td><td>Point(int x, int y)</td></tr>
+</tbody></table>
+<div class="section"><div class="section-title best">Interview Tip</div>
+<div class="tip">When asked "abstract class vs interface", don't just list differences. Say: "In modern Java (8+), the line between them has blurred because interfaces can have default methods. My decision is: use interfaces for defining contracts and capabilities, abstract classes for sharing code with state among related types."</div>
+</div>
+</div></div>
+
+</div>
+<div style="text-align:center;padding:40px;opacity:0.4">
+<a href="file:///C:/temp/java-faq/Java_Basics_FAQ.html" style="color:#8be9fd;text-decoration:none">← Previous: Basics</a> |
+<a href="file:///C:/temp/java-faq/Java_FAQ_Index.html" style="color:#8be9fd;text-decoration:none">Index</a> |
+<a href="file:///C:/temp/java-faq/Java_Memory_FAQ.html" style="color:#8be9fd;text-decoration:none">Next: Memory Management →</a>
+</div>
+
+
+
+</body></html>

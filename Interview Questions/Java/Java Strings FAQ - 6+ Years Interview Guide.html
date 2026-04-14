@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)file:///C:/temp/java-faq/Java_Strings_FAQ.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Java Strings FAQ - 6+ Years Interview Guide</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',Tahoma,sans-serif;background:#0a0a1a;color:#e0e0e0;line-height:1.7}.nav{background:linear-gradient(135deg,#fd79a8,#e84393);padding:15px 30px;position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center}.nav a{color:#fff;text-decoration:none;font-weight:700}.hero{background:linear-gradient(135deg,#fd79a8,#e84393);padding:60px 30px;text-align:center}.hero h1{font-size:2.8rem;margin-bottom:10px}.hero p{font-size:1.1rem;opacity:0.9}.container{max-width:1100px;margin:0 auto;padding:30px 20px}.faq{background:linear-gradient(145deg,#12121f,#1a1a2e);border:1px solid #222;border-radius:15px;margin-bottom:25px;overflow:hidden}.faq:hover{border-color:#fd79a844}.faq-header{background:#161625;padding:20px 25px;display:flex;align-items:center;gap:15px}.faq-num{background:linear-gradient(135deg,#fd79a8,#e84393);color:#fff;min-width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.9rem}.faq-header h3{color:#fff;font-size:1.15rem;flex:1}.faq-body{padding:25px}.section{margin-bottom:20px}.section-title{display:flex;align-items:center;gap:8px;font-weight:700;font-size:1rem;margin-bottom:10px;padding:8px 12px;border-radius:8px}.what{color:#8be9fd;background:#8be9fd15}.why{color:#50fa7b;background:#50fa7b15}.mistake{color:#ff5555;background:#ff555515}.best{color:#50fa7b;background:#50fa7b15}pre{background:#0d0d1a;border:1px solid #333;border-radius:10px;padding:18px;overflow-x:auto;margin:10px 0;font-size:0.88rem;line-height:1.6}code{font-family:'Cascadia Code','Fira Code',monospace;color:#f8f8f2}table{width:100%;border-collapse:collapse;margin:10px 0;font-size:0.9rem}th{background:#1a1a2e;color:#fd79a8;padding:10px 14px;text-align:left;border:1px solid #333}td{padding:10px 14px;border:1px solid #222;background:#111}.diagram{background:#0d0d1a;border:1px solid #444;border-radius:10px;padding:20px;margin:10px 0;font-family:monospace;font-size:0.83rem;white-space:pre;overflow-x:auto;line-height:1.5;color:#8be9fd}.tag{display:inline-block;padding:2px 10px;border-radius:12px;font-size:0.75rem;font-weight:600;margin:2px}.tag-hot{background:#ff555533;color:#ff5555}.tag-imp{background:#ffb86c33;color:#ffb86c}.tip{background:#50fa7b15;border-left:4px solid #50fa7b;padding:12px 18px;border-radius:0 8px 8px 0;margin:10px 0}.warn{background:#ff555515;border-left:4px solid #ff5555;padding:12px 18px;border-radius:0 8px 8px 0;margin:10px 0}
+</style>
+</head>
+<body>
+<div class="nav"><a href="file:///C:/temp/java-faq/Java_FAQ_Index.html">← Index</a><a>📝 Strings FAQ</a></div>
+<div class="hero"><h1>📝 Strings In-Depth</h1><p>20+ Questions | Immutability, Pool, StringBuilder, Performance, Text Blocks</p></div>
+<div class="container">
+
+<div class="faq" id="q1"><div class="faq-header"><div class="faq-num">1</div><h3>Why are Strings Immutable? <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<div class="section"><div class="section-title what">What does Immutable mean?</div>Once created, content CANNOT change. Every modification creates a NEW String.</div>
+<pre><code>String s = "Hello";
+s.concat(" World");
+System.out.println(s);  // Still "Hello"! concat returns NEW string
+s = s.concat(" World"); // NOW s points to new "Hello World"</code></pre>
+<table><tbody><tr><th>#</th><th>Why Immutable?</th><th>Explanation</th></tr>
+<tr><td>1</td><td>String Pool</td><td>Multiple refs share same object. Mutation would affect all.</td></tr>
+<tr><td>2</td><td>Security</td><td>DB URLs, passwords. Can't change after validation.</td></tr>
+<tr><td>3</td><td>Thread Safety</td><td>Immutable = inherently thread-safe.</td></tr>
+<tr><td>4</td><td>HashCode Caching</td><td>Computed once, cached. HashMap depends on this.</td></tr>
+<tr><td>5</td><td>Class Loading</td><td>Class names are Strings. Prevents malicious changes.</td></tr>
+<tr><td>6</td><td>Performance</td><td>Pool reuse saves memory. hashCode caching saves CPU.</td></tr></tbody></table>
+</div></div>
+
+<div class="faq" id="q2"><div class="faq-header"><div class="faq-num">2</div><h3>What is the String Pool? <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<div class="diagram"> HEAP:
+ +--------------------------------------------------+
+ |  STRING POOL                                      |
+ |  +-------+ +-------+ +------+                    |
+ |  |"Hello"| |"World"| |"Java"|                    |
+ |  +-------+ +-------+ +------+                    |
+ |     ^ ^                                           |
+ |     | +-- String b = "Hello"; (REUSES same obj)   |
+ |     +---- String a = "Hello"; (created in pool)   |
+ |                                                    |
+ |  REGULAR HEAP:                                    |
+ |  +--------------------+                           |
+ |  | new String("Hello")| &lt;-- always new object     |
+ |  +--------------------+                           |
+ +--------------------------------------------------+</div>
+<div class="tip">Before Java 7: Pool in PermGen. Java 7+: Pool in Heap (GC-able). Tune: -XX:StringTableSize=60013</div>
+</div></div>
+
+<div class="faq" id="q3"><div class="faq-header"><div class="faq-num">3</div><h3>Literal vs new String() <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>String a = "Hello";  // pool
+String b = "Hello";  // reuses pool
+a == b  // TRUE
+
+String c = new String("Hello"); // heap
+String d = new String("Hello"); // heap
+c == d      // FALSE
+c.equals(d) // TRUE</code></pre>
+<table><tbody><tr><th>Feature</th><th>Literal</th><th>new String()</th></tr>
+<tr><td>Stored in</td><td>String Pool</td><td>Heap</td></tr>
+<tr><td>Reuses?</td><td>Yes</td><td>No</td></tr>
+<tr><td>Objects</td><td>0 or 1</td><td>1 or 2</td></tr>
+<tr><td>Recommended?</td><td>Yes</td><td>Rarely</td></tr></tbody></table>
+</div></div>
+
+<div class="faq" id="q4"><div class="faq-header"><div class="faq-num">4</div><h3>intern() method</h3></div><div class="faq-body">
+<pre><code>String a = new String("Hello"); // heap
+String b = "Hello";              // pool
+String c = a.intern();           // returns pool ref
+a == b  // false
+c == b  // TRUE!</code></pre>
+<div class="warn">Don't intern millions of unique strings - fills string table!</div>
+</div></div>
+
+<div class="faq" id="q5"><div class="faq-header"><div class="faq-num">5</div><h3>String vs StringBuilder vs StringBuffer <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<table><tbody><tr><th>Feature</th><th>String</th><th>StringBuilder</th><th>StringBuffer</th></tr>
+<tr><td>Mutable?</td><td>No</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Thread Safe?</td><td>Yes (immutable)</td><td>No</td><td>Yes (synchronized)</td></tr>
+<tr><td>Performance</td><td>Slow for mods</td><td>Fastest</td><td>Slower (sync)</td></tr>
+<tr><td>Use When</td><td>Few/no mods</td><td>Loops, single thread</td><td>Multi-thread mods</td></tr></tbody></table>
+<pre><code>// BAD: O(n^2)
+String result = "";
+for (int i = 0; i &lt; 10000; i++) result += i;
+
+// GOOD: O(n)
+StringBuilder sb = new StringBuilder(50000);
+for (int i = 0; i &lt; 10000; i++) sb.append(i);
+String result = sb.toString();</code></pre>
+</div></div>
+
+<div class="faq" id="q6"><div class="faq-header"><div class="faq-num">6</div><h3>StringBuilder Methods</h3></div><div class="faq-body">
+<pre><code>StringBuilder sb = new StringBuilder();     // capacity: 16
+sb.append("Hello");       // "Hello"
+sb.insert(5, " World");   // "Hello World"
+sb.delete(5, 11);         // "Hello"
+sb.replace(0, 5, "Hi");   // "Hi"
+sb.reverse();             // "iH"
+sb.length();  sb.capacity();
+// Capacity grows: (old * 2) + 2</code></pre>
+</div></div>
+
+<div class="faq" id="q7"><div class="faq-header"><div class="faq-num">7</div><h3>String Concatenation Internals</h3></div><div class="faq-body">
+<pre><code>// Compile time: "a"+"b"+"c" -&gt; "abc" (optimized)
+// Java 8 runtime: a+"b" -&gt; new StringBuilder().append(a).append("b").toString()
+// Java 9+: invokedynamic StringConcatFactory (JVM picks best strategy)</code></pre>
+<div class="warn">Loop += still creates fresh StringBuilder each iteration. Always use explicit StringBuilder!</div>
+</div></div>
+
+<div class="faq" id="q8"><div class="faq-header"><div class="faq-num">8</div><h3>How many objects created? <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// new String("Hello") -&gt; Up to 2 (pool + heap)
+// "Hello"; "Hello"    -&gt; 1 (shared pool object)
+// "Hello" + " World"  -&gt; 1 (compiler optimizes)
+// a + " World"        -&gt; 3 ("Hello" pool, " World" pool, result heap)</code></pre>
+</div></div>
+
+<div class="faq" id="q9"><div class="faq-header"><div class="faq-num">9</div><h3>equals() vs == for Strings</h3></div><div class="faq-body">
+<pre><code>String a = "Hello", b = "Hello";
+a == b       // true (same pool object)
+String c = new String("Hello");
+a == c       // false (pool vs heap)
+a.equals(c)  // true (same content)
+Objects.equals(nullStr, "test"); // false, no NPE</code></pre>
+<div class="tip">ALWAYS use .equals() for Strings. Use == only for null checks.</div>
+</div></div>
+
+<div class="faq" id="q10"><div class="faq-header"><div class="faq-num">10</div><h3>Essential String Methods <span class="tag tag-imp">MUST KNOW</span></h3></div><div class="faq-body">
+<pre><code>String s = "  Hello World  ";
+s.length(); s.charAt(2); s.isEmpty(); s.isBlank(); // Java 11
+s.indexOf("World"); s.contains("World"); s.startsWith("  H");
+s.trim(); s.strip(); // Java 11, Unicode-aware
+s.toUpperCase(); s.toLowerCase();
+s.replace("World","Java"); s.replaceAll("\\s+","-");
+s.substring(2,7); s.split("\\s+"); s.toCharArray();
+// Java 11+
+"Hi".repeat(3);             // "HiHiHi"
+"Line1\nLine2".lines();     // Stream
+"  Hi  ".stripLeading();    // "Hi  "
+"  Hi  ".stripTrailing();   // "  Hi"</code></pre>
+</div></div>
+
+<div class="faq" id="q11"><div class="faq-header"><div class="faq-num">11</div><h3>Text Blocks (Java 15+)</h3></div><div class="faq-body">
+<pre><code>String json = """
+        {
+            "name": "John",
+            "age": 30
+        }
+        """;
+String sql = """
+        SELECT name FROM employees
+        WHERE dept = 'IT'
+        """;</code></pre>
+</div></div>
+
+<div class="faq" id="q12"><div class="faq-header"><div class="faq-num">12</div><h3>substring() memory leak (pre Java 7u6)</h3></div><div class="faq-body">
+<pre><code>// Before Java 7u6: shared original char[] = LEAK
+String big = readFile(); // 10MB
+String small = big.substring(0,5); // Still ref to 10MB!
+// Java 7u6+: creates NEW array. Fixed.</code></pre>
+</div></div>
+
+<div class="faq" id="q13"><div class="faq-header"><div class="faq-num">13</div><h3>String.format() and formatted()</h3></div><div class="faq-body">
+<pre><code>String.format("Hello %s, age %d", "John", 30);
+String.format("$%.2f", 19.99);  // "$19.99"
+String.format("%05d", 42);      // "00042"
+// Java 15+
+"Hello %s".formatted("World");</code></pre>
+</div></div>
+
+<div class="faq" id="q14"><div class="faq-header"><div class="faq-num">14</div><h3>CharSequence and Compact Strings</h3></div><div class="faq-body">
+<div class="diagram">    CharSequence (interface)
+   /       |          \
+String  StringBuilder  StringBuffer</div>
+<table><tbody><tr><th>Feature</th><th>Java 8</th><th>Java 9+</th></tr>
+<tr><td>Storage</td><td>char[] (2 bytes/char)</td><td>byte[] + coder flag</td></tr>
+<tr><td>Latin chars</td><td>2 bytes</td><td>1 byte (LATIN1)</td></tr>
+<tr><td>Savings</td><td>-</td><td>~50% for Latin</td></tr></tbody></table>
+</div></div>
+
+<div class="faq" id="q15"><div class="faq-header"><div class="faq-num">15</div><h3>Why String is great as HashMap key</h3></div><div class="faq-body">
+<table><tbody><tr><th>Reason</th><th>Detail</th></tr>
+<tr><td>Immutable</td><td>Key can't change, hashCode stays correct</td></tr>
+<tr><td>Cached hashCode</td><td>Computed once, O(1) lookups</td></tr>
+<tr><td>Correct equals/hashCode</td><td>Already properly implemented</td></tr></tbody></table>
+</div></div>
+
+<div class="faq" id="q16"><div class="faq-header"><div class="faq-num">16</div><h3>String.join() and StringJoiner</h3></div><div class="faq-body">
+<pre><code>String.join(", ", "Alice", "Bob"); // "Alice, Bob"
+StringJoiner sj = new StringJoiner(", ", "[", "]");
+sj.add("Alice").add("Bob"); // "[Alice, Bob]"
+names.stream().collect(Collectors.joining(", "));</code></pre>
+</div></div>
+
+<div class="faq" id="q17"><div class="faq-header"><div class="faq-num">17</div><h3>Regex Basics</h3></div><div class="faq-body">
+<pre><code>"email@test.com".matches("[a-zA-Z0-9._]+@[a-zA-Z0-9.]+");
+Pattern p = Pattern.compile("\\d+"); // Pre-compile!
+Matcher m = p.matcher("Order 123");
+while (m.find()) System.out.println(m.group());</code></pre>
+<div class="warn">matches() recompiles every call. Use Pattern.compile() for repeated use.</div>
+</div></div>
+
+<div class="faq" id="q18"><div class="faq-header"><div class="faq-num">18</div><h3>Common String Interview Traps <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// Trap 1: concat doesn't modify original
+String s = "Hello"; s.concat(" World");
+System.out.println(s); // "Hello"
+
+// Trap 2: null + string
+String s = null; s = s + "test"; // "nulltest"
+
+// Trap 3: final String optimization
+final String a = "Hello";
+String b = a + " World";
+b == "Hello World"  // TRUE (final = compiler inlines)
+
+String a2 = "Hello"; // NOT final
+(a2 + " World") == "Hello World" // FALSE
+
+// Trap 4: valueOf vs toString
+String.valueOf(null); // "null" (safe)
+// null.toString();   // NPE!</code></pre>
+</div></div>
+
+<div class="faq" id="q19"><div class="faq-header"><div class="faq-num">19</div><h3>Type Conversions</h3></div><div class="faq-body">
+<pre><code>// To String
+String.valueOf(42);          // "42" (preferred)
+Integer.toString(42);        // "42"
+// From String
+Integer.parseInt("42");      // 42 (primitive)
+Integer.valueOf("42");       // Integer (wrapper)
+Double.parseDouble("3.14");  // 3.14
+Boolean.parseBoolean("true"); // true</code></pre>
+</div></div>
+
+<div class="faq" id="q20"><div class="faq-header"><div class="faq-num">20</div><h3>Best Practices Summary <span class="tag tag-imp">MUST KNOW</span></h3></div><div class="faq-body">
+<table><tbody><tr><th>Do</th><th>Don't</th></tr>
+<tr><td>.equals() for comparison</td><td>== for String comparison</td></tr>
+<tr><td>StringBuilder in loops</td><td>+ in loops</td></tr>
+<tr><td>String literals "Hello"</td><td>new String("Hello")</td></tr>
+<tr><td>Pre-compile regex</td><td>matches() in loops</td></tr>
+<tr><td>char[] for passwords</td><td>String for passwords</td></tr>
+<tr><td>Objects.equals() null-safe</td><td>.equals() on null ref</td></tr>
+<tr><td>String.join() for joining</td><td>Manual loop join</td></tr>
+<tr><td>isBlank() Java 11+</td><td>trim().isEmpty()</td></tr></tbody></table>
+</div></div>
+
+<div class="faq" id="q21"><div class="faq-header"><div class="faq-num">21</div><h3>String.format() and formatted() <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// String.format() - classic way
+String msg = String.format("Hello %s, age: %d, score: %.2f", "John", 25, 95.5);
+// "Hello John, age: 25, score: 95.50"
+
+// Common format specifiers:
+// %s = String, %d = int/long, %f = float/double, %b = boolean
+// %n = newline, %% = literal %, %10s = right-pad to 10 chars
+// %-10s = left-pad, %05d = zero-pad to 5 digits
+
+// Java 15+: formatted() instance method
+String result = "Hello %s, age %d".formatted("John", 25);
+
+// Real-world: SQL logging, error messages, report generation
+String log = String.format("[%s] %-5s: %s", timestamp, "ERROR", message);</code></pre>
+</div></div>
+
+<div class="faq" id="q22"><div class="faq-header"><div class="faq-num">22</div><h3>StringTokenizer vs split() vs Pattern</h3></div><div class="faq-body">
+<pre><code>String csv = "John,25,Developer,NYC";
+
+// split() - most common (uses regex internally)
+String[] parts = csv.split(",");  // ["John", "25", "Developer", "NYC"]
+
+// StringTokenizer - legacy, faster for simple delimiters (no regex)
+StringTokenizer st = new StringTokenizer(csv, ",");
+while (st.hasMoreTokens()) {
+    System.out.println(st.nextToken());
+}
+
+// Pattern - best for repeated splits (compile once, use many)
+Pattern pattern = Pattern.compile(",");
+String[] parts2 = pattern.split(csv); // Reuse compiled pattern
+
+// Performance: Pattern (pre-compiled) &gt; StringTokenizer &gt; split()
+// split() compiles regex EVERY time it's called</code></pre>
+</div></div>
+
+<div class="faq" id="q23"><div class="faq-header"><div class="faq-num">23</div><h3>String Deduplication (JVM) <span class="tag tag-imp">Advanced</span></h3></div><div class="faq-body">
+<pre><code>// JVM G1 GC has automatic String Deduplication
+// Enable: -XX:+UseG1GC -XX:+UseStringDeduplication
+// (default on since Java 9 with G1)
+
+// What it does:
+// If two String objects have same char[] content,
+// GC makes them share the SAME char[] array
+// Saves memory without changing object identity
+
+// Different from intern():
+// intern() shares String OBJECT (from pool)
+// Dedup shares internal char[] ARRAY (transparent to code)
+
+// When useful: Large apps with many duplicate strings
+// e.g., city names, country codes, status values</code></pre>
+</div></div>
+
+<div class="faq" id="q24"><div class="faq-header"><div class="faq-num">24</div><h3>Compact Strings (Java 9+)</h3></div><div class="faq-body">
+<pre><code>// Before Java 9: String used char[] (2 bytes per char, UTF-16)
+// After Java 9: String uses byte[] + coder flag
+// Latin1 chars (ASCII): 1 byte per char (LATIN1 encoding)
+// Non-Latin chars: 2 bytes per char (UTF-16 encoding)
+
+// Result: ~50% memory savings for ASCII-heavy apps (most English apps)
+// Enabled by default. Disable: -XX:-CompactStrings
+
+// You don't need to change any code - it's transparent!</code></pre>
+</div></div>
+
+<div class="faq" id="q25"><div class="faq-header"><div class="faq-num">25</div><h3>String.chars() and codePoints() (Java 8+)</h3></div><div class="faq-body">
+<pre><code>String s = "Hello World";
+
+// chars() - stream of char values as IntStream
+long vowels = s.chars()
+    .filter(c -&gt; "aeiouAEIOU".indexOf(c) &gt;= 0)
+    .count(); // 3
+
+// Convert to character stream
+s.chars()
+    .mapToObj(c -&gt; (char) c)
+    .filter(Character::isUpperCase)
+    .forEach(System.out::println); // H, W
+
+// codePoints() - handles Unicode supplementary characters
+String emoji = "Hello 🌍";
+emoji.codePoints()
+    .forEach(cp -&gt; System.out.println(Character.toString(cp)));</code></pre>
+</div></div>
+
+<div class="faq" id="q26"><div class="faq-header"><div class="faq-num">26</div><h3>String.join() and StringJoiner <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// String.join() - simple joining
+String result = String.join(", ", "A", "B", "C"); // "A, B, C"
+String csv = String.join(",", listOfStrings);
+
+// StringJoiner - more control (prefix, suffix)
+StringJoiner sj = new StringJoiner(", ", "[", "]");
+sj.add("A").add("B").add("C");
+sj.toString(); // "[A, B, C]"
+
+// With streams (most common in real projects)
+String names = employees.stream()
+    .map(Employee::getName)
+    .collect(Collectors.joining(", ", "Team: ", "."));
+// "Team: Alice, Bob, Charlie."</code></pre>
+</div></div>
+
+<div class="faq" id="q27"><div class="faq-header"><div class="faq-num">27</div><h3>Why use char[] for passwords instead of String? <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// String: immutable, stays in memory until GC, visible in heap dumps
+// char[]: mutable, YOU can clear it after use!
+
+void authenticate(char[] password) {
+    try {
+        boolean valid = checkPassword(password);
+    } finally {
+        Arrays.fill(password, '0'); // Wipe from memory immediately!
+    }
+}
+
+// Also: Strings may be interned (String pool) = even longer in memory
+// Also: String appears in toString(), logging, debugging accidentally</code></pre>
+<table><tbody><tr><th>String</th><th>char[]</th></tr>
+<tr><td>Immutable (stays in memory)</td><td>Mutable (can be wiped)</td></tr>
+<tr><td>May be interned (pool)</td><td>Not pooled</td></tr>
+<tr><td>Appears in logs/debugger</td><td>Harder to leak</td></tr>
+<tr><td>GC decides when to clean</td><td>YOU decide when to clean</td></tr></tbody></table>
+</div></div>
+
+<div class="faq" id="q28"><div class="faq-header"><div class="faq-num">28</div><h3>String strip() vs trim() (Java 11+)</h3></div><div class="faq-body">
+<pre><code>// trim() - removes chars &lt;= ' ' (space, ASCII 0-32)
+// strip() - removes Unicode whitespace (more thorough)
+
+String s = "\u2000 Hello \u2000"; // \u2000 = EN QUAD (Unicode space)
+s.trim();    // "\u2000 Hello \u2000" - NOT removed!
+s.strip();   // "Hello" - Unicode space REMOVED!
+
+s.stripLeading();   // "Hello \u2000"
+s.stripTrailing();  // "\u2000 Hello"
+
+// Rule: Always use strip() (Java 11+) instead of trim()
+// trim() only knows about ASCII whitespace</code></pre>
+</div></div>
+
+<div class="faq" id="q29"><div class="faq-header"><div class="faq-num">29</div><h3>String repeat(), indent(), transform() (Java 11-12)</h3></div><div class="faq-body">
+<pre><code>// repeat(n) - Java 11
+"Ha".repeat(3);      // "HaHaHa"
+"-".repeat(40);      // "----------------------------------------"
+
+// indent(n) - Java 12 (adds/removes leading spaces)
+"Hello\nWorld".indent(4);   // "    Hello\n    World\n"
+"    Hello".indent(-2);     // "  Hello\n"
+
+// transform() - Java 12 (apply function to string)
+String result = "hello"
+    .transform(String::toUpperCase)
+    .transform(s -&gt; s + "!")
+    .transform(s -&gt; s.repeat(2));
+// "HELLO!HELLO!"</code></pre>
+</div></div>
+
+<div class="faq" id="q30"><div class="faq-header"><div class="faq-num">30</div><h3>Common String Interview Coding Problems <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// 1. Reverse a String
+new StringBuilder("Hello").reverse().toString(); // "olleH"
+
+// 2. Check palindrome
+boolean isPalindrome(String s) {
+    String clean = s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+    return clean.equals(new StringBuilder(clean).reverse().toString());
+}
+
+// 3. Count character frequency
+Map&lt;Character, Long&gt; freq = str.chars()
+    .mapToObj(c -&gt; (char) c)
+    .collect(Collectors.groupingBy(c -&gt; c, Collectors.counting()));
+
+// 4. Find first non-repeating character
+char first = str.chars()
+    .mapToObj(c -&gt; (char) c)
+    .collect(Collectors.groupingBy(c -&gt; c, LinkedHashMap::new, Collectors.counting()))
+    .entrySet().stream()
+    .filter(e -&gt; e.getValue() == 1)
+    .map(Map.Entry::getKey)
+    .findFirst().orElse('\0');
+
+// 5. Check anagram
+boolean isAnagram(String a, String b) {
+    char[] x = a.toLowerCase().toCharArray(); Arrays.sort(x);
+    char[] y = b.toLowerCase().toCharArray(); Arrays.sort(y);
+    return Arrays.equals(x, y);
+}
+
+// 6. Remove duplicates
+String unique = str.chars().distinct()
+    .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+    .toString();</code></pre>
+</div></div>
+
+<div class="faq" id="q31"><div class="faq-header"><div class="faq-num">31</div><h3>String vs CharSequence</h3></div><div class="faq-body">
+<pre><code>// CharSequence is an INTERFACE implemented by:
+// String, StringBuilder, StringBuffer, CharBuffer
+
+// Use CharSequence when you don't care about exact type
+void process(CharSequence cs) {
+    cs.length();
+    cs.charAt(0);
+    cs.subSequence(0, 5);
+}
+process("Hello");                     // String
+process(new StringBuilder("Hello"));  // StringBuilder
+
+// Many Java APIs accept CharSequence:
+// Pattern.matcher(CharSequence)
+// Appendable.append(CharSequence)</code></pre>
+</div></div>
+
+<div class="faq" id="q32"><div class="faq-header"><div class="faq-num">32</div><h3>String Interning Deep Dive <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// intern() puts string in pool and returns pooled reference
+String s1 = new String("Hello");
+String s2 = s1.intern(); // Returns reference from pool
+String s3 = "Hello";     // Already in pool
+
+System.out.println(s1 == s2); // false (s1 is heap, s2 is pool)
+System.out.println(s2 == s3); // true  (both pool references)
+
+// When to use intern():
+// - Processing millions of strings with many duplicates
+// - Parsing CSV/XML with repeated values
+// Caution: intern() uses native memory, can cause OOM if overused
+// Java 7+: intern pool is on heap, GC'd normally
+// Resize pool: -XX:StringTableSize=60013 (prime number)</code></pre>
+</div></div>
+
+</div>
+<div style="text-align:center;padding:40px;opacity:0.4">
+<a href="file:///C:/temp/java-faq/Java_Memory_FAQ.html" style="color:#8be9fd">← Memory</a> |
+<a href="file:///C:/temp/java-faq/Java_FAQ_Index.html" style="color:#8be9fd">Index</a> |
+<a href="file:///C:/temp/java-faq/Java_Exceptions_FAQ.html" style="color:#8be9fd">Exceptions →</a>
+</div>
+
+
+</body></html>

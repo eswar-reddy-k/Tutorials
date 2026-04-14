@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)file:///C:/temp/java-faq/Java_Exceptions_FAQ.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Java Exception Handling FAQ - 6+ Years Interview Guide</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',Tahoma,sans-serif;background:#0a0a1a;color:#e0e0e0;line-height:1.7}.nav{background:linear-gradient(135deg,#fdcb6e,#f39c12);padding:15px 30px;position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center}.nav a{color:#fff;text-decoration:none;font-weight:700}.hero{background:linear-gradient(135deg,#fdcb6e,#f39c12);padding:60px 30px;text-align:center;color:#333}.hero h1{font-size:2.8rem;margin-bottom:10px}.hero p{font-size:1.1rem;opacity:0.8}.container{max-width:1100px;margin:0 auto;padding:30px 20px}.faq{background:linear-gradient(145deg,#12121f,#1a1a2e);border:1px solid #222;border-radius:15px;margin-bottom:25px;overflow:hidden}.faq:hover{border-color:#fdcb6e44}.faq-header{background:#161625;padding:20px 25px;display:flex;align-items:center;gap:15px}.faq-num{background:linear-gradient(135deg,#fdcb6e,#f39c12);color:#333;min-width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800}.faq-header h3{color:#fff;font-size:1.15rem;flex:1}.faq-body{padding:25px}.section{margin-bottom:20px}.section-title{display:flex;align-items:center;gap:8px;font-weight:700;font-size:1rem;margin-bottom:10px;padding:8px 12px;border-radius:8px}.what{color:#8be9fd;background:#8be9fd15}.why{color:#50fa7b;background:#50fa7b15}.mistake{color:#ff5555;background:#ff555515}.best{color:#50fa7b;background:#50fa7b15}pre{background:#0d0d1a;border:1px solid #333;border-radius:10px;padding:18px;overflow-x:auto;margin:10px 0;font-size:0.88rem;line-height:1.6}code{font-family:'Cascadia Code',monospace;color:#f8f8f2}table{width:100%;border-collapse:collapse;margin:10px 0;font-size:0.9rem}th{background:#1a1a2e;color:#fdcb6e;padding:10px 14px;text-align:left;border:1px solid #333}td{padding:10px 14px;border:1px solid #222;background:#111}.diagram{background:#0d0d1a;border:1px solid #444;border-radius:10px;padding:20px;margin:10px 0;font-family:monospace;font-size:0.83rem;white-space:pre;overflow-x:auto;line-height:1.5;color:#8be9fd}.tag{display:inline-block;padding:2px 10px;border-radius:12px;font-size:0.75rem;font-weight:600;margin:2px}.tag-hot{background:#ff555533;color:#ff5555}.tag-imp{background:#ffb86c33;color:#ffb86c}.tip{background:#50fa7b15;border-left:4px solid #50fa7b;padding:12px 18px;border-radius:0 8px 8px 0;margin:10px 0}.warn{background:#ff555515;border-left:4px solid #ff5555;padding:12px 18px;border-radius:0 8px 8px 0;margin:10px 0}
+</style>
+</head>
+<body>
+<div class="nav"><a href="file:///C:/temp/java-faq/Java_FAQ_Index.html">← Index</a><a>🚨 Exception Handling FAQ</a></div>
+<div class="hero"><h1>🚨 Exception Handling Deep Dive</h1><p>30+ Questions | Hierarchy, Checked/Unchecked, Try-With-Resources, Custom Exceptions, Best Practices</p></div>
+<div class="container">
+
+<div class="faq" id="q1"><div class="faq-header"><div class="faq-num">1</div><h3>Exception Hierarchy <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<div class="diagram">
+                    java.lang.Object
+                         |
+                   java.lang.Throwable
+                    /              \
+            java.lang.Error    java.lang.Exception
+            (DON'T catch)       /                \
+           /        \     RuntimeException     IOException
+   OutOfMemoryError  |    (UNCHECKED)          (CHECKED)
+   StackOverflowError|   /     |      \        /        \
+   VirtualMachineError  NPE  ClassCast ArrayIndex  FileNotFound  SQLException
+                        |               |
+                 NullPointerException  ArrayIndexOutOfBoundsException
+
+ CHECKED = Compiler forces you to handle (try-catch or throws)
+ UNCHECKED = RuntimeException + Error (compiler doesn't force handling)
+</div>
+</div></div>
+
+<div class="faq" id="q2"><div class="faq-header"><div class="faq-num">2</div><h3>Error vs Exception <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<table><tbody><tr><th>Feature</th><th>Error</th><th>Exception</th></tr>
+<tr><td>Cause</td><td>JVM/system-level problems</td><td>Application-level problems</td></tr>
+<tr><td>Recoverable?</td><td>Usually NO</td><td>Usually YES</td></tr>
+<tr><td>Should catch?</td><td>Almost never</td><td>Yes, when you can handle it</td></tr>
+<tr><td>Examples</td><td>OutOfMemoryError, StackOverflowError</td><td>IOException, NullPointerException</td></tr>
+<tr><td>Checked?</td><td>Unchecked</td><td>Both checked and unchecked</td></tr></tbody></table>
+</div></div>
+
+<div class="faq" id="q3"><div class="faq-header"><div class="faq-num">3</div><h3>Checked vs Unchecked Exceptions <span class="tag tag-hot">HOT</span><span class="tag tag-imp">MUST KNOW</span></h3></div><div class="faq-body">
+<table><tbody><tr><th>Feature</th><th>Checked</th><th>Unchecked (Runtime)</th></tr>
+<tr><td>Checked at</td><td>Compile time</td><td>Runtime only</td></tr>
+<tr><td>Must handle?</td><td>YES (try-catch or throws)</td><td>NO (optional)</td></tr>
+<tr><td>Extends</td><td>Exception (not RuntimeException)</td><td>RuntimeException</td></tr>
+<tr><td>Represents</td><td>Recoverable conditions</td><td>Programming bugs</td></tr>
+<tr><td>Examples</td><td>IOException, SQLException, ClassNotFoundException</td><td>NullPointerException, ArrayIndexOutOfBounds, ClassCastException</td></tr></tbody></table>
+<pre><code>// CHECKED: Compiler forces handling
+try {
+    FileReader fr = new FileReader("file.txt"); // throws FileNotFoundException
+} catch (FileNotFoundException e) {
+    System.out.println("File not found: " + e.getMessage());
+}
+
+// OR declare it
+void readFile() throws IOException {
+    FileReader fr = new FileReader("file.txt");
+}
+
+// UNCHECKED: No compiler enforcement
+String s = null;
+s.length(); // NullPointerException at runtime - no compile error</code></pre>
+</div></div>
+
+<div class="faq" id="q4"><div class="faq-header"><div class="faq-num">4</div><h3>try-catch-finally <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>try {
+    // Code that might throw exception
+    int result = 10 / 0;
+} catch (ArithmeticException e) {
+    // Handle specific exception
+    System.out.println("Can't divide by zero: " + e.getMessage());
+} catch (Exception e) {
+    // Handle broader exception (must be AFTER specific ones!)
+    System.out.println("Error: " + e.getMessage());
+} finally {
+    // ALWAYS executes (cleanup code)
+    // Even if try succeeds, even if catch has return statement
+    System.out.println("Cleanup done");
+}</code></pre>
+<div class="section"><div class="section-title mistake">When does finally NOT execute?</div>
+<div class="warn">
+1. <code>System.exit(0)</code> called in try/catch<br>
+2. JVM crashes<br>
+3. Infinite loop in try/catch<br>
+4. Thread is killed<br>
+That's it! Every other case, finally ALWAYS runs.
+</div></div>
+</div></div>
+
+<div class="faq" id="q5"><div class="faq-header"><div class="faq-num">5</div><h3>try-with-resources (Java 7+) <span class="tag tag-hot">HOT</span><span class="tag tag-imp">MUST KNOW</span></h3></div><div class="faq-body">
+<div class="section"><div class="section-title what">What is it?</div>Automatically closes resources that implement AutoCloseable/Closeable. No need for finally block!</div>
+<pre><code>// OLD way: verbose, error-prone
+FileReader fr = null;
+try {
+    fr = new FileReader("file.txt");
+    // use fr
+} catch (IOException e) {
+    e.printStackTrace();
+} finally {
+    if (fr != null) {
+        try { fr.close(); } catch (IOException e) { /* swallowed! */ }
+    }
+}
+
+// NEW way: clean, safe, auto-close
+try (FileReader fr = new FileReader("file.txt");
+     BufferedReader br = new BufferedReader(fr)) {
+    String line = br.readLine();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+// fr and br are AUTOMATICALLY closed! Even if exception occurs.
+// Closed in REVERSE order of creation (br first, then fr)
+
+// Java 9+: Can use effectively-final variables
+FileReader fr = new FileReader("file.txt");
+try (fr) { // fr is effectively final
+    // use fr
+}</code></pre>
+<div class="tip">ALWAYS use try-with-resources for: streams, connections, readers, writers, sockets, channels.</div>
+</div></div>
+
+<div class="faq" id="q6"><div class="faq-header"><div class="faq-num">6</div><h3>Multi-catch (Java 7+)</h3></div><div class="faq-body">
+<pre><code>// OLD: separate catch blocks
+try { /* ... */ }
+catch (IOException e) { log(e); }
+catch (SQLException e) { log(e); }
+catch (ClassNotFoundException e) { log(e); }
+
+// NEW: multi-catch with pipe |
+try { /* ... */ }
+catch (IOException | SQLException | ClassNotFoundException e) {
+    log(e); // e is implicitly final in multi-catch
+}
+// RULE: Exception types must NOT be related (no parent-child)</code></pre>
+</div></div>
+
+<div class="faq" id="q7"><div class="faq-header"><div class="faq-num">7</div><h3>throw vs throws <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<table><tbody><tr><th>Feature</th><th>throw</th><th>throws</th></tr>
+<tr><td>What it does</td><td>Actually throws an exception object</td><td>Declares that method MAY throw</td></tr>
+<tr><td>Where used</td><td>Inside method body</td><td>In method signature</td></tr>
+<tr><td>Followed by</td><td>An exception object</td><td>Exception class names</td></tr>
+<tr><td>How many</td><td>One at a time</td><td>Multiple (comma-separated)</td></tr></tbody></table>
+<pre><code>// throw: actually throws an exception
+void validate(int age) {
+    if (age &lt; 0) {
+        throw new IllegalArgumentException("Age can't be negative");
+    }
+}
+
+// throws: declares what method might throw
+void readFile(String path) throws IOException, FileNotFoundException {
+    FileReader fr = new FileReader(path);
+}</code></pre>
+</div></div>
+
+<div class="faq" id="q8"><div class="faq-header"><div class="faq-num">8</div><h3>Custom Exceptions <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// Custom CHECKED exception (extends Exception)
+public class InsufficientFundsException extends Exception {
+    private final double amount;
+
+    public InsufficientFundsException(String message, double amount) {
+        super(message);
+        this.amount = amount;
+    }
+
+    public double getAmount() { return amount; }
+}
+
+// Custom UNCHECKED exception (extends RuntimeException)
+public class UserNotFoundException extends RuntimeException {
+    private final String userId;
+
+    public UserNotFoundException(String userId) {
+        super("User not found: " + userId);
+        this.userId = userId;
+    }
+
+    public String getUserId() { return userId; }
+}
+
+// Usage
+void withdraw(double amount) throws InsufficientFundsException {
+    if (amount &gt; balance) {
+        throw new InsufficientFundsException(
+            "Insufficient funds for withdrawal of $" + amount, amount);
+    }
+    balance -= amount;
+}
+
+User findUser(String id) {
+    return userRepo.findById(id)
+        .orElseThrow(() -&gt; new UserNotFoundException(id));
+}</code></pre>
+<div class="tip">
+<b>When to use Checked vs Unchecked custom exceptions?</b><br>
+- Checked: Caller CAN and SHOULD handle it (business errors like InsufficientFunds)<br>
+- Unchecked: Programming error or unrecoverable (UserNotFound, InvalidInput)
+</div>
+</div></div>
+
+<div class="faq" id="q9"><div class="faq-header"><div class="faq-num">9</div><h3>Exception Chaining (Cause) <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// Wrap low-level exception with higher-level context
+try {
+    // Database call
+    userDao.save(user);
+} catch (SQLException e) {
+    // Don't expose SQL details to caller - wrap it!
+    throw new ServiceException("Failed to save user: " + user.getId(), e);
+    //                                                                  ^
+    //                                                          original cause!
+}
+
+// Caller can get the chain:
+catch (ServiceException e) {
+    System.out.println(e.getMessage());        // High-level message
+    System.out.println(e.getCause());          // Original SQLException
+    System.out.println(e.getCause().getMessage()); // SQL error details
+}</code></pre>
+<div class="tip">ALWAYS pass the original exception as the cause. Never swallow the root cause - it makes debugging impossible.</div>
+</div></div>
+
+<div class="faq" id="q10"><div class="faq-header"><div class="faq-num">10</div><h3>finally vs return - Tricky behavior <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// Q: What does this return?
+int getValue() {
+    try {
+        return 1;
+    } finally {
+        return 2; // finally's return OVERRIDES try's return!
+    }
+}
+// Answer: 2
+
+// Q: What does this return?
+int getValue() {
+    int x = 1;
+    try {
+        return x; // returns 1 (value captured BEFORE finally runs)
+    } finally {
+        x = 99;   // modifies x, but return value already captured
+    }
+}
+// Answer: 1 (for primitives, value is copied to return)
+
+// Q: What about objects?
+StringBuilder getValue() {
+    StringBuilder sb = new StringBuilder("Hello");
+    try {
+        return sb;
+    } finally {
+        sb.append(" World"); // Modifies the SAME object!
+    }
+}
+// Answer: "Hello World" (reference was captured, but object is mutable)</code></pre>
+<div class="warn">NEVER put return in finally block! It swallows exceptions silently and causes confusing behavior.</div>
+</div></div>
+
+<div class="faq" id="q11"><div class="faq-header"><div class="faq-num">11</div><h3>Suppressed Exceptions (Java 7+)</h3></div><div class="faq-body">
+<pre><code>// When both try AND close() throw exceptions:
+try (MyResource r = new MyResource()) {
+    r.doWork();     // throws ExceptionA
+}
+// r.close()        // throws ExceptionB
+
+// ExceptionA is the PRIMARY exception (thrown to caller)
+// ExceptionB is SUPPRESSED (attached to ExceptionA)
+
+// Access suppressed exceptions:
+catch (Exception e) {
+    System.out.println(e);                    // ExceptionA
+    for (Throwable suppressed : e.getSuppressed()) {
+        System.out.println(suppressed);       // ExceptionB
+    }
+}</code></pre>
+</div></div>
+
+<div class="faq" id="q12"><div class="faq-header"><div class="faq-num">12</div><h3>Common Exceptions You Must Know <span class="tag tag-imp">MUST KNOW</span></h3></div><div class="faq-body">
+<table><tbody><tr><th>Exception</th><th>Type</th><th>Cause</th></tr>
+<tr><td>NullPointerException</td><td>Unchecked</td><td>Calling method on null reference</td></tr>
+<tr><td>ArrayIndexOutOfBoundsException</td><td>Unchecked</td><td>Invalid array index</td></tr>
+<tr><td>ClassCastException</td><td>Unchecked</td><td>Invalid type casting</td></tr>
+<tr><td>IllegalArgumentException</td><td>Unchecked</td><td>Invalid method argument</td></tr>
+<tr><td>IllegalStateException</td><td>Unchecked</td><td>Method called at wrong time</td></tr>
+<tr><td>NumberFormatException</td><td>Unchecked</td><td>Invalid number parsing</td></tr>
+<tr><td>ConcurrentModificationException</td><td>Unchecked</td><td>Modifying collection during iteration</td></tr>
+<tr><td>UnsupportedOperationException</td><td>Unchecked</td><td>Unimplemented operation</td></tr>
+<tr><td>StackOverflowError</td><td>Error</td><td>Deep/infinite recursion</td></tr>
+<tr><td>OutOfMemoryError</td><td>Error</td><td>Heap exhausted</td></tr>
+<tr><td>IOException</td><td>Checked</td><td>I/O operation failed</td></tr>
+<tr><td>FileNotFoundException</td><td>Checked</td><td>File doesn't exist</td></tr>
+<tr><td>SQLException</td><td>Checked</td><td>Database error</td></tr>
+<tr><td>ClassNotFoundException</td><td>Checked</td><td>Class not found on classpath</td></tr>
+<tr><td>InterruptedException</td><td>Checked</td><td>Thread interrupted while sleeping/waiting</td></tr></tbody></table>
+</div></div>
+
+<div class="faq" id="q13"><div class="faq-header"><div class="faq-num">13</div><h3>Exception handling in method overriding <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>class Parent {
+    void doWork() throws IOException { }
+}
+
+class Child extends Parent {
+    // OK: Same exception
+    void doWork() throws IOException { }
+
+    // OK: Narrower exception (subclass)
+    void doWork() throws FileNotFoundException { }
+
+    // OK: No exception
+    void doWork() { }
+
+    // COMPILE ERROR: Broader exception!
+    // void doWork() throws Exception { }
+
+    // COMPILE ERROR: New checked exception!
+    // void doWork() throws SQLException { }
+
+    // OK: Can add UNCHECKED exceptions
+    void doWork() throws NullPointerException { }
+}</code></pre>
+<div class="section"><b>Rule:</b> Overriding method can throw same, narrower, or no checked exception. Can NOT throw broader or new checked exceptions. Can throw any unchecked exception.</div>
+</div></div>
+
+<div class="faq" id="q14"><div class="faq-header"><div class="faq-num">14</div><h3>finally vs finalize() vs final</h3></div><div class="faq-body">
+<table><tbody><tr><th>Keyword</th><th>Type</th><th>Purpose</th></tr>
+<tr><td><code>final</code></td><td>Keyword</td><td>Variable: constant. Method: can't override. Class: can't extend.</td></tr>
+<tr><td><code>finally</code></td><td>Block</td><td>Always executes after try-catch. Used for cleanup.</td></tr>
+<tr><td><code>finalize()</code></td><td>Method</td><td>DEPRECATED. Called by GC before collecting. Don't use.</td></tr></tbody></table>
+</div></div>
+
+<div class="faq" id="q15"><div class="faq-header"><div class="faq-num">15</div><h3>NullPointerException Best Practices <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// Prevention strategies:
+// 1. Use Optional (Java 8+)
+Optional&lt;User&gt; user = userRepo.findById(id);
+String name = user.map(User::getName).orElse("Unknown");
+
+// 2. Null checks
+if (user != null &amp;&amp; user.getAddress() != null) {
+    System.out.println(user.getAddress().getCity());
+}
+
+// 3. Objects.requireNonNull() - fail fast
+public void setName(String name) {
+    this.name = Objects.requireNonNull(name, "Name cannot be null");
+}
+
+// 4. Java 14+ Helpful NullPointerExceptions
+// Shows WHICH variable was null:
+// "Cannot invoke String.length() because the return value of
+//  User.getName() is null"
+
+// 5. Use @NonNull / @Nullable annotations
+void process(@NonNull String input) { }</code></pre>
+</div></div>
+
+<div class="faq" id="q16"><div class="faq-header"><div class="faq-num">16</div><h3>Exception Anti-Patterns (What NOT to do) <span class="tag tag-imp">MUST KNOW</span></h3></div><div class="faq-body">
+<pre><code>// ANTI-PATTERN 1: Empty catch (swallowing exceptions)
+try { riskyCode(); }
+catch (Exception e) { } // TERRIBLE! Silent failure. Bug hidden.
+
+// ANTI-PATTERN 2: Catching Exception/Throwable
+try { riskyCode(); }
+catch (Exception e) { } // Too broad. Catches everything.
+
+// ANTI-PATTERN 3: Using exceptions for flow control
+try {
+    int i = 0;
+    while (true) {
+        array[i++]; // Uses ArrayIndexOutOfBounds to exit!
+    }
+} catch (ArrayIndexOutOfBoundsException e) { }
+// Use: for (int i = 0; i &lt; array.length; i++) instead!
+
+// ANTI-PATTERN 4: Logging AND throwing
+catch (IOException e) {
+    log.error("Error", e);
+    throw e; // Exception gets logged TWICE (here + caller)!
+}
+// Do ONE: log OR throw. Not both.
+
+// ANTI-PATTERN 5: Losing the cause
+catch (SQLException e) {
+    throw new ServiceException("DB error"); // WRONG: lost cause!
+    throw new ServiceException("DB error", e); // RIGHT: keep cause
+}</code></pre>
+</div></div>
+
+<div class="faq" id="q17"><div class="faq-header"><div class="faq-num">17</div><h3>Exception Handling Best Practices <span class="tag tag-imp">MUST KNOW</span></h3></div><div class="faq-body">
+<div class="tip">
+<b>1.</b> Catch specific exceptions, not generic Exception<br>
+<b>2.</b> Use try-with-resources for ALL closeable resources<br>
+<b>3.</b> Never swallow exceptions (empty catch block)<br>
+<b>4.</b> Always preserve the cause when wrapping exceptions<br>
+<b>5.</b> Log OR throw, never both<br>
+<b>6.</b> Use custom exceptions for business logic<br>
+<b>7.</b> Prefer unchecked exceptions for programming errors<br>
+<b>8.</b> Use checked exceptions when caller CAN and SHOULD recover<br>
+<b>9.</b> Document exceptions with @throws in Javadoc<br>
+<b>10.</b> Fail fast: validate inputs early with Objects.requireNonNull()<br>
+<b>11.</b> Don't use exceptions for flow control<br>
+<b>12.</b> Don't put return in finally block<br>
+<b>13.</b> Catch exceptions at the right level (service layer, not DAO layer)
+</div>
+</div></div>
+
+<div class="faq" id="q18"><div class="faq-header"><div class="faq-num">18</div><h3>Exception handling in Spring Boot</h3></div><div class="faq-body">
+<pre><code>// Global exception handler using @ControllerAdvice
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(UserNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorResponse handleUserNotFound(UserNotFoundException ex) {
+        return new ErrorResponse(404, ex.getMessage());
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse handleBadRequest(IllegalArgumentException ex) {
+        return new ErrorResponse(400, ex.getMessage());
+    }
+
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ErrorResponse handleGeneral(Exception ex) {
+        log.error("Unexpected error", ex);
+        return new ErrorResponse(500, "Internal server error");
+    }
+}
+
+record ErrorResponse(int status, String message) { }</code></pre>
+</div></div>
+
+<div class="faq" id="q19"><div class="faq-header"><div class="faq-num">19</div><h3>Can we have try without catch?</h3></div><div class="faq-body">
+<pre><code>// YES: try-finally (no catch)
+try {
+    riskyCode();
+} finally {
+    cleanup(); // ensures cleanup even without catching
+}
+
+// YES: try-with-resources (no catch, no finally)
+try (FileReader fr = new FileReader("file.txt")) {
+    // auto-closed
+}
+// Exception propagates to caller if not caught</code></pre>
+</div></div>
+
+<div class="faq" id="q20"><div class="faq-header"><div class="faq-num">20</div><h3>StackTrace and getMessage()</h3></div><div class="faq-body">
+<pre><code>try { riskyCode(); }
+catch (Exception e) {
+    e.getMessage();         // Error message text
+    e.getCause();           // Wrapped exception (or null)
+    e.getStackTrace();      // Array of StackTraceElement
+    e.printStackTrace();    // Prints full trace (use logging instead!)
+    e.getSuppressed();      // Suppressed exceptions (try-with-resources)
+
+    // In production, use logging:
+    log.error("Operation failed for user {}", userId, e);
+    //                                                 ^ passes exception for stack trace
+}</code></pre>
+</div></div>
+
+<div class="faq" id="q21"><div class="faq-header"><div class="faq-num">21</div><h3>ClassNotFoundException vs NoClassDefFoundError</h3></div><div class="faq-body">
+<table><tbody><tr><th>Feature</th><th>ClassNotFoundException</th><th>NoClassDefFoundError</th></tr>
+<tr><td>Type</td><td>Checked Exception</td><td>Error</td></tr>
+<tr><td>When</td><td>Explicit class loading: Class.forName(), ClassLoader.loadClass()</td><td>Class was available at compile time but missing at runtime</td></tr>
+<tr><td>Cause</td><td>Class not on classpath</td><td>JAR missing from deployment, static initializer failure</td></tr>
+<tr><td>Fix</td><td>Add class/JAR to classpath</td><td>Check deployment, check static init code</td></tr></tbody></table>
+</div></div>
+
+<div class="faq" id="q22"><div class="faq-header"><div class="faq-num">22</div><h3>Assertions (assert keyword)</h3></div><div class="faq-body">
+<pre><code>// Assertions = checks that should ALWAYS be true
+// Disabled by default at runtime! Enable with: java -ea MyApp
+assert age &gt; 0 : "Age must be positive: " + age;
+// If false: throws AssertionError
+
+// Use for: internal invariants, preconditions in private methods
+// DON'T use for: input validation, production checks (they can be disabled!)</code></pre>
+</div></div>
+
+<div class="faq" id="q23"><div class="faq-header"><div class="faq-num">23</div><h3>Exception performance considerations</h3></div><div class="faq-body">
+<div class="warn">
+Creating an exception is EXPENSIVE because it captures the entire stack trace. Don't use exceptions for normal flow control.<br><br>
+<b>Cost of exception:</b><br>
+- Stack trace capture: ~1-5 microseconds<br>
+- Normal method call: ~1-10 nanoseconds<br>
+- That's 100-1000x slower!<br><br>
+<b>Optimization:</b> If you must throw frequently, override fillInStackTrace() to return this (skip trace capture).
+</div>
+</div></div>
+
+<div class="faq" id="q24"><div class="faq-header"><div class="faq-num">24</div><h3>throw vs throws <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// throws: DECLARATION - method says "I might throw this"
+public void readFile(String path) throws IOException, FileNotFoundException {
+    // ...
+}
+
+// throw: ACTION - actually throwing an exception
+if (age &lt; 0) {
+    throw new IllegalArgumentException("Age cannot be negative: " + age);
+}</code></pre>
+<table><tbody><tr><th>Feature</th><th>throw</th><th>throws</th></tr>
+<tr><td>Purpose</td><td>Actually throw exception</td><td>Declare possible exception</td></tr>
+<tr><td>Location</td><td>Inside method body</td><td>Method signature</td></tr>
+<tr><td>Number</td><td>One at a time</td><td>Multiple (comma-separated)</td></tr>
+<tr><td>Followed by</td><td>Exception object</td><td>Exception class names</td></tr></tbody></table>
+</div></div>
+
+<div class="faq" id="q25"><div class="faq-header"><div class="faq-num">25</div><h3>Re-throwing Exceptions <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// Pattern 1: Wrap and re-throw (RECOMMENDED)
+try {
+    databaseQuery();
+} catch (SQLException e) {
+    throw new ServiceException("Failed to fetch user", e); // keeps cause
+}
+
+// Pattern 2: Re-throw same exception
+try {
+    riskyCode();
+} catch (IOException e) {
+    log.warn("Retrying after: " + e.getMessage());
+    throw e; // re-throw same exception
+}
+
+// Pattern 3: Java 7+ precise re-throw
+public void method() throws FirstException, SecondException {
+    try {
+        couldThrowMany();
+    } catch (Exception e) {
+        throw e; // Compiler knows it's only First or Second!
+    }
+}</code></pre>
+</div></div>
+
+<div class="faq" id="q26"><div class="faq-header"><div class="faq-num">26</div><h3>Suppressed Exceptions (try-with-resources)</h3></div><div class="faq-body">
+<pre><code>// If both the try block AND close() throw exceptions:
+// Main exception: from try block
+// Suppressed exception: from close()
+
+try (MyResource r = new MyResource()) {
+    r.doWork();    // throws MainException
+}                  // close() throws CloseException → SUPPRESSED
+
+// Access suppressed:
+catch (MainException e) {
+    Throwable[] suppressed = e.getSuppressed();
+    for (Throwable t : suppressed) {
+        System.out.println("Suppressed: " + t.getMessage());
+    }
+}
+
+// Without try-with-resources (old way): close() exception would
+// REPLACE the main exception! You'd lose the original error.</code></pre>
+</div></div>
+
+<div class="faq" id="q27"><div class="faq-header"><div class="faq-num">27</div><h3>Checked Exceptions in Lambdas / Streams <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// Problem: Functional interfaces don't declare checked exceptions
+list.stream()
+    .map(s -&gt; parseFile(s))  // COMPILE ERROR if parseFile throws IOException
+    .collect(toList());
+
+// Solution 1: Wrapper method
+private &lt;T, R&gt; Function&lt;T, R&gt; wrap(ThrowingFunction&lt;T, R&gt; fn) {
+    return t -&gt; {
+        try { return fn.apply(t); }
+        catch (Exception e) { throw new RuntimeException(e); }
+    };
+}
+list.stream().map(wrap(this::parseFile)).collect(toList());
+
+// Solution 2: Try-catch inside lambda
+list.stream().map(s -&gt; {
+    try { return parseFile(s); }
+    catch (IOException e) { throw new UncheckedIOException(e); }
+}).collect(toList());
+
+// Solution 3: Use libraries (Vavr, jOOL)
+// list.stream().map(Unchecked.function(this::parseFile))</code></pre>
+</div></div>
+
+<div class="faq" id="q28"><div class="faq-header"><div class="faq-num">28</div><h3>Error vs Exception - When JVM throws Error?</h3></div><div class="faq-body">
+<table><tbody><tr><th>Error</th><th>When?</th><th>Can recover?</th></tr>
+<tr><td>OutOfMemoryError</td><td>JVM runs out of heap/metaspace</td><td>Usually no</td></tr>
+<tr><td>StackOverflowError</td><td>Infinite recursion / very deep call stack</td><td>Fix recursion</td></tr>
+<tr><td>NoClassDefFoundError</td><td>Class found at compile time, missing at runtime</td><td>Fix classpath</td></tr>
+<tr><td>ExceptionInInitializerError</td><td>Static initializer fails</td><td>Fix static block</td></tr>
+<tr><td>VirtualMachineError</td><td>JVM is broken</td><td>No</td></tr>
+<tr><td>LinkageError</td><td>Class dependency issue</td><td>Fix dependencies</td></tr></tbody></table>
+<div class="warn">NEVER catch Error in production code (except for cleanup/logging). You cannot recover from most Errors.</div>
+</div></div>
+
+<div class="faq" id="q29"><div class="faq-header"><div class="faq-num">29</div><h3>Exception Handling in Multithreading <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// Thread.run() cannot throw checked exceptions!
+
+// 1. UncaughtExceptionHandler
+Thread t = new Thread(() -&gt; { throw new RuntimeException("Oops"); });
+t.setUncaughtExceptionHandler((thread, ex) -&gt;
+    log.error("Thread {} failed: {}", thread.getName(), ex.getMessage(), ex));
+t.start();
+
+// 2. Default handler for ALL threads
+Thread.setDefaultUncaughtExceptionHandler((t, e) -&gt;
+    log.error("Unhandled: {}", e.getMessage(), e));
+
+// 3. ExecutorService: exceptions captured in Future
+Future&lt;?&gt; f = executor.submit(() -&gt; { throw new RuntimeException("fail"); });
+try {
+    f.get(); // ExecutionException wraps the RuntimeException
+} catch (ExecutionException e) {
+    Throwable cause = e.getCause(); // the original RuntimeException
+}
+
+// 4. CompletableFuture: use exceptionally() or handle()
+CompletableFuture.supplyAsync(() -&gt; riskyOp())
+    .exceptionally(ex -&gt; fallbackValue);</code></pre>
+</div></div>
+
+<div class="faq" id="q30"><div class="faq-header"><div class="faq-num">30</div><h3>Custom Exception Hierarchy (Real Project) <span class="tag tag-imp">MUST KNOW</span></h3></div><div class="faq-body">
+<pre><code>// Base exception for your application
+public abstract class AppException extends RuntimeException {
+    private final String errorCode;
+    public AppException(String errorCode, String message, Throwable cause) {
+        super(message, cause);
+        this.errorCode = errorCode;
+    }
+    public String getErrorCode() { return errorCode; }
+}
+
+// Business exceptions
+public class UserNotFoundException extends AppException {
+    public UserNotFoundException(String userId) {
+        super("USER_NOT_FOUND", "User not found: " + userId, null);
+    }
+}
+
+public class InsufficientBalanceException extends AppException {
+    public InsufficientBalanceException(BigDecimal balance, BigDecimal amount) {
+        super("INSUFFICIENT_BALANCE",
+            String.format("Balance %.2f less than amount %.2f", balance, amount), null);
+    }
+}
+
+// Technical exceptions
+public class ExternalServiceException extends AppException {
+    public ExternalServiceException(String service, Throwable cause) {
+        super("EXTERNAL_SERVICE_ERROR", "Failed calling: " + service, cause);
+    }
+}</code></pre>
+<div class="diagram">
+AppException (abstract)
+├── UserNotFoundException
+├── InsufficientBalanceException
+├── DuplicateRecordException
+├── InvalidStateException
+├── ExternalServiceException
+│   ├── PaymentGatewayException
+│   └── EmailServiceException
+└── DataAccessException
+</div>
+</div></div>
+
+<div class="faq" id="q31"><div class="faq-header"><div class="faq-num">31</div><h3>Optional vs Exception for missing values <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// BEFORE: throw exception or return null
+public User findUser(String id) {
+    User u = repo.find(id);
+    if (u == null) throw new UserNotFoundException(id); // expensive
+    return u;
+}
+
+// AFTER: return Optional (cleaner, no exception overhead)
+public Optional&lt;User&gt; findUser(String id) {
+    return Optional.ofNullable(repo.find(id));
+}
+
+// Caller:
+findUser(id).orElseThrow(() -&gt; new UserNotFoundException(id)); // throw if needed
+findUser(id).orElse(defaultUser);      // provide default
+findUser(id).ifPresent(this::process); // only if present</code></pre>
+<table><tbody><tr><th>Use Exception when:</th><th>Use Optional when:</th></tr>
+<tr><td>Truly exceptional condition</td><td>Value may or may not exist</td></tr>
+<tr><td>Caller MUST handle it</td><td>Caller can provide default</td></tr>
+<tr><td>Method contract violated</td><td>Query/lookup methods</td></tr></tbody></table>
+</div></div>
+
+<div class="faq" id="q32"><div class="faq-header"><div class="faq-num">32</div><h3>finally block puzzles <span class="tag tag-hot">INTERVIEW</span></h3></div><div class="faq-body">
+<pre><code>// Puzzle 1: What's returned?
+static int test() {
+    try { return 1; }
+    finally { return 2; } // ALWAYS returns 2! finally overrides try return
+}
+
+// Puzzle 2: When does finally NOT execute?
+// 1. System.exit() called
+// 2. JVM crash
+// 3. Thread killed (Thread.stop() - deprecated)
+// 4. Infinite loop in try block
+
+// Puzzle 3: Variable in finally
+int x = 0;
+try { x = 1; return x; }      // return value (1) is saved BEFORE finally
+finally { x = 2; }             // x changes to 2 but return value already saved
+// Returns 1! (primitive value was copied)
+
+// But with objects:
+StringBuilder sb = new StringBuilder("Hello");
+try { return sb; }
+finally { sb.append(" World"); }
+// Returns "Hello World"! (reference was copied, object is same)</code></pre>
+</div></div>
+
+<div class="faq" id="q33"><div class="faq-header"><div class="faq-num">33</div><h3>Exception handling in Spring @Transactional <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// Spring rolls back ONLY for RuntimeException (unchecked) by default!
+
+@Transactional // rolls back on RuntimeException, NOT on checked exceptions
+public void transfer(String from, String to, BigDecimal amount) {
+    debit(from, amount);
+    credit(to, amount); // RuntimeException here → rolls back debit too
+}
+
+// To rollback on checked exceptions:
+@Transactional(rollbackFor = IOException.class)
+public void importData(File file) throws IOException { ... }
+
+// To NOT rollback on specific exception:
+@Transactional(noRollbackFor = EmailException.class)
+public void process() { ... }
+
+// COMMON MISTAKE: calling @Transactional method from same class
+// → proxy not invoked → transaction not applied!
+public void outer() {
+    inner(); // NO transaction! Bypasses Spring proxy
+}
+@Transactional
+public void inner() { ... }</code></pre>
+</div></div>
+
+<div class="faq" id="q34"><div class="faq-header"><div class="faq-num">34</div><h3>Sneaky Throws (Advanced)</h3></div><div class="faq-body">
+<pre><code>// Trick: throw checked exception WITHOUT declaring it
+// Used by Lombok's @SneakyThrows
+
+@SuppressWarnings("unchecked")
+static &lt;E extends Throwable&gt; void sneakyThrow(Throwable e) throws E {
+    throw (E) e; // Exploits type erasure
+}
+
+// Usage:
+try { riskyCode(); }
+catch (IOException e) {
+    sneakyThrow(e); // throws IOException without declaring it!
+}
+
+// Why: Useful in lambdas where you can't declare checked exceptions
+// Caution: controversial, breaks contract. Use sparingly.</code></pre>
+</div></div>
+
+<div class="faq" id="q35"><div class="faq-header"><div class="faq-num">35</div><h3>ConcurrentModificationException <span class="tag tag-hot">HOT</span></h3></div><div class="faq-body">
+<pre><code>// WRONG: modifying collection while iterating
+List&lt;String&gt; list = new ArrayList&lt;&gt;(List.of("a", "b", "c"));
+for (String s : list) {
+    if (s.equals("b")) list.remove(s); // ConcurrentModificationException!
+}
+
+// FIX 1: Use Iterator.remove()
+Iterator&lt;String&gt; it = list.iterator();
+while (it.hasNext()) {
+    if (it.next().equals("b")) it.remove(); // SAFE
+}
+
+// FIX 2: removeIf() (Java 8+)
+list.removeIf(s -&gt; s.equals("b")); // cleanest way
+
+// FIX 3: Use CopyOnWriteArrayList (concurrent scenarios)
+// FIX 4: Collect to remove, then removeAll()
+List&lt;String&gt; toRemove = list.stream().filter(...).collect(toList());
+list.removeAll(toRemove);</code></pre>
+</div></div>
+
+</div>
+<div style="text-align:center;padding:40px;opacity:0.4">
+<a href="file:///C:/temp/java-faq/Java_Strings_FAQ.html" style="color:#8be9fd">← Strings</a> |
+<a href="file:///C:/temp/java-faq/Java_FAQ_Index.html" style="color:#8be9fd">Index</a> |
+<a href="file:///C:/temp/java-faq/Java_Collections_FAQ.html" style="color:#8be9fd">Collections →</a>
+</div>
+
+
+</body></html>
